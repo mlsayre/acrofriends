@@ -1,0 +1,51 @@
+@media screen and (max-width: 480px) {
+
+  #landing-bgtext {
+    width: 100%;
+    text-align: center;
+    margin-top:32px;
+    margin-bottom:40px;
+    font-size:380%;
+    font-weight:normal;
+    opacity:.15;
+    color: #ff3100;
+  }
+  #landing-fgtext {
+    width: 100%;
+    text-align: center;
+    margin-top:-88px;
+    margin-bottom:30px;
+    font-size:140%;
+    font-weight:bold;
+    color: #ff3100;
+  }
+  #landing-signin {
+    width: 100%;
+    text-align: center;
+    margin-top: 80px;
+    font-size:100%;
+    font-weight:normal;
+  }
+
+  #landing-topbar {
+    background: #03a9f4;
+    height: 100px;
+    width: 100%;
+  }
+
+  #landing-bottombar {
+    background: #03a9f4;
+    bottom: 0;
+    position: fixed;
+    height: 100px;
+    width: 100%;
+  }
+
+  #signin-twitter {
+    text-align: center;
+  }
+  #signin-facebook {
+    text-align: center;
+  }
+
+}
