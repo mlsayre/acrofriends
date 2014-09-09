@@ -5,7 +5,7 @@
     text-align: center;
     margin-top:32px;
     margin-bottom:40px;
-    font-size:380%;
+    font-size:440%;
     font-weight:normal;
     opacity:.15;
     color: #ff3100;
@@ -13,16 +13,16 @@
   #landing-fgtext {
     width: 100%;
     text-align: center;
-    margin-top:-88px;
+    margin-top:-94px;
     margin-bottom:30px;
-    font-size:140%;
+    font-size:145%;
     font-weight:bold;
     color: #ff3100;
   }
   #landing-signin {
     width: 100%;
     text-align: center;
-    margin-top: 80px;
+    margin-top: 40px;
     font-size:100%;
     font-weight:normal;
   }
@@ -31,6 +31,7 @@
     background: #03a9f4;
     height: 100px;
     width: 100%;
+    box-shadow: 0 5px 5px #444;
   }
 
   #landing-bottombar {
@@ -39,13 +40,21 @@
     position: fixed;
     height: 100px;
     width: 100%;
+    box-shadow: 0 -5px 5px #444;
+    z-index: -1;
   }
 
-  #signin-twitter {
+  #signin-with {
+    margin-top: 40px;
     text-align: center;
+  }
+  #signin-twitter {
+    margin: 25px 10px 0 0;
   }
   #signin-facebook {
-    text-align: center;
+    margin: 25px 10px 0 10px;
   }
-
+  #signin-google {
+    margin: 25px 0 0 10px;
+  }
 }

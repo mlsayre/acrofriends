@@ -4,9 +4,18 @@
 <div id="landing-bgtext">WTA</div>
 <div id="landing-fgtext">Welcome to AcroFriends!</div>
 
-<div id="landing-signin">Sign in or Sign up</div>
+<div id="landing-signin">
+  <%= link_to "Sign in", new_user_session_path %>
+  or
+  <%= link_to "Sign up", new_user_registration_path %></br>
+</div>
 
-<div id="signin-twitter">Sign in with Twitter</div>
-<div id="signin-facebook">Sign in with Facebook</div>
+<div id="signin-with">Sign in with:<br>
+  <span id="signin-twitter"><%= link_to "Twitter", omniauth_authorize_path(:user, :twitter) %></span>
+  |
+  <span id="signin-facebook">Facebook</span>
+  |
+  <span id="signin-google">Google</span>
+</div>
 
 <div id="landing-bottombar"></div>
