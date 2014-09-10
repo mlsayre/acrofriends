@@ -9,6 +9,8 @@ gem 'pg'
 gem 'devise'
 gem 'figaro'
 gem 'omniauth-twitter'
+gem 'aws-sdk', '~> 1.33.0'
+gem 'paperclip'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

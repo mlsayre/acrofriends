@@ -12,7 +12,7 @@ default: &default
 development:
   adapter: postgresql
   encoding: unicode
-  database: acroparty_development
+  database: acrofriends_development
   pool: 5
   username: matt
 
@@ -22,7 +22,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: acroparty_test
+  database: acrofriends_test
   pool: 5
   username: matt
   min_messages: warning
@@ -30,7 +30,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: acroparty_production
+  database: acrofriends_production
   pool: 5
   username: matt
   password:
