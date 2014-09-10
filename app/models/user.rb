@@ -37,14 +37,16 @@ class User < ActiveRecord::Base
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.username = auth.info.nickname
       if auth.provider == "twitter"
+        user.username = auth.info.nickname
         user.email = auth.info.nickname + "@twitter.com"
         user.avatar = auth["info"]["image"].sub("_normal", "")
       elsif auth.provider == "facebook"
+        user.username = auth.info.name
         user.email = auth["info"]["email"]
         # user.avatar = "http://graph.facebook.com/#{auth.uid}/picture?type=large"
       else
+        user.username = auth.info.nickname
         user.email = auth["info"]["email"]
         # user.avatar = "http://graph.facebook.com/#{auth.uid}/picture?type=large"
       end
