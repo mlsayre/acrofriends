@@ -9,6 +9,7 @@ gem 'pg'
 gem 'devise'
 gem 'figaro'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'aws-sdk', '~> 1.33.0'
 gem 'paperclip'
 # Use SCSS for stylesheets

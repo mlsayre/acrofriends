@@ -13,7 +13,7 @@
 <div id="signin-with">Sign in with:<br>
   <span id="signin-twitter"><%= link_to "Twitter", omniauth_authorize_path(:user, :twitter) %></span>
   |
-  <span id="signin-facebook">Facebook</span>
+  <span id="signin-facebook"><%= link_to "Facebook", omniauth_authorize_path(:user, :facebook) %></span>
   |
   <span id="signin-google">Google</span>
 </div>
