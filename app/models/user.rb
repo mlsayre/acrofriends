@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
       elsif auth.provider == "facebook"
         user.username = auth.info.name
         user.email = auth["info"]["email"]
-        user.avatar = auth["info"]["image"]
+        user.avatar = auth["info"]["image"].sub("_normal", "")
       else
         user.username = auth.info.nickname
         user.email = auth["info"]["email"]
