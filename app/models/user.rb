@@ -44,10 +44,7 @@ class User < ActiveRecord::Base
       elsif auth.provider == "facebook"
         user.username = auth.info.name
         user.email = auth["info"]["email"]
-        if auth.info.image.present?
-          avatar_url = process_uri(auth.info.image)
-          user.update_attribute(:avatar, URI.parse(avatar_url))
-        end
+        user.avatar = "http://graph.facebook.com/#{auth.info.name}/picture?type=large"
       else
         user.username = auth.info.nickname
         user.email = auth["info"]["email"]
