@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
       elsif auth.provider == "facebook"
         user.username = auth.info.first_name + rand(1000).to_s
         user.email = auth["info"]["email"]
-        # user.avatar = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
+        user.avatar = auth["info"]["image"]
       else # Google login
         user.username = auth.info.first_name + rand(1000).to_s
         user.email = auth["info"]["email"]
