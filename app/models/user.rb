@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauth_providers => [:facebook, :twitter]
+         :omniauth_providers => [:facebook, :twitter, :google_oauth2]
 
   validates_presence_of :username
 
@@ -42,13 +42,13 @@ class User < ActiveRecord::Base
         user.email = auth.info.nickname + "@twitter.com"
         user.avatar = auth["info"]["image"].sub("_normal", "")
       elsif auth.provider == "facebook"
-        user.username = "Acro" + auth.info.first_name + rand(1000).to_s
+        user.username = auth.info.first_name + rand(1000).to_s
         user.email = auth["info"]["email"]
         # user.avatar = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
-      else
-        user.username = auth.info.nickname
+      else # Google login
+        user.username = auth.info.first_name + rand(1000).to_s
         user.email = auth["info"]["email"]
-        # user.avatar = "http://graph.facebook.com/#{auth.uid}/picture?type=large"
+        user.avatar = auth["info"]["image"]
       end
 
     end

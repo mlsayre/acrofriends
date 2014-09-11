@@ -10,6 +10,7 @@ gem 'devise'
 gem 'figaro'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 gem 'aws-sdk', '~> 1.33.0'
 gem 'paperclip'
 # Use SCSS for stylesheets
