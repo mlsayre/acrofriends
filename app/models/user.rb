@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
     large: '300x300>'
     },
     :default_url => 'https://s3-us-west-2.amazonaws.com/apavatars/ap_generic_avatar80.png'
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-  validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
+  # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  # validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
   # Explicitly do not validate
   do_not_validate_attachment_file_type :avatar
 
