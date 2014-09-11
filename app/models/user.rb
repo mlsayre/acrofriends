@@ -42,9 +42,9 @@ class User < ActiveRecord::Base
         user.email = auth.info.nickname + "@twitter.com"
         user.avatar = auth["info"]["image"].sub("_normal", "")
       elsif auth.provider == "facebook"
-        user.username = auth.info.name
+        user.username = auth.info.nickname
         user.email = auth["info"]["email"]
-        user.avatar = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
+        # user.avatar = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
       else
         user.username = auth.info.nickname
         user.email = auth["info"]["email"]
