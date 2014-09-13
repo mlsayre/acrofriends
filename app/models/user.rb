@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :groups
+  has_many :memberships
+  has_many :groups, :through => :memberships
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -43,11 +44,11 @@ class User < ActiveRecord::Base
         user.email = auth.info.nickname + "@twitter.com"
         user.avatar = auth["info"]["image"].sub("_normal", "")
       elsif auth.provider == "facebook"
-        user.username = auth.info.first_name + rand(1000).to_s
+        user.username = auth.info.first_name[0...12] + rand(1000).to_s
         user.email = auth["info"]["email"]
         user.avatar = auth["info"]["image"]
       else # Google login
-        user.username = auth.info.first_name + rand(1000).to_s
+        user.username = auth.info.first_name[0...12] + rand(1000).to_s
         user.email = auth["info"]["email"]
         user.avatar = auth["info"]["image"]
       end
