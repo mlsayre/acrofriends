@@ -7,10 +7,22 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+
+  authenticated :user do
+    root :to => 'pages#main', as: :authenticated_root
+  end
+
   # You can have the root of your site routed with "root"
   root 'pages#landing'
 
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  resources :pages do
+    collection do
+      get 'main' => 'pages#main'
+    end
+  end
+
+  match 'main' => 'pages#main', via: [:get, :post]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
