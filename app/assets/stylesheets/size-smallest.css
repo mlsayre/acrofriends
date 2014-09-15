@@ -1,5 +1,5 @@
 @media screen and (max-width: 480px) {
-
+  /* LANDING PAGE */
   #landing-bgtext {
     width: 100%;
     text-align: center;
@@ -56,5 +56,23 @@
   }
   #signin-google {
     margin: 25px 0 0 10px;
+  }
+
+  /* MAIN PAGE */
+  #main-bottombar {
+    background: #03a9f4;
+    bottom: 0;
+    position: fixed;
+    height: 100px;
+    width: 100%;
+    box-shadow: 0 -5px 5px #444;
+    z-index: -1;
+  }
+  #main-icons {
+    text-align: center;
+    margin: 12px;
+  }
+  .main-icon {
+    margin: 0 8px;
   }
 }
