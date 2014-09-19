@@ -28,7 +28,7 @@
   <fieldset class="small-5 centerall">
     <legend>Optional Information</legend>
       <div class="small-10 centerall"><%= f.label :avatar, "Your avatar" %>
-        <%= image_tag current_user.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %>
+        <%= image_tag current_user.avatar.url(:small), :style => "border: 1px solid gray; border-radius: 40px; margin-bottom:12px;" %>
       </div>
       <div class="small-5 centerall"><%= f.label :avatar, "Upload new avatar:" %></div>
       <div class="small-10 columns small-centered" style="margin-top:12px">
