@@ -59,6 +59,19 @@
   }
 
   /* MAIN PAGE */
+  #main-topbar {
+    background: #03a9f4;
+    height: 40px;
+    width: 100%;
+    box-shadow: 0 5px 5px #444;
+  }
+  #main-pagetitle {
+    text-align: center;
+    color: white;
+    font-size: 140%;
+    font-weight: 600;
+    padding-top: 3px;
+  }
   #main-bottombar {
     background: #03a9f4;
     bottom: 0;
