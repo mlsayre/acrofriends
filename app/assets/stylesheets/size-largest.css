@@ -29,7 +29,7 @@
 
   #landing-topbar {
     background: #03a9f4;
-    height: 100px;
+    height: 70px;
     width: 100%;
     box-shadow: 0 5px 5px #444;
   }
@@ -38,7 +38,7 @@
     background: #03a9f4;
     bottom: 0;
     position: fixed;
-    height: 100px;
+    height: 70px;
     width: 100%;
     box-shadow: 0 -5px 5px #444;
     z-index: -1;
@@ -69,9 +69,9 @@
   }
   #main-icons {
     text-align: center;
-    margin: 12px;
+    margin: 10px 12px 14px 12px;
   }
   .main-icon {
-    margin: 0 12px;
+    margin: 0 10px;
   }
 }

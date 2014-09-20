@@ -1,10 +1,9 @@
-<h1>Listing groups</h1>
+<h1>Groups</h1>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Password</th>
       <th>Private</th>
       <th colspan="3"></th>
     </tr>
@@ -14,7 +13,6 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td><%= group.password %></td>
         <td><%= group.private %></td>
         <td><%= link_to 'Show', group %></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
@@ -22,8 +20,10 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
 
 <br>
 
 <%= link_to 'New Group', new_group_path %>
+
+<%= render "shared/bottombar" %>
