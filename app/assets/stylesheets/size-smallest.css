@@ -64,7 +64,6 @@
     height: 40px;
     width: 100%;
     box-shadow: 0 5px 5px #444;
-    margin-bottom: 12px;
   }
   #main-pagetitle {
     text-align: center;
@@ -72,7 +71,8 @@
     font-size: 140%;
     font-weight: 600;
     padding-top: 4px;
-    margin: 0 30px;
+    margin: 0 12px;
+    margin-bottom: 12px;
   }
   #main-homebutton {
     float:left;
