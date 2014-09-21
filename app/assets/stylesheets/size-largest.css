@@ -64,13 +64,23 @@
     height: 40px;
     width: 100%;
     box-shadow: 0 5px 5px #444;
+    margin-bottom: 12px;
   }
   #main-pagetitle {
     text-align: center;
     color: white;
     font-size: 140%;
     font-weight: 600;
-    padding-top: 3px;
+    padding-top: 4px;
+    margin: 0 30px;
+  }
+  #main-homebutton {
+    float: left;
+    margin-top: -2px;
+  }
+  #main-messagebutton {
+    float: right;
+    margin-top: -2px;
   }
   #main-bottombar {
     background: #03a9f4;

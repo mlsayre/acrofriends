@@ -1,5 +1,10 @@
 <div id="main-topbar">
   <div id="main-pagetitle">
+    <div id="main-homebutton">
+    <%= link_to(image_tag("Home-128.png", size: "36", alt: "Main Menu", class: "topbar-homebutton"), main_path) %>
+    </div>
     <%= @mainpagetitle %>
+    <div id="main-messagebutton">
+    <%= image_tag("Message-None-128.png", size: "36", alt: "Messages", class: "topbar-messagebutton") %>
   </div>
 </div>
