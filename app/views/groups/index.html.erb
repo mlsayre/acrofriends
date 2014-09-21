@@ -23,8 +23,12 @@
   </tbody>
 </table> -->
 
-<br>
+<div id="newgrouplink">
+  <%= link_to 'New Group', new_group_path %>
+</div>
 
-<%= link_to 'New Group', new_group_path %>
+<div id="joingrouplink">
+  <%= link_to 'Join Group', new_membership_path %>
+</div>
 
 <%= render "shared/bottombar" %>

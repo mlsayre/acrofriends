@@ -58,7 +58,7 @@
     margin: 25px 0 0 10px;
   }
 
-  /* MAIN PAGE */
+  /* MAIN PAGES */
   #main-topbar {
     background: #03a9f4;
     height: 40px;
@@ -96,5 +96,22 @@
   }
   .main-icon {
     margin: 0 8px;
+  }
+  #main-signout {
+    margin-bottom: 80px;
+  }
+
+  /* GROUP PAGES */
+  #newgrouplink {
+    font-size: 200%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 30px;
+  }
+  #joingrouplink {
+    font-size: 200%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 30px;
   }
 }
