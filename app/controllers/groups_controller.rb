@@ -25,6 +25,11 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
+    if @group.save
+      Membership.create(:user_id => current_user.id, :group_id => Group.last.id)
+    else
+      render :nothing => true, notice: 'Error creating or joining new group.'
+    end
 
     respond_to do |format|
       if @group.save
