@@ -1,14 +1,9 @@
-<p id="notice"><%= notice %></p>
+<% @mainpagetitle = @group.name + " group" %>
+<%= render "shared/topbar" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @group.password %>
-</p>
+<div id="privatestatus">
+  <%= @privatestatus %>
+</div>
 
 <p>
   <strong>Private:</strong>
@@ -17,3 +12,5 @@
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
+
+<%= render "shared/bottombar" %>

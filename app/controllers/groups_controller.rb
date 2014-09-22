@@ -5,11 +5,17 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
+    @memberships = Membership.all
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+    if @group.private == true
+      @privatestatus = "(Private group)"
+    elsif @group.private == false
+      @privatestatus = "(Open group)"
+    end
   end
 
   # GET /groups/new
