@@ -5,10 +5,18 @@
   <%= @privatestatus %>
 </div>
 
-<p>
-  <strong>Private:</strong>
-  <%= @group.private %>
-</p>
+<div id="showgroupmembers">
+  <fieldset class="groupinfo">
+  <legend>Members</legend>
+  <% @memberships.where(:group_id => @group).each do |membership| %>
+    <p class="groupmembernames">
+      <span><%= image_tag membership.user.avatar.url(:small), :style => "border-radius: 40px; margin-bottom:-5px; width:28px" %></span>
+      <span><%= membership.user.username %></span>
+    </p>
+  <% end %>
+</fieldset>
+</div>
+
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>

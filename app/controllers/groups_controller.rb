@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
     elsif @group.private == false
       @privatestatus = "(Open group)"
     end
+    @memberships = Membership.all
   end
 
   # GET /groups/new
