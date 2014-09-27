@@ -140,4 +140,14 @@
     text-align: center;
     margin-bottom: 15px;
   }
+  #newgroupform {
+    margin-top: 30px;
+    text-align: center;
+  }
+  #pvtcheckbox {
+    margin-bottom: 20px;
+  }
+  #grouppasswordcreate {
+    margin-bottom: 20px;
+  }
 }

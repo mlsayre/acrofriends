@@ -1,36 +1,39 @@
 <% @mainpagetitle="Start a Group" %>
 <%= render "shared/topbar" %>
+<div id="newgroupform">
+  <%= form_for(@group) do |f| %>
+    <% if @group.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
 
-<%= form_for(@group) do |f| %>
-  <% if @group.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+        <ul>
+        <% @group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-      <% @group.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="field">
+      <%= f.label :name, "New group name" %><br>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :private, "Private?" %><br>
+      <%= f.check_box :private, id: "pvtcheckbox" %>
+    </div>
+    <div class="field" id="grouppasswordfield">
+      <%= f.label :password %><br>
+      <%= f.text_field :password, id: "grouppasswordcreate" %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name, "New group name" %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :private, "Private?" %><br>
-    <%= f.check_box :private %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.text_field :password %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
 
 <%= link_to 'Back', groups_path %>
 
 <%= render "shared/bottombar" %>
+
+<%= javascript_include_tag "page/groupcreate" %>
