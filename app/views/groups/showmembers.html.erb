@@ -1,0 +1,20 @@
+<% @mainpagetitle = @group.name + " members" %>
+<%= render "shared/topbar" %>
+
+<div id="privatestatus">
+  <%= @privatestatus %>
+</div>
+
+<div id="showgroupmembers">
+  <fieldset class="groupinfo">
+  <legend>Members (<%= @group.users.count %>)</legend>
+  <% @memberships.where(:group_id => @group).each do |membership| %>
+    <p class="groupmembernames">
+      <span><%= image_tag membership.user.avatar.url(:small), :style => "border-radius: 40px; margin-bottom:-5px; width:28px" %></span>
+      <span><%= membership.user.username %></span>
+    </p>
+  <% end %>
+</fieldset>
+</div>
+
+<%= render "shared/bottombar" %>

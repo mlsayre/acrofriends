@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   resources :memberships
 
   resources :groups
+  resources :groups do
+    collection do
+      get '/:id/showmembers' => 'groups#showmembers', as: :showmembers
+    end
+  end
 
   # devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

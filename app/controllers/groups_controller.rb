@@ -12,6 +12,16 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     if @group.private == true
+      @topbarimage = "Lock-128.png"
+    elsif @group.private == false
+      @privatestatus = "(Open group)"
+    end
+    @memberships = Membership.all
+  end
+
+  def showmembers
+    @group = Group.find(params[:id])
+    if @group.private == true
       @privatestatus = "(Private group)"
     elsif @group.private == false
       @privatestatus = "(Open group)"
