@@ -25,22 +25,30 @@ class MembershipsController < ApplicationController
   # POST /memberships.json
   def create
     @membership = Membership.new(membership_params)
+    @grouppriv = Group.find(params[:membership][:group_id]).private
     @grouppass = Group.find(params[:membership][:group_id]).password
+    @groupname = Group.find(params[:membership][:group_id]).name
 
-    if @grouppass != ""
-      redirect_to @membership, notice: 'group has password.'
+    def membershipsave
+      respond_to do |format|
+        if @membership.save
+          format.html { redirect_to groups_path, notice: 'You have joined the ' + @groupname + ' group.' }
+          format.json { render :show, status: :created, location: @membership }
+        else
+          format.html { render :new }
+          format.json { render json: @membership.errors, status: :unprocessable_entity }
+        end
+      end
+    end
 
-      # respond_to do |format|
-      #   if @membership.save
-      #     format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
-      #     format.json { render :show, status: :created, location: @membership }
-      #   else
-      #     format.html { render :new }
-      #     format.json { render json: @membership.errors, status: :unprocessable_entity }
-      #   end
-      # end
-    elsif @grouppass == ""
-      redirect_to @membership, notice: 'group has NO password.'
+    if @grouppriv == true
+      if @grouppass == params[:group][:password]
+        membershipsave
+      else
+        redirect_to new_membership_path, notice: 'Password incorrect. Please try again.'
+      end
+    elsif @grouppriv == false
+      membershipsave
     end
   end
 
