@@ -1,6 +1,24 @@
 <% @mainpagetitle = @group.name + " group " %>
 <%= render "shared/topbar" %>
 
+<div class="chattable" id="chatbox">
+      <ul id="chat">
+        <%= render @chat %>
+      </ul>
+    </div>
+
+<div class="small-12">
+      <%= form_for @chat.build, remote: true do |f| %>
+        <div class="row">
+          <div class="small-10 columns"><%= f.text_field :message, :placeholder => "Enter chat here...", :autofocus => true %></div>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.hidden_field :group_id, :value => @group.id %>
+          <div class="small-2 columns"><%= f.submit "Send", :class => "button tiny radius centerall", :style => "margin-top:2px; margin-left:-6px" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
 <%= link_to 'Members', showmembers_groups_path(@group) %>(<%= @group.users.count %>)
 
 <%= link_to 'Edit', edit_group_path(@group) %> |

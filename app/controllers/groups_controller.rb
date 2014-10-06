@@ -15,6 +15,9 @@ class GroupsController < ApplicationController
       @topbarimage = "Lock-128.png"
     end
     @memberships = Membership.all
+
+    # chat
+    @chat = Chat.where('group_id = ?', @group.id)
   end
 
   def showmembers
@@ -71,11 +74,11 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group.destroy
-    respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # @group.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private
