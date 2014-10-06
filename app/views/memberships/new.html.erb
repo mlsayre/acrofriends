@@ -19,6 +19,10 @@
     <div class="choosegroup">
       <%= f.select :group_id, Group.all.collect { |p| [ p.name, p.id ] } %>
     </div>
+    <%= fields_for :group, @membership.group do |password_form| %>
+      <%= password_form.label :password %><br>
+      <%= password_form.text_field :password %>
+    <% end %>
     <div class="actions">
       <%= f.submit "Join Group" %>
     </div>

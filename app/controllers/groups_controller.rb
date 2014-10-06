@@ -13,8 +13,6 @@ class GroupsController < ApplicationController
   def show
     if @group.private == true
       @topbarimage = "Lock-128.png"
-    elsif @group.private == false
-      @privatestatus = "(Open group)"
     end
     @memberships = Membership.all
   end
@@ -23,6 +21,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     if @group.private == true
       @privatestatus = "(Private group)"
+      @topbarimage = "Lock-128.png"
     elsif @group.private == false
       @privatestatus = "(Open group)"
     end
