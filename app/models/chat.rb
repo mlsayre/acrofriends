@@ -1,9 +1,10 @@
 class Chat < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+
   belongs_to :user
   belongs_to :group
 
   def chattime
-    timedif = DateTime.now.utc.to_i - created_at.utc.to_i
-    if timedif <=
+    time_ago_in_words(created_at, include_seconds: true)
   end
 end

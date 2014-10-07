@@ -2,26 +2,26 @@
 <%= render "shared/topbar" %>
 
 <div class="chattable" id="chatbox">
-      <ul id="chat">
-        <%= render @chat %>
-      </ul>
+  <ul id="chat">
+    <%= render @chat %>
+  </ul>
+</div>
+
+<div id="groupchatui">
+  <%= form_for @chat.build, remote: true do |f| %>
+    <div>
+      <span id="groupchattext"><%= f.text_field :message, :placeholder => "Enter chat here...", :autofocus => true %></span>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :group_id, :value => @group.id %>
+      <span><%= f.submit "Send", :class => "button tiny radius centerall", :style => "margin-top:2px; margin-left:-6px;" %>
+      </span>
     </div>
+  <% end %>
+</div>
 
-<div class="small-12">
-      <%= form_for @chat.build, remote: true do |f| %>
-        <div class="row">
-          <div class="small-10 columns"><%= f.text_field :message, :placeholder => "Enter chat here...", :autofocus => true %></div>
-          <%= f.hidden_field :user_id, :value => current_user.id %>
-          <%= f.hidden_field :group_id, :value => @group.id %>
-          <div class="small-2 columns"><%= f.submit "Send", :class => "button tiny radius centerall", :style => "margin-top:2px; margin-left:-6px" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+<div id="group-memberslink">
+  <%= link_to 'Members', showmembers_groups_path(@group) %>(<%= @group.users.count %>)
+</div>
 
-<%= link_to 'Members', showmembers_groups_path(@group) %>(<%= @group.users.count %>)
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
 
 <%= render "shared/bottombar" %>

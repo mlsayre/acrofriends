@@ -1,5 +1,5 @@
 <li id="chatline" style="list-style-type:none">
-  <span id="messagetime" class="float right" style="font-size:.6em; color:gray; margin-right:12px;"><%= chat.created_at.strftime("%l:%M%p") %></span>
+  <span id="messagetime" style="float: right; font-size:.6em; color:gray; margin-right:12px;"><%= chat.chattime %> ago</span>
   <span style="color:red;"><%= chat.user.username if chat.user %>
     <% if chat.user %>
     :

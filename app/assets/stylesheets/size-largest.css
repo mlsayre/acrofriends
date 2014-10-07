@@ -154,4 +154,23 @@
   #grouppasswordcreate {
     margin-bottom: 20px;
   }
+  #chatbox {
+    border: 2px solid gray;
+    width: 60%;
+    height: 242px;
+    margin: 0 auto;
+    overflow-y: auto;
+  }
+  #groupchatui {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  #groupchattext {
+    width: 60%;
+  }
+  #group-memberslink {
+    text-align: center;
+    font-size: 130%;
+  }
 }
