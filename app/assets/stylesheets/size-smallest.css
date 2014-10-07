@@ -154,4 +154,35 @@
   #grouppasswordcreate {
     margin-bottom: 20px;
   }
+  #chatbox {
+    border: 2px solid gray;
+    width: 90%;
+    height: 242px;
+    margin: 0 auto;
+    overflow-y: auto;
+    margin-top: 30px;
+  }
+  #groupchatui {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  #groupchatenter {
+    width: 100%;
+  }
+  #group-memberslink {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 130%;
+  }
+  #chatline {
+    list-style-type: none;
+    margin-left: -34px;"
+  }
+  #messagetime {
+    float: right;
+    font-size:.6em;
+    color: gray;
+    margin-right: 6px;
+  }
 }

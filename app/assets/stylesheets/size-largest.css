@@ -167,11 +167,22 @@
     margin: 0 auto;
     text-align: center;
   }
-  #groupchattext {
+  #groupchatenter {
     width: 60%;
   }
   #group-memberslink {
     text-align: center;
+    margin-top: 12px;
     font-size: 130%;
+  }
+  #chatline {
+    list-style-type: none;
+    margin-left: -25px;"
+  }
+  #messagetime {
+    float: right;
+    font-size:.6em;
+    color: gray;
+    margin-right: 12px;
   }
 }
