@@ -160,6 +160,7 @@
     height: 242px;
     margin: 0 auto;
     overflow-y: auto;
+    margin-top: 35px;
   }
   #groupchatui {
     width: 60%;

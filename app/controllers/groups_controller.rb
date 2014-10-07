@@ -18,6 +18,7 @@ class GroupsController < ApplicationController
 
     # chat
     @chat = Chat.where('group_id = ?', @group.id)
+    @gr_id = @group.id.to_i
   end
 
   def showmembers
