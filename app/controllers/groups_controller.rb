@@ -1,6 +1,13 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
+  def memberauthorize
+    unless @group.users.ids.include?(current_user.id)
+      redirect_to groups_path
+      flash[:notice] = "Sorry, you are not a member of that private group."
+    end
+  end
+
   # GET /groups
   # GET /groups.json
   def index
@@ -11,11 +18,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    # authorize user
-    unless @group.users.ids.include?(current_user.id)
-      redirect_to groups_path
-      flash[:notice] = "Sorry, you are not a member of that private group."
-    end
+    memberauthorize
 
     if @group.private == true
       @topbarimage = "Lock-128.png"
@@ -27,12 +30,10 @@ class GroupsController < ApplicationController
   end
 
   def showmembers
-    unless @group.users.ids.include?(current_user.id)
-      redirect_to groups_path
-      flash[:notice] = "Sorry, you are not a member of that private group."
-    end
-
     @group = Group.find(params[:id])
+
+    memberauthorize
+
     if @group.private == true
       @privatestatus = "(Private group)"
       @topbarimage = "Lock-128.png"
@@ -49,10 +50,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    unless @group.users.ids.include?(current_user.id)
-      redirect_to groups_path
-      flash[:notice] = "Sorry, you are not a member of that private group."
-    end
+    memberauthorize
   end
 
   # POST /groups
@@ -75,10 +73,7 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
-    unless @group.users.ids.include?(current_user.id)
-      redirect_to groups_path
-      flash[:notice] = "Sorry, you are not a member of that private group."
-    end
+    memberauthorize
 
     respond_to do |format|
       if @group.update(group_params)
