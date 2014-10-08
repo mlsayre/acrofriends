@@ -11,6 +11,12 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    # authorize user
+    unless @group.users.ids.include?(current_user.id)
+      redirect_to groups_path
+      flash[:notice] = "Sorry, you are not a member of that private group."
+    end
+
     if @group.private == true
       @topbarimage = "Lock-128.png"
     end
@@ -21,6 +27,11 @@ class GroupsController < ApplicationController
   end
 
   def showmembers
+    unless @group.users.ids.include?(current_user.id)
+      redirect_to groups_path
+      flash[:notice] = "Sorry, you are not a member of that private group."
+    end
+
     @group = Group.find(params[:id])
     if @group.private == true
       @privatestatus = "(Private group)"
@@ -38,6 +49,10 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
+    unless @group.users.ids.include?(current_user.id)
+      redirect_to groups_path
+      flash[:notice] = "Sorry, you are not a member of that private group."
+    end
   end
 
   # POST /groups
@@ -60,6 +75,11 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+    unless @group.users.ids.include?(current_user.id)
+      redirect_to groups_path
+      flash[:notice] = "Sorry, you are not a member of that private group."
+    end
+
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }

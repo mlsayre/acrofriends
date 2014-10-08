@@ -8,7 +8,8 @@ class ChatsController < ApplicationController
 
     if @chat.save
       #only the last 30 chat messages per group room
-      Chat.where(:group_id => params[:chat][:group_id]).destroy_all(['id NOT IN (?)', Chat.last(25)])
+      Chat.where(:group_id => params[:chat][:group_id])
+        .destroy_all(['id NOT IN (?)', Chat.last(25)])
     end
   end
 
