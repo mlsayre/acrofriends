@@ -1,5 +1,6 @@
 <li id="chatline">
   <span id="messagetime"><%= chat.chattime %> ago</span>
+  <span><%= image_tag chat.user.avatar.url(:small), :style => "width:30px; margin-top:14px; margin-bottom: -6px;" if chat.user %></span>
   <span style="color:red;"><%= chat.user.username if chat.user %>
     <% if chat.user %>
     :

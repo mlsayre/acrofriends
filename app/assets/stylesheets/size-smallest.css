@@ -185,4 +185,10 @@
     color: gray;
     margin-right: 6px;
   }
+  .emoji {
+    width: 1.5em;
+    height: 1.5em;
+    display: inline-block;
+    margin-bottom: 0em;
+  }
 }

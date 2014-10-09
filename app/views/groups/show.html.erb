@@ -4,7 +4,7 @@
 <div class="chattable" id="chatbox">
   <div id="chatboxcontent">
     <ul id="chat">
-      <%= render @chat %>
+      <%= render @chat.order('created_at ASC') %>
     </ul>
   </div>
 </div>
@@ -27,4 +27,7 @@
 
 <%= render "shared/bottombar" %>
 
+<%= javascript_include_tag("page/emojify") %>
 <%= javascript_include_tag "page/groupshow" %>
+
+
