@@ -184,6 +184,15 @@ class ChatsController < ApplicationController
     params[:chat][:message].sub!(":" + emo + ":", "#{ @emojipic }")
   end
 
+  #special emoji
+  params[:chat][:message].sub!(":)", '<img class="emoji" src="/assets/emoji/smiley.png">')
+  params[:chat][:message].sub!(":-)", '<img class="emoji" src="/assets/emoji/smiley.png">')
+  params[:chat][:message].sub!(":(", '<img class="emoji" src="/assets/emoji/frowning.png">')
+  params[:chat][:message].sub!(":-(", '<img class="emoji" src="/assets/emoji/frowning.png">')
+  params[:chat][:message].sub!(":D", '<img class="emoji" src="/assets/emoji/smile.png">')
+  params[:chat][:message].sub!(":-D", '<img class="emoji" src="/assets/emoji/smile.png">')
+  params[:chat][:message].sub!("<3", '<img class="emoji" src="/assets/emoji/heart.png">')
+
 
 
   end
