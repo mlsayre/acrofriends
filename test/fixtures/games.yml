@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  r1letters: MyString
+  r2letters: MyString
+  r3letters: MyString
+  r4letters: MyString
+  r1cat: MyString
+  r2cat: MyString
+  r3cat: 
+  r4cat: MyString
+  name: MyString
+
+two:
+  r1letters: MyString
+  r2letters: MyString
+  r3letters: MyString
+  r4letters: MyString
+  r1cat: MyString
+  r2cat: MyString
+  r3cat: 
+  r4cat: MyString
+  name: MyString

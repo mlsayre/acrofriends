@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>R1letters:</strong>
+  <%= @game.r1letters %>
+</p>
+
+<p>
+  <strong>R2letters:</strong>
+  <%= @game.r2letters %>
+</p>
+
+<p>
+  <strong>R3letters:</strong>
+  <%= @game.r3letters %>
+</p>
+
+<p>
+  <strong>R4letters:</strong>
+  <%= @game.r4letters %>
+</p>
+
+<p>
+  <strong>R1cat:</strong>
+  <%= @game.r1cat %>
+</p>
+
+<p>
+  <strong>R2cat:</strong>
+  <%= @game.r2cat %>
+</p>
+
+<p>
+  <strong>R3cat:</strong>
+  <%= @game.r3cat %>
+</p>
+
+<p>
+  <strong>R4cat:</strong>
+  <%= @game.r4cat %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @game.name %>
+</p>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

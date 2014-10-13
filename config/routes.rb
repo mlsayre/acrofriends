@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :games
+
   resources :memberships
 
   resources :groups

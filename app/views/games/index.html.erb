@@ -1,0 +1,41 @@
+<h1>Listing games</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>R1letters</th>
+      <th>R2letters</th>
+      <th>R3letters</th>
+      <th>R4letters</th>
+      <th>R1cat</th>
+      <th>R2cat</th>
+      <th>R3cat</th>
+      <th>R4cat</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.r1letters %></td>
+        <td><%= game.r2letters %></td>
+        <td><%= game.r3letters %></td>
+        <td><%= game.r4letters %></td>
+        <td><%= game.r1cat %></td>
+        <td><%= game.r2cat %></td>
+        <td><%= game.r3cat %></td>
+        <td><%= game.r4cat %></td>
+        <td><%= game.name %></td>
+        <td><%= link_to 'Show', game %></td>
+        <td><%= link_to 'Edit', edit_game_path(game) %></td>
+        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game', new_game_path %>
