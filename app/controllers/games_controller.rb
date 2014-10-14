@@ -24,13 +24,22 @@ class GamesController < ApplicationController
   # POST /games
   # POST /games.json
   def create
+    # create game's name
     @gamename1 = File.new("config/GameName1").readlines.sample(1).join.sub("\n", "")
     @gamename2 = File.new("config/GameName2").readlines.sample(1).join.sub("\n", "")
     @gamename3 = File.new("config/GameName3").readlines.sample(1).join.sub("\n", "")
 
-
+    #create game's data
     @game = Game.new
-     @game.name = @gamename1 + " " + @gamename2 + " " + @gamename3
+    @game.name = @gamename1 + " " + @gamename2 + " " + @gamename3
+    @game.r1cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+    @game.r2cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+    @game.r3cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+    @game.r4cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+    @game.r1letters = File.new("config/LetterPool").readlines.sample(3).join.gsub("\n", "")
+    @game.r2letters = File.new("config/LetterPool").readlines.sample(4).join.gsub("\n", "")
+    @game.r3letters = File.new("config/LetterPool").readlines.sample(5).join.gsub("\n", "")
+    @game.r4letters = File.new("config/LetterPool").readlines.sample(6).join.gsub("\n", "")
 
     respond_to do |format|
       if @game.save
