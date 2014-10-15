@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013012025) do
+ActiveRecord::Schema.define(version: 20141015001434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,22 @@ ActiveRecord::Schema.define(version: 20141013012025) do
     t.string   "message"
     t.integer  "user_id"
     t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gamedata", force: true do |t|
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.string   "r1answer"
+    t.string   "r2answer"
+    t.string   "r3answer"
+    t.string   "r4answer"
+    t.integer  "gamepoints"
+    t.boolean  "r1voted"
+    t.boolean  "r2voted"
+    t.boolean  "r3voted"
+    t.boolean  "r4voted"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -36,6 +52,11 @@ ActiveRecord::Schema.define(version: 20141013012025) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
+    t.string   "length"
+    t.datetime "playendtime"
+    t.datetime "voteendtime"
+    t.integer  "playercount", default: 0
   end
 
   create_table "groups", force: true do |t|

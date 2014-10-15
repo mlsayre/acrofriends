@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  game_id: 1
+  user_id: 1
+  r1answer: MyString
+  r2answer: MyString
+  r3answer: MyString
+  r4answer: MyString
+  gamepoints: 1
+  r1voted: 
+  r2voted: false
+  r3voted: false
+  r4voted: false
+
+two:
+  game_id: 1
+  user_id: 1
+  r1answer: MyString
+  r2answer: MyString
+  r3answer: MyString
+  r4answer: MyString
+  gamepoints: 1
+  r1voted: 
+  r2voted: false
+  r3voted: false
+  r4voted: false

@@ -1,5 +1,28 @@
-<h1>New game</h1>
+<% @mainpagetitle=" Game" %>
+<%= render "shared/topbar" %>
 
-<%= render 'form' %>
+<%= form_for(@game) do |f| %>
+  <% if @game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
 
-<%= link_to 'Back', games_path %>
+      <ul>
+      <% @game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :length, :value => "1hour" %>
+  <%= f.hidden_field :playendtime, :value => DateTime.now.utc + 1.hour %>
+  <%= f.hidden_field :voteendtime, :value => DateTime.now.utc + 2.hours %>
+  <%= f.hidden_field :group_id, :value => 0 %>
+
+  <div class="actions">
+    <%= f.submit "Play Quick Game (1 hour)" %>
+
+  </div>
+<% end %>
+
+<%= render "shared/bottombar" %>

@@ -2,6 +2,7 @@ class Group < ActiveRecord::Base
   has_many :memberships
   has_many :users, :through => :memberships
   has_many :chats
+  has_many :games
 
   validates_presence_of :name
 

@@ -24,30 +24,38 @@ class GamesController < ApplicationController
   # POST /games
   # POST /games.json
   def create
-    # create game's name
-    @gamename1 = File.new("config/GameName1").readlines.sample(1).join.sub("\n", "")
-    @gamename2 = File.new("config/GameName2").readlines.sample(1).join.sub("\n", "")
-    @gamename3 = File.new("config/GameName3").readlines.sample(1).join.sub("\n", "")
+    if Game.where('length = ? AND playercount < ? AND playendtime > ?',
+         (params[:game][:length]), 13, DateTime.now + 0.00555).first
+      @game = Game.where('length = ? AND playercount < ? AND playendtime > ?',
+         (params[:game][:length]), 13, DateTime.now + 0.00555).first
+      redirect_to game_path(@game)
+      flash[:notice] = "You can join a game."
+    else
+      # create game's name
+      @gamename1 = File.new("config/GameName1").readlines.sample(1).join.sub("\n", "")
+      @gamename2 = File.new("config/GameName2").readlines.sample(1).join.sub("\n", "")
+      @gamename3 = File.new("config/GameName3").readlines.sample(1).join.sub("\n", "")
 
-    #create game's data
-    @game = Game.new
-    @game.name = @gamename1 + " " + @gamename2 + " " + @gamename3
-    @game.r1cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
-    @game.r2cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
-    @game.r3cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
-    @game.r4cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
-    @game.r1letters = File.new("config/LetterPool").readlines.sample(3).join.gsub("\n", "")
-    @game.r2letters = File.new("config/LetterPool").readlines.sample(4).join.gsub("\n", "")
-    @game.r3letters = File.new("config/LetterPool").readlines.sample(5).join.gsub("\n", "")
-    @game.r4letters = File.new("config/LetterPool").readlines.sample(6).join.gsub("\n", "")
+      #create game's data
+      @game = Game.new(game_params)
+      @game.name = @gamename1 + " " + @gamename2 + " " + @gamename3
+      @game.r1cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+      @game.r2cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+      @game.r3cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+      @game.r4cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+      @game.r1letters = File.new("config/LetterPool").readlines.sample(3).join.gsub("\n", "")
+      @game.r2letters = File.new("config/LetterPool").readlines.sample(4).join.gsub("\n", "")
+      @game.r3letters = File.new("config/LetterPool").readlines.sample(5).join.gsub("\n", "")
+      @game.r4letters = File.new("config/LetterPool").readlines.sample(6).join.gsub("\n", "")
 
-    respond_to do |format|
-      if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
-        format.json { render :show, status: :created, location: @game }
-      else
-        format.html { render :new }
-        format.json { render json: @game.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @game.save
+          format.html { redirect_to @game, notice: 'Game was successfully created.' }
+          format.json { render :show, status: :created, location: @game }
+        else
+          format.html { render :new }
+          format.json { render json: @game.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -84,6 +92,8 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:r1letters, :r2letters, :r3letters, :r4letters, :r1cat, :r2cat, :r3cat, :r4cat, :name)
+      params.require(:game).permit(:r1letters, :r2letters, :r3letters, :r4letters,
+        :r1cat, :r2cat, :r3cat, :r4cat, :name, :group_id, :length, :playendtime,
+        :voteendtime, :playercount)
     end
 end
