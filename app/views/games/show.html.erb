@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+About <%= ((@game.playendtime - DateTime.now)/60).round %> minutes left to play.
+
 <p>
   <strong>R1letters:</strong>
   <%= @game.r1letters %>

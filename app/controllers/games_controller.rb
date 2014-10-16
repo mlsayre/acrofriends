@@ -25,11 +25,11 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     if Game.where('length = ? AND playercount < ? AND playendtime > ?',
-         (params[:game][:length]), 13, DateTime.now + 0.00555).first
+         (params[:game][:length]), 13, DateTime.now + 0.00556).first
       @game = Game.where('length = ? AND playercount < ? AND playendtime > ?',
-         (params[:game][:length]), 13, DateTime.now + 0.00555).first
+         (params[:game][:length]), 13, DateTime.now + 0.00556).first
       redirect_to game_path(@game)
-      flash[:notice] = "You can join a game."
+      flash[:notice] = "Joining this game, enjoy!"
     else
       # create game's name
       @gamename1 = File.new("config/GameName1").readlines.sample(1).join.sub("\n", "")
