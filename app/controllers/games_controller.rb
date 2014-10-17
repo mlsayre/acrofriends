@@ -31,10 +31,16 @@ class GamesController < ApplicationController
   # POST /games
   # POST /games.json
   def create
-    if Game.where('length = ? AND playercount < ? AND playendtime > ?',
-         (params[:game][:length]), 13, DateTime.now + 0.00556).first
-      @game = Game.where('length = ? AND playercount < ? AND playendtime > ?',
-         (params[:game][:length]), 13, DateTime.now + 0.00556).first
+    usergames = Gamedata.where('user_id = ?', current_user.id).all.collect(&:game_id)
+    if Game.where('length = ? AND playercount < ? AND playendtime > ?
+         AND group_id = ? AND not id IN (?)',
+         (params[:game][:length]), 13, DateTime.now + 0.00556,
+         (params[:game][:group_id]), usergames).first
+      @game = Game.where('length = ? AND playercount < ? AND playendtime > ?
+         AND group_id = ? AND not id IN (?)',
+         (params[:game][:length]), 13, DateTime.now + 0.00556,
+         (params[:game][:group_id]), usergames).first
+      Gamedata.create(:user_id => current_user.id, :game_id => @game.id)
       redirect_to game_path(@game)
       flash[:notice] = "Joining this game, enjoy!"
     else
@@ -66,7 +72,8 @@ class GamesController < ApplicationController
 
       respond_to do |format|
         if @game.save
-          format.html { redirect_to @game, notice: 'Game was successfully created.' }
+          Gamedata.create(:user_id => current_user.id, :game_id => @game.id)
+          format.html { redirect_to @game, notice: 'New game created!' }
           format.json { render :show, status: :created, location: @game }
         else
           format.html { render :new }
