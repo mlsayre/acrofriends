@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  include ActionView::Helpers::DateHelper
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
   # GET /games
@@ -10,6 +11,12 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    @timeremainingminutes = (@game.playendtime - DateTime.now)
+    if @timeremainingminutes >= 3600
+      @timeremaining = distance_of_time_in_words(@timeremainingminutes)
+    elsif @timeremainingminutes < 3600
+      @timeremaining = "about " + ((@game.playendtime - DateTime.now)/60).round.to_s + " minutes"
+    end
   end
 
   # GET /games/new
@@ -47,6 +54,15 @@ class GamesController < ApplicationController
       @game.r2letters = File.new("config/LetterPool").readlines.sample(4).join.gsub("\n", "")
       @game.r3letters = File.new("config/LetterPool").readlines.sample(5).join.gsub("\n", "")
       @game.r4letters = File.new("config/LetterPool").readlines.sample(6).join.gsub("\n", "")
+      if (params[:game][:length]) == "1hour"
+        gametime = 1
+      elsif (params[:game][:length]) == "6hour"
+        gametime = 6
+      elsif (params[:game][:length]) == "1day"
+        gametime = 24
+      end
+      @game.playendtime = DateTime.now.utc + gametime.hours
+      @game.voteendtime = DateTime.now.utc + (gametime* 2).hours
 
       respond_to do |format|
         if @game.save

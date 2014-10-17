@@ -2,26 +2,32 @@
 <%= render "shared/topbar" %>
 
 <%= form_for(@game) do |f| %>
-  <% if @game.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
-
-      <ul>
-      <% @game.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <%= f.hidden_field :length, :value => "1hour" %>
-  <%= f.hidden_field :playendtime, :value => DateTime.now.utc + 1.hour %>
-  <%= f.hidden_field :voteendtime, :value => DateTime.now.utc + 2.hours %>
   <%= f.hidden_field :group_id, :value => 0 %>
 
   <div class="actions">
     <%= f.submit "Play Quick Game (1 hour)" %>
+  </div>
+<% end %>
 
+<%= form_for(@game) do |g| %>
+
+  <%= g.hidden_field :length, :value => "6hour" %>
+  <%= g.hidden_field :group_id, :value => 0 %>
+
+  <div class="actions">
+    <%= g.submit "Play Medium Game (6 hours)" %>
+  </div>
+<% end %>
+
+<%= form_for(@game) do |h| %>
+
+  <%= h.hidden_field :length, :value => "1day" %>
+  <%= h.hidden_field :group_id, :value => 0 %>
+
+  <div class="actions">
+    <%= h.submit "Play Long Game (1 day)" %>
   </div>
 <% end %>
 
