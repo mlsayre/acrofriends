@@ -1,51 +1,37 @@
-<p id="notice"><%= notice %></p>
+<% @mainpagetitle = @game.name %>
+<%= render "shared/topbar" %>
 
 Time left to play: <%= @timeremaining %>.
 
-<p>
-  <strong>R1letters:</strong>
-  <%= @game.r1letters %>
-</p>
+<div id="playrounds">
+  <div class="playroundbutton">
+    <%= button_tag "Play Round 1" %>
+    <%= button_tag "Play Round 2" %>
+    <%= button_tag "Play Round 3" %>
+    <%= button_tag "Play Round 4" %>
+  </div>
 
-<p>
-  <strong>R2letters:</strong>
-  <%= @game.r2letters %>
-</p>
+  <div id="r1play">
+    Category: <%= @game.r1cat %>
+    Letters: <%= @game.r1letters %>
+  </div>
 
-<p>
-  <strong>R3letters:</strong>
-  <%= @game.r3letters %>
-</p>
+  <div id="r2play">
+    Category: <%= @game.r2cat %>
+    Letters: <%= @game.r2letters %>
+  </div>
 
-<p>
-  <strong>R4letters:</strong>
-  <%= @game.r4letters %>
-</p>
+  <div id="r3play">
+    Category: <%= @game.r3cat %>
+    Letters: <%= @game.r3letters %>
+  </div>
 
-<p>
-  <strong>R1cat:</strong>
-  <%= @game.r1cat %>
-</p>
+  <div id="r4play">
+    Category: <%= @game.r4cat %>
+    Letters: <%= @game.r4letters %>
+  </div>
+</div>
 
-<p>
-  <strong>R2cat:</strong>
-  <%= @game.r2cat %>
-</p>
+players: <%= @game.playercount %>
 
-<p>
-  <strong>R3cat:</strong>
-  <%= @game.r3cat %>
-</p>
-
-<p>
-  <strong>R4cat:</strong>
-  <%= @game.r4cat %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @game.name %>
-</p>
-
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<%= render "shared/bottombar" %>

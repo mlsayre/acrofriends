@@ -64,23 +64,25 @@
     height: 40px;
     width: 100%;
     box-shadow: 0 5px 5px #444;
+    margin-bottom: 16px;
   }
-  #main-pagetitle {
+  #main-titletext {
     text-align: center;
     color: white;
     font-size: 140%;
     font-weight: 600;
-    padding-top: 4px;
-    margin: 0 12px;
-    margin-bottom: 12px;
+    padding-top: 6px;
+    margin: 0 10% 0 10%;
   }
   #main-homebutton {
     float: left;
-    margin-top: -2px;
+    margin-top: 2px;
+    margin-left: 10px;
   }
   #main-messagebutton {
     float: right;
-    margin-top: -2px;
+    margin-top: -30px;
+    margin-right: 10px;
   }
   #main-bottombar {
     background: #03a9f4;
@@ -191,5 +193,21 @@
     height: 1.8em;
     display: inline-block;
     margin-bottom: -4px;
+  }
+
+  /* play game pages */
+  #newgamepage {
+    margin-top: 80px;
+    text-align:center;
+  }
+  #playrounds {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .playroundbutton {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
   }
 }

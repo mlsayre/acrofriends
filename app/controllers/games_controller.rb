@@ -40,6 +40,7 @@ class GamesController < ApplicationController
          AND group_id = ? AND not id IN (?)',
          (params[:game][:length]), 13, DateTime.now + 0.00556,
          (params[:game][:group_id]), usergames).first
+      @game.increment!(:playercount)
       Gamedata.create(:user_id => current_user.id, :game_id => @game.id)
       redirect_to game_path(@game)
       flash[:notice] = "Joining this game, enjoy!"
@@ -60,6 +61,7 @@ class GamesController < ApplicationController
       @game.r2letters = File.new("config/LetterPool").readlines.sample(4).join.gsub("\n", "")
       @game.r3letters = File.new("config/LetterPool").readlines.sample(5).join.gsub("\n", "")
       @game.r4letters = File.new("config/LetterPool").readlines.sample(6).join.gsub("\n", "")
+      @game.increment!(:playercount)
       if (params[:game][:length]) == "1hour"
         gametime = 1
       elsif (params[:game][:length]) == "6hour"

@@ -1,34 +1,36 @@
-<% @mainpagetitle=" Game" %>
+<% @mainpagetitle="Join or Start Game" %>
 <%= render "shared/topbar" %>
 
-<%= form_for(@game) do |f| %>
+<div id="newgamepage">
+  <%= form_for(@game) do |f| %>
 
-  <%= f.hidden_field :length, :value => "1hour" %>
-  <%= f.hidden_field :group_id, :value => 0 %>
+    <%= f.hidden_field :length, :value => "1hour" %>
+    <%= f.hidden_field :group_id, :value => 0 %>
 
-  <div class="actions">
-    <%= f.submit "Play Quick Game (1 hour)" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Play Quick Game (1 hour)", :class => "button" %>
+    </div>
+  <% end %>
 
-<%= form_for(@game) do |g| %>
+  <%= form_for(@game) do |g| %>
 
-  <%= g.hidden_field :length, :value => "6hour" %>
-  <%= g.hidden_field :group_id, :value => 0 %>
+    <%= g.hidden_field :length, :value => "6hour" %>
+    <%= g.hidden_field :group_id, :value => 0 %>
 
-  <div class="actions">
-    <%= g.submit "Play Medium Game (6 hours)" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= g.submit "Play Medium Game (6 hours)", :class => "button" %>
+    </div>
+  <% end %>
 
-<%= form_for(@game) do |h| %>
+  <%= form_for(@game) do |h| %>
 
-  <%= h.hidden_field :length, :value => "1day" %>
-  <%= h.hidden_field :group_id, :value => 0 %>
+    <%= h.hidden_field :length, :value => "1day" %>
+    <%= h.hidden_field :group_id, :value => 0 %>
 
-  <div class="actions">
-    <%= h.submit "Play Long Game (1 day)" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= h.submit "Play Long Game (1 day)", :class => "button" %>
+    </div>
+  <% end %>
+</div>
 
 <%= render "shared/bottombar" %>

@@ -3,11 +3,14 @@
     <div id="main-homebutton">
     <%= link_to(image_tag("Home-128.png", size: "36", alt: "Main Menu", class: "topbar-homebutton"), main_path) %>
     </div>
-    <%= @mainpagetitle %>
-    <% if @group && @group.private == true %>
-      <%= image_tag @topbarimage, alt: "Private status", class: "topbar-privateimage" %>
-    <% end %>
+    <div id="main-titletext">
+      <%= @mainpagetitle %>
+      <% if @group && @group.private == true %>
+        <%= image_tag @topbarimage, alt: "Private status", class: "topbar-privateimage" %>
+      <% end %>
+    </div>
     <div id="main-messagebutton">
     <%= image_tag("Notification-None-128.png", size: "36", alt: "Messages", class: "topbar-messagebutton") %>
+    </div>
   </div>
 </div>
