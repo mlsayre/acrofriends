@@ -1,37 +1,39 @@
 <% @mainpagetitle = @game.name %>
 <%= render "shared/topbar" %>
 
-Time left to play: <%= @timeremaining %>.
-
 <div id="playrounds">
+  Time left to play: <%= @timeremaining %>.
   <div class="playroundbutton">
-    <%= button_tag "Play Round 1" %>
-    <%= button_tag "Play Round 2" %>
-    <%= button_tag "Play Round 3" %>
-    <%= button_tag "Play Round 4" %>
+    <%= button_tag "Play Round 1", :id => "r1playbutton" %>
+    <%= button_tag "Play Round 2", :id => "r2playbutton" %>
+    <%= button_tag "Play Round 3", :id => "r3playbutton" %>
+    <%= button_tag "Play Round 4", :id => "r4playbutton" %>
   </div>
 
-  <div id="r1play">
-    Category: <%= @game.r1cat %>
-    Letters: <%= @game.r1letters %>
+  <div class="playarea" id="r1play">
+    <div class="roundtitle">Round 1</div>
+    Category: <span class="gamecategories"><%= @game.r1cat %></span>
+    <div class="gameletters"><%= @game.r1letters %></div>
   </div>
 
-  <div id="r2play">
-    Category: <%= @game.r2cat %>
-    Letters: <%= @game.r2letters %>
+  <div class="playarea" id="r2play">
+    <div class="roundtitle">Round 2</div>
+    Category: <span class="gamecategories"><%= @game.r2cat %></span>
+    <div class="gameletters"><%= @game.r2letters %></div>
   </div>
 
-  <div id="r3play">
-    Category: <%= @game.r3cat %>
-    Letters: <%= @game.r3letters %>
+  <div class="playarea" id="r3play">
+    <div class="roundtitle">Round 3</div>
+    Category: <span class="gamecategories"><%= @game.r3cat %></span>
+    <div class="gameletters"><%= @game.r3letters %></div>
   </div>
 
-  <div id="r4play">
-    Category: <%= @game.r4cat %>
-    Letters: <%= @game.r4letters %>
+  <div class="playarea" id="r4play">
+    <div class="roundtitle">Round 4</div>
+    Category: <span class="gamecategories"><%= @game.r4cat %></span>
+    <div class="gameletters"><%= @game.r4letters %></div>
   </div>
+  players: <%= @game.playercount %>
 </div>
-
-players: <%= @game.playercount %>
 
 <%= render "shared/bottombar" %>
