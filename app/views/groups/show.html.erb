@@ -15,7 +15,7 @@
       <span><%= f.text_field :message, :id => "groupchatenter", :placeholder => "Enter chat here...", :autofocus => true %></span>
       <%= f.hidden_field :user_id, :value => current_user.id %>
       <%= f.hidden_field :group_id, :value => @group.id %>
-      <span id="new_chat"><%= f.submit "Send", :class => "button tiny radius centerall", :style => "margin-top:2px; margin-left:-6px;" %>
+      <span id="new_chat"><%= f.submit "Send", :class => "button", :id => "groupchatsubmit" %>
       </span>
     </div>
   <% end %>

@@ -2,7 +2,6 @@
 <%= render "shared/topbar" %>
 
 <div id="playrounds">
-  Time left to play: <%= @timeremaining %>.
   <div class="playroundbutton">
     <%= button_tag "Play Round 1", :id => "r1playbutton" %>
     <%= button_tag "Play Round 2", :id => "r2playbutton" %>
@@ -14,6 +13,23 @@
     <div class="roundtitle">Round 1</div>
     Category: <span class="gamecategories"><%= @game.r1cat %></span>
     <div class="gameletters"><%= @game.r1letters %></div>
+    <div>
+      <%= form_for @gamedata, :url => updateanswer_gamedata_path, :html => {:method => :post}, remote: true do |f| %>
+        <div>
+          <span><%= f.text_field :r1answer, :class => "answerfield", :placeholder => "Enter your acro for Round 1 here...", :autofocus => true %></span>
+          <span id="r1answer"><%= f.submit "Play", :class => "button answersubmitbutton" %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+    <div id="r1answered">
+      <% if @currentgamedata.r1answer == nil %>
+        Your acro: No acro yet...
+      <% else %>
+        Your acro: "<%= @currentgamedata.r1answer %>"
+      <% end %>
+    </div>
+
   </div>
 
   <div class="playarea" id="r2play">
@@ -33,7 +49,25 @@
     Category: <span class="gamecategories"><%= @game.r4cat %></span>
     <div class="gameletters"><%= @game.r4letters %></div>
   </div>
+  Time left to play: <%= @timeremaining %>.<br>
   players: <%= @game.playercount %>
 </div>
 
+<% if current_user.showads == true %>
+  <div class="ads">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- AcroFriends Play Mobile -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:320px;height:50px"
+         data-ad-client="ca-pub-2363108822222571"
+         data-ad-slot="2783157630"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+<% end %>
+
 <%= render "shared/bottombar" %>
+
+<%= javascript_include_tag "page/playgame" %>
+

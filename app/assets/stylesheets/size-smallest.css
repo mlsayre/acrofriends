@@ -172,6 +172,13 @@
   #groupchatenter {
     width: 100%;
   }
+  #groupchatsubmit {
+    margin-top: 4px;
+    margin-left: -6px;
+    padding-top: 4px;
+    padding-bottom: 6px;
+    border-radius: 6px;
+  }
   #group-memberslink {
     text-align: center;
     margin-top: 12px;
@@ -196,19 +203,23 @@
   }
 
   /* play game pages */
+  .ads {
+    width: 320px;
+    height: 50px;
+    margin: 0 auto;
+  }
   #newgamepage {
     margin-top: 60px;
     text-align:center;
   }
   #playrounds {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     text-align: center;
   }
   .playroundbutton {
     width: 300px;
     margin: 0 auto;
-    text-align: center;
   }
   .roundtitle {
     text-decoration: underline;
@@ -234,5 +245,15 @@
   }
   #r2play, #r3play, #r4play {
     display: none;
+  }
+  .button.answersubmitbutton {
+    margin-top: 4px;
+    margin-left: -6px;
+    padding-top: 4px;
+    padding-bottom: 6px;
+    border-radius: 6px;
+  }
+  .answerfield {
+    width: 70%;
   }
 }

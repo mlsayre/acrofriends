@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :games
 
   resources :memberships
+  resources :gamedata do
+    post :updateanswer, on: :collection, as: :updateanswer
+  end
 
   resources :groups
   resources :groups do
