@@ -16,6 +16,7 @@
     <div>
       <%= form_for @gamedata, :url => updateanswer_gamedata_path, :html => {:method => :post}, remote: true do |f| %>
         <div>
+          <%= f.hidden_field :game_id, :value => @game.id %>
           <span><%= f.text_field :r1answer, :class => "answerfield", :placeholder => "Enter your acro for Round 1 here...", :autofocus => true %></span>
           <span id="r1answer"><%= f.submit "Play", :class => "button answersubmitbutton" %>
           </span>
@@ -39,6 +40,7 @@
     <div>
       <%= form_for @gamedata, :url => updateanswer_gamedata_path, :html => {:method => :post}, remote: true do |g| %>
         <div>
+          <%= g.hidden_field :game_id, :value => @game.id %>
           <span><%= g.text_field :r2answer, :class => "answerfield", :placeholder => "Enter your acro for Round 2 here...", :autofocus => true %></span>
           <span id="r2answer"><%= g.submit "Play", :class => "button answersubmitbutton" %>
           </span>
@@ -59,12 +61,48 @@
     <div class="roundtitle">Round 3</div>
     Category: <span class="gamecategories"><%= @game.r3cat %></span>
     <div class="gameletters"><%= @game.r3letters %></div>
+    <div>
+      <%= form_for @gamedata, :url => updateanswer_gamedata_path, :html => {:method => :post}, remote: true do |h| %>
+        <div>
+          <%= h.hidden_field :game_id, :value => @game.id %>
+          <span><%= h.text_field :r3answer, :class => "answerfield", :placeholder => "Enter your acro for Round 3 here...", :autofocus => true %></span>
+          <span id="r3answer"><%= h.submit "Play", :class => "button answersubmitbutton" %>
+          </span>
+        </div>
+      <% end %>
+      <%= render "shared/gamead" %>
+    </div>
+    <div id="r3answered">
+      <% if @currentgamedata.r3answer == nil %>
+        Your acro: No acro yet...
+      <% else %>
+        Your acro: "<%= @currentgamedata.r3answer %>"
+      <% end %>
+    </div>
   </div>
 
   <div class="playarea" id="r4play">
     <div class="roundtitle">Round 4</div>
     Category: <span class="gamecategories"><%= @game.r4cat %></span>
     <div class="gameletters"><%= @game.r4letters %></div>
+    <div>
+      <%= form_for @gamedata, :url => updateanswer_gamedata_path, :html => {:method => :post}, remote: true do |i| %>
+        <div>
+          <%= i.hidden_field :game_id, :value => @game.id %>
+          <span><%= i.text_field :r4answer, :class => "answerfield", :placeholder => "Enter your acro for Round 4 here...", :autofocus => true %></span>
+          <span id="r4answer"><%= i.submit "Play", :class => "button answersubmitbutton" %>
+          </span>
+        </div>
+      <% end %>
+      <%= render "shared/gamead" %>
+    </div>
+    <div id="r4answered">
+      <% if @currentgamedata.r4answer == nil %>
+        Your acro: No acro yet...
+      <% else %>
+        Your acro: "<%= @currentgamedata.r4answer %>"
+      <% end %>
+    </div>
   </div>
   Time left to play: <%= @timeremaining %>.<br>
   players: <%= @game.playercount %>
@@ -73,4 +111,3 @@
 <%= render "shared/bottombar" %>
 
 <%= javascript_include_tag "page/playgame" %>
-

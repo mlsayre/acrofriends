@@ -17,8 +17,8 @@ class GamesController < ApplicationController
     elsif @timeremainingminutes < 3600
       @timeremaining = "about " + ((@game.playendtime - DateTime.now)/60).round.to_s + " minutes"
     end
-    @gamedata = Gamedata.where(:user_id == current_user.id && :game_id == @game.id).first
-    @currentgamedata = Gamedata.where(:user_id == current_user.id && :game_id == @game.id).first
+    @gamedata = Gamedata.where(:user_id => current_user.id).where(:game_id => @game.id).first
+    @currentgamedata = Gamedata.where(:user_id => current_user.id).where(:game_id => @game.id).first
   end
 
   # GET /games/new
