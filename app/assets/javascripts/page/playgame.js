@@ -26,15 +26,24 @@ $("#r4playbutton").click(function () {
   $("#r4play").show();
 });
 
-var pathname = window.location.pathname;
-  $("#r1answer").click(function () {
-    $("#r1answered").spin('small', 'blue');
-    setTimeout(function() {
-      $("#r1answered").spin(false);
-    }, 2200 );
-    function reloadR1Answer() {
-      $(".answerfield").val("");
-      $("#r1answered").load(pathname + " #r1answered");
-    }
-    setTimeout(reloadR1Answer, 2000);
-  });
+// validation
+$("#r1answerform").submit(function() {
+  var letters = $("#round1letters").text()
+  return acroValidate(letters, "#r1answered", "r1answerform", "r1answerfield");
+});
+
+$("#r2answerform").submit(function() {
+  var letters = $("#round2letters").text()
+  return acroValidate(letters, "#r2answered", "r2answerform", "r2answerfield");
+});
+
+$("#r3answerform").submit(function() {
+  var letters = $("#round3letters").text()
+  return acroValidate(letters, "#r3answered", "r3answerform", "r3answerfield");
+});
+
+$("#r4answerform").submit(function() {
+  var letters = $("#round4letters").text()
+  return acroValidate(letters, "#r4answered", "r4answerform", "r4answerfield");
+});
+
