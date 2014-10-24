@@ -47,3 +47,48 @@ $("#r4answerform").submit(function() {
   return acroValidate(letters, "#r4answered", "r4answerform", "r4answerfield");
 });
 
+// voting round
+$("#r1votebutton").click(function () {
+  $("#r1vote").show();
+  $("#r2vote").hide();
+  $("#r3vote").hide();
+  $("#r4vote").hide();
+});
+$("#r2votebutton").click(function () {
+  $("#r1vote").hide();
+  $("#r2vote").show();
+  $("#r3vote").hide();
+  $("#r4vote").hide();
+});
+$("#r3votebutton").click(function () {
+  $("#r1vote").hide();
+  $("#r2vote").hide();
+  $("#r3vote").show();
+  $("#r4vote").hide();
+});
+$("#r4votebutton").click(function () {
+  $("#r1vote").hide();
+  $("#r2vote").hide();
+  $("#r3vote").hide();
+  $("#r4vote").show();
+});
+$(".votebuttons").click(function() {
+  $(".answervotedfor").spin('small', 'blue');
+  function disableVoteButtons() {
+    $(".votebuttons").prop("disabled", true);
+  }
+  setTimeout(disableVoteButtons, 700);
+  function reenableVoteButtons() {
+    var pathname = window.location.pathname;
+    $("#r1votedfor").load(pathname + " #r1votedfor");
+    $("#r2votedfor").load(pathname + " #r2votedfor");
+    $("#r3votedfor").load(pathname + " #r3votedfor");
+    $("#r4votedfor").load(pathname + " #r4votedfor");
+  }
+  setTimeout(reenableVoteButtons, 1500);
+  function stopSpin() {
+    $(".votebuttons").prop("disabled", false);
+    $(".answervotedfor").spin(false);
+  }
+  setTimeout(stopSpin, 1800);
+})

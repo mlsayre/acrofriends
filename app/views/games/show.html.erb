@@ -1,6 +1,7 @@
 <% @mainpagetitle = @game.name %>
 <%= render "shared/topbar" %>
 
+<!-- //////////////// GAME PLAY ROUNDS //////////////// -->
 <% if DateTime.now.utc < @game.playendtime %>
   <div id="playrounds">
     <div class="playroundbutton">
@@ -110,7 +111,8 @@
   </div>
 <% end %>
 
-<% if DateTime.now.utc < @game.voteendtime %>
+<!-- //////////////// GAME VOTING ROUND //////////////////// -->
+<% if @game.playendtime < DateTime.now.utc && DateTime.now.utc < @game.voteendtime %>
   <div id="voterounds">
     <div class="voteroundbutton">
       <%= button_tag "Round 1 Voting", :id => "r1votebutton" %>
@@ -121,56 +123,116 @@
 
     <div class="votearea" id="r1vote">
       <div class="roundtitle">Round 1</div>
+      (Category: <span class="gamecategories"><%= @game.r1cat %></span>)<br>
       <% @gameanswers.shuffle.each do |answer| %>
-        <div id="votebutton1div">
-        <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :id => answer.id, :method => "post", :round => "round1", :game_id => @game.id, :r1voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
-      </div>
-        "<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"
+        <% if answer.r1answer %>
+          <div id="votebutton1div">
+            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :id => answer.id, :method => "post", :round => "round1", :game_id => @game.id, :r1voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
+          </div>
+          "<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"
+        <% end %>
         <br>
       <% end %><br>
-      Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r1answer) %>"
+      <% if @gamedata.r1answer %>
+        Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r1answer) %>"
+      <% else %>
+        You didn't enter an acro this round.
+      <% end %>
+      <div class="answervotedfor" id="r1votedfor">
+        <% if @currentgamedata.r1votedfor == nil %>
+          Your vote: You haven't voted yet...
+        <% else %>
+          Your vote: "<%= Gamedata.where(:id => @currentgamedata.r1votedfor).first.r1answer %>"
+        <% end %>
+      </div>
     </div>
 
     <div class="votearea" id="r2vote">
       <div class="roundtitle">Round 2</div>
+      (Category: <span class="gamecategories"><%= @game.r2cat %></span>)<br>
       <% @gameanswers.shuffle.each do |answer| %>
-        <div id="votebutton2div">
-        <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :id => answer.id, :method => "post", :round => "round2", :game_id => @game.id, :r2voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
-      </div>
-        "<%= Obscenity.replacement(:stars).sanitize(answer.r2answer) %>"
+        <% if answer.r2answer %>
+          <div id="votebutton2div">
+          <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :id => answer.id, :method => "post", :round => "round2", :game_id => @game.id, :r2voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
+          </div>
+          "<%= Obscenity.replacement(:stars).sanitize(answer.r2answer) %>"
+        <% end %>
         <br>
       <% end %><br>
-      Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r2answer) %>"
+      <% if @gamedata.r2answer %>
+        Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r2answer) %>"
+      <% else %>
+        You didn't enter an acro this round.
+      <% end %>
+      <div class="answervotedfor" id="r2votedfor">
+        <% if @currentgamedata.r2votedfor == nil %>
+          Your vote: You haven't voted yet...
+        <% else %>
+          Your vote: "<%= Gamedata.where(:id => @currentgamedata.r2votedfor).first.r2answer %>"
+        <% end %>
+      </div>
     </div>
 
     <div class="votearea" id="r3vote">
       <div class="roundtitle">Round 3</div>
+      (Category: <span class="gamecategories"><%= @game.r3cat %></span>)<br>
       <% @gameanswers.shuffle.each do |answer| %>
-        <div id="votebutton3div">
-        <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :id => answer.id, :method => "post", :round => "round3", :game_id => @game.id, :r3voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
-      </div>
-        "<%= Obscenity.replacement(:stars).sanitize(answer.r3answer) %>"
+        <% if answer.r3answer %>
+          <div id="votebutton3div">
+          <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :id => answer.id, :method => "post", :round => "round3", :game_id => @game.id, :r3voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
+          </div>
+          "<%= Obscenity.replacement(:stars).sanitize(answer.r3answer) %>"
+        <% end %>
         <br>
       <% end %><br>
-      Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r3answer) %>"
+      <% if @gamedata.r3answer %>
+        Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r3answer) %>"
+      <% else %>
+        You didn't enter an acro this round.
+      <% end %>
+      <div class="answervotedfor" id="r3votedfor">
+        <% if @currentgamedata.r3votedfor == nil %>
+          Your vote: You haven't voted yet...
+        <% else %>
+          Your vote: "<%= Gamedata.where(:id => @currentgamedata.r3votedfor).first.r3answer %>"
+        <% end %>
+      </div>
     </div>
 
     <div class="votearea" id="r4vote">
       <div class="roundtitle">Round 4</div>
+      (Category: <span class="gamecategories"><%= @game.r3cat %></span>)<br>
       <% @gameanswers.shuffle.each do |answer| %>
-        <div id="votebutton4div">
-        <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :id => answer.id, :method => "post", :round => "round4", :game_id => @game.id, :r4voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
-      </div>
-        "<%= Obscenity.replacement(:stars).sanitize(answer.r4answer) %>"
+        <% if answer.r4answer %>
+          <div id="votebutton4div">
+          <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :id => answer.id, :method => "post", :round => "round4", :game_id => @game.id, :r4voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
+          </div>
+          "<%= Obscenity.replacement(:stars).sanitize(answer.r4answer) %>"
+        <% end %>
         <br>
       <% end %><br>
-      Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r4answer) %>"
+      <% if @gamedata.r4answer %>
+        Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r4answer) %>"
+      <% else %>
+        You didn't enter an acro this round.
+      <% end %>
+      <div class="answervotedfor" id="r4votedfor">
+        <% if @currentgamedata.r4votedfor == nil %>
+          Your vote: You haven't voted yet...
+        <% else %>
+          Your vote: "<%= Gamedata.where(:id => @currentgamedata.r4votedfor).first.r4answer %>"
+        <% end %>
+      </div>
     </div>
 
   </div>
 <% end %>
 
-<%= render "shared/bottombar" %>
+<!-- ////////////////// GAME OVER - RESULTS SECTION ///////////////// -->
+<% if DateTime.now.utc >= @game.voteendtime %>
+
+<% end %>
+
 
 <%= javascript_include_tag "page/playgame" %>
 <%= javascript_include_tag "page/validation" %>

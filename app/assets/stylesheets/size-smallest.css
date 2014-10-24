@@ -262,6 +262,9 @@
     margin: 0 auto;
     text-align: center;
   }
+  #r2vote, #r3vote, #r4vote {
+    display: none;
+  }
   .voteroundbutton {
     width: 300px;
     margin: 0 auto;
@@ -277,4 +280,5 @@
     margin-left: 10%;
     margin-right:12px;
   }
+  .votebuttons
 }
