@@ -19,6 +19,9 @@ class GamesController < ApplicationController
     end
     @gamedata = Gamedata.where(:user_id => current_user.id).where(:game_id => @game.id).first
     @currentgamedata = Gamedata.where(:user_id => current_user.id).where(:game_id => @game.id).first
+
+    @gameanswers = Gamedata.where(:game_id => @game.id)
+                   .where("user_id != ?", current_user.id).all
   end
 
   # GET /games/new

@@ -13,6 +13,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'aws-sdk', '~> 1.33.0'
 gem 'paperclip'
+gem 'obscenity'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

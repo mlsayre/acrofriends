@@ -110,7 +110,7 @@
   </div>
 <% end %>
 
-<% if @game.playendtime < DateTime.now.utc && DateTime.now.utc < @game.voteendtime %>
+<% if DateTime.now.utc < @game.voteendtime %>
   <div id="voterounds">
     <div class="voteroundbutton">
       <%= button_tag "Round 1 Voting", :id => "r1votebutton" %>
@@ -121,7 +121,10 @@
 
     <div class="votearea" id="r1vote">
       <div class="roundtitle">Round 1</div>
-
+      <% @gameanswers.shuffle.each do |answer| %>
+        <%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>
+      <% end %><br>
+      Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r1answer) %>"
     </div>
   </div>
 <% end %>

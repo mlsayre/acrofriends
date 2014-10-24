@@ -6,11 +6,15 @@ class GamedataController < ApplicationController
     render :nothing => true
   end
 
-    private
-    # Use callbacks to share common setup or constraints between actions.
+  def vote
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def gamedata_params
-      params.require(:gamedata).permit(:r1answer, :r2answer, :r3answer, :r4answer, :game_id)
-    end
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def gamedata_params
+    params.require(:gamedata).permit(:r1answer, :r2answer, :r3answer, :r4answer, :game_id)
+  end
 end
