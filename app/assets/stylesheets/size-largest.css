@@ -272,4 +272,9 @@
     border-style: solid;
     border-color: gray;
   }
+  #votebutton1div, #votebutton2div, #votebutton3div, #votebutton4div {
+    float: left;
+    margin-left: 20%;
+    margin-right:12px;
+  }
 }

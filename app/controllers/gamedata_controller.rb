@@ -7,7 +7,18 @@ class GamedataController < ApplicationController
   end
 
   def vote
-
+    @gamedata = Gamedata.where(:user_id => current_user.id)
+                .where('game_id = ?', (params[:game_id])).first
+    if (params[:round]) == "round1"
+      @gamedata.update_attributes!(:r1voted => true, :r1votedfor => (params[:id]))
+    elsif (params[:round]) == "round2"
+      @gamedata.update_attributes!(:r2voted => true, :r2votedfor => (params[:id]))
+    elsif (params[:round]) == "round3"
+      @gamedata.update_attributes!(:r3voted => true, :r3votedfor => (params[:id]))
+    elsif (params[:round]) == "round4"
+      @gamedata.update_attributes!(:r4voted => true, :r4votedfor => (params[:id]))
+    end
+    render :nothing => true
   end
 
   private
