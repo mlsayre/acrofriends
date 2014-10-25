@@ -22,6 +22,41 @@ class GamesController < ApplicationController
 
     @gameanswers = Gamedata.where(:game_id => @game.id)
                    .where("user_id != ?", current_user.id).all
+
+    if DateTime.now.utc > @game.voteendtime
+      @gameoverdata = Gamedata.where(:game_id => @game.id).all
+      @gameplayers = @gameoverdata.collect(&:user_id)
+      @gameplayers.each do |playerid|
+        @r1pointcount = Gamedata.where(:game_id => @game.id).where(:r1votedfor => playerid)
+                        .collect(&:r1votedfor).count
+        @gameoverdata.where(:user_id => playerid).first.update_attributes(:r1points => @r1pointcount)
+        @r2pointcount = Gamedata.where(:game_id => @game.id).where(:r2votedfor => playerid)
+                        .collect(&:r2votedfor).count
+        @gameoverdata.where(:user_id => playerid).first.update_attributes(:r2points => @r2pointcount)
+        @r3pointcount = Gamedata.where(:game_id => @game.id).where(:r3votedfor => playerid)
+                        .collect(&:r3votedfor).count
+        @gameoverdata.where(:user_id => playerid).first.update_attributes(:r3points => @r3pointcount)
+        @r4pointcount = Gamedata.where(:game_id => @game.id).where(:r4votedfor => playerid)
+                        .collect(&:r4votedfor).count
+        @gameoverdata.where(:user_id => playerid).first.update_attributes(:r4points => @r4pointcount)
+        @r5pointcount = Gamedata.where(:game_id => @game.id).where(:r5votedfor => playerid)
+                        .collect(&:r5votedfor).count
+        @gameoverdata.where(:user_id => playerid).first.update_attributes(:r5points => @r5pointcount)
+        @r6pointcount = Gamedata.where(:game_id => @game.id).where(:r6votedfor => playerid)
+                        .collect(&:r6votedfor).count
+        @gameoverdata.where(:user_id => playerid).first.update_attributes(:r6points => @r6pointcount)
+        @r7pointcount = Gamedata.where(:game_id => @game.id).where(:r7votedfor => playerid)
+                        .collect(&:r7votedfor).count
+        @gameoverdata.where(:user_id => playerid).first.update_attributes(:r7points => @r7pointcount)
+        @r8pointcount = Gamedata.where(:game_id => @game.id).where(:r8votedfor => playerid)
+                        .collect(&:r8votedfor).count
+        @gameoverdata.where(:user_id => playerid).first.update_attributes(:r8points => @r8pointcount)
+
+        @gametotalpoints = @gameoverdata.where(:user_id => playerid).first.r1points
+        @gameoverdata.where(:user_id => playerid).first.update_attributes(:gamepoints => @gametotalpoints)
+      end
+    end
+
   end
 
   # GET /games/new

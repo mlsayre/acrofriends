@@ -15,7 +15,7 @@
 <!-- //////////////// GAME VOTING ROUND //////////////////// -->
 <% if @game.playendtime <= DateTime.now.utc && DateTime.now.utc <= @game.voteendtime %>
   <% if @game.playercount < 3 %>
-    Sorry, there weren't enough players to continue to the voting round
+    Sorry, there weren't enough players to continue to the voting round.
   <% else %>
     <% if @game.length == "1hour" %>
       <%= render "roundvoteshort" %>
@@ -31,6 +31,7 @@
     Sorry, there weren't enough players to complete this game.
   <% else %>
     <!-- results code here -->
+
   <% end %>
 <% end %>
 
