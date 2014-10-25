@@ -37,19 +37,21 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     usergames = Gamedata.where('user_id = ?', current_user.id).all.collect(&:game_id)
-    if Game.where('length = ? AND playercount < ? AND playendtime > ?
+    if (params[:game][:length]) == "1hour" &&
+      Game.where('length = ? AND playercount < ? AND playendtime > ?
          AND group_id = ? AND not id IN (?)',
          "1hour", 13, DateTime.now + 0.01389,
          (params[:game][:group_id]), usergames).first
       @game = Game.where('length = ? AND playercount < ? AND playendtime > ?
-         AND group_id = ? AND not id IN (?)',
-         "1hour", 13, DateTime.now + 0.01389,
-         (params[:game][:group_id]), usergames).first
+        AND group_id = ? AND not id IN (?)',
+        "1hour", 13, DateTime.now + 0.01389,
+        (params[:game][:group_id]), usergames).first
       @game.increment!(:playercount)
       Gamedata.create(:user_id => current_user.id, :game_id => @game.id)
       redirect_to game_path(@game)
       flash[:notice] = "Joining this game, enjoy!"
-    elsif Game.where('length = ? AND playercount < ? AND playendtime > ?
+    elsif (params[:game][:length]) == "6hour" &&
+      Game.where('length = ? AND playercount < ? AND playendtime > ?
          AND group_id = ? AND not id IN (?)',
          "6hour", 13, DateTime.now + 0.02778,
          (params[:game][:group_id]), usergames).first
