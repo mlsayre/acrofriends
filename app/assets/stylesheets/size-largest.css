@@ -243,6 +243,7 @@
     color: red;
   }
   .playarea {
+    padding-bottom: 6px;
     background-color: white;
     border-size: 2px;
     border-style: solid;

@@ -5,8 +5,10 @@
 <% if DateTime.now.utc < @game.playendtime %>
   <% if @game.length == "1hour" %>
     <%= render "roundplayshort" %>
+    <%= render "shared/gamead" %>
   <% elsif @game.length == "6hour" %>
     <%= render "roundplaylong" %>
+    <%= render "shared/gamead" %>
   <% end %>
 <% end %>
 
