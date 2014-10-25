@@ -244,7 +244,7 @@
     border-style: solid;
     border-color: gray;
   }
-  #r2play, #r3play, #r4play {
+  #r2play, #r3play, #r4play, #r5play, #r6play, #r7play, #r8play {
     display: none;
   }
   .button.answersubmitbutton {
@@ -262,7 +262,7 @@
     margin: 0 auto;
     text-align: center;
   }
-  #r2vote, #r3vote, #r4vote {
+  #r2vote, #r3vote, #r4vote, #r5vote, #r6vote, #r7vote, #r8vote {
     display: none;
   }
   .voteroundbutton {

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024213036) do
+ActiveRecord::Schema.define(version: 20141025080804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,26 @@ ActiveRecord::Schema.define(version: 20141024213036) do
     t.integer  "r2votedfor"
     t.integer  "r3votedfor"
     t.integer  "r4votedfor"
+    t.string   "r5answer"
+    t.string   "r6answer"
+    t.string   "r7answer"
+    t.string   "r8answer"
+    t.boolean  "r5voted"
+    t.boolean  "r6voted"
+    t.boolean  "r7voted"
+    t.boolean  "r8voted"
+    t.integer  "r5votedfor"
+    t.integer  "r6votedfor"
+    t.integer  "r7votedfor"
+    t.integer  "r8votedfor"
+    t.integer  "r1points"
+    t.integer  "r2points"
+    t.integer  "r3points"
+    t.integer  "r4points"
+    t.integer  "r5points"
+    t.integer  "r6points"
+    t.integer  "r7points"
+    t.integer  "r8points"
   end
 
   create_table "games", force: true do |t|
@@ -62,6 +82,14 @@ ActiveRecord::Schema.define(version: 20141024213036) do
     t.datetime "voteendtime"
     t.integer  "playercount", default: 0
     t.boolean  "gameover",    default: false
+    t.string   "r5letters"
+    t.string   "r6letters"
+    t.string   "r7letters"
+    t.string   "r8letters"
+    t.string   "r5cat"
+    t.string   "r6cat"
+    t.string   "r7cat"
+    t.string   "r8cat"
   end
 
   create_table "groups", force: true do |t|
@@ -101,6 +129,7 @@ ActiveRecord::Schema.define(version: 20141024213036) do
     t.string   "username"
     t.string   "about"
     t.boolean  "showads",                default: true
+    t.integer  "lifetimepoints",         default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

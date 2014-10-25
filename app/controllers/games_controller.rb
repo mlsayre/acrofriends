@@ -39,11 +39,23 @@ class GamesController < ApplicationController
     usergames = Gamedata.where('user_id = ?', current_user.id).all.collect(&:game_id)
     if Game.where('length = ? AND playercount < ? AND playendtime > ?
          AND group_id = ? AND not id IN (?)',
-         (params[:game][:length]), 13, DateTime.now + 0.00556,
+         "1hour", 13, DateTime.now + 0.01389,
          (params[:game][:group_id]), usergames).first
       @game = Game.where('length = ? AND playercount < ? AND playendtime > ?
          AND group_id = ? AND not id IN (?)',
-         (params[:game][:length]), 13, DateTime.now + 0.00556,
+         "1hour", 13, DateTime.now + 0.01389,
+         (params[:game][:group_id]), usergames).first
+      @game.increment!(:playercount)
+      Gamedata.create(:user_id => current_user.id, :game_id => @game.id)
+      redirect_to game_path(@game)
+      flash[:notice] = "Joining this game, enjoy!"
+    elsif Game.where('length = ? AND playercount < ? AND playendtime > ?
+         AND group_id = ? AND not id IN (?)',
+         "6hour", 13, DateTime.now + 0.02778,
+         (params[:game][:group_id]), usergames).first
+      @game = Game.where('length = ? AND playercount < ? AND playendtime > ?
+         AND group_id = ? AND not id IN (?)',
+         "1hour", 13, DateTime.now + 0.02778,
          (params[:game][:group_id]), usergames).first
       @game.increment!(:playercount)
       Gamedata.create(:user_id => current_user.id, :game_id => @game.id)
@@ -62,10 +74,18 @@ class GamesController < ApplicationController
       @game.r2cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
       @game.r3cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
       @game.r4cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+      @game.r5cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+      @game.r6cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+      @game.r7cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+      @game.r8cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
       @game.r1letters = File.new("config/LetterPool").readlines.sample(3).join.gsub("\n", "")
       @game.r2letters = File.new("config/LetterPool").readlines.sample(4).join.gsub("\n", "")
       @game.r3letters = File.new("config/LetterPool").readlines.sample(5).join.gsub("\n", "")
       @game.r4letters = File.new("config/LetterPool").readlines.sample(6).join.gsub("\n", "")
+      @game.r5letters = File.new("config/LetterPool").readlines.sample(3).join.gsub("\n", "")
+      @game.r6letters = File.new("config/LetterPool").readlines.sample(4).join.gsub("\n", "")
+      @game.r7letters = File.new("config/LetterPool").readlines.sample(5).join.gsub("\n", "")
+      @game.r8letters = File.new("config/LetterPool").readlines.sample(6).join.gsub("\n", "")
       @game.increment!(:playercount)
       if (params[:game][:length]) == "1hour"
         gametime = 1
@@ -123,7 +143,8 @@ class GamesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
       params.require(:game).permit(:r1letters, :r2letters, :r3letters, :r4letters,
-        :r1cat, :r2cat, :r3cat, :r4cat, :name, :group_id, :length, :playendtime,
+        :r5letters, :r6letters, :r7letters, :r8letters, :r1cat, :r2cat, :r3cat,
+        :r4cat, :r5cat, :r6cat, :r7cat, :r8cat, :name, :group_id, :length, :playendtime,
         :voteendtime, :playercount)
     end
 end

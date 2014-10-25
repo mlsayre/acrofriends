@@ -1,0 +1,230 @@
+// upon room entry
+$(".answerfield").val("");
+
+$("#r1playbutton").click(function () {
+  $("#r1play").show();
+  $("#r2play").hide();
+  $("#r3play").hide();
+  $("#r4play").hide();
+  $("#r5play").hide();
+  $("#r6play").hide();
+  $("#r7play").hide();
+  $("#r8play").hide();
+});
+$("#r2playbutton").click(function () {
+  $("#r1play").hide();
+  $("#r2play").show();
+  $("#r3play").hide();
+  $("#r4play").hide();
+  $("#r5play").hide();
+  $("#r6play").hide();
+  $("#r7play").hide();
+  $("#r8play").hide();
+});
+$("#r3playbutton").click(function () {
+  $("#r1play").hide();
+  $("#r2play").hide();
+  $("#r3play").show();
+  $("#r4play").hide();
+  $("#r5play").hide();
+  $("#r6play").hide();
+  $("#r7play").hide();
+  $("#r8play").hide();
+});
+$("#r4playbutton").click(function () {
+  $("#r1play").hide();
+  $("#r2play").hide();
+  $("#r3play").hide();
+  $("#r4play").show();
+  $("#r5play").hide();
+  $("#r6play").hide();
+  $("#r7play").hide();
+  $("#r8play").hide();
+});
+$("#r5playbutton").click(function () {
+  $("#r1play").hide();
+  $("#r2play").hide();
+  $("#r3play").hide();
+  $("#r4play").hide();
+  $("#r5play").show();
+  $("#r6play").hide();
+  $("#r7play").hide();
+  $("#r8play").hide();
+});
+$("#r6playbutton").click(function () {
+  $("#r1play").hide();
+  $("#r2play").hide();
+  $("#r3play").hide();
+  $("#r4play").hide();
+  $("#r5play").hide();
+  $("#r6play").show();
+  $("#r7play").hide();
+  $("#r8play").hide();
+});
+$("#r7playbutton").click(function () {
+  $("#r1play").hide();
+  $("#r2play").hide();
+  $("#r3play").hide();
+  $("#r4play").hide();
+  $("#r5play").hide();
+  $("#r6play").hide();
+  $("#r7play").show();
+  $("#r8play").hide();
+});
+$("#r8playbutton").click(function () {
+  $("#r1play").hide();
+  $("#r2play").hide();
+  $("#r3play").hide();
+  $("#r4play").hide();
+  $("#r5play").hide();
+  $("#r6play").hide();
+  $("#r7play").hide();
+  $("#r8play").show();
+});
+
+// validation
+$("#r1answerform").submit(function() {
+  var letters = $("#round1letters").text()
+  return acroValidate(letters, "#r1answered", "r1answerform", "r1answerfield");
+});
+
+$("#r2answerform").submit(function() {
+  var letters = $("#round2letters").text()
+  return acroValidate(letters, "#r2answered", "r2answerform", "r2answerfield");
+});
+
+$("#r3answerform").submit(function() {
+  var letters = $("#round3letters").text()
+  return acroValidate(letters, "#r3answered", "r3answerform", "r3answerfield");
+});
+
+$("#r4answerform").submit(function() {
+  var letters = $("#round4letters").text()
+  return acroValidate(letters, "#r4answered", "r4answerform", "r4answerfield");
+});
+$("#r5answerform").submit(function() {
+  var letters = $("#round5letters").text()
+  return acroValidate(letters, "#r5answered", "r5answerform", "r5answerfield");
+});
+
+$("#r6answerform").submit(function() {
+  var letters = $("#round6letters").text()
+  return acroValidate(letters, "#r6answered", "r6answerform", "r6answerfield");
+});
+
+$("#r7answerform").submit(function() {
+  var letters = $("#round7letters").text()
+  return acroValidate(letters, "#r7answered", "r7answerform", "r7answerfield");
+});
+
+$("#r8answerform").submit(function() {
+  var letters = $("#round8letters").text()
+  return acroValidate(letters, "#r8answered", "r8answerform", "r8answerfield");
+});
+
+// voting round
+$("#r1votebutton").click(function () {
+  $("#r1vote").show();
+  $("#r2vote").hide();
+  $("#r3vote").hide();
+  $("#r4vote").hide();
+  $("#r5vote").hide();
+  $("#r6vote").hide();
+  $("#r7vote").hide();
+  $("#r8vote").hide();
+});
+$("#r2votebutton").click(function () {
+  $("#r1vote").hide();
+  $("#r2vote").show();
+  $("#r3vote").hide();
+  $("#r4vote").hide();
+  $("#r5vote").hide();
+  $("#r6vote").hide();
+  $("#r7vote").hide();
+  $("#r8vote").hide();
+});
+$("#r3votebutton").click(function () {
+  $("#r1vote").hide();
+  $("#r2vote").hide();
+  $("#r3vote").show();
+  $("#r4vote").hide();
+  $("#r5vote").hide();
+  $("#r6vote").hide();
+  $("#r7vote").hide();
+  $("#r8vote").hide();
+});
+$("#r4votebutton").click(function () {
+  $("#r1vote").hide();
+  $("#r2vote").hide();
+  $("#r3vote").hide();
+  $("#r4vote").show();
+  $("#r5vote").hide();
+  $("#r6vote").hide();
+  $("#r7vote").hide();
+  $("#r8vote").hide();
+});
+$("#r5votebutton").click(function () {
+  $("#r1vote").hide();
+  $("#r2vote").hide();
+  $("#r3vote").hide();
+  $("#r4vote").hide();
+  $("#r5vote").show();
+  $("#r6vote").hide();
+  $("#r7vote").hide();
+  $("#r8vote").hide();
+});
+$("#r6votebutton").click(function () {
+  $("#r1vote").hide();
+  $("#r2vote").hide();
+  $("#r3vote").hide();
+  $("#r4vote").hide();
+  $("#r5vote").hide();
+  $("#r6vote").show();
+  $("#r7vote").hide();
+  $("#r8vote").hide();
+});
+$("#r7votebutton").click(function () {
+  $("#r1vote").hide();
+  $("#r2vote").hide();
+  $("#r3vote").hide();
+  $("#r4vote").hide();
+  $("#r5vote").hide();
+  $("#r6vote").hide();
+  $("#r7vote").show();
+  $("#r8vote").hide();
+});
+$("#r8votebutton").click(function () {
+  $("#r1vote").hide();
+  $("#r2vote").hide();
+  $("#r3vote").hide();
+  $("#r4vote").hide();
+  $("#r5vote").hide();
+  $("#r6vote").hide();
+  $("#r7vote").hide();
+  $("#r8vote").show();
+});
+
+$(".votebuttons").click(function() {
+  $(".answervotedfor").spin('small', 'blue');
+  function disableVoteButtons() {
+    $(".votebuttons").prop("disabled", true);
+  }
+  setTimeout(disableVoteButtons, 700);
+  function reenableVoteButtons() {
+    var pathname = window.location.pathname;
+    $("#r1votedfor").load(pathname + " #r1votedfor");
+    $("#r2votedfor").load(pathname + " #r2votedfor");
+    $("#r3votedfor").load(pathname + " #r3votedfor");
+    $("#r4votedfor").load(pathname + " #r4votedfor");
+    $("#r5votedfor").load(pathname + " #r5votedfor");
+    $("#r6votedfor").load(pathname + " #r6votedfor");
+    $("#r7votedfor").load(pathname + " #r7votedfor");
+    $("#r8votedfor").load(pathname + " #r8votedfor");
+  }
+  setTimeout(reenableVoteButtons, 1500);
+  function stopSpin() {
+    $(".votebuttons").prop("disabled", false);
+    $(".answervotedfor").spin(false);
+  }
+  setTimeout(stopSpin, 1800);
+})
