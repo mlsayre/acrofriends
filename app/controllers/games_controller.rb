@@ -55,7 +55,7 @@ class GamesController < ApplicationController
          (params[:game][:group_id]), usergames).first
       @game = Game.where('length = ? AND playercount < ? AND playendtime > ?
          AND group_id = ? AND not id IN (?)',
-         "1hour", 13, DateTime.now + 0.02778,
+         "6hour", 13, DateTime.now + 0.02778,
          (params[:game][:group_id]), usergames).first
       @game.increment!(:playercount)
       Gamedata.create(:user_id => current_user.id, :game_id => @game.id)
