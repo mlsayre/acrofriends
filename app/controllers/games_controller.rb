@@ -23,7 +23,8 @@ class GamesController < ApplicationController
     @gameanswers = Gamedata.where(:game_id => @game.id)
                    .where("user_id != ?", current_user.id).all
 
-    if DateTime.now.utc > @game.voteendtime
+    if DateTime.now.utc >= @game.voteendtime && @game.gameover == false
+      @game.update_attributes(:gameover => true)
       @gameoverdata = Gamedata.where(:game_id => @game.id).all
       @gameplayers = @gameoverdata.collect(&:user_id)
       @gameplayers.each do |playerid|

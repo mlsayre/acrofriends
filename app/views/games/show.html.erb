@@ -13,7 +13,7 @@
 <% end %>
 
 <!-- //////////////// GAME VOTING ROUND //////////////////// -->
-<% if @game.playendtime <= DateTime.now.utc && DateTime.now.utc <= @game.voteendtime %>
+<% if DateTime.now.utc >= @game.playendtime && DateTime.now.utc <= @game.voteendtime %>
   <% if @game.playercount < 3 %>
     Sorry, there weren't enough players to continue to the voting round.
   <% else %>
@@ -31,7 +31,11 @@
     Sorry, there weren't enough players to complete this game.
   <% else %>
     <!-- results code here -->
-
+    <% Gamedata.where(:game_id => @game.id).order('r1points DESC').each do |answer| %>
+    <%= answer.r1points %> votes for <%= User.where(:id => answer.user_id).first.username %>:
+        "<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"
+      </br>
+    <% end %>
   <% end %>
 <% end %>
 

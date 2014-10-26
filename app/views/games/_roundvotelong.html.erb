@@ -16,7 +16,7 @@
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r1answer %>
             <div id="votebutton1div">
-              <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round1", :game_id => @game.id, :r1voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
+              <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round1", :game_id => @game.id, :r1voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"
           <% end %>
@@ -31,7 +31,7 @@
           <% if @currentgamedata.r1votedfor == nil %>
             Your vote: You haven't voted yet...
           <% else %>
-            Your vote: "<%= Gamedata.where(:id => @currentgamedata.r1votedfor).first.r1answer %>"
+            Your vote: "<%= Gamedata.where(:game_id => @game.id).where(:user_id => @currentgamedata.r1votedfor).first.r1answer %>"
           <% end %>
         </div>
       </div>
@@ -42,7 +42,7 @@
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r2answer %>
             <div id="votebutton2div">
-            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round2", :game_id => @game.id, :r2voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
+            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round2", :game_id => @game.id, :r2voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r2answer) %>"
           <% end %>
@@ -57,7 +57,7 @@
           <% if @currentgamedata.r2votedfor == nil %>
             Your vote: You haven't voted yet...
           <% else %>
-            Your vote: "<%= Gamedata.where(:id => @currentgamedata.r2votedfor).first.r2answer %>"
+            Your vote: "<%= Gamedata.where(:game_id => @game.id).where(:user_id => @currentgamedata.r2votedfor).first.r2answer %>"
           <% end %>
         </div>
       </div>
@@ -68,7 +68,7 @@
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r3answer %>
             <div id="votebutton3div">
-            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round3", :game_id => @game.id, :r3voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
+            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round3", :game_id => @game.id, :r3voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r3answer) %>"
           <% end %>
@@ -83,7 +83,7 @@
           <% if @currentgamedata.r3votedfor == nil %>
             Your vote: You haven't voted yet...
           <% else %>
-            Your vote: "<%= Gamedata.where(:id => @currentgamedata.r3votedfor).first.r3answer %>"
+            Your vote: "<%= Gamedata.where(:game_id => @game.id).where(:user_id => @currentgamedata.r3votedfor).first.r3answer %>"
           <% end %>
         </div>
       </div>
@@ -94,7 +94,7 @@
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r4answer %>
             <div id="votebutton4div">
-            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round4", :game_id => @game.id, :r4voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
+            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round4", :game_id => @game.id, :r4voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r4answer) %>"
           <% end %>
@@ -109,7 +109,7 @@
           <% if @currentgamedata.r4votedfor == nil %>
             Your vote: You haven't voted yet...
           <% else %>
-            Your vote: "<%= Gamedata.where(:id => @currentgamedata.r4votedfor).first.r4answer %>"
+            Your vote: "<%= Gamedata.where(:game_id => @game.id).where(:user_id => @currentgamedata.r4votedfor).first.r4answer %>"
           <% end %>
         </div>
       </div>
@@ -120,7 +120,7 @@
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r5answer %>
             <div id="votebutton5div">
-              <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round5", :game_id => @game.id, :r5voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
+              <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round5", :game_id => @game.id, :r5voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r5answer) %>"
           <% end %>
@@ -135,7 +135,7 @@
           <% if @currentgamedata.r5votedfor == nil %>
             Your vote: You haven't voted yet...
           <% else %>
-            Your vote: "<%= Gamedata.where(:id => @currentgamedata.r5votedfor).first.r5answer %>"
+            Your vote: "<%= Gamedata.where(:game_id => @game.id).where(:user_id => @currentgamedata.r5votedfor).first.r5answer %>"
           <% end %>
         </div>
       </div>
@@ -146,7 +146,7 @@
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r6answer %>
             <div id="votebutton6div">
-            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round6", :game_id => @game.id, :r6voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
+            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round6", :game_id => @game.id, :r6voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r6answer) %>"
           <% end %>
@@ -161,7 +161,7 @@
           <% if @currentgamedata.r6votedfor == nil %>
             Your vote: You haven't voted yet...
           <% else %>
-            Your vote: "<%= Gamedata.where(:id => @currentgamedata.r6votedfor).first.r6answer %>"
+            Your vote: "<%= Gamedata.where(:game_id => @game.id).where(:user_id => @currentgamedata.r6votedfor).first.r6answer %>"
           <% end %>
         </div>
       </div>
@@ -172,7 +172,7 @@
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r7answer %>
             <div id="votebutton7div">
-            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round7", :game_id => @game.id, :r7voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
+            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round7", :game_id => @game.id, :r7voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r7answer) %>"
           <% end %>
@@ -187,7 +187,7 @@
           <% if @currentgamedata.r7votedfor == nil %>
             Your vote: You haven't voted yet...
           <% else %>
-            Your vote: "<%= Gamedata.where(:id => @currentgamedata.r7votedfor).first.r7answer %>"
+            Your vote: "<%= Gamedata.where(:game_id => @game.id).where(:user_id => @currentgamedata.r7votedfor).first.r7answer %>"
           <% end %>
         </div>
       </div>
@@ -198,7 +198,7 @@
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r8answer %>
             <div id="votebutton8div">
-            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round8", :game_id => @game.id, :r8voted => true}, :class => "votebuttons", :style => "position:relative;", remote: true %>
+            <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round8", :game_id => @game.id, :r8voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r8answer) %>"
           <% end %>
@@ -213,7 +213,7 @@
           <% if @currentgamedata.r8votedfor == nil %>
             Your vote: You haven't voted yet...
           <% else %>
-            Your vote: "<%= Gamedata.where(:id => @currentgamedata.r8votedfor).first.r8answer %>"
+            Your vote: "<%= Gamedata.where(:game_id => @game.id).where(:user_id => @currentgamedata.r8votedfor).first.r8answer %>"
           <% end %>
         </div>
       </div>

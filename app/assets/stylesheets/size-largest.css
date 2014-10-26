@@ -280,9 +280,13 @@
     border-style: solid;
     border-color: gray;
   }
-  #votebutton1div, #votebutton2div, #votebutton3div, #votebutton4div {
+  #votebutton1div, #votebutton2div, #votebutton3div, #votebutton4div,
+  #votebutton5div, #votebutton6div, #votebutton7div, #votebutton8div {
     float: left;
     margin-left: 20%;
     margin-right:12px;
+  }
+  .votebuttons {
+    float: left;
   }
 }
