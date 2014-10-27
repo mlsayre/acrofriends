@@ -56,54 +56,107 @@ class GamesController < ApplicationController
         @gameoverdata.where(:user_id => playerid).first.update_attributes(:r8points => @r8pointcount)
       end
 
-      # bonus points for round win
+      # bonus points for round win and for voting for winner - @rXwinnervoters is winner voter array
       if Gamedata.where(:game_id => @game.id).order('r1points DESC').first
         @round1winnerid = Gamedata.where(:game_id => @game.id).order('r1points DESC').first.user_id
         Gamedata.where(:game_id => @game.id).where(:user_id => @round1winnerid).first
                 .increment!(:r1points, by = 3)
+        # 1 point for winning answer voters
+        @r1winnervoters = Gamedata.where(:game_id => @game.id).where(:r1votedfor => @round1winnerid)
+                          .collect(&:user_id)
+        @r1winnervoters.each do |voterid|
+          Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                  .increment!(:r1points, by = 1)
+        end
       end
       if Gamedata.where(:game_id => @game.id).order('r2points DESC').first
         @round2winnerid = Gamedata.where(:game_id => @game.id).order('r2points DESC').first.user_id
         Gamedata.where(:game_id => @game.id).where(:user_id => @round2winnerid).first
                 .increment!(:r2points, by = 4)
+        # 1 point for winning answer voters
+        @r2winnervoters = Gamedata.where(:game_id => @game.id).where(:r2votedfor => @round2winnerid)
+                          .collect(&:user_id)
+        @r2winnervoters.each do |voterid|
+          Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                  .increment!(:r2points, by = 1)
+        end
       end
       if Gamedata.where(:game_id => @game.id).order('r3points DESC').first
         @round3winnerid = Gamedata.where(:game_id => @game.id).order('r3points DESC').first.user_id
         Gamedata.where(:game_id => @game.id).where(:user_id => @round3winnerid).first
                 .increment!(:r3points, by = 5)
+        # 1 point for winning answer voters
+        @r3winnervoters = Gamedata.where(:game_id => @game.id).where(:r3votedfor => @round3winnerid)
+                          .collect(&:user_id)
+        @r3winnervoters.each do |voterid|
+          Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                  .increment!(:r3points, by = 1)
+        end
       end
       if Gamedata.where(:game_id => @game.id).order('r4points DESC').first
         @round4winnerid = Gamedata.where(:game_id => @game.id).order('r4points DESC').first.user_id
         Gamedata.where(:game_id => @game.id).where(:user_id => @round4winnerid).first
                 .increment!(:r4points, by = 6)
+        # 1 point for winning answer voters
+        @r4winnervoters = Gamedata.where(:game_id => @game.id).where(:r4votedfor => @round4winnerid)
+                          .collect(&:user_id)
+        @r4winnervoters.each do |voterid|
+          Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                  .increment!(:r4points, by = 1)
+        end
       end
       if @game.length == "6hour"
         if Gamedata.where(:game_id => @game.id).order('r5points DESC').first
           @round5winnerid = Gamedata.where(:game_id => @game.id).order('r5points DESC').first.user_id
           Gamedata.where(:game_id => @game.id).where(:user_id => @round5winnerid).first
                   .increment!(:r5points, by = 3)
+          # 1 point for winning answer voters
+          @r5winnervoters = Gamedata.where(:game_id => @game.id).where(:r5votedfor => @round5winnerid)
+                            .collect(&:user_id)
+          @r5winnervoters.each do |voterid|
+            Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                    .increment!(:r5points, by = 1)
+          end
         end
         if Gamedata.where(:game_id => @game.id).order('r6points DESC').first
           @round6winnerid = Gamedata.where(:game_id => @game.id).order('r6points DESC').first.user_id
           Gamedata.where(:game_id => @game.id).where(:user_id => @round6winnerid).first
                   .increment!(:r6points, by = 4)
+          # 1 point for winning answer voters
+          @r6winnervoters = Gamedata.where(:game_id => @game.id).where(:r6votedfor => @round6winnerid)
+                            .collect(&:user_id)
+          @r6winnervoters.each do |voterid|
+            Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                    .increment!(:r6points, by = 1)
+          end
         end
         if Gamedata.where(:game_id => @game.id).order('r7points DESC').first
           @round7winnerid = Gamedata.where(:game_id => @game.id).order('r7points DESC').first.user_id
           Gamedata.where(:game_id => @game.id).where(:user_id => @round7winnerid).first
                   .increment!(:r7points, by = 5)
+          # 1 point for winning answer voters
+          @r7winnervoters = Gamedata.where(:game_id => @game.id).where(:r7votedfor => @round7winnerid)
+                            .collect(&:user_id)
+          @r7winnervoters.each do |voterid|
+            Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                    .increment!(:r7points, by = 1)
+          end
         end
         if Gamedata.where(:game_id => @game.id).order('r8points DESC').first
           @round8winnerid = Gamedata.where(:game_id => @game.id).order('r8points DESC').first.user_id
           Gamedata.where(:game_id => @game.id).where(:user_id => @round8winnerid).first
                   .increment!(:r8points, by = 6)
+          # 1 point for winning answer voters
+          @r8winnervoters = Gamedata.where(:game_id => @game.id).where(:r8votedfor => @round8winnerid)
+                            .collect(&:user_id)
+          @r8winnervoters.each do |voterid|
+            Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                    .increment!(:r8points, by = 1)
+          end
         end
       end
 
-      #bonus points for voting for winner MAKE ARRAYS .COLLECT FOR DISPLAY
-
-
-      #add up all rounds for total gamepoints MAKE ARRAYS .COLLECT FOR DISPLAY
+      #add up all rounds for total gamepoints
     end
 
   end
