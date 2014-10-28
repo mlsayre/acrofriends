@@ -40,6 +40,7 @@
     </table>
   </div>
 
+  <!-- Round 1 results -->
   <div class="resultsarea" id="round1results">
     <div id="gamewinnerinfo">
       <%= image_tag User.where(:id => @round1winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
@@ -81,6 +82,150 @@
             </td>
             <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"</td>
             <td><%= answer.r1points %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Round 2 results -->
+  <div class="resultsarea" id="round2results">
+    <div id="gamewinnerinfo">
+      <%= image_tag User.where(:id => @round2winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
+      Round 2 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round2winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r2points DESC').first.r2points %></span> points!
+    </div>
+    <table class="roundresultstable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Player</th>
+          <th>Vts</th>
+          <th>W Bon</th>
+          <th>W Vt</th>
+          <th>Acro</th>
+          <th>Tot. Pts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Gamedata.where(:game_id => @game.id).order('r2points DESC').zip(@ranknumbers).each do |answer, n| %>
+          <tr>
+            <td><%= n %></td>
+            <td><%= User.where(:id => answer.user_id).first.username %></td>
+            <td>
+              <% if @round2winner.id == User.where(:id => answer.user_id).first.id %>
+                <%= answer.r2points - 4 %>
+              <% elsif @r2winnervoters.include? User.where(:id => answer.user_id).first.id %>
+                <%= answer.r2points - 1 %>
+              <% end %>
+            </td>
+            <td>
+              <% if @round2winner.id == User.where(:id => answer.user_id).first.id %>
+                +4
+              <% end %>
+            </td>
+            <td>
+              <% if @r2winnervoters.include? User.where(:id => answer.user_id).first.id %>
+              +1
+              <% end %>
+            </td>
+            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r2answer) %>"</td>
+            <td><%= answer.r2points %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Round 3 results -->
+  <div class="resultsarea" id="round3results">
+    <div id="gamewinnerinfo">
+      <%= image_tag User.where(:id => @round3winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
+      Round 3 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round3winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r3points DESC').first.r3points %></span> points!
+    </div>
+    <table class="roundresultstable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Player</th>
+          <th>Vts</th>
+          <th>W Bon</th>
+          <th>W Vt</th>
+          <th>Acro</th>
+          <th>Tot. Pts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Gamedata.where(:game_id => @game.id).order('r3points DESC').zip(@ranknumbers).each do |answer, n| %>
+          <tr>
+            <td><%= n %></td>
+            <td><%= User.where(:id => answer.user_id).first.username %></td>
+            <td>
+              <% if @round3winner.id == User.where(:id => answer.user_id).first.id %>
+                <%= answer.r3points - 5 %>
+              <% elsif @r3winnervoters.include? User.where(:id => answer.user_id).first.id %>
+                <%= answer.r3points - 1 %>
+              <% end %>
+            </td>
+            <td>
+              <% if @round3winner.id == User.where(:id => answer.user_id).first.id %>
+                +5
+              <% end %>
+            </td>
+            <td>
+              <% if @r3winnervoters.include? User.where(:id => answer.user_id).first.id %>
+              +1
+              <% end %>
+            </td>
+            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r3answer) %>"</td>
+            <td><%= answer.r3points %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Round 4 results -->
+  <div class="resultsarea" id="round4results">
+    <div id="gamewinnerinfo">
+      <%= image_tag User.where(:id => @round4winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
+      Round 4 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round4winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r4points DESC').first.r4points %></span> points!
+    </div>
+    <table class="roundresultstable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Player</th>
+          <th>Vts</th>
+          <th>W Bon</th>
+          <th>W Vt</th>
+          <th>Acro</th>
+          <th>Tot. Pts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Gamedata.where(:game_id => @game.id).order('r4points DESC').zip(@ranknumbers).each do |answer, n| %>
+          <tr>
+            <td><%= n %></td>
+            <td><%= User.where(:id => answer.user_id).first.username %></td>
+            <td>
+              <% if @round4winner.id == User.where(:id => answer.user_id).first.id %>
+                <%= answer.r4points - 6 %>
+              <% elsif @r4winnervoters.include? User.where(:id => answer.user_id).first.id %>
+                <%= answer.r4points - 1 %>
+              <% end %>
+            </td>
+            <td>
+              <% if @round4winner.id == User.where(:id => answer.user_id).first.id %>
+                +5
+              <% end %>
+            </td>
+            <td>
+              <% if @r4winnervoters.include? User.where(:id => answer.user_id).first.id %>
+              +1
+              <% end %>
+            </td>
+            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r4answer) %>"</td>
+            <td><%= answer.r4points %></td>
           </tr>
         <% end %>
       </tbody>

@@ -17,6 +17,14 @@ class GamesController < ApplicationController
     elsif @timeremainingminutes < 3600
       @timeremaining = "about " + ((@game.playendtime - DateTime.now)/60).round.to_s + " minutes"
     end
+
+    @votetimeremainingminutes = (@game.voteendtime - DateTime.now)
+    if @votetimeremainingminutes >= 3600
+      @votetimeremaining = distance_of_time_in_words(@votetimeremainingminutes)
+    elsif @votetimeremainingminutes < 3600
+      @votetimeremaining = "about " + ((@game.voteendtime - DateTime.now)/60).round.to_s + " minutes"
+    end
+
     @gamedata = Gamedata.where(:user_id => current_user.id).where(:game_id => @game.id).first
     @currentgamedata = Gamedata.where(:user_id => current_user.id).where(:game_id => @game.id).first
 

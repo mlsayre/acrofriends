@@ -331,4 +331,8 @@
     color: red;
     font-size: 110%;
   }
+  #round1results, #round2results, #round3results, #round4results, #round5results, #round6results,
+  #round7results, #round8results {
+    display: none;
+  }
 }
