@@ -24,7 +24,7 @@
           You didn't enter an acro this round.
         <% end %>
         <div class="answervotedfor" id="r1votedfor">
-          <% if @currentgamedata.r1votedfor == nil %>
+          <% if @currentgamedata.r1votedfor == 0 %>
             Your vote: You haven't voted yet...
           <% else %>
             Your vote: "<%= Gamedata.where(:game_id => @game.id).where(:user_id => @currentgamedata.r1votedfor).first.r1answer %>"
@@ -50,7 +50,7 @@
           You didn't enter an acro this round.
         <% end %>
         <div class="answervotedfor" id="r2votedfor">
-          <% if @currentgamedata.r2votedfor == nil %>
+          <% if @currentgamedata.r2votedfor == 0 %>
             Your vote: You haven't voted yet...
           <% else %>
             Your vote: "<%= Gamedata.where(:game_id => @game.id).where(:user_id => @currentgamedata.r2votedfor).first.r2answer %>"
@@ -76,7 +76,7 @@
           You didn't enter an acro this round.
         <% end %>
         <div class="answervotedfor" id="r3votedfor">
-          <% if @currentgamedata.r3votedfor == nil %>
+          <% if @currentgamedata.r3votedfor == 0 %>
             Your vote: You haven't voted yet...
           <% else %>
             Your vote: "<%= Gamedata.where(:game_id => @game.id).where(:user_id => @currentgamedata.r3votedfor).first.r3answer %>"
@@ -102,7 +102,7 @@
           You didn't enter an acro this round.
         <% end %>
         <div class="answervotedfor" id="r4votedfor">
-          <% if @currentgamedata.r4votedfor == nil %>
+          <% if @currentgamedata.r4votedfor == 0 %>
             Your vote: You haven't voted yet...
           <% else %>
             Your vote: "<%= Gamedata.where(:game_id => @game.id).where(:user_id => @currentgamedata.r4votedfor).first.r4answer %>"

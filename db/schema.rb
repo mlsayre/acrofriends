@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025080804) do
+ActiveRecord::Schema.define(version: 20141027182510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20141025080804) do
     t.boolean  "r4voted"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "r1votedfor"
-    t.integer  "r2votedfor"
-    t.integer  "r3votedfor"
-    t.integer  "r4votedfor"
+    t.integer  "r1votedfor", default: 0
+    t.integer  "r2votedfor", default: 0
+    t.integer  "r3votedfor", default: 0
+    t.integer  "r4votedfor", default: 0
     t.string   "r5answer"
     t.string   "r6answer"
     t.string   "r7answer"
@@ -50,18 +50,18 @@ ActiveRecord::Schema.define(version: 20141025080804) do
     t.boolean  "r6voted"
     t.boolean  "r7voted"
     t.boolean  "r8voted"
-    t.integer  "r5votedfor"
-    t.integer  "r6votedfor"
-    t.integer  "r7votedfor"
-    t.integer  "r8votedfor"
-    t.integer  "r1points"
-    t.integer  "r2points"
-    t.integer  "r3points"
-    t.integer  "r4points"
-    t.integer  "r5points"
-    t.integer  "r6points"
-    t.integer  "r7points"
-    t.integer  "r8points"
+    t.integer  "r5votedfor", default: 0
+    t.integer  "r6votedfor", default: 0
+    t.integer  "r7votedfor", default: 0
+    t.integer  "r8votedfor", default: 0
+    t.integer  "r1points",   default: 0
+    t.integer  "r2points",   default: 0
+    t.integer  "r3points",   default: 0
+    t.integer  "r4points",   default: 0
+    t.integer  "r5points",   default: 0
+    t.integer  "r6points",   default: 0
+    t.integer  "r7points",   default: 0
+    t.integer  "r8points",   default: 0
   end
 
   create_table "games", force: true do |t|

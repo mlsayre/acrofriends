@@ -1,0 +1,19 @@
+<div id="resultsround">
+  <div class="resultsroundbutton">
+    <%= button_tag "Game Result", :id => "gameresultbutton" %><br>
+    <%= button_tag "R1", :id => "r1resultbutton" %>
+    <%= button_tag "R2", :id => "r2resultbutton" %>
+    <%= button_tag "R3", :id => "r3resultbutton" %>
+    <%= button_tag "R4", :id => "r4resultbutton" %>
+    <%= button_tag "R5", :id => "r5resultbutton" %>
+    <%= button_tag "R6", :id => "r6resultbutton" %>
+    <%= button_tag "R7", :id => "r7resultbutton" %>
+    <%= button_tag "R8", :id => "r8resultbutton" %>
+  </div>
+  <div id="gametotalpoints">
+    Game winner:
+    <div id="gamewinnerinfo">
+      <%= image_tag @gamewinner.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %>
+      <%= @gamewinner.username %> with <%= @gamewinnerpoints %> points!
+    </div>
+  </div>

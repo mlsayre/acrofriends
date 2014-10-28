@@ -285,4 +285,50 @@
   .votebuttons {
     float: left;
   }
+  #resultsround {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .resultsroundbutton {
+    width: 300px;
+    margin: 0 auto;
+  }
+  .resultsarea {
+    background-color: white;
+    border-size: 2px;
+    border-style: solid;
+    border-color: gray;
+  }
+  .gamewinnerstats {
+    font-size: 120%;
+    color: red;
+    font-weight: 700;
+  }
+  .resultstable, .resultstable td, .resultstable th {
+    border: 1px solid blue;
+    margin: 0 auto;
+    border-collapse: collapse;
+    padding: 2px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    font-size: 85%;
+  }
+  .resultstable >tbody tr:first-child {
+    color: red;
+    font-size: 120%;
+  }
+  .roundresultstable, .roundresultstable td, .roundresultstable th {
+    border: 1px solid blue;
+    margin: 0 auto;
+    border-collapse: collapse;
+    padding: 1px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    font-size: 85%;
+  }
+  .roundresultstable >tbody tr:first-child {
+    color: red;
+    font-size: 110%;
+  }
 }

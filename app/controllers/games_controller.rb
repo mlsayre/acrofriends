@@ -23,6 +23,7 @@ class GamesController < ApplicationController
     @gameanswers = Gamedata.where(:game_id => @game.id)
                    .where("user_id != ?", current_user.id).all
 
+    # results round
     if DateTime.now.utc >= @game.voteendtime && @game.gameover == false
       @game.update_attributes(:gameover => true)
       @gameoverdata = Gamedata.where(:game_id => @game.id).all
@@ -157,6 +158,84 @@ class GamesController < ApplicationController
       end
 
       #add up all rounds for total gamepoints
+      if @game.length == "1hour"
+        @gameplayers.each do |playerid|
+          @playergamedata = Gamedata.where(:game_id => @game.id).where(:user_id => playerid).first
+          @gametotalpoints = @playergamedata.r1points + @playergamedata.r2points +
+                             @playergamedata.r3points + @playergamedata.r4points
+          @playergamedata.update_attributes(:gamepoints => @gametotalpoints)
+        end
+      elsif @game.length == "1hour"
+        @gameplayers.each do |playerid|
+          @playergamedata = Gamedata.where(:game_id => @game.id).where(:user_id => playerid).first
+          @gametotalpoints = @playergamedata.r1points + @playergamedata.r2points +
+                             @playergamedata.r3points + @playergamedata.r4points +
+                             @playergamedata.r5points + @playergamedata.r6points +
+                             @playergamedata.r7points + @playergamedata.r8points
+          @playergamedata.update_attributes(:gamepoints => @gametotalpoints)
+        end
+      end
+
+      # data for display
+      @gamewinnerid = Gamedata.where(:game_id => @game.id).order('gamepoints DESC').first.user_id
+      @gamewinner = User.where(:id => @gamewinnerid).first
+      @gamewinnerpoints = Gamedata.where(:game_id => @game.id).order('gamepoints DESC').first.gamepoints
+      @round1winner = User.where(:id => @round1winnerid).first
+      @round2winner = User.where(:id => @round2winnerid).first
+      @round3winner = User.where(:id => @round3winnerid).first
+      @round4winner = User.where(:id => @round4winnerid).first
+      if @game.length == "6hour"
+        @round5winner = User.where(:id => @round5winnerid).first
+        @round6winner = User.where(:id => @round6winnerid).first
+        @round7winner = User.where(:id => @round7winnerid).first
+        @round8winner = User.where(:id => @round8winnerid).first
+      end
+
+    # points already tallied, gameover now true, just need score data
+    elsif DateTime.now.utc >= @game.voteendtime && @game.gameover == true
+      @round1winnerid = Gamedata.where(:game_id => @game.id).order('r1points DESC').first.user_id
+      @round2winnerid = Gamedata.where(:game_id => @game.id).order('r2points DESC').first.user_id
+      @round3winnerid = Gamedata.where(:game_id => @game.id).order('r3points DESC').first.user_id
+      @round4winnerid = Gamedata.where(:game_id => @game.id).order('r4points DESC').first.user_id
+      @r1winnervoters = Gamedata.where(:game_id => @game.id).where(:r1votedfor => @round1winnerid)
+                          .collect(&:user_id)
+      @r2winnervoters = Gamedata.where(:game_id => @game.id).where(:r2votedfor => @round2winnerid)
+                          .collect(&:user_id)
+      @r3winnervoters = Gamedata.where(:game_id => @game.id).where(:r3votedfor => @round3winnerid)
+                          .collect(&:user_id)
+      @r4winnervoters = Gamedata.where(:game_id => @game.id).where(:r4votedfor => @round4winnerid)
+                          .collect(&:user_id)
+      if @game.length == "6hour"
+        @round5winnerid = Gamedata.where(:game_id => @game.id).order('r5points DESC').first.user_id
+        @round6winnerid = Gamedata.where(:game_id => @game.id).order('r6points DESC').first.user_id
+        @round7winnerid = Gamedata.where(:game_id => @game.id).order('r7points DESC').first.user_id
+        @round8winnerid = Gamedata.where(:game_id => @game.id).order('r8points DESC').first.user_id
+        @r5winnervoters = Gamedata.where(:game_id => @game.id).where(:r5votedfor => @round5winnerid)
+                            .collect(&:user_id)
+        @r6winnervoters = Gamedata.where(:game_id => @game.id).where(:r6votedfor => @round6winnerid)
+                            .collect(&:user_id)
+        @r7winnervoters = Gamedata.where(:game_id => @game.id).where(:r7votedfor => @round7winnerid)
+                            .collect(&:user_id)
+        @r8winnervoters = Gamedata.where(:game_id => @game.id).where(:r8votedfor => @round8winnerid)
+                            .collect(&:user_id)
+      end
+
+      @gamewinnerid = Gamedata.where(:game_id => @game.id).order('gamepoints DESC').first.user_id
+      @gamewinner = User.where(:id => @gamewinnerid).first
+      @gamewinnerpoints = Gamedata.where(:game_id => @game.id).order('gamepoints DESC').first.gamepoints
+      @round1winner = User.where(:id => @round1winnerid).first
+      @round2winner = User.where(:id => @round2winnerid).first
+      @round3winner = User.where(:id => @round3winnerid).first
+      @round4winner = User.where(:id => @round4winnerid).first
+      if @game.length == "6hour"
+        @round5winner = User.where(:id => @round5winnerid).first
+        @round6winner = User.where(:id => @round6winnerid).first
+        @round7winner = User.where(:id => @round7winnerid).first
+        @round8winner = User.where(:id => @round8winnerid).first
+      end
+
+      @ranknumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
     end
 
   end
