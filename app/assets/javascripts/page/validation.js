@@ -25,12 +25,7 @@ function submitAnswerFX(answerid, submission) {
     }
     else if (answerid == "#r4answeredshortgame") {
       $(".allanswered").removeClass("hidden");
-      $(".allanswered").textillate({
-        in: {
-              effect: 'bounce',
-              delay: '12'
-            }
-      });
+      $(".allanswered").addClass("animated bounce");
     }
     else if (answerid == "#r5answered") {
       $(".r6playbutton").removeClass("hidden");
@@ -46,15 +41,7 @@ function submitAnswerFX(answerid, submission) {
     }
     else if (answerid == "#r8answered") {
       $(".allanswered").removeClass("hidden");
-      $(".allanswered").textillate({
-        in: {
-              effect: 'bounce',
-              delay: '12'
-            },
-        out: {
-              effect: ''
-            }
-      });
+      $(".allanswered").addClass("animated bounce");
     }
   }
   setTimeout(showAnswer, 1300);
