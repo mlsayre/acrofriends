@@ -7,32 +7,54 @@ function submitAnswerFX(answerid, submission) {
     $(answerid).css('color', 'green');
     $(answerid).text("Answer accepted: " + '"' + submission + '"');
     if (answerid == "#r1answered") {
+      $(".r2playbutton").addClass("animated flip");
       $(".r1playbutton").removeClass("hidden");
       $(".r2playbutton").removeClass("hidden");
     }
     else if (answerid == "#r2answered") {
+      $(".r3playbutton").addClass("animated flip");
       $(".r3playbutton").removeClass("hidden");
     }
     else if (answerid == "#r3answered") {
       $(".r4playbutton").removeClass("hidden");
+      $(".r4playbutton").addClass("animated flip");
     }
     else if (answerid == "#r4answered") {
       $(".r5playbutton").removeClass("hidden");
+      $(".r5playbutton").addClass("animated flip");
     }
     else if (answerid == "#r4answeredshortgame") {
       $(".allanswered").removeClass("hidden");
+      $(".allanswered").textillate({
+        in: {
+              effect: 'bounce',
+              delay: '12'
+            }
+      });
     }
     else if (answerid == "#r5answered") {
       $(".r6playbutton").removeClass("hidden");
+      $(".r6playbutton").addClass("animated flip");
     }
     else if (answerid == "#r6answered") {
       $(".r7playbutton").removeClass("hidden");
+      $(".r7playbutton").addClass("animated flip");
     }
     else if (answerid == "#r7answered") {
       $(".r8playbutton").removeClass("hidden");
+      $(".r8playbutton").addClass("animated flip");
     }
     else if (answerid == "#r8answered") {
       $(".allanswered").removeClass("hidden");
+      $(".allanswered").textillate({
+        in: {
+              effect: 'bounce',
+              delay: '12'
+            },
+        out: {
+              effect: ''
+            }
+      });
     }
   }
   setTimeout(showAnswer, 1300);

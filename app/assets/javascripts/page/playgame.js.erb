@@ -7,7 +7,19 @@ function hideAlerts() {
 }
 setTimeout(hideAlerts, 5000);
 
+function removeButtonAnims() {
+  $(".r1playbutton").removeClass("animated flip");
+  $(".r2playbutton").removeClass("animated flip");
+  $(".r3playbutton").removeClass("animated flip");
+  $(".r4playbutton").removeClass("animated flip");
+  $(".r5playbutton").removeClass("animated flip");
+  $(".r6playbutton").removeClass("animated flip");
+  $(".r7playbutton").removeClass("animated flip");
+  $(".r8playbutton").removeClass("animated flip");
+}
+
 $(".r1playbutton").click(function () {
+  removeButtonAnims();
   $("#r1play").show();
   $("#r2play").hide();
   $("#r3play").hide();
@@ -18,6 +30,7 @@ $(".r1playbutton").click(function () {
   $("#r8play").hide();
 });
 $(".r2playbutton").click(function () {
+  removeButtonAnims();
   $("#r1play").hide();
   $("#r2play").show();
   $("#r3play").hide();
@@ -28,6 +41,7 @@ $(".r2playbutton").click(function () {
   $("#r8play").hide();
 });
 $(".r3playbutton").click(function () {
+  removeButtonAnims();
   $("#r1play").hide();
   $("#r2play").hide();
   $("#r3play").show();
@@ -38,6 +52,7 @@ $(".r3playbutton").click(function () {
   $("#r8play").hide();
 });
 $(".r4playbutton").click(function () {
+  removeButtonAnims();
   $("#r1play").hide();
   $("#r2play").hide();
   $("#r3play").hide();
@@ -48,6 +63,7 @@ $(".r4playbutton").click(function () {
   $("#r8play").hide();
 });
 $(".r5playbutton").click(function () {
+  removeButtonAnims();
   $("#r1play").hide();
   $("#r2play").hide();
   $("#r3play").hide();
@@ -58,6 +74,7 @@ $(".r5playbutton").click(function () {
   $("#r8play").hide();
 });
 $(".r6playbutton").click(function () {
+  removeButtonAnims();
   $("#r1play").hide();
   $("#r2play").hide();
   $("#r3play").hide();
@@ -68,6 +85,7 @@ $(".r6playbutton").click(function () {
   $("#r8play").hide();
 });
 $(".r7playbutton").click(function () {
+  removeButtonAnims();
   $("#r1play").hide();
   $("#r2play").hide();
   $("#r3play").hide();
@@ -78,6 +96,7 @@ $(".r7playbutton").click(function () {
   $("#r8play").hide();
 });
 $(".r8playbutton").click(function () {
+  removeButtonAnims();
   $("#r1play").hide();
   $("#r2play").hide();
   $("#r3play").hide();
