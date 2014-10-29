@@ -1,6 +1,30 @@
-
+Your games in Play round:<br>
 <% @gamesinplayround.each do |game| %>
+  <% @timeremainingminutes = (game.playendtime - DateTime.now) %>
+    <% if @timeremainingminutes >= 3600 %>
+      <% @timeremaining = distance_of_time_in_words(@timeremainingminutes) %>
+    <% elsif @timeremainingminutes < 3600 %>
+      <% @timeremaining = "about " + ((game.playendtime - DateTime.now)/60).round.to_s + " minutes" %>
+    <% end %>
+  <%= link_to game.name, game %> (Play ends in <%= @timeremaining %>)<br>
+<% end %>
+<br>
+
+Your games in Vote round:<br>
+<% @gamesinvoteround.each do |game| %>
+  <% @timeremainingminutes = (game.voteendtime - DateTime.now) %>
+    <% if @timeremainingminutes >= 3600 %>
+      <% @timeremaining = distance_of_time_in_words(@timeremainingminutes) %>
+    <% elsif @timeremainingminutes < 3600 %>
+      <% @timeremaining = "about " + ((game.voteendtime - DateTime.now)/60).round.to_s + " minutes" %>
+    <% end %>
+  <%= link_to game.name, game %> (Voting ends in <%= @timeremaining %>)<br>
+<% end %>
+<br>
+
+Your games in Results round:<br>
+<% @gamesinresultsround.each do |game| %>
   <%= link_to game.name, game %><br>
 <% end %>
-
+<br>
 <%= render "shared/bottombar" %>

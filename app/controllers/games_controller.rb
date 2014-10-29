@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   include ActionView::Helpers::DateHelper
+  before_filter :authenticate_user!
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
   # GET /games
@@ -11,6 +12,13 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    # do not allow players who are not part of the game
+    @players = Gamedata.where(:game_id => @game.id).all.collect(&:user_id)
+    unless @players.include? User.where(:id => current_user.id).first.id
+      redirect_to root_path
+      flash[:notice] = "Sorry, you are not a player in that game."
+    end
+
     @timeremainingminutes = (@game.playendtime - DateTime.now)
     if @timeremainingminutes >= 3600
       @timeremaining = distance_of_time_in_words(@timeremainingminutes)
