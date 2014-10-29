@@ -262,6 +262,13 @@
   .answerfield {
     width: 80%;
   }
+  .allanswered {
+    color: green;
+    font-weight: 700;
+    font-size: 110%;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
   #voterounds {
     width: 60%;
     margin: 0 auto;

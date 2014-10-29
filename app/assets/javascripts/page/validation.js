@@ -7,8 +7,32 @@ function submitAnswerFX(answerid, submission) {
     $(answerid).css('color', 'green');
     $(answerid).text("Answer accepted: " + '"' + submission + '"');
     if (answerid == "#r1answered") {
-      $("#r1playbutton").removeClass("hidden");
-      $("#r2playbutton").removeClass("hidden");
+      $(".r1playbutton").removeClass("hidden");
+      $(".r2playbutton").removeClass("hidden");
+    }
+    else if (answerid == "#r2answered") {
+      $(".r3playbutton").removeClass("hidden");
+    }
+    else if (answerid == "#r3answered") {
+      $(".r4playbutton").removeClass("hidden");
+    }
+    else if (answerid == "#r4answered") {
+      $(".r5playbutton").removeClass("hidden");
+    }
+    else if (answerid == "#r4answeredshortgame") {
+      $(".allanswered").removeClass("hidden");
+    }
+    else if (answerid == "#r5answered") {
+      $(".r6playbutton").removeClass("hidden");
+    }
+    else if (answerid == "#r6answered") {
+      $(".r7playbutton").removeClass("hidden");
+    }
+    else if (answerid == "#r7answered") {
+      $(".r8playbutton").removeClass("hidden");
+    }
+    else if (answerid == "#r8answered") {
+      $(".allanswered").removeClass("hidden");
     }
   }
   setTimeout(showAnswer, 1300);

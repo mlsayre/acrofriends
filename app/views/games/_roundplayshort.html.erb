@@ -21,19 +21,32 @@
           Your acro: "<%= @currentgamedata.r1answer %>"
         <% end %>
       </div>
+      <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer %>
+        <div class="allanswered">
+          You've completed every acro! Come back in <%= @timeremaining %> to vote!
+        </div>
+      <% else %>
+        <div class="allanswered hidden">
+          You've completed every acro! Come back in <%= @timeremaining %> to vote!
+        </div>
+      <% end %>
       <div class="playroundbutton">
         <% if @gamedata.r1answer %>
-          <%= button_tag "Play Round 1", :id => "r1playbutton" %>
-          <%= button_tag "Play Round 2", :id => "r2playbutton" %>
+          <%= button_tag "Play Round 1", :class => "r1playbutton" %>
+          <%= button_tag "Play Round 2", :class => "r2playbutton" %>
         <% else %>
-          <%= button_tag "Play Round 1", :id => "r1playbutton", :class => "hidden" %>
-          <%= button_tag "Play Round 2", :id => "r2playbutton", :class => "hidden" %>
+          <%= button_tag "Play Round 1", :class => "r1playbutton hidden" %>
+          <%= button_tag "Play Round 2", :class => "r2playbutton hidden" %>
         <% end %>
         <% if @gamedata.r1answer && @gamedata.r2answer %>
-          <%= button_tag "Play Round 3", :id => "r3playbutton" %>
+          <%= button_tag "Play Round 3", :class => "r3playbutton" %>
+        <% else %>
+          <%= button_tag "Play Round 3", :class => "r3playbutton hidden" %>
         <% end %>
         <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer %>
-          <%= button_tag "Play Round 4", :id => "r4playbutton" %>
+          <%= button_tag "Play Round 4", :class => "r4playbutton" %>
+        <% else %>
+          <%= button_tag "Play Round 4", :class => "r4playbutton hidden" %>
         <% end %>
       </div>
     </div>
@@ -59,7 +72,29 @@
           Your acro: "<%= @currentgamedata.r2answer %>"
         <% end %>
       </div>
-
+      <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer %>
+        <div class="allanswered">
+          You've completed every acro! Come back in <%= @timeremaining %> to vote!
+        </div>
+      <% else %>
+        <div class="allanswered hidden">
+          You've completed every acro! Come back in <%= @timeremaining %> to vote!
+        </div>
+      <% end %>
+      <div class="playroundbutton">
+          <%= button_tag "Play Round 1", :class => "r1playbutton" %>
+          <%= button_tag "Play Round 2", :class => "r2playbutton" %>
+        <% if @gamedata.r2answer %>
+          <%= button_tag "Play Round 3", :class => "r3playbutton" %>
+        <% else %>
+          <%= button_tag "Play Round 3", :class => "r3playbutton hidden" %>
+        <% end %>
+        <% if @gamedata.r3answer %>
+          <%= button_tag "Play Round 4", :class => "r4playbutton" %>
+        <% else %>
+          <%= button_tag "Play Round 4", :class => "r4playbutton hidden" %>
+        <% end %>
+      </div>
     </div>
 
     <div class="playarea" id="r3play">
@@ -83,7 +118,25 @@
           Your acro: "<%= @currentgamedata.r3answer %>"
         <% end %>
       </div>
-
+      <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer %>
+        <div class="allanswered">
+          You've completed every acro! Come back in <%= @timeremaining %> to vote!
+        </div>
+      <% else %>
+        <div class="allanswered hidden">
+          You've completed every acro! Come back in <%= @timeremaining %> to vote!
+        </div>
+      <% end %>
+      <div class="playroundbutton">
+          <%= button_tag "Play Round 1", :class => "r1playbutton" %>
+          <%= button_tag "Play Round 2", :class => "r2playbutton" %>
+          <%= button_tag "Play Round 3", :class => "r3playbutton" %>
+        <% if @gamedata.r3answer %>
+          <%= button_tag "Play Round 4", :class => "r4playbutton" %>
+        <% else %>
+          <%= button_tag "Play Round 4", :class => "r4playbutton hidden" %>
+        <% end %>
+      </div>
     </div>
 
     <div class="playarea" id="r4play">
@@ -91,7 +144,7 @@
       Category: <span class="gamecategories"><%= @game.r4cat %></span>
       <div class="gameletters" id="round4letters"><%= @game.r4letters %></div>
       <div>
-        <%= form_for @gamedata, :url => updateanswer_gamedata_path, :html => {:method => :post, :id => "r4answerform"}, remote: true do |i| %>
+        <%= form_for @gamedata, :url => updateanswer_gamedata_path, :html => {:method => :post, :id => "r4answerformshortgame"}, remote: true do |i| %>
           <div>
             <%= i.hidden_field :game_id, :value => @game.id %>
             <span><%= i.text_field :r4answer, :class => "answerfield", :id => "r4answerfield", :placeholder => "Enter or change Round 4 acro here...", :autofocus => true %></span>
@@ -100,14 +153,28 @@
           </div>
         <% end %>
       </div>
-      <div id="r4answered">
+      <div id="r4answeredshortgame">
         <% if @currentgamedata.r4answer == nil %>
           Your acro: No acro yet...
         <% else %>
           Your acro: "<%= @currentgamedata.r4answer %>"
         <% end %>
       </div>
-
+      <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer %>
+        <div class="allanswered">
+          You've completed every acro! Come back in <%= @timeremaining %> to vote!
+        </div>
+      <% else %>
+        <div class="allanswered hidden">
+          You've completed every acro! Come back in <%= @timeremaining %> to vote!
+        </div>
+      <% end %>
+      <div class="playroundbutton">
+          <%= button_tag "Play Round 1", :class => "r1playbutton" %>
+          <%= button_tag "Play Round 2", :class => "r2playbutton" %>
+          <%= button_tag "Play Round 3", :class => "r3playbutton" %>
+          <%= button_tag "Play Round 4", :class => "r4playbutton" %>
+      </div>
     </div>
     Time left to play: <%= @timeremaining %>.<br>
     # of players: <%= @game.playercount %>/12
