@@ -6,6 +6,10 @@ function submitAnswerFX(answerid, submission) {
   function showAnswer() {
     $(answerid).css('color', 'green');
     $(answerid).text("Answer accepted: " + '"' + submission + '"');
+    if (answerid == "#r1answered") {
+      $("#r1playbutton").removeClass("hidden");
+      $("#r2playbutton").removeClass("hidden");
+    }
   }
   setTimeout(showAnswer, 1300);
 }

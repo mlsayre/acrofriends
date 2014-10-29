@@ -1,10 +1,4 @@
 <div id="playrounds">
-    <div class="playroundbutton">
-      <%= button_tag "Play Round 1", :id => "r1playbutton" %>
-      <%= button_tag "Play Round 2", :id => "r2playbutton" %>
-      <%= button_tag "Play Round 3", :id => "r3playbutton" %>
-      <%= button_tag "Play Round 4", :id => "r4playbutton" %>
-    </div>
 
     <div class="playarea" id="r1play">
       <div class="roundtitle">Round 1</div>
@@ -27,7 +21,21 @@
           Your acro: "<%= @currentgamedata.r1answer %>"
         <% end %>
       </div>
-
+      <div class="playroundbutton">
+        <% if @gamedata.r1answer %>
+          <%= button_tag "Play Round 1", :id => "r1playbutton" %>
+          <%= button_tag "Play Round 2", :id => "r2playbutton" %>
+        <% else %>
+          <%= button_tag "Play Round 1", :id => "r1playbutton", :class => "hidden" %>
+          <%= button_tag "Play Round 2", :id => "r2playbutton", :class => "hidden" %>
+        <% end %>
+        <% if @gamedata.r1answer && @gamedata.r2answer %>
+          <%= button_tag "Play Round 3", :id => "r3playbutton" %>
+        <% end %>
+        <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer %>
+          <%= button_tag "Play Round 4", :id => "r4playbutton" %>
+        <% end %>
+      </div>
     </div>
 
     <div class="playarea" id="r2play">

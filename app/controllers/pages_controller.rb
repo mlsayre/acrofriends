@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def main
     @gamesinprogressids = Gamedata.where(:user_id => current_user.id).collect(&:game_id)
     @gamesinprogress = Game.where(:id => @gamesinprogressids).where(:gameover => false).all
+    @gamesinplayround = @gamesinprogress.where('playendtime > ?', DateTime.now.utc).all
 
   end
 end
