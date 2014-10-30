@@ -38,6 +38,7 @@
   </fieldset>
 
   <div><%= f.submit "Update" %></div>
+  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 <% end %>
 
 <h3>Cancel my account</h3>

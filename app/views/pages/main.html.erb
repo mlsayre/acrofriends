@@ -1,30 +1,67 @@
-Your games in Play round:<br>
-<% @gamesinplayround.each do |game| %>
-  <% @timeremainingminutes = (game.playendtime - DateTime.now) %>
-    <% if @timeremainingminutes >= 3600 %>
-      <% @timeremaining = distance_of_time_in_words(@timeremainingminutes) %>
-    <% elsif @timeremainingminutes < 3600 %>
-      <% @timeremaining = "about " + ((game.playendtime - DateTime.now)/60).round.to_s + " minutes" %>
-    <% end %>
-  <%= link_to game.name, game %> (Play ends in <%= @timeremaining %>)<br>
-<% end %>
-<br>
+<div class="mainpageviewbutton">
+    Your Games:<br>
+    <%= button_tag "Play Rounds", :id => "mainplaygamesbutton" %>
+    <%= button_tag "Vote Rounds", :id => "mainvotegamesbutton" %>
+    <%= button_tag "Completed", :id => "maincompletedgamesbutton" %>
+  </div>
+<div class="maingamespage">
 
-Your games in Vote round:<br>
-<% @gamesinvoteround.each do |game| %>
-  <% @timeremainingminutes = (game.voteendtime - DateTime.now) %>
-    <% if @timeremainingminutes >= 3600 %>
-      <% @timeremaining = distance_of_time_in_words(@timeremainingminutes) %>
-    <% elsif @timeremainingminutes < 3600 %>
-      <% @timeremaining = "about " + ((game.voteendtime - DateTime.now)/60).round.to_s + " minutes" %>
+  <div id="mainplayinggameslist" >
+    <u>Your games currently in Play rounds</u><br>
+    <% @gamesinplayround.each do |game| %>
+      <% @timeremainingminutes = (game.playendtime - DateTime.now) %>
+        <% if @timeremainingminutes >= 3600 %>
+          <% @timeremaining = distance_of_time_in_words(@timeremainingminutes) %>
+        <% elsif @timeremainingminutes < 3600 %>
+          <% @timeremaining = "about " + ((game.playendtime - DateTime.now)/60).round.to_s + " minutes" %>
+        <% end %>
+        <%= link_to(game) do %>
+          <div class="button animated flipInX">
+            <span class="gamelistname"><%= game.name %></span><br>
+            <span class="gamelisttime">(Play ends in <%= @timeremaining %>)</span><br>
+            Players: <%= game.playercount %>
+          </div>
+        <% end %>
+      <br>
     <% end %>
-  <%= link_to game.name, game %> (Voting ends in <%= @timeremaining %>)<br>
-<% end %>
-<br>
+    <br>
+  </div>
 
-Your games in Results round:<br>
-<% @gamesinresultsround.each do |game| %>
-  <%= link_to game.name, game %><br>
-<% end %>
-<br>
+  <div id="mainvotinggameslist" >
+    <u>Your games currently in Vote rounds</u><br>
+    <% @gamesinvoteround.each do |game| %>
+      <% @timeremainingminutes = (game.voteendtime - DateTime.now) %>
+        <% if @timeremainingminutes >= 3600 %>
+          <% @timeremaining = distance_of_time_in_words(@timeremainingminutes) %>
+        <% elsif @timeremainingminutes < 3600 %>
+          <% @timeremaining = "about " + ((game.voteendtime - DateTime.now)/60).round.to_s + " minutes" %>
+        <% end %>
+      <%= link_to(game) do %>
+          <div class="button animated flipInX">
+            <span class="gamelistname"><%= game.name %></span><br>
+            <span class="gamelisttime">(Voting ends in <%= @timeremaining %>)</span><br>
+            Players: <%= game.playercount %>
+          </div>
+        <% end %>
+      <br>
+    <% end %>
+    <br>
+  </div>
+
+  <div id="mainresultsgameslist" >
+    <u>Your completed games (last 20)</u><br>
+    <% @gamesinresultsround.each do |game| %>
+      <%= link_to(game) do %>
+          <div class="button animated flipInX">
+            <span class="gamelistname"><%= game.name %></span><br>
+            Players: <%= game.playercount %>
+          </div>
+        <% end %>
+      <br>
+    <% end %>
+  </div>
+  <br>
+</div>
+
+<%= javascript_include_tag "page/mainnav" %>
 <%= render "shared/bottombar" %>

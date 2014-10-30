@@ -342,4 +342,43 @@
   #round7results, #round8results {
     display: none;
   }
+  .maingamespage {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .maingamespage .button {
+    width: 260px;
+    margin: 12px auto;
+    text-align: center;
+    border-color: red;
+    border-width: 1px;
+    border-style: double;
+  }
+  .maingamespage .button a {
+    color: white;
+    text-decoration: none;
+  }
+  .maingamespage a {
+    color: white;
+    text-decoration: none;
+  }
+  .gamelistname {
+    font-size:120%;
+    font-style: italic;
+  }
+  .gamelisttime {
+    font-size: 85%;
+  }
+  .mainpageviewbutton {
+    font-size: 90%;
+    font-weight: 700;
+    background-color: silver;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  #mainvotinggameslist, #mainresultsgameslist {
+    display:none;
+  }
 }
