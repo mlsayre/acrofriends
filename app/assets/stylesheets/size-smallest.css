@@ -381,4 +381,13 @@
   #mainvotinggameslist, #mainresultsgameslist {
     display:none;
   }
+  #lifetimerankings {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid black;
+    padding: 12px;
+    overflow-y: auto;
+  }
 }

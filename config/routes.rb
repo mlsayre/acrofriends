@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :pages do
     collection do
       get 'main' => 'pages#main'
+      get 'rankings' => 'pages#rankings'
     end
   end
 

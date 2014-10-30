@@ -180,6 +180,7 @@ class GamesController < ApplicationController
           @gametotalpoints = @playergamedata.r1points + @playergamedata.r2points +
                              @playergamedata.r3points + @playergamedata.r4points
           @playergamedata.update_attributes(:gamepoints => @gametotalpoints)
+          User.where(:id => playerid).first.increment!(:lifetimepoints, by = @gametotalpoints)
         end
       elsif @game.length == "1hour"
         @gameplayers.each do |playerid|
@@ -189,6 +190,7 @@ class GamesController < ApplicationController
                              @playergamedata.r5points + @playergamedata.r6points +
                              @playergamedata.r7points + @playergamedata.r8points
           @playergamedata.update_attributes(:gamepoints => @gametotalpoints)
+          User.where(:id => playerid).first.increment!(:lifetimepoints, by = @gametotalpoints)
         end
       end
 

@@ -1,0 +1,11 @@
+<% @mainpagetitle="Player Ratings" %>
+<%= render "shared/topbar" %>
+
+<div id="lifetimerankings">
+  <div style="margin-bottom: 6px; text-align: center;"><u>Lifetime Point Leaders</u></div>
+  <% User.order('lifetimepoints DESC').each do |user| %>
+      <li style="list-style-type: decimal;"><%= user.username %> with <%= user.lifetimepoints %> points</li>
+  <% end %>
+</div>
+
+<%= render "shared/bottombar" %>
