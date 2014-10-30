@@ -31,13 +31,6 @@
         </div>
       <% end %>
       <div class="playroundbutton">
-        <% if @gamedata.r1answer %>
-          <%= button_tag "Play Round 1", :class => "r1playbutton" %>
-          <%= button_tag "Play Round 2", :class => "r2playbutton" %>
-        <% else %>
-          <%= button_tag "Play Round 1", :class => "r1playbutton hidden" %>
-          <%= button_tag "Play Round 2", :class => "r2playbutton hidden" %>
-        <% end %>
         <% if @gamedata.r1answer && @gamedata.r2answer %>
           <%= button_tag "Play Round 3", :class => "r3playbutton" %>
         <% else %>
@@ -48,6 +41,15 @@
         <% else %>
           <%= button_tag "Play Round 4", :class => "r4playbutton hidden" %>
         <% end %>
+        <div>
+          <% if @gamedata.r1answer %>
+            <%= button_tag "Play Round 1", :class => "r1playbutton" %>
+            <%= button_tag "Play Round 2", :class => "r2playbutton" %><br>
+          <% else %>
+            <%= button_tag "Play Round 1", :class => "r1playbutton hidden" %>
+            <%= button_tag "Play Round 2", :class => "r2playbutton hidden" %><br>
+          <% end %>
+        </div>
       </div>
     </div>
 
@@ -82,8 +84,6 @@
         </div>
       <% end %>
       <div class="playroundbutton">
-          <%= button_tag "Play Round 1", :class => "r1playbutton" %>
-          <%= button_tag "Play Round 2", :class => "r2playbutton" %>
         <% if @gamedata.r2answer %>
           <%= button_tag "Play Round 3", :class => "r3playbutton" %>
         <% else %>
@@ -94,6 +94,10 @@
         <% else %>
           <%= button_tag "Play Round 4", :class => "r4playbutton hidden" %>
         <% end %>
+        <div>
+          <%= button_tag "Play Round 1", :class => "r1playbutton" %>
+          <%= button_tag "Play Round 2", :class => "r2playbutton" %>
+        </div>
       </div>
     </div>
 
@@ -128,14 +132,16 @@
         </div>
       <% end %>
       <div class="playroundbutton">
-          <%= button_tag "Play Round 1", :class => "r1playbutton" %>
-          <%= button_tag "Play Round 2", :class => "r2playbutton" %>
-          <%= button_tag "Play Round 3", :class => "r3playbutton" %>
+        <%= button_tag "Play Round 3", :class => "r3playbutton" %>
         <% if @gamedata.r3answer %>
           <%= button_tag "Play Round 4", :class => "r4playbutton" %>
         <% else %>
           <%= button_tag "Play Round 4", :class => "r4playbutton hidden" %>
         <% end %>
+        <div>
+          <%= button_tag "Play Round 1", :class => "r1playbutton" %>
+          <%= button_tag "Play Round 2", :class => "r2playbutton" %>
+        </div>
       </div>
     </div>
 
@@ -170,10 +176,12 @@
         </div>
       <% end %>
       <div class="playroundbutton">
+        <%= button_tag "Play Round 3", :class => "r3playbutton" %>
+        <%= button_tag "Play Round 4", :class => "r4playbutton" %>
+        <div>
           <%= button_tag "Play Round 1", :class => "r1playbutton" %>
           <%= button_tag "Play Round 2", :class => "r2playbutton" %>
-          <%= button_tag "Play Round 3", :class => "r3playbutton" %>
-          <%= button_tag "Play Round 4", :class => "r4playbutton" %>
+        </div>
       </div>
     </div>
     <span class="timeremaining">Time left to play: <%= @timeremaining %>.<br></span>

@@ -31,33 +31,6 @@
         </div>
       <% end %>
       <div class="playlongroundbutton">
-        <% if @gamedata.r1answer %>
-          <%= button_tag "Rnd 1", :class => "r1playbutton" %>
-          <%= button_tag "Rnd 2", :class => "r2playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 1", :class => "r1playbutton hidden" %>
-          <%= button_tag "Rnd 2", :class => "r2playbutton hidden" %>
-        <% end %>
-        <% if @gamedata.r2answer %>
-          <%= button_tag "Rnd 3", :class => "r3playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 3", :class => "r3playbutton hidden" %>
-        <% end %>
-        <% if @gamedata.r3answer %>
-          <%= button_tag "Rnd 4", :class => "r4playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 4", :class => "r4playbutton hidden" %>
-        <% end %>
-        <% if @gamedata.r4answer %>
-          <%= button_tag "Rnd 5", :class => "r5playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 5", :class => "r5playbutton hidden" %>
-        <% end %>
-        <% if @gamedata.r5answer %>
-          <%= button_tag "Rnd 6", :class => "r6playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 6", :class => "r6playbutton hidden" %>
-        <% end %>
         <% if @gamedata.r6answer %>
           <%= button_tag "Rnd 7", :class => "r7playbutton" %>
         <% else %>
@@ -68,6 +41,39 @@
         <% else %>
           <%= button_tag "Rnd 8", :class => "r8playbutton hidden" %>
         <% end %>
+        <div>
+          <% if @gamedata.r3answer %>
+            <%= button_tag "Rnd 4", :class => "r4playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 4", :class => "r4playbutton hidden" %>
+          <% end %>
+          <% if @gamedata.r4answer %>
+            <%= button_tag "Rnd 5", :class => "r5playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 5", :class => "r5playbutton hidden" %>
+          <% end %>
+          <% if @gamedata.r5answer %>
+            <%= button_tag "Rnd 6", :class => "r6playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 6", :class => "r6playbutton hidden" %>
+          <% end %>
+        </div>
+        <div>
+          <% if @gamedata.r1answer %>
+            <%= button_tag "Rnd 1", :class => "r1playbutton" %>
+            <%= button_tag "Rnd 2", :class => "r2playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 1", :class => "r1playbutton hidden" %>
+            <%= button_tag "Rnd 2", :class => "r2playbutton hidden" %>
+          <% end %>
+          <% if @gamedata.r2answer %>
+            <%= button_tag "Rnd 3", :class => "r3playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 3", :class => "r3playbutton hidden" %>
+          <% end %>
+        </div>
+
+
       </div>
     </div>
 
@@ -103,28 +109,6 @@
         </div>
       <% end %>
       <div class="playlongroundbutton">
-        <%= button_tag "Rnd 1", :class => "r1playbutton" %>
-        <%= button_tag "Rnd 2", :class => "r2playbutton" %>
-        <% if @gamedata.r2answer %>
-          <%= button_tag "Rnd 3", :class => "r3playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 3", :class => "r3playbutton hidden" %>
-        <% end %>
-        <% if @gamedata.r3answer %>
-          <%= button_tag "Rnd 4", :class => "r4playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 4", :class => "r4playbutton hidden" %>
-        <% end %>
-        <% if @gamedata.r4answer %>
-          <%= button_tag "Rnd 5", :class => "r5playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 5", :class => "r5playbutton hidden" %>
-        <% end %>
-        <% if @gamedata.r5answer %>
-          <%= button_tag "Rnd 6", :class => "r6playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 6", :class => "r6playbutton hidden" %>
-        <% end %>
         <% if @gamedata.r6answer %>
           <%= button_tag "Rnd 7", :class => "r7playbutton" %>
         <% else %>
@@ -135,6 +119,32 @@
         <% else %>
           <%= button_tag "Rnd 8", :class => "r8playbutton hidden" %>
         <% end %>
+        <div>
+          <% if @gamedata.r3answer %>
+            <%= button_tag "Rnd 4", :class => "r4playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 4", :class => "r4playbutton hidden" %>
+          <% end %>
+          <% if @gamedata.r4answer %>
+            <%= button_tag "Rnd 5", :class => "r5playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 5", :class => "r5playbutton hidden" %>
+          <% end %>
+          <% if @gamedata.r5answer %>
+            <%= button_tag "Rnd 6", :class => "r6playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 6", :class => "r6playbutton hidden" %>
+          <% end %>
+        </div>
+        <div>
+          <%= button_tag "Rnd 1", :class => "r1playbutton" %>
+          <%= button_tag "Rnd 2", :class => "r2playbutton" %>
+          <% if @gamedata.r2answer %>
+            <%= button_tag "Rnd 3", :class => "r3playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 3", :class => "r3playbutton hidden" %>
+          <% end %>
+        </div>
       </div>
     </div>
 
@@ -170,24 +180,6 @@
         </div>
       <% end %>
       <div class="playlongroundbutton">
-        <%= button_tag "Rnd 1", :class => "r1playbutton" %>
-        <%= button_tag "Rnd 2", :class => "r2playbutton" %>
-        <%= button_tag "Rnd 3", :class => "r3playbutton" %>
-        <% if @gamedata.r3answer %>
-          <%= button_tag "Rnd 4", :class => "r4playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 4", :class => "r4playbutton hidden" %>
-        <% end %>
-        <% if @gamedata.r4answer %>
-          <%= button_tag "Rnd 5", :class => "r5playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 5", :class => "r5playbutton hidden" %>
-        <% end %>
-        <% if @gamedata.r5answer %>
-          <%= button_tag "Rnd 6", :class => "r6playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 6", :class => "r6playbutton hidden" %>
-        <% end %>
         <% if @gamedata.r6answer %>
           <%= button_tag "Rnd 7", :class => "r7playbutton" %>
         <% else %>
@@ -198,6 +190,30 @@
         <% else %>
           <%= button_tag "Rnd 8", :class => "r8playbutton hidden" %>
         <% end %>
+        <div>
+          <% if @gamedata.r3answer %>
+            <%= button_tag "Rnd 4", :class => "r4playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 4", :class => "r4playbutton hidden" %>
+          <% end %>
+          <% if @gamedata.r4answer %>
+            <%= button_tag "Rnd 5", :class => "r5playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 5", :class => "r5playbutton hidden" %>
+          <% end %>
+          <% if @gamedata.r5answer %>
+            <%= button_tag "Rnd 6", :class => "r6playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 6", :class => "r6playbutton hidden" %>
+          <% end %>
+        </div>
+        <div>
+          <%= button_tag "Rnd 1", :class => "r1playbutton" %>
+          <%= button_tag "Rnd 2", :class => "r2playbutton" %>
+          <%= button_tag "Rnd 3", :class => "r3playbutton" %>
+        </div>
+
+
       </div>
     </div>
 
@@ -233,20 +249,6 @@
         </div>
       <% end %>
       <div class="playlongroundbutton">
-        <%= button_tag "Rnd 1", :class => "r1playbutton" %>
-        <%= button_tag "Rnd 2", :class => "r2playbutton" %>
-        <%= button_tag "Rnd 3", :class => "r3playbutton" %>
-        <%= button_tag "Rnd 4", :class => "r4playbutton" %>
-        <% if @gamedata.r4answer %>
-          <%= button_tag "Rnd 5", :class => "r5playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 5", :class => "r5playbutton hidden" %>
-        <% end %>
-        <% if @gamedata.r5answer %>
-          <%= button_tag "Rnd 6", :class => "r6playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 6", :class => "r6playbutton hidden" %>
-        <% end %>
         <% if @gamedata.r6answer %>
           <%= button_tag "Rnd 7", :class => "r7playbutton" %>
         <% else %>
@@ -257,6 +259,24 @@
         <% else %>
           <%= button_tag "Rnd 8", :class => "r8playbutton hidden" %>
         <% end %>
+        <div>
+          <%= button_tag "Rnd 4", :class => "r4playbutton" %>
+          <% if @gamedata.r4answer %>
+            <%= button_tag "Rnd 5", :class => "r5playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 5", :class => "r5playbutton hidden" %>
+          <% end %>
+          <% if @gamedata.r5answer %>
+            <%= button_tag "Rnd 6", :class => "r6playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 6", :class => "r6playbutton hidden" %>
+          <% end %>
+        </div>
+        <div>
+          <%= button_tag "Rnd 1", :class => "r1playbutton" %>
+          <%= button_tag "Rnd 2", :class => "r2playbutton" %>
+          <%= button_tag "Rnd 3", :class => "r3playbutton" %>
+        </div>
       </div>
     </div>
 
@@ -292,16 +312,6 @@
         </div>
       <% end %>
       <div class="playlongroundbutton">
-        <%= button_tag "Rnd 1", :class => "r1playbutton" %>
-        <%= button_tag "Rnd 2", :class => "r2playbutton" %>
-        <%= button_tag "Rnd 3", :class => "r3playbutton" %>
-        <%= button_tag "Rnd 4", :class => "r4playbutton" %>
-        <%= button_tag "Rnd 5", :class => "r5playbutton" %>
-        <% if @gamedata.r5answer %>
-          <%= button_tag "Rnd 6", :class => "r6playbutton" %>
-        <% else %>
-          <%= button_tag "Rnd 6", :class => "r6playbutton hidden" %>
-        <% end %>
         <% if @gamedata.r6answer %>
           <%= button_tag "Rnd 7", :class => "r7playbutton" %>
         <% else %>
@@ -312,6 +322,20 @@
         <% else %>
           <%= button_tag "Rnd 8", :class => "r8playbutton hidden" %>
         <% end %>
+        <div>
+          <%= button_tag "Rnd 4", :class => "r4playbutton" %>
+          <%= button_tag "Rnd 5", :class => "r5playbutton" %>
+          <% if @gamedata.r5answer %>
+            <%= button_tag "Rnd 6", :class => "r6playbutton" %>
+          <% else %>
+            <%= button_tag "Rnd 6", :class => "r6playbutton hidden" %>
+          <% end %>
+        </div>
+        <div>
+          <%= button_tag "Rnd 1", :class => "r1playbutton" %>
+          <%= button_tag "Rnd 2", :class => "r2playbutton" %>
+          <%= button_tag "Rnd 3", :class => "r3playbutton" %>
+        </div>
       </div>
     </div>
 
@@ -347,12 +371,6 @@
         </div>
       <% end %>
       <div class="playlongroundbutton">
-        <%= button_tag "Rnd 1", :class => "r1playbutton" %>
-        <%= button_tag "Rnd 2", :class => "r2playbutton" %>
-        <%= button_tag "Rnd 3", :class => "r3playbutton" %>
-        <%= button_tag "Rnd 4", :class => "r4playbutton" %>
-        <%= button_tag "Rnd 5", :class => "r5playbutton" %>
-        <%= button_tag "Rnd 6", :class => "r6playbutton" %>
         <% if @gamedata.r6answer %>
           <%= button_tag "Rnd 7", :class => "r7playbutton" %>
         <% else %>
@@ -363,6 +381,16 @@
         <% else %>
           <%= button_tag "Rnd 8", :class => "r8playbutton hidden" %>
         <% end %>
+        <div>
+          <%= button_tag "Rnd 4", :class => "r4playbutton" %>
+          <%= button_tag "Rnd 5", :class => "r5playbutton" %>
+          <%= button_tag "Rnd 6", :class => "r6playbutton" %>
+        </div>
+        <div>
+          <%= button_tag "Rnd 1", :class => "r1playbutton" %>
+          <%= button_tag "Rnd 2", :class => "r2playbutton" %>
+          <%= button_tag "Rnd 3", :class => "r3playbutton" %>
+        </div>
       </div>
     </div>
 
@@ -398,18 +426,22 @@
         </div>
       <% end %>
       <div class="playlongroundbutton">
-        <%= button_tag "Rnd 1", :class => "r1playbutton" %>
-        <%= button_tag "Rnd 2", :class => "r2playbutton" %>
-        <%= button_tag "Rnd 3", :class => "r3playbutton" %>
-        <%= button_tag "Rnd 4", :class => "r4playbutton" %>
-        <%= button_tag "Rnd 5", :class => "r5playbutton" %>
-        <%= button_tag "Rnd 6", :class => "r6playbutton" %>
         <%= button_tag "Rnd 7", :class => "r7playbutton" %>
         <% if @gamedata.r7answer %>
           <%= button_tag "Rnd 8", :class => "r8playbutton" %>
         <% else %>
           <%= button_tag "Rnd 8", :class => "r8playbutton hidden" %>
         <% end %>
+        <div>
+          <%= button_tag "Rnd 4", :class => "r4playbutton" %>
+          <%= button_tag "Rnd 5", :class => "r5playbutton" %>
+          <%= button_tag "Rnd 6", :class => "r6playbutton" %>
+        </div>
+        <div>
+          <%= button_tag "Rnd 1", :class => "r1playbutton" %>
+          <%= button_tag "Rnd 2", :class => "r2playbutton" %>
+          <%= button_tag "Rnd 3", :class => "r3playbutton" %>
+        </div>
       </div>
     </div>
 
@@ -445,14 +477,18 @@
         </div>
       <% end %>
       <div class="playlongroundbutton">
-        <%= button_tag "Rnd 1", :class => "r1playbutton" %>
-        <%= button_tag "Rnd 2", :class => "r2playbutton" %>
-        <%= button_tag "Rnd 3", :class => "r3playbutton" %>
-        <%= button_tag "Rnd 4", :class => "r4playbutton" %>
-        <%= button_tag "Rnd 5", :class => "r5playbutton" %>
-        <%= button_tag "Rnd 6", :class => "r6playbutton" %>
         <%= button_tag "Rnd 7", :class => "r7playbutton" %>
         <%= button_tag "Rnd 8", :class => "r8playbutton" %>
+        <div>
+          <%= button_tag "Rnd 4", :class => "r4playbutton" %>
+          <%= button_tag "Rnd 5", :class => "r5playbutton" %>
+          <%= button_tag "Rnd 6", :class => "r6playbutton" %>
+        </div>
+        <div>
+          <%= button_tag "Rnd 1", :class => "r1playbutton" %>
+          <%= button_tag "Rnd 2", :class => "r2playbutton" %>
+          <%= button_tag "Rnd 3", :class => "r3playbutton" %>
+        </div>
       </div>
     </div>
 
