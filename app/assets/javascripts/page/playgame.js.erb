@@ -22,42 +22,39 @@ function removeButtonAnims() {
   $(".r7playbutton").removeClass("animated flip");
   $(".r8playbutton").removeClass("animated flip");
   $(".allanswered").removeClass("animated bounce");
+  $(".r2playbutton").text("Round 2");
+  $(".r3playbutton").text("Round 3");
+  $(".r4playbutton").text("Round 4");
+  $(".r5playbutton").text("Round 5");
+  $(".r6playbutton").text("Round 6");
+  $(".r7playbutton").text("Round 7");
+  $(".r8playbutton").text("Round 8");
+  $(".r1playbutton").removeClass("smallerbutton", 600, "easeInBack" );
+  $(".r2playbutton").removeClass("smallerbutton", 600, "easeInBack" );
+  $(".r3playbutton").removeClass("smallerbutton", 600, "easeInBack" );
+  $(".r4playbutton").removeClass("smallerbutton", 600, "easeInBack" );
+  $(".r5playbutton").removeClass("smallerbutton", 600, "easeInBack" );
+  $(".r6playbutton").removeClass("smallerbutton", 600, "easeInBack" );
+  $(".r7playbutton").removeClass("smallerbutton", 600, "easeInBack" );
+  $(".r8playbutton").removeClass("smallerbutton", 600, "easeInBack" );
 }
 
 $(".r1playbutton").click(function () {
   removeButtonAnims();
   $("#r1play").show();
-  $("#r2play").hide();
-  $("#r3play").hide();
-  $("#r4play").hide();
-  $("#r5play").hide();
-  $("#r6play").hide();
-  $("#r7play").hide();
-  $("#r8play").hide();
+  $("#r1play").siblings().hide();
   refreshTimeRemaining();
 });
 $(".r2playbutton").click(function () {
   removeButtonAnims();
-  $("#r1play").hide();
   $("#r2play").show();
-  $("#r3play").hide();
-  $("#r4play").hide();
-  $("#r5play").hide();
-  $("#r6play").hide();
-  $("#r7play").hide();
-  $("#r8play").hide();
+  $("#r2play").siblings().hide();
   refreshTimeRemaining();
 });
 $(".r3playbutton").click(function () {
   removeButtonAnims();
-  $("#r1play").hide();
-  $("#r2play").hide();
   $("#r3play").show();
-  $("#r4play").hide();
-  $("#r5play").hide();
-  $("#r6play").hide();
-  $("#r7play").hide();
-  $("#r8play").hide();
+  $("#r3play").siblings().hide();
   refreshTimeRemaining();
 });
 $(".r4playbutton").click(function () {

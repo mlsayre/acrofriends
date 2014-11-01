@@ -222,6 +222,14 @@
     width: 300px;
     margin: 0 auto;
   }
+  .playlongroundbutton {
+    width: 340px;
+    margin: 0 auto;
+  }
+  .smallerbutton {
+    font-size: 75%;
+    padding: 8px;
+  }
   .roundtitle {
     text-decoration: underline;
     font-size: 190%;

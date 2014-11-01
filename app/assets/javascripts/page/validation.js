@@ -10,18 +10,50 @@ function submitAnswerFX(answerid, submission) {
       $(".r2playbutton").addClass("animated flip");
       $(".r1playbutton").removeClass("hidden");
       $(".r2playbutton").removeClass("hidden");
+      $(".r2playbutton").text("Next Round");
+      $(".r1playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r3playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r4playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r5playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r6playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r7playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r8playbutton").addClass("smallerbutton", 600, "easeInBack" );
     }
     else if (answerid == "#r2answered") {
       $(".r3playbutton").addClass("animated flip");
       $(".r3playbutton").removeClass("hidden");
+      $(".r3playbutton").text("Next Round");
+      $(".r1playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r2playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r4playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r5playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r6playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r7playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r8playbutton").addClass("smallerbutton", 600, "easeInBack" );
     }
     else if (answerid == "#r3answered") {
       $(".r4playbutton").removeClass("hidden");
       $(".r4playbutton").addClass("animated flip");
+      $(".r4playbutton").text("Next Round");
+      $(".r1playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r2playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r3playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r5playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r6playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r7playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r8playbutton").addClass("smallerbutton", 600, "easeInBack" );
     }
     else if (answerid == "#r4answered") {
       $(".r5playbutton").removeClass("hidden");
       $(".r5playbutton").addClass("animated flip");
+      $(".r5playbutton").text("Next Round");
+      $(".r1playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r2playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r3playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r4playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r6playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r7playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r8playbutton").addClass("smallerbutton", 600, "easeInBack" );
     }
     else if (answerid == "#r4answeredshortgame") {
       $(".allanswered").removeClass("hidden");
@@ -30,14 +62,38 @@ function submitAnswerFX(answerid, submission) {
     else if (answerid == "#r5answered") {
       $(".r6playbutton").removeClass("hidden");
       $(".r6playbutton").addClass("animated flip");
+      $(".r6playbutton").text("Next Round");
+      $(".r1playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r2playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r3playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r4playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r5playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r7playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r8playbutton").addClass("smallerbutton", 600, "easeInBack" );
     }
     else if (answerid == "#r6answered") {
       $(".r7playbutton").removeClass("hidden");
       $(".r7playbutton").addClass("animated flip");
+      $(".r7playbutton").text("Next Round");
+      $(".r1playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r2playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r3playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r4playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r5playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r6playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r8playbutton").addClass("smallerbutton", 600, "easeInBack" );
     }
     else if (answerid == "#r7answered") {
       $(".r8playbutton").removeClass("hidden");
       $(".r8playbutton").addClass("animated flip");
+      $(".r8playbutton").text("Next Round");
+      $(".r1playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r2playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r3playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r4playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r5playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r6playbutton").addClass("smallerbutton", 600, "easeInBack" );
+      $(".r7playbutton").addClass("smallerbutton", 600, "easeInBack" );
     }
     else if (answerid == "#r8answered") {
       $(".allanswered").removeClass("hidden");
