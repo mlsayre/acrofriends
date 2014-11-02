@@ -225,14 +225,19 @@
     text-align: center;
   }
   .playroundbutton {
-    width: 300px;
     margin: 0 auto;
+  }
+  .playlongroundbutton button {
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
   .playlongroundbutton {
     margin: 0 auto;
   }
   .smallerbutton {
-    font-size: 75%;
+    font-size: 70%;
     padding: 8px;
   }
   .roundtitle {
