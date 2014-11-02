@@ -11,6 +11,7 @@ function refreshTimeRemaining() {
   var pathname = window.location.pathname;
   $(".timeremaining").load(pathname + " .timeremaining");
 }
+setInterval(refreshTimeRemaining, 180000);
 
 function removeButtonAnims() {
   $(".r1playbutton").removeClass("animated flip smallerbutton");
@@ -34,20 +35,35 @@ function removeButtonAnims() {
 $(".r1playbutton").click(function () {
   removeButtonAnims();
   $("#r1play").show();
-  $("#r1play").siblings().hide();
-  refreshTimeRemaining();
+  $("#r2play").hide();
+  $("#r3play").hide();
+  $("#r4play").hide();
+  $("#r5play").hide();
+  $("#r6play").hide();
+  $("#r7play").hide();
+  $("#r8play").hide();
 });
 $(".r2playbutton").click(function () {
   removeButtonAnims();
   $("#r2play").show();
-  $("#r2play").siblings().hide();
-  refreshTimeRemaining();
+  $("#r1play").hide();
+  $("#r3play").hide();
+  $("#r4play").hide();
+  $("#r5play").hide();
+  $("#r6play").hide();
+  $("#r7play").hide();
+  $("#r8play").hide();
 });
 $(".r3playbutton").click(function () {
   removeButtonAnims();
   $("#r3play").show();
-  $("#r3play").siblings().hide();
-  refreshTimeRemaining();
+  $("#r1play").hide();
+  $("#r2play").hide();
+  $("#r4play").hide();
+  $("#r5play").hide();
+  $("#r6play").hide();
+  $("#r7play").hide();
+  $("#r8play").hide();
 });
 $(".r4playbutton").click(function () {
   removeButtonAnims();
@@ -59,7 +75,6 @@ $(".r4playbutton").click(function () {
   $("#r6play").hide();
   $("#r7play").hide();
   $("#r8play").hide();
-  refreshTimeRemaining();
 });
 $(".r5playbutton").click(function () {
   removeButtonAnims();
@@ -71,7 +86,6 @@ $(".r5playbutton").click(function () {
   $("#r6play").hide();
   $("#r7play").hide();
   $("#r8play").hide();
-  refreshTimeRemaining();
 });
 $(".r6playbutton").click(function () {
   removeButtonAnims();
@@ -83,7 +97,6 @@ $(".r6playbutton").click(function () {
   $("#r6play").show();
   $("#r7play").hide();
   $("#r8play").hide();
-  refreshTimeRemaining();
 });
 $(".r7playbutton").click(function () {
   removeButtonAnims();
@@ -95,7 +108,6 @@ $(".r7playbutton").click(function () {
   $("#r6play").hide();
   $("#r7play").show();
   $("#r8play").hide();
-  refreshTimeRemaining();
 });
 $(".r8playbutton").click(function () {
   removeButtonAnims();
@@ -107,7 +119,6 @@ $(".r8playbutton").click(function () {
   $("#r6play").hide();
   $("#r7play").hide();
   $("#r8play").show();
-  refreshTimeRemaining();
 });
 
 // validation
@@ -127,13 +138,11 @@ $("#r3answerform").submit(function() {
 });
 
 $("#r4answerformshortgame").submit(function() {
-  refreshTimeRemaining();
   var letters = $("#round4letters").text()
   return acroValidate(letters, "#r4answeredshortgame", "r4answerform", "r4answerfield");
 });
 
 $("#r4answerform").submit(function() {
-  refreshTimeRemaining();
   var letters = $("#round4letters").text()
   return acroValidate(letters, "#r4answered", "r4answerform", "r4answerfield");
 });
@@ -154,7 +163,6 @@ $("#r7answerform").submit(function() {
 });
 
 $("#r8answerform").submit(function() {
-  refreshTimeRemaining();
   var letters = $("#round8letters").text()
   return acroValidate(letters, "#r8answered", "r8answerform", "r8answerfield");
 });
