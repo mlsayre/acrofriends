@@ -15,7 +15,7 @@
         (Category: <span class="gamecategories"><%= @game.r1cat %></span>)<br>
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r1answer %>
-            <div id="votebutton1div">
+            <div class="votebutton1div">
               <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round1", :game_id => @game.id, :r1voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"
@@ -41,7 +41,7 @@
         (Category: <span class="gamecategories"><%= @game.r2cat %></span>)<br>
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r2answer %>
-            <div id="votebutton2div">
+            <div class="votebutton2div">
             <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round2", :game_id => @game.id, :r2voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r2answer) %>"
@@ -67,7 +67,7 @@
         (Category: <span class="gamecategories"><%= @game.r3cat %></span>)<br>
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r3answer %>
-            <div id="votebutton3div">
+            <div class="votebutton3div">
             <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round3", :game_id => @game.id, :r3voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r3answer) %>"
@@ -93,7 +93,7 @@
         (Category: <span class="gamecategories"><%= @game.r4cat %></span>)<br>
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r4answer %>
-            <div id="votebutton4div">
+            <div class="votebutton4div">
             <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round4", :game_id => @game.id, :r4voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r4answer) %>"
@@ -119,7 +119,7 @@
         (Category: <span class="gamecategories"><%= @game.r5cat %></span>)<br>
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r5answer %>
-            <div id="votebutton5div">
+            <div class="votebutton5div">
               <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round5", :game_id => @game.id, :r5voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r5answer) %>"
@@ -145,7 +145,7 @@
         (Category: <span class="gamecategories"><%= @game.r6cat %></span>)<br>
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r6answer %>
-            <div id="votebutton6div">
+            <div class="votebutton6div">
             <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round6", :game_id => @game.id, :r6voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r6answer) %>"
@@ -171,7 +171,7 @@
         (Category: <span class="gamecategories"><%= @game.r7cat %></span>)<br>
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r7answer %>
-            <div id="votebutton7div">
+            <div class="votebutton7div">
             <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round7", :game_id => @game.id, :r7voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r7answer) %>"
@@ -197,7 +197,7 @@
         (Category: <span class="gamecategories"><%= @game.r8cat %></span>)<br>
         <% @gameanswers.shuffle.each do |answer| %>
           <% if answer.r8answer %>
-            <div id="votebutton8div">
+            <div class="votebutton8div">
             <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round8", :game_id => @game.id, :r8voted => true}, :class => "votebuttons", remote: true %>
             </div>
             "<%= Obscenity.replacement(:stars).sanitize(answer.r8answer) %>"
