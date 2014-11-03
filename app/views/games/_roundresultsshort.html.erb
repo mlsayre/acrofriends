@@ -68,11 +68,8 @@
               <% end %>
             </td>
             <td>
-              <% if @round1winner.id == User.where(:id => answer.user_id).first.id %>
-                <%= answer.r1points - 3 %>
-              <% elsif @r1winnervoters.include? User.where(:id => answer.user_id).first.id %>
-                <%= answer.r1points - 1 %>
-              <% end %>
+              <%= Gamedata.where(:game_id => @game.id).where(:r1votedfor => answer.user_id)
+                        .collect(&:r1votedfor).count %>
             </td>
             <td>
               <% if @round1winner.id == User.where(:id => answer.user_id).first.id %>
@@ -121,11 +118,8 @@
               <% end %>
             </td>
             <td>
-              <% if @round2winner.id == User.where(:id => answer.user_id).first.id %>
-                <%= answer.r2points - 4 %>
-              <% elsif @r2winnervoters.include? User.where(:id => answer.user_id).first.id %>
-                <%= answer.r2points - 1 %>
-              <% end %>
+              <%= Gamedata.where(:game_id => @game.id).where(:r2votedfor => answer.user_id)
+                        .collect(&:r2votedfor).count %>
             </td>
             <td>
               <% if @round2winner.id == User.where(:id => answer.user_id).first.id %>
@@ -174,11 +168,8 @@
               <% end %>
             </td>
             <td>
-              <% if @round3winner.id == User.where(:id => answer.user_id).first.id %>
-                <%= answer.r3points - 5 %>
-              <% elsif @r3winnervoters.include? User.where(:id => answer.user_id).first.id %>
-                <%= answer.r3points - 1 %>
-              <% end %>
+              <%= Gamedata.where(:game_id => @game.id).where(:r3votedfor => answer.user_id)
+                        .collect(&:r3votedfor).count %>
             </td>
             <td>
               <% if @round3winner.id == User.where(:id => answer.user_id).first.id %>
@@ -227,11 +218,8 @@
               <% end %>
             </td>
             <td>
-              <% if @round4winner.id == User.where(:id => answer.user_id).first.id %>
-                <%= answer.r4points - 6 %>
-              <% elsif @r4winnervoters.include? User.where(:id => answer.user_id).first.id %>
-                <%= answer.r4points - 1 %>
-              <% end %>
+              <%= Gamedata.where(:game_id => @game.id).where(:r4votedfor => answer.user_id)
+                        .collect(&:r4votedfor).count %>
             </td>
             <td>
               <% if @round4winner.id == User.where(:id => answer.user_id).first.id %>
