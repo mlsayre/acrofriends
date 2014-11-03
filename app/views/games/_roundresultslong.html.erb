@@ -75,7 +75,7 @@
           <tr>
             <td><%= n %></td>
             <td><%= User.where(:id => answer.user_id).first.username %>
-              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r1votedfor == 0 %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => answer.user_id).first.r1votedfor == 0 %>
                 <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
               <% end %>
             </td>
@@ -102,6 +102,7 @@
         <% end %>
       </tbody>
     </table>
+    <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span> = non-voter
   </div>
 
   <!-- Round 2 results -->
@@ -127,7 +128,7 @@
           <tr>
             <td><%= n %></td>
             <td><%= User.where(:id => answer.user_id).first.username %>
-              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r2votedfor == 0 %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => answer.user_id).first.r2votedfor == 0 %>
                 <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
               <% end %>
             </td>
@@ -154,6 +155,7 @@
         <% end %>
       </tbody>
     </table>
+    <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span> = non-voter
   </div>
 
   <!-- Round 3 results -->
@@ -179,7 +181,7 @@
           <tr>
             <td><%= n %></td>
             <td><%= User.where(:id => answer.user_id).first.username %>
-              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r3votedfor == 0 %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => answer.user_id).first.r3votedfor == 0 %>
                 <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
               <% end %>
             </td>
@@ -206,6 +208,7 @@
         <% end %>
       </tbody>
     </table>
+    <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span> = non-voter
   </div>
 
   <!-- Round 4 results -->
@@ -231,7 +234,7 @@
           <tr>
             <td><%= n %></td>
             <td><%= User.where(:id => answer.user_id).first.username %>
-              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r4votedfor == 0 %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => answer.user_id).first.r4votedfor == 0 %>
                 <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
               <% end %>
             </td>
@@ -258,6 +261,7 @@
         <% end %>
       </tbody>
     </table>
+    <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span> = non-voter
   </div>
 
   <!-- Round 5 results -->
@@ -283,7 +287,7 @@
           <tr>
             <td><%= n %></td>
             <td><%= User.where(:id => answer.user_id).first.username %>
-              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r5votedfor == 0 %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => answer.user_id).first.r5votedfor == 0 %>
                 <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
               <% end %>
             </td>
@@ -310,6 +314,7 @@
         <% end %>
       </tbody>
     </table>
+    <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span> = non-voter
   </div>
 
   <!-- Round 6 results -->
@@ -335,7 +340,7 @@
           <tr>
             <td><%= n %></td>
             <td><%= User.where(:id => answer.user_id).first.username %>
-              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r6votedfor == 0 %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => answer.user_id).first.r6votedfor == 0 %>
                 <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
               <% end %>
             </td>
@@ -362,6 +367,7 @@
         <% end %>
       </tbody>
     </table>
+    <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span> = non-voter
   </div>
 
   <!-- Round 7 results -->
@@ -387,7 +393,7 @@
           <tr>
             <td><%= n %></td>
             <td><%= User.where(:id => answer.user_id).first.username %>
-              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r7votedfor == 0 %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => answer.user_id).first.r7votedfor == 0 %>
                 <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
               <% end %>
             </td>
@@ -414,6 +420,7 @@
         <% end %>
       </tbody>
     </table>
+    <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span> = non-voter
   </div>
 
   <!-- Round 8 results -->
@@ -439,7 +446,7 @@
           <tr>
             <td><%= n %></td>
             <td><%= User.where(:id => answer.user_id).first.username %>
-              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r8votedfor == 0 %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => answer.user_id).first.r8votedfor == 0 %>
                 <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
               <% end %>
             </td>
@@ -466,6 +473,7 @@
         <% end %>
       </tbody>
     </table>
+    <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span> = non-voter
   </div>
 
 </div>
