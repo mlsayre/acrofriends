@@ -186,4 +186,12 @@
     </div>
     <span class="timeremaining">Time left to play: <%= @timeremaining %>.</span><br>
     # of players: <%= @game.playercount %>/12
+
+    <script>
+      var timeleft = <%= ((@game.playendtime - DateTime.now.utc).round) * 1000 %>
+      function reloadPage() {
+        document.location.reload(true);
+      }
+      setTimeout(reloadPage, timeleft);
+    </script>
   </div>

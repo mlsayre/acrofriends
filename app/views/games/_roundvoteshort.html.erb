@@ -110,4 +110,12 @@
         </div>
       </div>
        Time left to vote: <%= @votetimeremaining %>.
+
+       <script>
+        var timeleft = <%= ((@game.voteendtime - DateTime.now.utc).round) * 1000 %>
+        function reloadPage() {
+          document.location.reload(true);
+        }
+        setTimeout(reloadPage, timeleft);
+      </script>
     </div>
