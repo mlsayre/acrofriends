@@ -302,7 +302,11 @@ class GamesController < ApplicationController
   # POST /games
   # POST /games.json
   def create
-    usergames = Gamedata.where('user_id = ?', current_user.id).all.collect(&:game_id)
+    if Gamedata.where('user_id = ?', current_user.id).all.collect(&:game_id) == []
+      usergames = [1, 2]
+    else
+      usergames = Gamedata.where('user_id = ?', current_user.id).all.collect(&:game_id)
+    end
     if (params[:game][:length]) == "1hour" &&
       Game.where('length = ? AND playercount < ? AND playendtime > ?
          AND group_id = ? AND not id IN (?)',
