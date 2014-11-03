@@ -188,7 +188,7 @@
     # of players: <%= @game.playercount %>/12
 
     <script>
-      var timeleft = <%= ((@game.playendtime - DateTime.now.utc).round) * 1000 %>
+      var timeleft = <%= (((@game.playendtime - DateTime.now.utc).round) * 1000) + 1500 %>
       function reloadPage() {
         document.location.reload(true);
       }

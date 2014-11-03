@@ -74,7 +74,11 @@
         <% Gamedata.where(:game_id => @game.id).order('r1points DESC').zip(@ranknumbers).each do |answer, n| %>
           <tr>
             <td><%= n %></td>
-            <td><%= User.where(:id => answer.user_id).first.username %></td>
+            <td><%= User.where(:id => answer.user_id).first.username %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r1votedfor == 0 %>
+                <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
+              <% end %>
+            </td>
             <td>
               <% if @round1winner.id == User.where(:id => answer.user_id).first.id %>
                 <%= answer.r1points - 3 %>
@@ -122,7 +126,11 @@
         <% Gamedata.where(:game_id => @game.id).order('r2points DESC').zip(@ranknumbers).each do |answer, n| %>
           <tr>
             <td><%= n %></td>
-            <td><%= User.where(:id => answer.user_id).first.username %></td>
+            <td><%= User.where(:id => answer.user_id).first.username %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r2votedfor == 0 %>
+                <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
+              <% end %>
+            </td>
             <td>
               <% if @round2winner.id == User.where(:id => answer.user_id).first.id %>
                 <%= answer.r2points - 4 %>
@@ -170,7 +178,11 @@
         <% Gamedata.where(:game_id => @game.id).order('r3points DESC').zip(@ranknumbers).each do |answer, n| %>
           <tr>
             <td><%= n %></td>
-            <td><%= User.where(:id => answer.user_id).first.username %></td>
+            <td><%= User.where(:id => answer.user_id).first.username %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r3votedfor == 0 %>
+                <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
+              <% end %>
+            </td>
             <td>
               <% if @round3winner.id == User.where(:id => answer.user_id).first.id %>
                 <%= answer.r3points - 5 %>
@@ -218,7 +230,11 @@
         <% Gamedata.where(:game_id => @game.id).order('r4points DESC').zip(@ranknumbers).each do |answer, n| %>
           <tr>
             <td><%= n %></td>
-            <td><%= User.where(:id => answer.user_id).first.username %></td>
+            <td><%= User.where(:id => answer.user_id).first.username %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r4votedfor == 0 %>
+                <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
+              <% end %>
+            </td>
             <td>
               <% if @round4winner.id == User.where(:id => answer.user_id).first.id %>
                 <%= answer.r4points - 6 %>
@@ -266,7 +282,11 @@
         <% Gamedata.where(:game_id => @game.id).order('r5points DESC').zip(@ranknumbers).each do |answer, n| %>
           <tr>
             <td><%= n %></td>
-            <td><%= User.where(:id => answer.user_id).first.username %></td>
+            <td><%= User.where(:id => answer.user_id).first.username %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r5votedfor == 0 %>
+                <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
+              <% end %>
+            </td>
             <td>
               <% if @round5winner.id == User.where(:id => answer.user_id).first.id %>
                 <%= answer.r5points - 3 %>
@@ -314,7 +334,11 @@
         <% Gamedata.where(:game_id => @game.id).order('r6points DESC').zip(@ranknumbers).each do |answer, n| %>
           <tr>
             <td><%= n %></td>
-            <td><%= User.where(:id => answer.user_id).first.username %></td>
+            <td><%= User.where(:id => answer.user_id).first.username %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r6votedfor == 0 %>
+                <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
+              <% end %>
+            </td>
             <td>
               <% if @round6winner.id == User.where(:id => answer.user_id).first.id %>
                 <%= answer.r6points - 4 %>
@@ -362,7 +386,11 @@
         <% Gamedata.where(:game_id => @game.id).order('r7points DESC').zip(@ranknumbers).each do |answer, n| %>
           <tr>
             <td><%= n %></td>
-            <td><%= User.where(:id => answer.user_id).first.username %></td>
+            <td><%= User.where(:id => answer.user_id).first.username %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r7votedfor == 0 %>
+                <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
+              <% end %>
+            </td>
             <td>
               <% if @round7winner.id == User.where(:id => answer.user_id).first.id %>
                 <%= answer.r7points - 5 %>
@@ -410,7 +438,11 @@
         <% Gamedata.where(:game_id => @game.id).order('r8points DESC').zip(@ranknumbers).each do |answer, n| %>
           <tr>
             <td><%= n %></td>
-            <td><%= User.where(:id => answer.user_id).first.username %></td>
+            <td><%= User.where(:id => answer.user_id).first.username %>
+              <% if Gamedata.where(:game_id => @game.id).where(:user_id => user_id).first.r8votedfor == 0 %>
+                <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span>
+              <% end %>
+            </td>
             <td>
               <% if @round8winner.id == User.where(:id => answer.user_id).first.id %>
                 <%= answer.r8points - 6 %>

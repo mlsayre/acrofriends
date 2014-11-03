@@ -360,6 +360,10 @@
   #round7results, #round8results {
     display: none;
   }
+  .novotefrown img {
+    width: 20px;
+    height: 20px;
+  }
   .maingamespage {
     width: 90%;
     margin: 0 auto;
