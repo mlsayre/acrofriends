@@ -284,9 +284,8 @@ class GamesController < ApplicationController
         @round8winner = User.where(:id => @round8winnerid).first
       end
 
-      @ranknumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-
     end
+    @ranknumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
   end
 
