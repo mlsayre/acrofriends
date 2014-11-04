@@ -81,7 +81,12 @@
               +1
               <% end %>
             </td>
-            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"</td>
+            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"
+              <% if @round1winner.id == current_user.id && @round1winner.id == answer.user_id %>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://acrofriends.com" data-text='My winning acro! <%= @currentusergame.r1letters %>: "<%= @currentusergamedata.r1answer %>" (<%= @currentusergame.r1cat %>) Come play!' data-via="AcroParty" data-count="none">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+              <% end %>
+            </td>
             <td><%= answer.r1points %></td>
           </tr>
         <% end %>
