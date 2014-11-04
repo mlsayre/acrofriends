@@ -136,7 +136,12 @@
               +1
               <% end %>
             </td>
-            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r2answer) %>"</td>
+            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r2answer) %>"
+              <% if @round2winner.id == current_user.id && @round2winner.id == answer.user_id %>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://acrofriends.com" data-text='My winning acro! <%= @currentusergame.r2letters %>: "<%= @currentusergamedata.r2answer %>" (<%= @currentusergame.r2cat %>) Come play!' data-via="AcroParty" data-count="none">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+              <% end %>
+            </td>
             <td><%= answer.r2points %></td>
           </tr>
         <% end %>
@@ -186,7 +191,12 @@
               +1
               <% end %>
             </td>
-            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r3answer) %>"</td>
+            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r3answer) %>"
+              <% if @round3winner.id == current_user.id && @round3winner.id == answer.user_id %>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://acrofriends.com" data-text='My winning acro! <%= @currentusergame.r3letters %>: "<%= @currentusergamedata.r3answer %>" (<%= @currentusergame.r3cat %>) Come play!' data-via="AcroParty" data-count="none">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+              <% end %>
+            </td>
             <td><%= answer.r3points %></td>
           </tr>
         <% end %>
@@ -236,7 +246,12 @@
               +1
               <% end %>
             </td>
-            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r4answer) %>"</td>
+            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r4answer) %>"
+              <% if @round4winner.id == current_user.id && @round4winner.id == answer.user_id %>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://acrofriends.com" data-text='My winning acro! <%= @currentusergame.r4letters %>: "<%= @currentusergamedata.r4answer %>" (<%= @currentusergame.r4cat %>) Come play!' data-via="AcroParty" data-count="none">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+              <% end %>
+            </td>
             <td><%= answer.r4points %></td>
           </tr>
         <% end %>
