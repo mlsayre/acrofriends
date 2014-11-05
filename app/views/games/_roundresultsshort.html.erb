@@ -259,7 +259,13 @@
     </table>
     <span class="novotefrown"><%= image_tag("emoji/anguished.png") %></span> = non-voter
   </div>
-
+</div>
+<div class="chatbutton">
+  <%= link_to(gamechat_games_path(@game)) do %>
+    <div class="gamechat button">
+      <span><%= image_tag("emoji/smiley.png", :class => "smallspeechimage") + 'Game chat' + image_tag("emoji/speech_balloon.png", :class => "smallspeechimage") %></span><br>
+    </div>
+  <% end %>
 </div>
 
 

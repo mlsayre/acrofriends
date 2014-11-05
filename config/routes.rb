@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+  resources :gamechats
   resources :games
+  resources :games do
+    collection do
+      get '/:id/gamechat' => 'games#gamechat', as: :gamechat
+    end
+  end
 
   resources :memberships
   resources :gamedata do

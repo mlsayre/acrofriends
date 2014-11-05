@@ -283,6 +283,36 @@
     padding-left: 12px;
     padding-right: 12px;
   }
+  .gamechat.button {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    padding: 9px 20px;
+    background: #ff3100;
+    border: 1px solid brown;
+  }
+  .smallspeechimage {
+    width: 24px;
+    margin: -5px 10px -7px 10px;
+  }
+  .gamechat.button a img:hover {
+    background: #008cba;
+  }
+  .gamechat.button a {
+    color: white;
+    text-decoration: none;
+  }
+  .chatplayerlist {
+    width: 320px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .chatbutton a {
+    text-decoration: none;
+  }
+  .chatbutton a img:hover {
+    background: #008cba;
+  }
   #voterounds {
     width: 90%;
     margin: 0 auto;

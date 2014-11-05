@@ -292,6 +292,16 @@ class GamesController < ApplicationController
 
   end
 
+  def gamechat
+    @game = Game.find(params[:id])
+    @gamechat = Gamechat.where('game_id = ?', @game.id)
+    @players = Gamedata.where(:game_id => @game.id).all.collect(&:user_id)
+    unless @players.include? User.where(:id => current_user.id).first.id
+      redirect_to root_path
+      flash[:notice] = "Sorry, you are not a player in that game."
+    end
+  end
+
   # GET /games/new
   def new
     @game = Game.new

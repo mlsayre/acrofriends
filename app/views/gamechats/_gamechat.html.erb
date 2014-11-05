@@ -1,0 +1,14 @@
+<li id="chatline">
+  <span id="messagetime"><%= gamechat.chattime %> ago</span>
+  <span><%= image_tag gamechat.user.avatar.url(:small), :style => "width:30px; margin-top:14px; margin-bottom: -6px;" if gamechat.user %></span>
+  <span style="color:red;"><%= gamechat.user.username if gamechat.user %>
+    <% if gamechat.user %>
+    :
+    <% end %>
+  </span>
+  <% if gamechat.user %>
+    <span><%= sanitize gamechat.message, :tags => %w(img)%></span>
+  <% else %>
+    <span style="color:purple; font-size:.9em;"><i><%= gamechat.message %></i></span>
+  <% end %>
+</li>

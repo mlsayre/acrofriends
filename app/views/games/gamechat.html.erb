@@ -1,0 +1,38 @@
+<% @mainpagetitle = @game.name + " chat" %>
+<%= render "shared/topbar" %>
+
+<div class="chattable" id="chatbox">
+  <div id="chatboxcontent">
+    <ul id="chat">
+      <%= render @gamechat.order('created_at ASC') %>
+    </ul>
+  </div>
+</div>
+
+<div id="groupchatui">
+  <%= form_for @gamechat.build, remote: true do |f| %>
+    <div>
+      <span><%= f.text_field :message, :id => "groupchatenter", :placeholder => "Enter chat here...", :autofocus => true %></span>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :game_id, :value => @game.id %>
+      <span id="new_chat"><%= f.submit "Send", :class => "button", :id => "groupchatsubmit" %>
+      </span>
+    </div>
+  <% end %>
+</div>
+<div class="chatplayerlist">
+  Players:
+  <% @players.each do |player| %>
+    <%= User.where(:id => player).first.username %>
+    <%= "," unless player == @players.last %>
+  <% end %>
+</div>
+
+<div class="chatbutton">
+  <%= link_to game_path(@game) do %>
+    <div id="group-memberslink" class="gamechat button">
+      Back to game
+    </div>
+  <% end %>
+</div>
+<%= javascript_include_tag "page/groupshow" %>
