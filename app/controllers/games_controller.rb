@@ -372,14 +372,16 @@ class GamesController < ApplicationController
       @game.r8letters = File.new("config/LetterPool").readlines.sample(6).join.gsub("\n", "")
       @game.increment!(:playercount)
       if (params[:game][:length]) == "1hour"
-        gametime = 1
+        playtime = 1
+        votetime = 3
       elsif (params[:game][:length]) == "6hour"
-        gametime = 6
+        playtime = 6
+        votetime = 30
       elsif (params[:game][:length]) == "1day"
         gametime = 24
       end
-      @game.playendtime = DateTime.now.utc + gametime.hours
-      @game.voteendtime = DateTime.now.utc + (gametime* 2).hours
+      @game.playendtime = DateTime.now.utc + playtime.hours
+      @game.voteendtime = DateTime.now.utc + votetime.hours
 
       respond_to do |format|
         if @game.save

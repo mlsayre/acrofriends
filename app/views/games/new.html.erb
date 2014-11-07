@@ -8,18 +8,20 @@
     <%= f.hidden_field :group_id, :value => 0 %>
 
     <div class="actions">
-      <%= f.submit "Play Short Game", :class => "button" %>
+      <%= f.submit "Play Quick Game", :class => "button" %>
     </div>
+    (4 rounds: 1 hour to play, 2 hours to vote)
   <% end %>
-
+  <br><br>
   <%= form_for(@game) do |g| %>
 
     <%= g.hidden_field :length, :value => "6hour" %>
     <%= g.hidden_field :group_id, :value => 0 %>
 
     <div class="actions">
-      <%= g.submit "Play Long Game", :class => "button" %>
+      <%= g.submit "Play Normal Game", :class => "button" %>
     </div>
+    (8 rounds: 6 hours to play, 24 hours to vote)
   <% end %>
 
 </div>
