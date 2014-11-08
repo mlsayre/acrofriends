@@ -184,7 +184,13 @@
         </div>
       </div>
     </div>
-
+    <div class="chatbutton">
+    <%= link_to(gamechat_games_path(@game)) do %>
+      <div class="gamechat button">
+        <span><%= image_tag("emoji/smiley.png", :class => "smallspeechimage") + 'Game chat' + image_tag("emoji/speech_balloon.png", :class => "smallspeechimage") %></span><br>
+      </div>
+    <% end %>
+  </div>
     <span class="timeremaining">Time left to play: <%= @timeremaining %>.</span><br>
     # of players: <%= @game.playercount %> of 12:
     <% @players.each do |player| %>
@@ -201,10 +207,4 @@
     </script>
   </div>
 
-  <div class="chatbutton">
-    <%= link_to(gamechat_games_path(@game)) do %>
-      <div class="gamechat button">
-        <span><%= image_tag("emoji/smiley.png", :class => "smallspeechimage") + 'Game chat' + image_tag("emoji/speech_balloon.png", :class => "smallspeechimage") %></span><br>
-      </div>
-    <% end %>
-  </div>
+

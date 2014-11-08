@@ -284,11 +284,11 @@
     padding-right: 12px;
   }
   .gamechat.button {
-    width: 200px;
+    font-size: 110%;
+    width: 180px;
     margin: 0 auto;
     display: block;
-    padding: 9px 20px;
-    background: #ff3100;
+    padding: 9px 0px;
     border: 1px solid brown;
   }
   .smallspeechimage {
