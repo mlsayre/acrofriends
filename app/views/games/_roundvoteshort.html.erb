@@ -116,6 +116,20 @@
         </div>
       <% end %>
     </div>
+
+    <% if current_user.tooltips == true %>
+      <fieldset class="tooltips">
+        <legend style="text-align: left; margin-left: 6px;">Tip</legend>
+          Be sure to vote for an answer in every round. If you don't vote, you can't receive any points yourself.
+        <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
+      </fieldset>
+      <script>
+        $(".button.tipbutton").click(function() {
+          $(".tooltips").hide();
+        });
+      </script>
+    <% end %>
+
        Time left to vote: <%= @votetimeremaining %>.
 
        <script>

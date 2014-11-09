@@ -24,6 +24,19 @@
     (8 rounds: 6 hours to play, 24 hours to vote)
   <% end %>
 
+  <% if current_user.tooltips == true %>
+    <fieldset class="tooltips">
+      <legend style="text-align: left; margin-left: 6px;">Tip</legend>
+      Pick the length of game you'd like to play. Either you will join a game in progress that does not yet have 12 players, or a new game will be created.
+      <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
+    </fieldset>
+    <script>
+      $(".button.tipbutton").click(function() {
+        $(".tooltips").hide();
+      });
+    </script>
+  <% end %>
+
 </div>
 
 <%= render "shared/bottombar" %>

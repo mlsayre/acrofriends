@@ -16,7 +16,7 @@
           <% @timeremaining = "about " + ((game.playendtime - DateTime.now)/60).round.to_s + " minutes" %>
         <% end %>
         <%= link_to(game) do %>
-          <div class="button animated flipInX">
+          <div class="button animated fadeIn">
             <span class="gamelistname"><%= game.name %></span><br>
             <span class="gamelisttime">(Play ends in <%= @timeremaining %>)</span><br>
             Players: <%= game.playercount %>
@@ -37,7 +37,7 @@
           <% @timeremaining = "about " + ((game.voteendtime - DateTime.now)/60).round.to_s + " minutes" %>
         <% end %>
       <%= link_to(game) do %>
-          <div class="button animated flipInX">
+          <div class="button animated fadeIn">
             <span class="gamelistname"><%= game.name %></span><br>
             <span class="gamelisttime">(Voting ends in <%= @timeremaining %>)</span><br>
             Players: <%= game.playercount %>
@@ -52,7 +52,7 @@
     <u>Your completed games (last 20)</u><br>
     <% @gamesinresultsround.each do |game| %>
       <%= link_to(game) do %>
-          <div class="button animated flipInX">
+          <div class="button animated fadeIn">
             <span class="gamelistname"><%= game.name %></span><br>
             Players: <%= game.playercount %>
           </div>
@@ -61,6 +61,20 @@
     <% end %>
   </div>
   <br>
+
+  <% if current_user.tooltips == true %>
+    <fieldset class="tooltips">
+      <legend style="text-align: left; margin-left: 6px;">Tip</legend>
+      Welcome to AcroFriends! To start playing, click the "New" button at the bottom of the page.
+      <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
+    </fieldset>
+    <script>
+      $(".button.tipbutton").click(function() {
+        $(".tooltips").hide();
+      });
+    </script>
+  <% end %>
+
 </div>
 
 <%= javascript_include_tag "page/mainnav" %>

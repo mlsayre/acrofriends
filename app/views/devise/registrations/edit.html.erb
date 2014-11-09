@@ -39,8 +39,14 @@
 
   <div><%= f.submit "Update" %></div>
 <% end %>
-
-<%= link_to "Back", :back %>
+<br>
+<%= button_to "Turn tips on", {:controller => "/pages", :action => "tipson", :method => "put"}, :class => "button tipbutton", :style => "float: none;", remote: true %>
+<script>
+  $(".button.tipbutton").click(function() {
+    alert("Tips are now on.");
+  });
+</script>
+<br>
 <div id="main-signout">
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 </div>

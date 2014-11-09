@@ -184,6 +184,20 @@
         </div>
       </div>
     </div>
+
+    <% if current_user.tooltips == true %>
+      <fieldset class="tooltips">
+        <legend style="text-align: left; margin-left: 6px;">Tip</legend>
+          "<%= @game.name %>" is the name of this game room. You will find it listed on the home page.
+        <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
+      </fieldset>
+      <script>
+        $(".button.tipbutton").click(function() {
+          $(".tooltips").hide();
+        });
+      </script>
+    <% end %>
+
     <div class="chatbutton">
     <%= link_to(gamechat_games_path(@game)) do %>
       <div class="gamechat button">

@@ -12,4 +12,14 @@ class PagesController < ApplicationController
     @gamesinresultsround = @gamescomplete.where('voteendtime < ?', DateTime.now.utc)
       .order('voteendtime DESC').last(20)
   end
+
+  def tipsoff
+    current_user.update_attributes(:tooltips => false)
+    render :nothing => true
+  end
+
+  def tipson
+    current_user.update_attributes(:tooltips => true)
+    render :nothing => true
+  end
 end
