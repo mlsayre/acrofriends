@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     @gamesinvoteround = @gamesinprogress.where('playendtime <= ? AND voteendtime >= ?', DateTime.now.utc,
       DateTime.now.utc).order('voteendtime ASC').all
     @gamesinresultsround = @gamescomplete.where('voteendtime < ?', DateTime.now.utc)
-      .order('voteendtime DESC').last(20)
+      .order('voteendtime DESC').first(20)
   end
 
   def tipsoff
