@@ -9,7 +9,7 @@ class PagesController < ApplicationController
       .order('playendtime ASC').all
     @gamesinvoteround = @gamesinprogress.where('playendtime <= ? AND voteendtime >= ?', DateTime.now.utc,
       DateTime.now.utc).order('voteendtime ASC').all
-    @gamesinresultsround = @gamescomplete.where('voteendtime < ?', DateTime.now.utc)
+    @gamesinresultsround = @gamescomplete.where('voteendtime < ? AND playercount > ?', DateTime.now.utc, 2)
       .order('voteendtime DESC').first(20)
   end
 
