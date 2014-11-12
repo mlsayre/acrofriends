@@ -54,7 +54,12 @@
       <%= link_to(game) do %>
           <div class="button animated fadeIn">
             <span class="gamelistname"><%= game.name %></span><br>
-            Players: <%= game.playercount %>
+            Players: <%= game.playercount %> Length:
+            <% if game.length == "1hour" %>
+            Quick
+            <% elsif game.length == "6hour" %>
+            Normal
+            <% end %>
           </div>
         <% end %>
       <br>
