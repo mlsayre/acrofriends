@@ -16,7 +16,7 @@
           <% @timeremaining = "about " + ((game.playendtime - DateTime.now)/60).round.to_s + " minutes" %>
         <% end %>
         <%= link_to(game) do %>
-          <div class="button animated fadeIn">
+          <div class="button">
             <span class="gamelistname"><%= game.name %></span><br>
             <span class="gamelisttime">(Play ends in <%= @timeremaining %>)</span><br>
             Players: <%= game.playercount %>
@@ -37,7 +37,7 @@
           <% @timeremaining = "about " + ((game.voteendtime - DateTime.now)/60).round.to_s + " minutes" %>
         <% end %>
       <%= link_to(game) do %>
-          <div class="button animated fadeIn">
+          <div class="button">
             <span class="gamelistname"><%= game.name %></span><br>
             <span class="gamelisttime">(Voting ends in <%= @timeremaining %>)</span><br>
             Players: <%= game.playercount %>
@@ -52,7 +52,7 @@
     <u>Your completed games (last 20)</u><br>
     <% @gamesinresultsround.each do |game| %>
       <%= link_to(game) do %>
-          <div class="button animated fadeIn">
+          <div class="button">
             <span class="gamelistname"><%= game.name %></span><br>
             Players: <%= game.playercount %> Length:
             <% if game.length == "1hour" %>
