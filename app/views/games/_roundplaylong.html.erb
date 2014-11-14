@@ -495,6 +495,7 @@
     <% if current_user.tooltips == true %>
       <fieldset class="tooltips">
         <legend style="text-align: left; margin-left: 6px;">Tip</legend>
+          To play, create a phrase based on the letters given and the topic. For example, given the letters "EMTT" and the category "Food", you might write "Eat more tacos today." Be sure to give an answer for every round. Then, later return to vote on your favorite answers from other players!<br><br>
           "<%= @game.name %>" is the name of this game room. You will find it listed on the home page.
         <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
       </fieldset>
