@@ -284,10 +284,9 @@ class GamesController < ApplicationController
         @round8winner = User.where(:id => @round8winnerid).first
       end
 
-      @currentusergamedata = Gamedata.where(:user_id => current_user.id).where(:game_id => @game.id).first
-      @currentusergame = Game.where(:id => @currentusergamedata.game_id).first
-
     end
+    @currentusergamedata = Gamedata.where(:user_id => current_user.id).where(:game_id => @game.id).first
+    @currentusergame = Game.where(:id => @currentusergamedata.game_id).first
     @ranknumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
   end
