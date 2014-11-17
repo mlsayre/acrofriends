@@ -22,4 +22,10 @@ class PagesController < ApplicationController
     current_user.update_attributes(:tooltips => true)
     render :nothing => true
   end
+
+  def testemail
+    @user = current_user
+    VoteMailer.voting_email(@user).deliver
+    render :nothing => true
+  end
 end

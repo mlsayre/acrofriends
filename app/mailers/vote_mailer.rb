@@ -1,4 +1,6 @@
 class VoteMailer < ActionMailer::Base
+  include Resque::Mailer
+
   default from: "matt@acrofriends.com"
 
   def voting_email(user)
