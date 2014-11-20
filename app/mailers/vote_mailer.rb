@@ -6,6 +6,6 @@ class VoteMailer < ActionMailer::Base
   def voting_email(user)
     @user = user
     @url  = 'http://acrofriends.com/'
-    mail(to: @user.email, from: "matt@AcroFriends.com", subject: 'AcroFriends voting round starting now.')
+    mail(to: @user.email, from: "notifications@AcroFriends.com", subject: 'AcroFriends voting round starting now.')
   end
 end

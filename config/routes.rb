@@ -41,7 +41,7 @@ Rails.application.routes.draw do
       get 'rankings' => 'pages#rankings'
       post 'tipsoff'
       post 'tipson'
-      post 'testemail' => 'pages#testemail'
+      post 'sendemail' => 'pages#sendemail'
     end
   end
 

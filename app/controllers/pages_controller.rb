@@ -23,9 +23,11 @@ class PagesController < ApplicationController
     render :nothing => true
   end
 
-  def testemail
+  def sendemail
     @user = current_user
-    VoteMailer.voting_email(@user).deliver
+    #Resque.enqueue(VotingMailerJob, @user)
+    Resque.enqueue_in(30.seconds, VotingMailerJob, @user)
+    # VoteMailer.voting_email(@user).deliver
     render :nothing => true
   end
 end
