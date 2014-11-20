@@ -1,4 +1,4 @@
-Resque.redis = 'localhost:6379'
+Resque.redis = ENV["REDISTOGO_URL"]
 Resque.redis.namespace = "resque:AcroFriends"
 
 # If you want to be able to dynamically change the schedule,
