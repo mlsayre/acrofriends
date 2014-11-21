@@ -4,6 +4,7 @@ class VoteMailer < ActionMailer::Base
   default from: "matt@acrofriends.com"
 
   def voting_email(user)
+    @queue = :mailer
     @user = user
     @url  = 'http://acrofriends.com/'
     mail(to: @user.email, from: "notifications@AcroFriends.com", subject: 'AcroFriends voting round starting now.')
