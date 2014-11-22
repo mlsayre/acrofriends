@@ -17,6 +17,7 @@ gem 'obscenity'
 gem 'unicorn'
 gem 'rails_12factor', group: :production
 gem 'sidekiq'
+gem 'newrelic_rpm'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
