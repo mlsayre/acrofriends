@@ -24,11 +24,8 @@ class PagesController < ApplicationController
   end
 
   def sendemail
-    @queue = :mailer
     @useremail = current_user.email
-    #Resque.enqueue(VotingMailerJob, @user)
-    #Resque.enqueue_in(30.seconds, VotingMailerJob, @user)
-    VoteMailer.voting_email(@useremail).deliver_in(10.seconds)
+    VoteMailer.delay_for(30.seconds).voting_email(@useremail)
     render :nothing => true
   end
 end

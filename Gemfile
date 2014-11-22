@@ -16,9 +16,7 @@ gem 'paperclip'
 gem 'obscenity'
 gem 'unicorn'
 gem 'rails_12factor', group: :production
-gem 'resque', :require => "resque/server"
-gem 'resque_mailer'
-gem 'resque-scheduler', :require => 'resque/scheduler/server'
+gem 'sidekiq'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

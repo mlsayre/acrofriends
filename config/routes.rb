@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  mount Resque::Server.new => '/resque'
-
   resources :gamechats
   resources :games
   resources :games do
