@@ -23,11 +23,23 @@
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer &&
             @gamedata.r5answer && @gamedata.r6answer && @gamedata.r7answer && @gamedata.r8answer %>
         <div class="allanswered">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% else %>
         <div class="allanswered hidden">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% end %>
       <div class="playlongroundbutton">
@@ -101,11 +113,23 @@
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer &&
             @gamedata.r5answer && @gamedata.r6answer && @gamedata.r7answer && @gamedata.r8answer %>
         <div class="allanswered">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% else %>
         <div class="allanswered hidden">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% end %>
       <div class="playlongroundbutton">
@@ -172,11 +196,23 @@
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer &&
             @gamedata.r5answer && @gamedata.r6answer && @gamedata.r7answer && @gamedata.r8answer %>
         <div class="allanswered">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% else %>
         <div class="allanswered hidden">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% end %>
       <div class="playlongroundbutton">
@@ -241,11 +277,23 @@
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer &&
             @gamedata.r5answer && @gamedata.r6answer && @gamedata.r7answer && @gamedata.r8answer %>
         <div class="allanswered">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% else %>
         <div class="allanswered hidden">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% end %>
       <div class="playlongroundbutton">
@@ -304,11 +352,23 @@
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer &&
             @gamedata.r5answer && @gamedata.r6answer && @gamedata.r7answer && @gamedata.r8answer %>
         <div class="allanswered">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% else %>
         <div class="allanswered hidden">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% end %>
       <div class="playlongroundbutton">
@@ -363,11 +423,23 @@
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer &&
             @gamedata.r5answer && @gamedata.r6answer && @gamedata.r7answer && @gamedata.r8answer %>
         <div class="allanswered">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% else %>
         <div class="allanswered hidden">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% end %>
       <div class="playlongroundbutton">
@@ -418,11 +490,23 @@
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer &&
             @gamedata.r5answer && @gamedata.r6answer && @gamedata.r7answer && @gamedata.r8answer %>
         <div class="allanswered">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% else %>
         <div class="allanswered hidden">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% end %>
       <div class="playlongroundbutton">
@@ -469,11 +553,23 @@
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer &&
             @gamedata.r5answer && @gamedata.r6answer && @gamedata.r7answer && @gamedata.r8answer %>
         <div class="allanswered">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% else %>
         <div class="allanswered hidden">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% end %>
       <div class="playlongroundbutton">

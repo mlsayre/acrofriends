@@ -373,3 +373,10 @@ $("#r8resultbutton").click(function () {
   $("#round7results").hide();
   $("#round8results").show();
 });
+
+$(".voteemailsend").click(function() {
+  function clickVoteEmail() {
+    $(".allanswered").html("You've completed every acro! Voting round coming up. (vote reminder email has been scheduled)");
+  }
+  setTimeout(clickVoteEmail, 600);
+})

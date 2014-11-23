@@ -22,10 +22,4 @@ class PagesController < ApplicationController
     current_user.update_attributes(:tooltips => true)
     render :nothing => true
   end
-
-  def sendemail
-    @useremail = current_user.email
-    VoteMailer.delay_for(30.seconds).voting_email(@useremail)
-    render :nothing => true
-  end
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :games do
     collection do
       get '/:id/gamechat' => 'games#gamechat', as: :gamechat
+      post 'sendemail'
     end
   end
 
@@ -42,7 +43,6 @@ Rails.application.routes.draw do
       get 'rankings' => 'pages#rankings'
       post 'tipsoff'
       post 'tipson'
-      post 'sendemail' => 'pages#sendemail'
     end
   end
 

@@ -1,3 +1,5 @@
-Testy testy. Hello, you have a game entering the voting round now! WHEEE
+Hello <%= @votingemail[:username] %>,<br>
 
-Hello, there!
+You have an AcroFriends game entering the voting round now!
+<br><br>
+Click here to start voting: <%= link_to @votingemail[:gamename], @votingemail[:gameurl] %>

@@ -82,9 +82,5 @@
 
 </div>
 
-<% if current_user.username == "Matt" %>
-  <%= button_to "Send test email", {:controller => "pages", :action => "sendemail", :method => "put"}, :class => "button tipbutton", remote: true %>
-<% end %>
-
 <%= javascript_include_tag "page/mainnav" %>
 <%= render "shared/bottombar" %>

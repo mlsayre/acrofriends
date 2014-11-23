@@ -291,6 +291,19 @@ class GamesController < ApplicationController
 
   end
 
+  def sendemail
+    @game = Game.find(params[:game_id])
+    @votestarttimeemail = @game.playendtime
+    @votingreminder = { :email => current_user.email, :gamename => @game.name, :gameurl => game_url(@game),
+                        :username => current_user.username }
+    VoteMailer.delay_until(@votestarttimeemail).voting_email(@votingreminder)
+    # record that vote reminder email was sent
+    @gamedataemail = Gamedata.where(:user_id => current_user.id).where(:game_id => @game.id).first
+    @gamedataemail.update_attributes(:voteemailsent => true)
+
+    render :nothing => true
+  end
+
   def gamechat
     @game = Game.find(params[:id])
     @gamechat = Gamechat.where('game_id = ?', @game.id)

@@ -23,11 +23,23 @@
       </div>
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer %>
         <div class="allanswered">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% else %>
         <div class="allanswered hidden">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% end %>
       <div class="playroundbutton">
@@ -76,11 +88,23 @@
       </div>
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer %>
         <div class="allanswered">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% else %>
         <div class="allanswered hidden">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% end %>
       <div class="playroundbutton">
@@ -124,11 +148,23 @@
       </div>
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer %>
         <div class="allanswered">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% else %>
         <div class="allanswered hidden">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% end %>
       <div class="playroundbutton">
@@ -168,11 +204,23 @@
       </div>
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer %>
         <div class="allanswered">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% else %>
         <div class="allanswered hidden">
-          You've completed every acro! Come back soon to vote!
+          You've completed every acro! Voting round coming up.
+          <% if @gamedata.voteemailsent == false %>
+            Send email when voting round starts?
+            <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
+          <% else %>
+            (vote reminder email has been scheduled)
+          <% end %>
         </div>
       <% end %>
       <div class="playroundbutton">
@@ -190,7 +238,7 @@
         <legend style="text-align: left; margin-left: 6px;">Tip</legend>
           To play, create a phrase based on the letters given and the topic. For example, given the letters "EMTT" and the category "Food", you might write "Eat more tacos today." Be sure to give an answer for every round. Then, later return to vote on your favorite answers from other players!<br><br>
           "<%= @game.name %>" is the name of this game room. You will find it listed on the home page.
-        <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
+        <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button", remote: true %>
       </fieldset>
       <script>
         $(".button.tipbutton").click(function() {
@@ -221,5 +269,3 @@
       setTimeout(reloadPage, timeleft);
     </script>
   </div>
-
-
