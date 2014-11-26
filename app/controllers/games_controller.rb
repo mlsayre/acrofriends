@@ -375,14 +375,89 @@ class GamesController < ApplicationController
       @game.r6cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
       @game.r7cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
       @game.r8cat = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
-      @game.r1letters = File.new("config/LetterPool").readlines.sample(3).join.gsub("\n", "")
-      @game.r2letters = File.new("config/LetterPool").readlines.sample(4).join.gsub("\n", "")
-      @game.r3letters = File.new("config/LetterPool").readlines.sample(5).join.gsub("\n", "")
-      @game.r4letters = File.new("config/LetterPool").readlines.sample(6).join.gsub("\n", "")
-      @game.r5letters = File.new("config/LetterPool").readlines.sample(3).join.gsub("\n", "")
-      @game.r6letters = File.new("config/LetterPool").readlines.sample(4).join.gsub("\n", "")
-      @game.r7letters = File.new("config/LetterPool").readlines.sample(5).join.gsub("\n", "")
-      @game.r8letters = File.new("config/LetterPool").readlines.sample(6).join.gsub("\n", "")
+
+      @badplaywords = File.new("config/BadPlayWords").readlines.map! {|x| x.sub("\n", "")}
+
+      def potr1let
+        @potentialr1letters = File.new("config/LetterPool").readlines.sample(3).join.gsub("\n", "")
+        if @badplaywords.any?{|words| @potentialr1letters.include?(words)}
+          potr1let
+        else
+          @game.r1letters = @potentialr1letters
+        end
+      end
+      potr1let
+
+      def potr2let
+        @potentialr2letters = File.new("config/LetterPool").readlines.sample(4).join.gsub("\n", "")
+        if @badplaywords.any?{|words| @potentialr2letters.include?(words)}
+          potr2let
+        else
+          @game.r2letters = @potentialr2letters
+        end
+      end
+      potr2let
+
+      def potr3let
+        @potentialr3letters = File.new("config/LetterPool").readlines.sample(5).join.gsub("\n", "")
+        if @badplaywords.any?{|words| @potentialr3letters.include?(words)}
+          potr3let
+        else
+          @game.r3letters = @potentialr3letters
+        end
+      end
+      potr3let
+
+      def potr4let
+        @potentialr4letters = File.new("config/LetterPool").readlines.sample(6).join.gsub("\n", "")
+        if @badplaywords.any?{|words| @potentialr4letters.include?(words)}
+          potr4let
+        else
+          @game.r4letters = @potentialr4letters
+        end
+      end
+      potr4let
+
+      def potr5let
+        @potentialr5letters = File.new("config/LetterPool").readlines.sample(3).join.gsub("\n", "")
+        if @badplaywords.any?{|words| @potentialr5letters.include?(words)}
+          potr5let
+        else
+          @game.r5letters = @potentialr5letters
+        end
+      end
+      potr5let
+
+      def potr6let
+        @potentialr6letters = File.new("config/LetterPool").readlines.sample(4).join.gsub("\n", "")
+        if @badplaywords.any?{|words| @potentialr6letters.include?(words)}
+          potr6let
+        else
+          @game.r6letters = @potentialr6letters
+        end
+      end
+      potr6let
+
+      def potr7let
+        @potentialr7letters = File.new("config/LetterPool").readlines.sample(5).join.gsub("\n", "")
+        if @badplaywords.any?{|words| @potentialr7letters.include?(words)}
+          potr7let
+        else
+          @game.r7letters = @potentialr7letters
+        end
+      end
+      potr7let
+
+      def potr8let
+        @potentialr8letters = File.new("config/LetterPool").readlines.sample(6).join.gsub("\n", "")
+        if @badplaywords.any?{|words| @potentialr8letters.include?(words)}
+          potr8let
+        else
+          @game.r8letters = @potentialr8letters
+        end
+      end
+      potr8let
+
       @game.increment!(:playercount)
       if (params[:game][:length]) == "1hour"
         playtime = 1
