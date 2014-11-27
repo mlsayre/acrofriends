@@ -2,7 +2,7 @@
 <%= render "shared/topbar" %>
 
 <div id="newgamepage">
-  <%= form_for(@game) do |f| %>
+  <!-- <%= form_for(@game) do |f| %>
 
     <%= f.hidden_field :length, :value => "1hour" %>
     <%= f.hidden_field :group_id, :value => 0 %>
@@ -12,6 +12,8 @@
     </div>
     (4 rounds: 1 hour to play, 2 hours to vote)
   <% end %>
+  -->
+
   <br><br>
   <%= form_for(@game) do |g| %>
 
@@ -19,7 +21,7 @@
     <%= g.hidden_field :group_id, :value => 0 %>
 
     <div class="actions">
-      <%= g.submit "Play Normal Game", :class => "button" %>
+      <%= g.submit "Play Game", :class => "button" %>
     </div>
     (8 rounds: 6 hours to play, 24 hours to vote)
   <% end %>
