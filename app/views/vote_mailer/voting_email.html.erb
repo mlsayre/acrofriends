@@ -1,5 +1,10 @@
-Hello <%= @votingemail[:username] %>,<br>
+<% if @game.playercount < 3 %>
+  Hello <%= @user.username %>,<br>
+  Unfortunately, there weren't enough players to continue to the voting round in your game: <%= link_to @game.name, game_url(@game)%>. Please tell your friends about AcroFriends so this travesty never happens again!
+<% else %>
+  Hello <%= @user.username %>,<br>
 
-You have an AcroFriends game entering the voting round now!
-<br><br>
-Click here to start voting: <%= link_to @votingemail[:gamename], @votingemail[:gameurl] %>
+  You have an AcroFriends game entering the voting round now!
+  <br><br>
+  Click here to start voting: <%= link_to @game.name, game_url(@game)%>
+<% end %>
