@@ -2,7 +2,7 @@
 <%= render "shared/topbar" %>
 
 <div id="newgamepage">
-   <%= form_for(@game) do |f| %>
+   <!-- <%= form_for(@game) do |f| %>
 
     <%= f.hidden_field :length, :value => "1hour" %>
     <%= f.hidden_field :group_id, :value => 0 %>
@@ -12,7 +12,7 @@
     </div>
     (4 rounds: 1 hour to play, 2 hours to vote)
   <% end %>
-
+  -->
 
   <br><br>
   <%= form_for(@game) do |g| %>
@@ -29,7 +29,7 @@
   <% if current_user.tooltips == true %>
     <fieldset class="tooltips">
       <legend style="text-align: left; margin-left: 6px;">Tip</legend>
-      Pick the length of game you'd like to play. Either you will join a game in progress that does not yet have 12 players, or a new game will be created.
+      Press "Play Game" to join or start a game. Either you will join a game in progress that does not yet have 12 players, or a new game will be created.
       <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
     </fieldset>
     <script>
