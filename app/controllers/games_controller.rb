@@ -298,7 +298,7 @@ class GamesController < ApplicationController
     @gamedataemail.update_attributes(:voteemailsent => true)
     # set up scheduled email
     @votestarttimeemail = @game.playendtime
-    VoteMailer.delay_for(2.minutes).voting_email(@gamedataemail)
+    VoteMailer.delay_until(@votestarttimeemail).voting_email(@gamedataemail)
 
     render :nothing => true
   end
