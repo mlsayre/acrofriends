@@ -58,6 +58,7 @@
       <%= image_tag User.where(:id => @round1winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
       Round 1 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round1winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r1points DESC').first.r1points %></span> points!
     </div>
+    Category: <span style="color:red; font-style: italic;"><%= @game.r1cat %></span>
     <table class="roundresultstable">
       <thead>
         <tr>
@@ -113,6 +114,7 @@
       <%= image_tag User.where(:id => @round2winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
       Round 2 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round2winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r2points DESC').first.r2points %></span> points!
     </div>
+    Category: <span style="color:red; font-style: italic;"><%= @game.r2cat %></span>
     <table class="roundresultstable">
       <thead>
         <tr>
@@ -168,6 +170,7 @@
       <%= image_tag User.where(:id => @round3winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
       Round 3 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round3winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r3points DESC').first.r3points %></span> points!
     </div>
+    Category: <span style="color:red; font-style: italic;"><%= @game.r3cat %></span>
     <table class="roundresultstable">
       <thead>
         <tr>
@@ -223,6 +226,7 @@
       <%= image_tag User.where(:id => @round4winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
       Round 4 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round4winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r4points DESC').first.r4points %></span> points!
     </div>
+    Category: <span style="color:red; font-style: italic;"><%= @game.r4cat %></span>
     <table class="roundresultstable">
       <thead>
         <tr>
@@ -278,6 +282,7 @@
       <%= image_tag User.where(:id => @round5winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
       Round 5 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round5winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r5points DESC').first.r5points %></span> points!
     </div>
+    Category: <span style="color:red; font-style: italic;"><%= @game.r5cat %></span>
     <table class="roundresultstable">
       <thead>
         <tr>
@@ -333,6 +338,7 @@
       <%= image_tag User.where(:id => @round6winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
       Round 6 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round6winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r6points DESC').first.r6points %></span> points!
     </div>
+    Category: <span style="color:red; font-style: italic;"><%= @game.r6cat %></span>
     <table class="roundresultstable">
       <thead>
         <tr>
@@ -388,6 +394,7 @@
       <%= image_tag User.where(:id => @round7winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
       Round 7 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round7winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r7points DESC').first.r7points %></span> points!
     </div>
+    Category: <span style="color:red; font-style: italic;"><%= @game.r7cat %></span>
     <table class="roundresultstable">
       <thead>
         <tr>
@@ -442,6 +449,7 @@
       <%= image_tag User.where(:id => @round8winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
       Round 8 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round8winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r8points DESC').first.r8points %></span> points!
     </div>
+    Category: <span style="color:red; font-style: italic;"><%= @game.r8cat %></span>
     <table class="roundresultstable">
       <thead>
         <tr>
