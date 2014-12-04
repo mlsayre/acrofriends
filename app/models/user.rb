@@ -32,9 +32,9 @@ class User < ActiveRecord::Base
 
   def averagepointsperround
     if self.lifetimeroundsplayed > 0
-      ((self.lifetimepoints.round(3) / self.lifetimeroundsplayed.round(3)).round(3) * 1000).round
+      (self.lifetimepoints.round(2) / self.lifetimeroundsplayed.round(2)).round(2)
     else
-      0
+      0.00
     end
   end
 

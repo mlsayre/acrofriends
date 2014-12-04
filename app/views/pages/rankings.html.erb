@@ -2,7 +2,7 @@
 <%= render "shared/topbar" %>
 
 <div class="lifetimerankings">
-  <div style="margin-bottom: 6px; text-align: center;">Rankings - Top 30 Players<br><span style="font-size: 86%"><u>(Average Points/Round x 1000)</u></span></div>
+  <div style="margin-bottom: 6px; text-align: center;">Ratings - Top 30 Players<br><span style="font-size: 86%"><u>(Average Points/Round)</u></span></div>
   <% User.all.sort {|a,b| a.averagepointsperround <=> b.averagepointsperround}.reverse!.first(30).each do |user| %>
     <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.averagepointsperround %></span></li>
   <% end %>
