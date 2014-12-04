@@ -205,7 +205,7 @@ class GamesController < ApplicationController
         end
       end
 
-      #add up all rounds for total gamepoints
+      #add up all rounds for total gamepoints and add up rounds played
       if @game.length == "1hour"
         @gameplayers.each do |playerid|
           @playergamedata = Gamedata.where(:game_id => @game.id).where(:user_id => playerid).first
@@ -213,6 +213,13 @@ class GamesController < ApplicationController
                              @playergamedata.r3points + @playergamedata.r4points
           @playergamedata.update_attributes(:gamepoints => @gametotalpoints)
           User.where(:id => playerid).first.increment!(:lifetimepoints, by = @gametotalpoints)
+
+          @playergamedata.r1answer != nil ? @round1count = 1 : @round1count = 0
+          @playergamedata.r2answer != nil ? @round2count = 1 : @round2count = 0
+          @playergamedata.r3answer != nil ? @round3count = 1 : @round3count = 0
+          @playergamedata.r4answer != nil ? @round4count = 1 : @round4count = 0
+          @roundsplayed = @round1count + @round2count + @round3count + @round4count
+          User.where(:id => playerid).first.increment!(:lifetimeroundsplayed, by = @roundsplayed)
         end
       elsif @game.length == "6hour"
         @gameplayers.each do |playerid|
@@ -223,6 +230,18 @@ class GamesController < ApplicationController
                              @playergamedata.r7points + @playergamedata.r8points
           @playergamedata.update_attributes(:gamepoints => @gametotalpoints)
           User.where(:id => playerid).first.increment!(:lifetimepoints, by = @gametotalpoints)
+
+          @playergamedata.r1answer != nil ? @round1count = 1 : @round1count = 0
+          @playergamedata.r2answer != nil ? @round2count = 1 : @round2count = 0
+          @playergamedata.r3answer != nil ? @round3count = 1 : @round3count = 0
+          @playergamedata.r4answer != nil ? @round4count = 1 : @round4count = 0
+          @playergamedata.r5answer != nil ? @round5count = 1 : @round5count = 0
+          @playergamedata.r6answer != nil ? @round6count = 1 : @round6count = 0
+          @playergamedata.r7answer != nil ? @round7count = 1 : @round7count = 0
+          @playergamedata.r8answer != nil ? @round8count = 1 : @round8count = 0
+          @roundsplayed = @round1count + @round2count + @round3count + @round4count
+                          + @round5count + @round6count + @round7count + @round8count
+          User.where(:id => playerid).first.increment!(:lifetimeroundsplayed, by = @roundsplayed)
         end
       end
 
