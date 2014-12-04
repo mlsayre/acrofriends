@@ -30,6 +30,14 @@ class User < ActiveRecord::Base
   # Explicitly do not validate
   do_not_validate_attachment_file_type :avatar
 
+  def averagepointsperround
+    if self.lifetimeroundsplayed > 0
+      ((self.lifetimepoints.round(3) / self.lifetimeroundsplayed.round(3)).round(3) * 1000).round
+    else
+      0
+    end
+  end
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

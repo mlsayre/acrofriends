@@ -439,7 +439,7 @@
   #mainvotinggameslist, #mainresultsgameslist {
     display:none;
   }
-  #lifetimerankings {
+  .lifetimerankings {
     width: 300px;
     height: 300px;
     margin: 0 auto;
