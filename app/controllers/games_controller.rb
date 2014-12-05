@@ -322,6 +322,13 @@ class GamesController < ApplicationController
     render :nothing => true
   end
 
+  def seenresults
+    @gamedata = Gamedata.where(:game_id => params[:gameid]).where(:user_id => current_user.id).first
+    @gamedata.update_attributes(:seenresults => true)
+
+    render :nothing => true
+  end
+
   def gamechat
     @game = Game.find(params[:id])
     @gamechat = Gamechat.where('game_id = ?', @game.id)

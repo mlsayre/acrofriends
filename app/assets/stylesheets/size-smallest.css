@@ -362,6 +362,18 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+  .gameroundscompleted {
+    background-color: green !important;
+    background-image: url("Check-48.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+  }
+  .gamecancelled {
+    background-color: black !important;
+    background-image: url("Cry-48.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+  }
   #resultsround {
     width: 90%;
     margin: 0 auto;

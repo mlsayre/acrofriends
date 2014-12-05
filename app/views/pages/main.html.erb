@@ -15,7 +15,11 @@
           <% @timeremaining = "about " + ((game.playendtime - DateTime.now)/60).round.to_s + " minutes" %>
         <% end %>
         <%= link_to(game) do %>
-          <div class="button">
+          <% if Gamedata.where(:game_id => game.id).where(:user_id => current_user.id).first.r8answer != nil %>
+            <div class="button gameroundscompleted">
+          <% else %>
+            <div class="button">
+          <% end %>
             <span class="gamelistname"><%= game.name %></span><br>
             <span class="gamelisttime">(Play ends in <%= @timeremaining %>)</span><br>
             Players: <%= game.playercount %>
@@ -36,7 +40,26 @@
           <% @timeremaining = "about " + ((game.voteendtime - DateTime.now)/60).round.to_s + " minutes" %>
         <% end %>
       <%= link_to(game) do %>
-          <div class="button">
+        <% @votingroundgame = Gamedata.where(:game_id => game.id).where(:user_id => current_user.id).first %>
+        <% if game.playercount < 3 %>
+          <div class="button gamecancelled"
+        <% elsif game.length == "1hour" %>
+          <% if @votingroundgame.r1votedfor != 0 && @votingroundgame.r2votedfor != 0 &&
+            @votingroundgame.r3votedfor != 0 && @votingroundgame.r4votedfor != 0 %>
+            <div class="button gameroundscompleted">
+          <% else %>
+            <div class="button">
+          <% end %>
+        <% elsif game.length == "6hour" %>
+          <% if @votingroundgame.r1votedfor != 0 && @votingroundgame.r2votedfor != 0 &&
+            @votingroundgame.r3votedfor != 0 && @votingroundgame.r4votedfor != 0 &&
+            @votingroundgame.r5votedfor != 0 && @votingroundgame.r6votedfor != 0 &&
+            @votingroundgame.r7votedfor != 0 && @votingroundgame.r8votedfor != 0 %>
+            <div class="button gameroundscompleted">
+          <% else %>
+            <div class="button">
+          <% end %>
+        <% end %>
             <span class="gamelistname"><%= game.name %></span><br>
             <span class="gamelisttime">(Voting ends in <%= @timeremaining %>)</span><br>
             Players: <%= game.playercount %>
@@ -50,8 +73,12 @@
   <div id="mainresultsgameslist" >
     <u>Your completed games (last 20)</u><br>
     <% @gamesinresultsround.each do |game| %>
-      <%= link_to(game) do %>
+      <span class="completedgamelink"><%= link_to(game) do %>
+        <% if Gamedata.where(:game_id => game.id).where(:user_id => current_user.id).first.seenresults == true %>
+          <div class="button gameroundscompleted">
+        <% else %>
           <div class="button">
+        <% end %>
             <span class="gamelistname"><%= game.name %></span><br>
             Players: <%= game.playercount %> Length:
             <% if game.length == "1hour" %>
@@ -60,7 +87,7 @@
             Normal
             <% end %>
           </div>
-        <% end %>
+        <% end %></span>
       <br>
     <% end %>
   </div>

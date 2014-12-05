@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       get '/:id/gamechat' => 'games#gamechat', as: :gamechat
       post 'sendemail'
+      post 'seenresults'
     end
   end
 

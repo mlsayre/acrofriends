@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204022910) do
+ActiveRecord::Schema.define(version: 20141205192146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20141204022910) do
     t.integer  "r7points",      default: 0
     t.integer  "r8points",      default: 0
     t.boolean  "voteemailsent", default: false
+    t.boolean  "seenresults",   default: false
   end
 
   create_table "games", force: true do |t|

@@ -271,7 +271,13 @@
     </div>
   <% end %>
 </div>
-
-
-
-
+<script>
+  function seenResults(){
+    $.ajax({
+      url: "/games/seenresults",
+      type: "POST",
+      data: { 'gameid' : '<%= @game.id %>' }
+    });
+  }
+  $(document).ready(seenResults);
+</script>
