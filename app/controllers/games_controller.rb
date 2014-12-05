@@ -239,8 +239,7 @@ class GamesController < ApplicationController
           @playergamedata.r6answer != nil ? @round6count = 1 : @round6count = 0
           @playergamedata.r7answer != nil ? @round7count = 1 : @round7count = 0
           @playergamedata.r8answer != nil ? @round8count = 1 : @round8count = 0
-          @roundsplayed = @round1count + @round2count + @round3count + @round4count
-                          + @round5count + @round6count + @round7count + @round8count
+          @roundsplayed = @round1count + @round2count + @round3count + @round4count + @round5count + @round6count + @round7count + @round8count
           User.where(:id => playerid).first.increment!(:lifetimeroundsplayed, by = @roundsplayed)
         end
       end
