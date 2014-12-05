@@ -356,6 +356,12 @@
   .votebuttons {
     float: left;
   }
+  .roundhasvote {
+    background-color: green;
+    background-image: url("Check-48.png");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
   #resultsround {
     width: 90%;
     margin: 0 auto;

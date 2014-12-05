@@ -1,13 +1,45 @@
     <div id="voterounds">
       <div class="votelongroundbutton">
-        <%= button_tag "Vote Rd 1", :id => "r1votebutton" %>
-        <%= button_tag "Vote Rd 2", :id => "r2votebutton" %>
-        <%= button_tag "Vote Rd 3", :id => "r3votebutton" %>
-        <%= button_tag "Vote Rd 4", :id => "r4votebutton" %>
-        <%= button_tag "Vote Rd 5", :id => "r5votebutton" %>
-        <%= button_tag "Vote Rd 6", :id => "r6votebutton" %>
-        <%= button_tag "Vote Rd 7", :id => "r7votebutton" %>
-        <%= button_tag "Vote Rd 8", :id => "r8votebutton" %>
+        <% if @gamedata.r1votedfor == 0 %>
+          <%= button_tag "Vote Rd 1", :id => "r1votebutton" %>
+        <% else %>
+          <%= button_tag "Vote Rd 1", :id => "r1votebutton", :class => "roundhasvote" %>
+        <% end %>
+        <% if @gamedata.r2votedfor == 0 %>
+          <%= button_tag "Vote Rd 2", :id => "r2votebutton" %>
+        <% else %>
+          <%= button_tag "Vote Rd 2", :id => "r2votebutton", :class => "roundhasvote" %>
+        <% end %>
+        <% if @gamedata.r3votedfor == 0 %>
+          <%= button_tag "Vote Rd 3", :id => "r3votebutton" %>
+        <% else %>
+          <%= button_tag "Vote Rd 3", :id => "r3votebutton", :class => "roundhasvote" %>
+        <% end %>
+        <% if @gamedata.r4votedfor == 0 %>
+          <%= button_tag "Vote Rd 4", :id => "r4votebutton" %>
+        <% else %>
+          <%= button_tag "Vote Rd 4", :id => "r4votebutton", :class => "roundhasvote" %>
+        <% end %>
+        <% if @gamedata.r5votedfor == 0 %>
+          <%= button_tag "Vote Rd 5", :id => "r5votebutton" %>
+        <% else %>
+          <%= button_tag "Vote Rd 5", :id => "r5votebutton", :class => "roundhasvote" %>
+        <% end %>
+        <% if @gamedata.r6votedfor == 0 %>
+          <%= button_tag "Vote Rd 6", :id => "r6votebutton" %>
+        <% else %>
+          <%= button_tag "Vote Rd 6", :id => "r6votebutton", :class => "roundhasvote" %>
+        <% end %>
+        <% if @gamedata.r7votedfor == 0 %>
+          <%= button_tag "Vote Rd 7", :id => "r7votebutton" %>
+        <% else %>
+          <%= button_tag "Vote Rd 7", :id => "r7votebutton", :class => "roundhasvote" %>
+        <% end %>
+        <% if @gamedata.r8votedfor == 0 %>
+          <%= button_tag "Vote Rd 8", :id => "r8votebutton" %>
+        <% else %>
+          <%= button_tag "Vote Rd 8", :id => "r8votebutton", :class => "roundhasvote" %>
+        <% end %>
       </div>
 
       <div class="votearea" id="r1vote">

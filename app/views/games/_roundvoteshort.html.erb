@@ -1,9 +1,25 @@
     <div id="voterounds">
       <div class="voteroundbutton">
-        <%= button_tag "Round 1 Voting", :id => "r1votebutton" %>
-        <%= button_tag "Round 2 Voting", :id => "r2votebutton" %>
-        <%= button_tag "Round 3 Voting", :id => "r3votebutton" %>
-        <%= button_tag "Round 4 Voting", :id => "r4votebutton" %>
+        <% if @gamedata.r1votedfor == 0 %>
+          <%= button_tag "Vote Rd 1", :id => "r1votebutton" %>
+        <% else %>
+          <%= button_tag "Vote Rd 1", :id => "r1votebutton", :class => "roundhasvote" %>
+        <% end %>
+        <% if @gamedata.r2votedfor == 0 %>
+          <%= button_tag "Vote Rd 2", :id => "r2votebutton" %>
+        <% else %>
+          <%= button_tag "Vote Rd 2", :id => "r2votebutton", :class => "roundhasvote" %>
+        <% end %>
+        <% if @gamedata.r3votedfor == 0 %>
+          <%= button_tag "Vote Rd 3", :id => "r3votebutton" %>
+        <% else %>
+          <%= button_tag "Vote Rd 3", :id => "r3votebutton", :class => "roundhasvote" %>
+        <% end %>
+        <% if @gamedata.r4votedfor == 0 %>
+          <%= button_tag "Vote Rd 4", :id => "r4votebutton" %>
+        <% else %>
+          <%= button_tag "Vote Rd 4", :id => "r4votebutton", :class => "roundhasvote" %>
+        <% end %>
       </div>
 
       <div class="votearea" id="r1vote">
