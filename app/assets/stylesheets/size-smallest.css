@@ -329,6 +329,14 @@
   .chatbutton a img:hover {
     background: #008cba;
   }
+  .chatlink {
+    color: white;
+  }
+  .chatlinknotify {
+    color: snow;
+    font-size: 90%;
+    font-weight: 800;
+  }
   #voterounds {
     width: 90%;
     margin: 0 auto;

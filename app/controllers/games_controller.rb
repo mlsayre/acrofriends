@@ -328,6 +328,13 @@ class GamesController < ApplicationController
     render :nothing => true
   end
 
+  def resetnotice
+    Gamedata.where(:game_id => params[:gameid]).where(:user_id => current_user.id).first
+      .update_attributes(:whochatted => "")
+
+    render :nothing => true
+  end
+
   def gamechat
     @game = Game.find(params[:id])
     @gamechat = Gamechat.where('game_id = ?', @game.id)

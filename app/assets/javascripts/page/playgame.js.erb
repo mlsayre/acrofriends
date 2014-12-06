@@ -10,6 +10,7 @@ setTimeout(hideAlerts, 5000);
 function refreshTimeRemaining() {
   var pathname = window.location.pathname;
   $(".timeremaining").load(pathname + " .timeremaining");
+  $(".chatbutton").load(pathname + " .chatbutton");
 }
 setInterval(refreshTimeRemaining, 180000);
 

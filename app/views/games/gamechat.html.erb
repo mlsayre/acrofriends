@@ -36,3 +36,14 @@
   <% end %>
 </div>
 <%= javascript_include_tag "page/groupshow" %>
+
+<script>
+  function resetChatNotice(){
+    $.ajax({
+      url: "/games/resetnotice",
+      type: "POST",
+      data: { 'gameid' : '<%= @game.id %>' }
+    });
+  }
+  $(document).ready(resetChatNotice);
+</script>

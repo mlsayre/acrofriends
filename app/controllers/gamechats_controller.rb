@@ -8,6 +8,13 @@ class GamechatsController < ApplicationController
   def create
     @gamechat = Gamechat.create!(gamechat_params)
 
+    @chattername = User.where(:id => params[:gamechat][:user_id]).first.username
+    Gamedata.where(:game_id => params[:gamechat][:game_id]).each do |game|
+      if game.user_id != current_user.id
+        game.update_attributes(:whochatted => @chattername)
+      end
+    end
+
     if @gamechat.save
       #only the last 30 chat messages per group room
       Gamechat.where(:game_id => params[:gamechat][:game_id])

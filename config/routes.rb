@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get '/:id/gamechat' => 'games#gamechat', as: :gamechat
       post 'sendemail'
       post 'seenresults'
+      post 'resetnotice'
     end
   end
 
