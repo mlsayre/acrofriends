@@ -1,6 +1,9 @@
 <% @mainpagetitle="Edit " + current_user.username %>
 <%= render "shared/topbar" %>
 
+Thanks for joining the AcroFriends beta! If you have found any bugs or have any suggestions, please
+let me know: <%= mail_to "matt@acrofriends.com" %><br><br>
+
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
@@ -44,6 +47,7 @@
 <script>
   $(".button.tipbutton").click(function() {
     alert("Tips are now on.");
+    $(".button.tipbutton").hide();
   });
 </script>
 <br>
