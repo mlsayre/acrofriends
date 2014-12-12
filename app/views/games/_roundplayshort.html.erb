@@ -25,7 +25,7 @@
         <div class="allanswered">
           You've completed every acro! Voting round coming up.
           <% if @gamedata.voteemailsent == false %>
-            Send email when voting round starts?
+            Send email to <%= current_user.email %> when voting round starts? <span style="font-size: 84%;">(change in settings if email address is incorrect) </span>
             <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
           <% else %>
             (vote reminder email has been scheduled)
@@ -35,7 +35,7 @@
         <div class="allanswered hidden">
           You've completed every acro! Voting round coming up.
           <% if @gamedata.voteemailsent == false %>
-            Send email when voting round starts?
+            Send email to <%= current_user.email %> when voting round starts? <span style="font-size: 84%;">(change in settings if email address is incorrect) </span>
             <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
           <% else %>
             (vote reminder email has been scheduled)
@@ -90,7 +90,7 @@
         <div class="allanswered">
           You've completed every acro! Voting round coming up.
           <% if @gamedata.voteemailsent == false %>
-            Send email when voting round starts?
+            Send email to <%= current_user.email %> when voting round starts? <span style="font-size: 84%;">(change in settings if email address is incorrect) </span>
             <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
           <% else %>
             (vote reminder email has been scheduled)
@@ -100,7 +100,7 @@
         <div class="allanswered hidden">
           You've completed every acro! Voting round coming up.
           <% if @gamedata.voteemailsent == false %>
-            Send email when voting round starts?
+            Send email to <%= current_user.email %> when voting round starts? <span style="font-size: 84%;">(change in settings if email address is incorrect) </span>
             <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
           <% else %>
             (vote reminder email has been scheduled)
@@ -150,7 +150,7 @@
         <div class="allanswered">
           You've completed every acro! Voting round coming up.
           <% if @gamedata.voteemailsent == false %>
-            Send email when voting round starts?
+            Send email to <%= current_user.email %> when voting round starts? <span style="font-size: 84%;">(change in settings if email address is incorrect) </span>
             <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
           <% else %>
             (vote reminder email has been scheduled)
@@ -160,7 +160,7 @@
         <div class="allanswered hidden">
           You've completed every acro! Voting round coming up.
           <% if @gamedata.voteemailsent == false %>
-            Send email when voting round starts?
+            Send email to <%= current_user.email %> when voting round starts? <span style="font-size: 84%;">(change in settings if email address is incorrect) </span>
             <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
           <% else %>
             (vote reminder email has been scheduled)
@@ -206,7 +206,7 @@
         <div class="allanswered">
           You've completed every acro! Voting round coming up.
           <% if @gamedata.voteemailsent == false %>
-            Send email when voting round starts?
+            Send email to <%= current_user.email %> when voting round starts? <span style="font-size: 84%;">(change in settings if email address is incorrect) </span>
             <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
           <% else %>
             (vote reminder email has been scheduled)
@@ -216,7 +216,7 @@
         <div class="allanswered hidden">
           You've completed every acro! Voting round coming up.
           <% if @gamedata.voteemailsent == false %>
-            Send email when voting round starts?
+            Send email to <%= current_user.email %> when voting round starts? <span style="font-size: 84%;">(change in settings if email address is incorrect) </span>
             <%= button_to "Send reminder email", {:controller => "games", :action => "sendemail", :method => "put", :game_id => @game.id}, :class => "button voteemailsend", remote: true %>
           <% else %>
             (vote reminder email has been scheduled)
