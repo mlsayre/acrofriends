@@ -1,69 +1,71 @@
-<% @mainpagetitle="Edit " + current_user.username %>
+<% @mainpagetitle="Settings / Edit " + current_user.username %>
 <%= render "shared/topbar" %>
 
-Thanks for joining the AcroFriends beta! If you have found any bugs or have any suggestions, please
-let me know: <%= mail_to "matt@acrofriends.com" %><br><br>
+<div id="edituserpage">
+  Thanks for joining the AcroFriends beta! If you have found any bugs or have any suggestions, please
+  let me know: <%= mail_to "matt@acrofriends.com" %><br><br>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-like" data-href="https://www.facebook.com/acrofriends" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div><br><br>
+  <div class="fb-like" data-href="https://www.facebook.com/acrofriends" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div><br><br>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username, :autofocus => true %></div>
+    <div><%= f.label :username %><br />
+    <%= f.text_field :username, :autofocus => true %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+    <div><%= f.label :email %><br />
+    <%= f.email_field :email %></div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <% if f.object.encrypted_password.present? %>
+      <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, :autocomplete => "off" %></div>
+
+      <div><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %></div>
+
+
+      <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password %></div>
+    <% end %>
+
+    <fieldset class="small-5 centerall">
+      <legend>Optional Information</legend>
+        <div class="small-10 centerall"><%= f.label :avatar, "Your avatar: " %><br>
+          <%= image_tag current_user.avatar.url(:small), :style => "border: 1px solid gray; border-radius: 40px; margin-bottom:12px;" %>
+        </div>
+        <%= f.label :avatar, "Upload new avatar:" %>
+        <div style="margin-top:12px; display:block; margin: 0 auto;">
+          <%= f.file_field :avatar %>
+        </div>
+    </fieldset>
+
+    <div><%= f.submit "Update" %></div>
   <% end %>
-
-  <% if f.object.encrypted_password.present? %>
-    <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, :autocomplete => "off" %></div>
-
-    <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %></div>
-
-
-    <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password %></div>
-  <% end %>
-
-  <fieldset class="small-5 centerall">
-    <legend>Optional Information</legend>
-      <div class="small-10 centerall"><%= f.label :avatar, "Your avatar" %>
-        <%= image_tag current_user.avatar.url(:small), :style => "border: 1px solid gray; border-radius: 40px; margin-bottom:12px;" %>
-      </div>
-      <div class="small-5 centerall"><%= f.label :avatar, "Upload new avatar:" %></div>
-      <div class="small-10 columns small-centered" style="margin-top:12px">
-        <%= f.file_field :avatar %>
-      </div>
-  </fieldset>
-
-  <div><%= f.submit "Update" %></div>
-<% end %>
-<br>
-<%= button_to "Turn tips on", {:controller => "/pages", :action => "tipson", :method => "put"}, :class => "button tipbutton", :style => "float: none;", remote: true %>
-<script>
-  $(".button.tipbutton").click(function() {
-    alert("Tips are now on.");
-    $(".button.tipbutton").hide();
-  });
-</script>
-<br>
-<div id="main-signout">
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  <br>
+  <%= button_to "Turn tips on", {:controller => "/pages", :action => "tipson", :method => "put"}, :class => "button tipbutton", :style => "float: none;", remote: true %>
+  <script>
+    $(".button.tipbutton").click(function() {
+      alert("Tips are now on.");
+      $(".button.tipbutton").hide();
+    });
+  </script>
+  <br>
+  <div id="main-signout">
+    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  </div>
 </div>
 
 <%= render "shared/bottombar" %>
