@@ -20,7 +20,6 @@
           Your acro: "<%= @currentgamedata.r1answer %>"
         <% end %>
       </div>
-      Send email to <%= current_user.email %> when voting round starts? <span style="font-size: 84%;">(change in settings if email address is incorrect) </span>
       <% if @gamedata.r1answer && @gamedata.r2answer && @gamedata.r3answer && @gamedata.r4answer &&
             @gamedata.r5answer && @gamedata.r6answer && @gamedata.r7answer && @gamedata.r8answer %>
         <div class="allanswered">
