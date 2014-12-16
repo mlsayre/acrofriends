@@ -19,18 +19,26 @@ class GamesController < ApplicationController
       flash[:notice] = "Sorry, you are not a player in that game."
     end
 
-    @timeremainingminutes = (@game.playendtime - DateTime.now)
-    if @timeremainingminutes >= 3600
-      @timeremaining = distance_of_time_in_words(@timeremainingminutes)
-    elsif @timeremainingminutes < 3600
-      @timeremaining = "about " + ((@game.playendtime - DateTime.now)/60).round.to_s + " minutes"
+    if @game.playendtime == nil
+      @timeremaining = "Waiting for 3 players"
+    else
+      @timeremainingminutes = (@game.playendtime - DateTime.now)
+      if @timeremainingminutes >= 3600
+        @timeremaining = distance_of_time_in_words(@timeremainingminutes)
+      elsif @timeremainingminutes < 3600
+        @timeremaining = "about " + ((@game.playendtime - DateTime.now)/60).round.to_s + " minutes"
+      end
     end
 
-    @votetimeremainingminutes = (@game.voteendtime - DateTime.now)
-    if @votetimeremainingminutes >= 3600
-      @votetimeremaining = distance_of_time_in_words(@votetimeremainingminutes)
-    elsif @votetimeremainingminutes < 3600
-      @votetimeremaining = "about " + ((@game.voteendtime - DateTime.now)/60).round.to_s + " minutes"
+    if @game.voteendtime == nil
+      @timeremainingminutes = "Waiting for 3 players"
+    else
+      @votetimeremainingminutes = (@game.voteendtime - DateTime.now)
+      if @votetimeremainingminutes >= 3600
+        @votetimeremaining = distance_of_time_in_words(@votetimeremainingminutes)
+      elsif @votetimeremainingminutes < 3600
+        @votetimeremaining = "about " + ((@game.voteendtime - DateTime.now)/60).round.to_s + " minutes"
+      end
     end
 
     @gamedata = Gamedata.where(:user_id => current_user.id).where(:game_id => @game.id).first
@@ -40,7 +48,7 @@ class GamesController < ApplicationController
                    .where("user_id != ?", current_user.id).all
 
     # results round
-    if DateTime.now.utc >= @game.voteendtime && @game.gameover == false
+    if @game.voteendtime != nil && DateTime.now.utc >= @game.voteendtime && @game.gameover == false
       @game.update_attributes(:gameover => true)
       @gameoverdata = Gamedata.where(:game_id => @game.id).all
       @gameplayers = @gameoverdata.collect(&:user_id)
@@ -260,7 +268,7 @@ class GamesController < ApplicationController
       end
 
     # points already tallied, gameover now true, just need score data
-    elsif DateTime.now.utc >= @game.voteendtime && @game.gameover == true
+    elsif @game.voteendtime != nil && DateTime.now.utc >= @game.voteendtime && @game.gameover == true
       @round1winnerid = Gamedata.where(:game_id => @game.id).order('r1points DESC').first.user_id
       @round2winnerid = Gamedata.where(:game_id => @game.id).order('r2points DESC').first.user_id
       @round3winnerid = Gamedata.where(:game_id => @game.id).order('r3points DESC').first.user_id
@@ -315,8 +323,12 @@ class GamesController < ApplicationController
     @gamedataemail = Gamedata.where(:user_id => current_user.id).where(:game_id => @game.id).first
     @gamedataemail.update_attributes(:voteemailsent => true)
     # set up scheduled email
-    @votestarttimeemail = @game.playendtime
-    VoteMailer.delay_until(@votestarttimeemail).voting_email(@gamedataemail)
+    if @game.playendtime != nil
+      @votestarttimeemail = @game.playendtime
+      VoteMailer.delay_until(@votestarttimeemail).voting_email(@gamedataemail)
+    else
+      VoteMailer.delay_for(20.hours).voting_email(@gamedataemail)
+    end
 
     render :nothing => true
   end
@@ -363,27 +375,47 @@ class GamesController < ApplicationController
       usergames = Gamedata.where('user_id = ?', current_user.id).all.collect(&:game_id)
     end
     if (params[:game][:length]) == "1hour" &&
-      Game.where('length = ? AND playercount < ? AND playendtime > ?
+      (Game.where('length = ? AND playercount < ? AND playendtime > ?
          AND group_id = ? AND not id IN (?)',
          "1hour", 13, DateTime.now + 0.01389,
-         (params[:game][:group_id]), usergames).first
+         (params[:game][:group_id]), usergames).first ||
+      Game.where(:length => "1hour").where(:group_id => (params[:game][:group_id])).where(:playendtime => nil)
+        .where.not(:id => usergames).first)
       @game = Game.where('length = ? AND playercount < ? AND playendtime > ?
         AND group_id = ? AND not id IN (?)',
         "1hour", 13, DateTime.now + 0.01389,
-        (params[:game][:group_id]), usergames).first
+        (params[:game][:group_id]), usergames).first ||
+        Game.where(:length => "1hour").where(:group_id => (params[:game][:group_id])).where(:playendtime => nil)
+        .where.not(:id => usergames).order('created_at ASC').first
+      if @game.playercount == 2
+        playtime = 6
+        votetime = 30
+        @game.playendtime = DateTime.now.utc + playtime.hours
+        @game.voteendtime = DateTime.now.utc + votetime.hours
+      end
       @game.increment!(:playercount)
       Gamedata.create(:user_id => current_user.id, :game_id => @game.id)
       redirect_to game_path(@game)
       flash[:notice] = "Joining this game, enjoy!"
     elsif (params[:game][:length]) == "6hour" &&
-      Game.where('length = ? AND playercount < ? AND playendtime > ?
+      (Game.where('length = ? AND playercount < ? AND playendtime > ?
          AND group_id = ? AND not id IN (?)',
          "6hour", 13, DateTime.now + 0.02778,
-         (params[:game][:group_id]), usergames).first
+         (params[:game][:group_id]), usergames).first ||
+         Game.where(:length => "6hour").where(:group_id => (params[:game][:group_id]))
+         .where(:playendtime => nil).where.not(:id => usergames).first)
       @game = Game.where('length = ? AND playercount < ? AND playendtime > ?
          AND group_id = ? AND not id IN (?)',
          "6hour", 13, DateTime.now + 0.02778,
-         (params[:game][:group_id]), usergames).first
+         (params[:game][:group_id]), usergames).first ||
+         Game.where(:length => "6hour").where(:group_id => (params[:game][:group_id])).where(:playendtime => nil)
+           .where.not(:id => usergames).order('created_at ASC').first
+      if @game.playercount == 2
+        playtime = 6
+        votetime = 30
+        @game.playendtime = DateTime.now.utc + playtime.hours
+        @game.voteendtime = DateTime.now.utc + votetime.hours
+      end
       @game.increment!(:playercount)
       Gamedata.create(:user_id => current_user.id, :game_id => @game.id)
       redirect_to game_path(@game)
@@ -489,17 +521,19 @@ class GamesController < ApplicationController
       potr8let
 
       @game.increment!(:playercount)
-      if (params[:game][:length]) == "1hour"
-        playtime = 1
-        votetime = 3
-      elsif (params[:game][:length]) == "6hour"
-        playtime = 6
-        votetime = 30
-      elsif (params[:game][:length]) == "1day"
-        gametime = 24
-      end
-      @game.playendtime = DateTime.now.utc + playtime.hours
-      @game.voteendtime = DateTime.now.utc + votetime.hours
+
+      # auto game time lengths
+      # if (params[:game][:length]) == "1hour"
+      #   playtime = 1
+      #   votetime = 3
+      # elsif (params[:game][:length]) == "6hour"
+      #   playtime = 6
+      #   votetime = 30
+      # elsif (params[:game][:length]) == "1day"
+      #   gametime = 24
+      # end
+      # @game.playendtime = DateTime.now.utc + playtime.hours
+      # @game.voteendtime = DateTime.now.utc + votetime.hours
 
       respond_to do |format|
         if @game.save

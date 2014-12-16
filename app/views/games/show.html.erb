@@ -2,7 +2,7 @@
 <%= render "shared/topbar" %>
 
 <!-- //////////////// GAME PLAY ROUNDS //////////////// -->
-<% if DateTime.now.utc < @game.playendtime %>
+<% if (@game.playendtime != nil && DateTime.now.utc < @game.playendtime) || @game.playendtime == nil %>
   <% if @game.length == "1hour" %>
     <%= render "roundplayshort" %>
     <%= render "shared/gamead" %>
@@ -13,7 +13,7 @@
 <% end %>
 
 <!-- //////////////// GAME VOTING ROUND //////////////////// -->
-<% if DateTime.now.utc >= @game.playendtime && DateTime.now.utc < @game.voteendtime %>
+<% if (@game.playendtime != nil && @game.voteendtime != nil) && DateTime.now.utc >= @game.playendtime && DateTime.now.utc < @game.voteendtime %>
   <% if @game.playercount < 3 %>
     Sorry, there weren't enough players to continue to the voting round.
   <% else %>
@@ -26,7 +26,7 @@
 <% end %>
 
 <!-- ////////////////// GAME OVER - RESULTS SECTION ///////////////// -->
-<% if DateTime.now.utc >= @game.voteendtime %>
+<% if @game.voteendtime != nil && DateTime.now.utc >= @game.voteendtime %>
   <% if @game.playercount < 3 %>
     Sorry, there weren't enough players to complete this game.
   <% else %>

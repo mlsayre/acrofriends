@@ -7,6 +7,24 @@
 <div class="maingamespage">
   <div id="mainplayinggameslist" >
     <u>Your games currently in Play rounds</u><br>
+    <% @gamesinplayroundwaiting.each do |game| %>
+      <% if 3 - game.playercount == 2 %>
+        <% @waitingfornumberplayers = "2 more players." %>
+      <% elsif 3 - game.playercount == 1 %>
+        <% @waitingfornumberplayers = "1 more player." %>
+      <% end %>
+        <%= link_to(game) do %>
+          <% if Gamedata.where(:game_id => game.id).where(:user_id => current_user.id).first.r4answer != nil %>
+            <div class="button gameroundscompleted">
+          <% else %>
+            <div class="button">
+          <% end %>
+            <span class="gamelistname"><%= game.name %></span><br>
+            Waiting for <%= @waitingfornumberplayers %>
+          </div>
+        <% end %>
+      <br>
+    <% end %>
     <% @gamesinplayround.each do |game| %>
       <% @timeremainingminutes = (game.playendtime - DateTime.now) %>
         <% if @timeremainingminutes >= 3600 %>
@@ -15,7 +33,7 @@
           <% @timeremaining = "about " + ((game.playendtime - DateTime.now)/60).round.to_s + " minutes" %>
         <% end %>
         <%= link_to(game) do %>
-          <% if Gamedata.where(:game_id => game.id).where(:user_id => current_user.id).first.r8answer != nil %>
+          <% if Gamedata.where(:game_id => game.id).where(:user_id => current_user.id).first.r4answer != nil %>
             <div class="button gameroundscompleted">
           <% else %>
             <div class="button">

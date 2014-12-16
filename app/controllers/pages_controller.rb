@@ -7,6 +7,8 @@ class PagesController < ApplicationController
     @gamescomplete = Game.where(:id => @gamesinprogressids).all
     @gamesinplayround = @gamesinprogress.where('playendtime > ?', DateTime.now.utc)
       .order('playendtime ASC').all
+    @gamesinplayroundwaiting = @gamesinprogress.where(:playendtime => nil)
+      .order('created_at ASC').all
     @gamesinvoteround = @gamesinprogress.where('playendtime <= ? AND voteendtime >= ?', DateTime.now.utc,
       DateTime.now.utc).order('voteendtime ASC').all
     @gamesinresultsround = @gamescomplete.where('voteendtime < ? AND playercount > ?', DateTime.now.utc, 2)
