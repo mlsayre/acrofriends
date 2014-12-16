@@ -53,6 +53,11 @@ class GamesController < ApplicationController
       @gameoverdata = Gamedata.where(:game_id => @game.id).all
       @gameplayers = @gameoverdata.collect(&:user_id)
 
+      # clean up votemailqueue
+      if Votemailqueue.where(:game_id => @game.id).last
+        Votemailqueue.where(:game_id => @game.id).delete_all
+      end
+
       # points from voting
       @gameplayers.each do |playerid|
         @r1pointcount = Gamedata.where(:game_id => @game.id).where(:r1votedfor => playerid)
