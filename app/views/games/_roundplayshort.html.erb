@@ -302,7 +302,7 @@
       <% if Gamedata.where(:game_id => @game.id).where(:user_id => current_user.id).first.whochatted != "" %>
         <%= link_to(gamechat_games_path(@game)) do %>
           <div class="gamechat button">
-            <span class="chatlinknotify"><%= Gamedata.where(:game_id => @game.id).where(:user_id => current_user.id).first.whochatted + ' is chatting!' %> <%= image_tag("emoji/speech_balloon.png", :class => "smallspeechimage") %></span><br>
+            <span class="chatlinknotify"><%= Gamedata.where(:game_id => @game.id).where(:user_id => current_user.id).first.whochatted + ' has chatted!' %> <%= image_tag("emoji/speech_balloon.png", :class => "smallspeechimage") %></span><br>
           </div>
         <% end %>
       <% else %>
