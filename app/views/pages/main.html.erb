@@ -46,6 +46,10 @@
       <br>
     <% end %>
     <br>
+    <div class="button">
+      <%= link_to(image_tag("New-128.png", size: "48", alt: "Start New Game", class: "main-icon"), new_game_path) %><br>
+      <span style="font-size: 130%">Start New Game</span>
+    </div>
   </div>
 
   <div id="mainvotinggameslist" >
@@ -86,6 +90,10 @@
       <br>
     <% end %>
     <br>
+    <div class="button">
+      <%= link_to(image_tag("New-128.png", size: "48", alt: "Start New Game", class: "main-icon"), new_game_path) %><br>
+      <span style="font-size: 130%">Start New Game</span>
+    </div>
   </div>
 
   <div id="mainresultsgameslist" >
@@ -108,13 +116,18 @@
         <% end %></span>
       <br>
     <% end %>
+    <br>
+    <div class="button">
+      <%= link_to(image_tag("New-128.png", size: "48", alt: "Start New Game", class: "main-icon"), new_game_path) %><br>
+      <span style="font-size: 130%">Start New Game</span>
+    </div>
   </div>
   <br>
 
   <% if current_user.tooltips == true %>
     <fieldset class="tooltips">
       <legend style="text-align: left; margin-left: 6px;">Tip</legend>
-      Welcome to AcroFriends! To start playing, click the "New" button at the bottom of the page.
+      Welcome to AcroFriends! To start playing, click the "Start New Game" button above or the "New" button at the bottom of the page.
       <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
     </fieldset>
     <script>
