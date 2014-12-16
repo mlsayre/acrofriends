@@ -316,6 +316,9 @@
     background-position: bottom right;
     background-size: 26px;
   }
+  .roundbuttonhighlight {
+    box-shadow: 0px 0px 12px black;
+  }
   .allanswered {
     color: green;
     font-weight: 700;

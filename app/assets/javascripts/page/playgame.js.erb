@@ -23,6 +23,14 @@ function removeButtonAnims() {
   $(".r6playbutton").removeClass("animated flip");
   $(".r7playbutton").removeClass("animated flip");
   $(".r8playbutton").removeClass("animated flip");
+  $(".r1playbutton").removeClass("roundbuttonhighlight");
+  $(".r2playbutton").removeClass("roundbuttonhighlight");
+  $(".r3playbutton").removeClass("roundbuttonhighlight");
+  $(".r4playbutton").removeClass("roundbuttonhighlight");
+  $(".r5playbutton").removeClass("roundbuttonhighlight");
+  $(".r6playbutton").removeClass("roundbuttonhighlight");
+  $(".r7playbutton").removeClass("roundbuttonhighlight");
+  $(".r8playbutton").removeClass("roundbuttonhighlight");
   $(".allanswered").removeClass("animated bounce");
   // $(".r2playbutton").text("Round 2", 600, "easeOutBounce");
   // $(".r3playbutton").text("Round 3", 600, "easeOutBounce");
@@ -35,6 +43,7 @@ function removeButtonAnims() {
 
 $(".r1playbutton").click(function () {
   removeButtonAnims();
+  $(".r1playbutton").addClass("roundbuttonhighlight");
   $("#r1play").show();
   $("#r2play").hide();
   $("#r3play").hide();
@@ -46,6 +55,7 @@ $(".r1playbutton").click(function () {
 });
 $(".r2playbutton").click(function () {
   removeButtonAnims();
+  $(".r2playbutton").addClass("roundbuttonhighlight");
   $("#r2play").show();
   $("#r1play").hide();
   $("#r3play").hide();
@@ -57,6 +67,7 @@ $(".r2playbutton").click(function () {
 });
 $(".r3playbutton").click(function () {
   removeButtonAnims();
+  $(".r3playbutton").addClass("roundbuttonhighlight");
   $("#r3play").show();
   $("#r1play").hide();
   $("#r2play").hide();
@@ -68,6 +79,7 @@ $(".r3playbutton").click(function () {
 });
 $(".r4playbutton").click(function () {
   removeButtonAnims();
+  $(".r4playbutton").addClass("roundbuttonhighlight");
   $("#r1play").hide();
   $("#r2play").hide();
   $("#r3play").hide();
@@ -79,6 +91,7 @@ $(".r4playbutton").click(function () {
 });
 $(".r5playbutton").click(function () {
   removeButtonAnims();
+  $(".r5playbutton").addClass("roundbuttonhighlight");
   $("#r1play").hide();
   $("#r2play").hide();
   $("#r3play").hide();
@@ -90,6 +103,7 @@ $(".r5playbutton").click(function () {
 });
 $(".r6playbutton").click(function () {
   removeButtonAnims();
+  $(".r6playbutton").addClass("roundbuttonhighlight");
   $("#r1play").hide();
   $("#r2play").hide();
   $("#r3play").hide();
@@ -101,6 +115,7 @@ $(".r6playbutton").click(function () {
 });
 $(".r7playbutton").click(function () {
   removeButtonAnims();
+  $(".r7playbutton").addClass("roundbuttonhighlight");
   $("#r1play").hide();
   $("#r2play").hide();
   $("#r3play").hide();
@@ -112,6 +127,7 @@ $(".r7playbutton").click(function () {
 });
 $(".r8playbutton").click(function () {
   removeButtonAnims();
+  $(".r8playbutton").addClass("roundbuttonhighlight");
   $("#r1play").hide();
   $("#r2play").hide();
   $("#r3play").hide();
