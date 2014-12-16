@@ -10,25 +10,25 @@ function submitAnswerFX(answerid, submission) {
       $(".r1playbutton").addClass("roundplayanswered", 600, "easeOutBounce" );
       $(".r2playbutton").addClass("animated flip");
       $(".r2playbutton").removeClass("roundplaylocked");
-      $(".r2playbutton").text("Next Round");
+      // $(".r2playbutton").text("Next Round");
     }
     else if (answerid == "#r2answered") {
       $(".r2playbutton").addClass("roundplayanswered", 600, "easeOutBounce" );
       $(".r3playbutton").addClass("animated flip");
       $(".r3playbutton").removeClass("roundplaylocked");
-      $(".r3playbutton").text("Next Round");
+      // $(".r3playbutton").text("Next Round");
     }
     else if (answerid == "#r3answered") {
       $(".r3playbutton").addClass("roundplayanswered", 600, "easeOutBounce" );
       $(".r4playbutton").addClass("animated flip");
       $(".r4playbutton").removeClass("roundplaylocked");
-      $(".r4playbutton").text("Next Round");
+      // $(".r4playbutton").text("Next Round");
     }
     else if (answerid == "#r4answered") {
       $(".r4playbutton").addClass("roundplayanswered", 600, "easeOutBounce" );
       $(".r5playbutton").addClass("animated flip");
       $(".r5playbutton").removeClass("roundplaylocked");
-      $(".r5playbutton").text("Next Round");
+      // $(".r5playbutton").text("Next Round");
     }
     else if (answerid == "#r4answeredshortgame") {
       $(".r4playbutton").addClass("roundplayanswered", 600, "easeOutBounce" );
@@ -39,19 +39,19 @@ function submitAnswerFX(answerid, submission) {
       $(".r5playbutton").addClass("roundplayanswered", 600, "easeOutBounce" );
       $(".r6playbutton").addClass("animated flip");
       $(".r6playbutton").removeClass("roundplaylocked");
-      $(".r6playbutton").text("Next Round");
+      // $(".r6playbutton").text("Next Round");
     }
     else if (answerid == "#r6answered") {
       $(".r6playbutton").addClass("roundplayanswered", 600, "easeOutBounce" );
       $(".r7playbutton").addClass("animated flip");
       $(".r7playbutton").removeClass("roundplaylocked");
-      $(".r7playbutton").text("Next Round");
+      // $(".r7playbutton").text("Next Round");
     }
     else if (answerid == "#r7answered") {
       $(".r7playbutton").addClass("roundplayanswered", 600, "easeOutBounce" );
       $(".r8playbutton").addClass("animated flip");
       $(".r8playbutton").removeClass("roundplaylocked");
-      $(".r8playbutton").text("Next Round");
+      // $(".r8playbutton").text("Next Round");
     }
     else if (answerid == "#r8answered") {
       $(".r8playbutton").addClass("roundplayanswered", 600, "easeOutBounce" );
