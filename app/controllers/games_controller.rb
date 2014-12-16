@@ -327,7 +327,7 @@ class GamesController < ApplicationController
       @votestarttimeemail = @game.playendtime
       VoteMailer.delay_until(@votestarttimeemail).voting_email(@gamedataemail)
     else
-      VoteMailer.delay_for(20.hours).voting_email(@gamedataemail)
+      Votemailqueue.create(:user_id => current_user.id, :game_id => @game.id)
     end
 
     render :nothing => true
@@ -392,6 +392,14 @@ class GamesController < ApplicationController
         votetime = 30
         @game.playendtime = DateTime.now.utc + playtime.hours
         @game.voteendtime = DateTime.now.utc + votetime.hours
+
+        #send emails to previous players
+        @prevplayers = Votemailqueue.where(:game_id => @game.id).all.collect(&:user_id)
+        @prevplayers.each do |player|
+          @votestarttimeemail = DateTime.now.utc + playtime.hours
+          @gamedataemail = Gamedata.where(:user_id => player).where(:game_id => @game.id).first
+          VoteMailer.delay_until(@votestarttimeemail).voting_email(@gamedataemail)
+        end
       end
       @game.increment!(:playercount)
       Gamedata.create(:user_id => current_user.id, :game_id => @game.id)
@@ -415,6 +423,14 @@ class GamesController < ApplicationController
         votetime = 30
         @game.playendtime = DateTime.now.utc + playtime.hours
         @game.voteendtime = DateTime.now.utc + votetime.hours
+
+        #send emails to previous players
+        @prevplayers = Votemailqueue.where(:game_id => @game.id).all.collect(&:user_id)
+        @prevplayers.each do |player|
+          @votestarttimeemail = DateTime.now.utc + playtime.hours
+          @gamedataemail = Gamedata.where(:user_id => player).where(:game_id => @game.id).first
+          VoteMailer.delay_until(@votestarttimeemail).voting_email(@gamedataemail)
+        end
       end
       @game.increment!(:playercount)
       Gamedata.create(:user_id => current_user.id, :game_id => @game.id)
