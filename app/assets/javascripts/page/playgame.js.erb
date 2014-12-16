@@ -15,22 +15,22 @@ function refreshTimeRemaining() {
 setInterval(refreshTimeRemaining, 180000);
 
 function removeButtonAnims() {
-  $(".r1playbutton").removeClass("animated flip smallerbutton");
-  $(".r2playbutton").removeClass("animated flip smallerbutton");
-  $(".r3playbutton").removeClass("animated flip smallerbutton");
-  $(".r4playbutton").removeClass("animated flip smallerbutton");
-  $(".r5playbutton").removeClass("animated flip smallerbutton");
-  $(".r6playbutton").removeClass("animated flip smallerbutton");
-  $(".r7playbutton").removeClass("animated flip smallerbutton");
-  $(".r8playbutton").removeClass("animated flip smallerbutton");
+  $(".r1playbutton").removeClass("animated flip");
+  $(".r2playbutton").removeClass("animated flip");
+  $(".r3playbutton").removeClass("animated flip");
+  $(".r4playbutton").removeClass("animated flip");
+  $(".r5playbutton").removeClass("animated flip");
+  $(".r6playbutton").removeClass("animated flip");
+  $(".r7playbutton").removeClass("animated flip");
+  $(".r8playbutton").removeClass("animated flip");
   $(".allanswered").removeClass("animated bounce");
-  $(".r2playbutton").text("Round 2");
-  $(".r3playbutton").text("Round 3");
-  $(".r4playbutton").text("Round 4");
-  $(".r5playbutton").text("Round 5");
-  $(".r6playbutton").text("Round 6");
-  $(".r7playbutton").text("Round 7");
-  $(".r8playbutton").text("Round 8");
+  $(".r2playbutton").text("Round 2", 600, "easeOutBounce");
+  $(".r3playbutton").text("Round 3", 600, "easeOutBounce");
+  $(".r4playbutton").text("Round 4", 600, "easeOutBounce");
+  $(".r5playbutton").text("Round 5", 600, "easeOutBounce");
+  $(".r6playbutton").text("Round 6", 600, "easeOutBounce");
+  $(".r7playbutton").text("Round 7", 600, "easeOutBounce");
+  $(".r8playbutton").text("Round 8", 600, "easeOutBounce");
 }
 
 $(".r1playbutton").click(function () {

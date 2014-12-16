@@ -282,6 +282,30 @@
   .answerfield {
     width: 80%;
   }
+  .roundplaylocked {
+    background-color: gray;
+    background-image: url("Lock-128.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 22px;
+    pointer-events: none;
+    opacity: .6;
+    color: gainsboro;
+  }
+  .roundplayanswered {
+    background-color: green;
+    background-image: url("Check-48.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 26px;
+  }
+  .roundplayanswered:hover{
+    background-color: darkgreen;
+    background-image: url("Check-48.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 26px;
+  }
   .allanswered {
     color: green;
     font-weight: 700;
