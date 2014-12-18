@@ -8,6 +8,7 @@
   <div id="mainplayinggameslist" >
     <u>Your games currently in Play rounds</u><br>
     <% @gamesinplayroundwaiting.each do |game| %>
+      <% @gamewhochatted = Gamedata.where(:game_id => game.id).where(:user_id => current_user.id).first.whochatted %>
       <% if 3 - game.playercount == 2 %>
         <% @waitingfornumberplayers = "2 more players." %>
       <% elsif 3 - game.playercount == 1 %>
@@ -21,11 +22,15 @@
           <% end %>
             <span class="gamelistname"><%= game.name %></span><br>
             Waiting for <%= @waitingfornumberplayers %>
+            <% if @gamewhochatted != "" %>
+              <br><%= image_tag("emoji/speech_balloon.png", :class => "smallspeechimage", :size => "20") %> <span style="font-size: 84%;"><%= @gamewhochatted %> has chatted!</span>
+            <% end %>
           </div>
         <% end %>
       <br>
     <% end %>
     <% @gamesinplayround.each do |game| %>
+      <% @gamewhochatted = Gamedata.where(:game_id => game.id).where(:user_id => current_user.id).first.whochatted %>
       <% @timeremainingminutes = (game.playendtime - DateTime.now) %>
         <% if @timeremainingminutes >= 3600 %>
           <% @timeremaining = distance_of_time_in_words(@timeremainingminutes) %>
@@ -41,6 +46,9 @@
             <span class="gamelistname"><%= game.name %></span><br>
             <span class="gamelisttime">(Voting begins in <%= @timeremaining %>)</span><br>
             Players: <%= game.playercount %>
+            <% if @gamewhochatted != "" %>
+              <br><%= image_tag("emoji/speech_balloon.png", :class => "smallspeechimage", :size => "20") %> <span style="font-size: 84%;"><%= @gamewhochatted %> has chatted!</span>
+            <% end %>
           </div>
         <% end %>
       <br>
@@ -55,6 +63,7 @@
   <div id="mainvotinggameslist" >
     <u>Your games currently in Vote rounds</u><br>
     <% @gamesinvoteround.each do |game| %>
+      <% @gamewhochatted = Gamedata.where(:game_id => game.id).where(:user_id => current_user.id).first.whochatted %>
       <% @timeremainingminutes = (game.voteendtime - DateTime.now) %>
         <% if @timeremainingminutes >= 3600 %>
           <% @timeremaining = distance_of_time_in_words(@timeremainingminutes) %>
@@ -85,6 +94,9 @@
             <span class="gamelistname"><%= game.name %></span><br>
             <span class="gamelisttime">(Voting ends in <%= @timeremaining %>)</span><br>
             Players: <%= game.playercount %>
+            <% if @gamewhochatted != "" %>
+              <br><%= image_tag("emoji/speech_balloon.png", :class => "smallspeechimage", :size => "20") %> <span style="font-size: 84%;"><%= @gamewhochatted %> has chatted!</span>
+            <% end %>
           </div>
         <% end %>
       <br>
@@ -99,6 +111,7 @@
   <div id="mainresultsgameslist" >
     <u>Your completed games (last 20)</u><br>
     <% @gamesinresultsround.each do |game| %>
+      <% @gamewhochatted = Gamedata.where(:game_id => game.id).where(:user_id => current_user.id).first.whochatted %>
       <span class="completedgamelink"><%= link_to(game) do %>
         <% if Gamedata.where(:game_id => game.id).where(:user_id => current_user.id).first.seenresults == true %>
           <div class="button gameroundscompleted">
@@ -106,11 +119,9 @@
           <div class="button">
         <% end %>
             <span class="gamelistname"><%= game.name %></span><br>
-            Players: <%= game.playercount %> Length:
-            <% if game.length == "1hour" %>
-            Quick
-            <% elsif game.length == "6hour" %>
-            Normal
+            Players: <%= game.playercount %>
+            <% if @gamewhochatted != "" %>
+              <br><%= image_tag("emoji/speech_balloon.png", :class => "smallspeechimage", :size => "20") %> <span style="font-size: 84%;"><%= @gamewhochatted %> has chatted!</span>
             <% end %>
           </div>
         <% end %></span>
