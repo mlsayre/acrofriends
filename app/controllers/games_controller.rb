@@ -365,6 +365,8 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @game = Game.new
+    @gamesinprogressids = Gamedata.where(:user_id => current_user.id).collect(&:game_id)
+    @gamesinprogress = Game.where(:id => @gamesinprogressids).where(:gameover => false).all
   end
 
   # GET /games/1/edit
