@@ -104,116 +104,212 @@ class GamesController < ApplicationController
 
       # bonus points for round win and for voting for winner - @rXwinnervoters is winner voter array
       if Gamedata.where(:game_id => @game.id).order('r1points DESC').first
-        @round1winnerid = Gamedata.where(:game_id => @game.id).order('r1points DESC').first.user_id
-        if Gamedata.where(:game_id => @game.id).where(:user_id => @round1winnerid).first.r1votedfor != 0
-          Gamedata.where(:game_id => @game.id).where(:user_id => @round1winnerid).first
-                .increment!(:r1points, by = 3)
-        end
-        # 1 point for winning answer voters
-        @r1winnervoters = Gamedata.where(:game_id => @game.id).where(:r1votedfor => @round1winnerid)
-                          .collect(&:user_id)
-        @r1winnervoters.each do |voterid|
-          Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
-                  .increment!(:r1points, by = 1)
+        # in case of a tie
+        @game1datapointranking = Gamedata.where(:game_id => @game.id).order('r1points DESC')
+        if @game1datapointranking.first.r1points == @game1datapointranking.second.r1points
+          @r1winningpointtotal = @game1datapointranking.first.r1points
+          @r1tiewinners = Gamedata.where(:game_id => @game.id).where(:r1points => @r1winningpointtotal)
+            .where.not(:r1votedfor => 0).collect(&:user_id)
+          @r1tiewinners.each do |tiewinner|
+            tiewinner.increment!(:r1points, by = 1)
+          end
+        # in case of clear winner
+        else
+          @round1winnerid = Gamedata.where(:game_id => @game.id).order('r1points DESC').first.user_id
+          if Gamedata.where(:game_id => @game.id).where(:user_id => @round1winnerid).first.r1votedfor != 0
+            Gamedata.where(:game_id => @game.id).where(:user_id => @round1winnerid).first
+                  .increment!(:r1points, by = 3)
+          end
+          # 1 point for winning answer voters
+          @r1winnervoters = Gamedata.where(:game_id => @game.id).where(:r1votedfor => @round1winnerid)
+                            .collect(&:user_id)
+          @r1winnervoters.each do |voterid|
+            Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                    .increment!(:r1points, by = 1)
+          end
         end
       end
       if Gamedata.where(:game_id => @game.id).order('r2points DESC').first
-        @round2winnerid = Gamedata.where(:game_id => @game.id).order('r2points DESC').first.user_id
-        if Gamedata.where(:game_id => @game.id).where(:user_id => @round2winnerid).first.r2votedfor != 0
-          Gamedata.where(:game_id => @game.id).where(:user_id => @round2winnerid).first
-                .increment!(:r2points, by = 4)
-        end
-        # 1 point for winning answer voters
-        @r2winnervoters = Gamedata.where(:game_id => @game.id).where(:r2votedfor => @round2winnerid)
-                          .collect(&:user_id)
-        @r2winnervoters.each do |voterid|
-          Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
-                  .increment!(:r2points, by = 1)
+        # in case of a tie
+        @game2datapointranking = Gamedata.where(:game_id => @game.id).order('r2points DESC')
+        if @game2datapointranking.first.r2points == @game2datapointranking.second.r2points
+          @r2winningpointtotal = @game2datapointranking.first.r2points
+          @r2tiewinners = Gamedata.where(:game_id => @game.id).where(:r2points => @r2winningpointtotal)
+            .where.not(:r2votedfor => 0).collect(&:user_id)
+          @r2tiewinners.each do |tiewinner|
+            tiewinner.increment!(:r2points, by = 1)
+          end
+        # in case of clear winner
+        else
+          @round2winnerid = Gamedata.where(:game_id => @game.id).order('r2points DESC').first.user_id
+          if Gamedata.where(:game_id => @game.id).where(:user_id => @round2winnerid).first.r2votedfor != 0
+            Gamedata.where(:game_id => @game.id).where(:user_id => @round2winnerid).first
+                  .increment!(:r2points, by = 4)
+          end
+          # 1 point for winning answer voters
+          @r2winnervoters = Gamedata.where(:game_id => @game.id).where(:r2votedfor => @round2winnerid)
+                            .collect(&:user_id)
+          @r2winnervoters.each do |voterid|
+            Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                    .increment!(:r2points, by = 1)
+          end
         end
       end
       if Gamedata.where(:game_id => @game.id).order('r3points DESC').first
-        @round3winnerid = Gamedata.where(:game_id => @game.id).order('r3points DESC').first.user_id
-        if Gamedata.where(:game_id => @game.id).where(:user_id => @round3winnerid).first.r3votedfor != 0
-          Gamedata.where(:game_id => @game.id).where(:user_id => @round3winnerid).first
-                .increment!(:r3points, by = 5)
-        end
-        # 1 point for winning answer voters
-        @r3winnervoters = Gamedata.where(:game_id => @game.id).where(:r3votedfor => @round3winnerid)
-                          .collect(&:user_id)
-        @r3winnervoters.each do |voterid|
-          Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
-                  .increment!(:r3points, by = 1)
+        # in case of a tie
+        @game3datapointranking = Gamedata.where(:game_id => @game.id).order('r3points DESC')
+        if @game3datapointranking.first.r3points == @game3datapointranking.second.r3points
+          @r3winningpointtotal = @game3datapointranking.first.r3points
+          @r3tiewinners = Gamedata.where(:game_id => @game.id).where(:r3points => @r3winningpointtotal)
+            .where.not(:r3votedfor => 0).collect(&:user_id)
+          @r3tiewinners.each do |tiewinner|
+            tiewinner.increment!(:r3points, by = 2)
+          end
+        # in case of clear winner
+        else
+          @round3winnerid = Gamedata.where(:game_id => @game.id).order('r3points DESC').first.user_id
+          if Gamedata.where(:game_id => @game.id).where(:user_id => @round3winnerid).first.r3votedfor != 0
+            Gamedata.where(:game_id => @game.id).where(:user_id => @round3winnerid).first
+                  .increment!(:r3points, by = 5)
+          end
+          # 1 point for winning answer voters
+          @r3winnervoters = Gamedata.where(:game_id => @game.id).where(:r3votedfor => @round3winnerid)
+                            .collect(&:user_id)
+          @r3winnervoters.each do |voterid|
+            Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                    .increment!(:r3points, by = 1)
+          end
         end
       end
       if Gamedata.where(:game_id => @game.id).order('r4points DESC').first
-        @round4winnerid = Gamedata.where(:game_id => @game.id).order('r4points DESC').first.user_id
-        if Gamedata.where(:game_id => @game.id).where(:user_id => @round4winnerid).first.r4votedfor != 0
-          Gamedata.where(:game_id => @game.id).where(:user_id => @round4winnerid).first
-                .increment!(:r4points, by = 6)
-        end
-        # 1 point for winning answer voters
-        @r4winnervoters = Gamedata.where(:game_id => @game.id).where(:r4votedfor => @round4winnerid)
-                          .collect(&:user_id)
-        @r4winnervoters.each do |voterid|
-          Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
-                  .increment!(:r4points, by = 1)
+        # in case of a tie
+        @game4datapointranking = Gamedata.where(:game_id => @game.id).order('r4points DESC')
+        if @game4datapointranking.first.r4points == @game4datapointranking.second.r4points
+          @r4winningpointtotal = @game4datapointranking.first.r4points
+          @r4tiewinners = Gamedata.where(:game_id => @game.id).where(:r4points => @r4winningpointtotal)
+            .where.not(:r4votedfor => 0).collect(&:user_id)
+          @r4tiewinners.each do |tiewinner|
+            tiewinner.increment!(:r4points, by = 2)
+          end
+        # in case of clear winner
+        else
+          @round4winnerid = Gamedata.where(:game_id => @game.id).order('r4points DESC').first.user_id
+          if Gamedata.where(:game_id => @game.id).where(:user_id => @round4winnerid).first.r4votedfor != 0
+            Gamedata.where(:game_id => @game.id).where(:user_id => @round4winnerid).first
+                  .increment!(:r4points, by = 6)
+          end
+          # 1 point for winning answer voters
+          @r4winnervoters = Gamedata.where(:game_id => @game.id).where(:r4votedfor => @round4winnerid)
+                            .collect(&:user_id)
+          @r4winnervoters.each do |voterid|
+            Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                    .increment!(:r4points, by = 1)
+          end
         end
       end
       if @game.length == "6hour"
         if Gamedata.where(:game_id => @game.id).order('r5points DESC').first
-          @round5winnerid = Gamedata.where(:game_id => @game.id).order('r5points DESC').first.user_id
-          if Gamedata.where(:game_id => @game.id).where(:user_id => @round5winnerid).first.r5votedfor != 0
-            Gamedata.where(:game_id => @game.id).where(:user_id => @round5winnerid).first
-                  .increment!(:r5points, by = 3)
-          end
-          # 1 point for winning answer voters
-          @r5winnervoters = Gamedata.where(:game_id => @game.id).where(:r5votedfor => @round5winnerid)
-                            .collect(&:user_id)
-          @r5winnervoters.each do |voterid|
-            Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
-                    .increment!(:r5points, by = 1)
+          # in case of a tie
+          @game5datapointranking = Gamedata.where(:game_id => @game.id).order('r5points DESC')
+          if @game5datapointranking.first.r5points == @game5datapointranking.second.r5points
+            @r5winningpointtotal = @game5datapointranking.first.r5points
+            @r5tiewinners = Gamedata.where(:game_id => @game.id).where(:r5points => @r5winningpointtotal)
+              .where.not(:r5votedfor => 0).collect(&:user_id)
+            @r5tiewinners.each do |tiewinner|
+              tiewinner.increment!(:r5points, by = 1)
+            end
+          # in case of clear winner
+          else
+            @round5winnerid = Gamedata.where(:game_id => @game.id).order('r5points DESC').first.user_id
+            if Gamedata.where(:game_id => @game.id).where(:user_id => @round5winnerid).first.r5votedfor != 0
+              Gamedata.where(:game_id => @game.id).where(:user_id => @round5winnerid).first
+                    .increment!(:r5points, by = 3)
+            end
+            # 1 point for winning answer voters
+            @r5winnervoters = Gamedata.where(:game_id => @game.id).where(:r5votedfor => @round5winnerid)
+                              .collect(&:user_id)
+            @r5winnervoters.each do |voterid|
+              Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                      .increment!(:r5points, by = 1)
+            end
           end
         end
         if Gamedata.where(:game_id => @game.id).order('r6points DESC').first
-          @round6winnerid = Gamedata.where(:game_id => @game.id).order('r6points DESC').first.user_id
-          if Gamedata.where(:game_id => @game.id).where(:user_id => @round6winnerid).first.r6votedfor != 0
-            Gamedata.where(:game_id => @game.id).where(:user_id => @round6winnerid).first
-                  .increment!(:r6points, by = 4)
-          end
-          # 1 point for winning answer voters
-          @r6winnervoters = Gamedata.where(:game_id => @game.id).where(:r6votedfor => @round6winnerid)
-                            .collect(&:user_id)
-          @r6winnervoters.each do |voterid|
-            Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
-                    .increment!(:r6points, by = 1)
+          # in case of a tie
+          @game6datapointranking = Gamedata.where(:game_id => @game.id).order('r6points DESC')
+          if @game6datapointranking.first.r6points == @game6datapointranking.second.r6points
+            @r6winningpointtotal = @game6datapointranking.first.r6points
+            @r6tiewinners = Gamedata.where(:game_id => @game.id).where(:r6points => @r6winningpointtotal)
+              .where.not(:r6votedfor => 0).collect(&:user_id)
+            @r6tiewinners.each do |tiewinner|
+              tiewinner.increment!(:r6points, by = 1)
+            end
+          # in case of clear winner
+          else
+            @round6winnerid = Gamedata.where(:game_id => @game.id).order('r6points DESC').first.user_id
+            if Gamedata.where(:game_id => @game.id).where(:user_id => @round6winnerid).first.r6votedfor != 0
+              Gamedata.where(:game_id => @game.id).where(:user_id => @round6winnerid).first
+                    .increment!(:r6points, by = 4)
+            end
+            # 1 point for winning answer voters
+            @r6winnervoters = Gamedata.where(:game_id => @game.id).where(:r6votedfor => @round6winnerid)
+                              .collect(&:user_id)
+            @r6winnervoters.each do |voterid|
+              Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                      .increment!(:r6points, by = 1)
+            end
           end
         end
         if Gamedata.where(:game_id => @game.id).order('r7points DESC').first
-          @round7winnerid = Gamedata.where(:game_id => @game.id).order('r7points DESC').first.user_id
-          if Gamedata.where(:game_id => @game.id).where(:user_id => @round7winnerid).first.r7votedfor != 0
-            Gamedata.where(:game_id => @game.id).where(:user_id => @round7winnerid).first
-                  .increment!(:r7points, by = 5)
-          end
-          # 1 point for winning answer voters
-          @r7winnervoters = Gamedata.where(:game_id => @game.id).where(:r7votedfor => @round7winnerid)
-                            .collect(&:user_id)
-          @r7winnervoters.each do |voterid|
-            Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
-                    .increment!(:r7points, by = 1)
+          # in case of a tie
+          @game7datapointranking = Gamedata.where(:game_id => @game.id).order('r7points DESC')
+          if @game7datapointranking.first.r7points == @game7datapointranking.second.r7points
+            @r7winningpointtotal = @game7datapointranking.first.r7points
+            @r7tiewinners = Gamedata.where(:game_id => @game.id).where(:r7points => @r7winningpointtotal)
+              .where.not(:r7votedfor => 0).collect(&:user_id)
+            @r7tiewinners.each do |tiewinner|
+              tiewinner.increment!(:r7points, by = 2)
+            end
+          # in case of clear winner
+          else
+            @round7winnerid = Gamedata.where(:game_id => @game.id).order('r7points DESC').first.user_id
+            if Gamedata.where(:game_id => @game.id).where(:user_id => @round7winnerid).first.r7votedfor != 0
+              Gamedata.where(:game_id => @game.id).where(:user_id => @round7winnerid).first
+                    .increment!(:r7points, by = 5)
+            end
+            # 1 point for winning answer voters
+            @r7winnervoters = Gamedata.where(:game_id => @game.id).where(:r7votedfor => @round7winnerid)
+                              .collect(&:user_id)
+            @r7winnervoters.each do |voterid|
+              Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                      .increment!(:r7points, by = 1)
+            end
           end
         end
         if Gamedata.where(:game_id => @game.id).order('r8points DESC').first
-          @round8winnerid = Gamedata.where(:game_id => @game.id).order('r8points DESC').first.user_id
-          if Gamedata.where(:game_id => @game.id).where(:user_id => @round8winnerid).first.r8votedfor != 0
-            Gamedata.where(:game_id => @game.id).where(:user_id => @round8winnerid).first
-                  .increment!(:r8points, by = 6)
-          end
-          # 1 point for winning answer voters
-          @r8winnervoters = Gamedata.where(:game_id => @game.id).where(:r8votedfor => @round8winnerid)
-                            .collect(&:user_id)
-          @r8winnervoters.each do |voterid|
-            Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
-                    .increment!(:r8points, by = 1)
+          # in case of a tie
+          @game8datapointranking = Gamedata.where(:game_id => @game.id).order('r8points DESC')
+          if @game8datapointranking.first.r8points == @game8datapointranking.second.r8points
+            @r8winningpointtotal = @game8datapointranking.first.r8points
+            @r8tiewinners = Gamedata.where(:game_id => @game.id).where(:r8points => @r8winningpointtotal)
+              .where.not(:r8votedfor => 0).collect(&:user_id)
+            @r8tiewinners.each do |tiewinner|
+              tiewinner.increment!(:r8points, by = 2)
+            end
+          # in case of clear winner
+          else
+            @round8winnerid = Gamedata.where(:game_id => @game.id).order('r8points DESC').first.user_id
+            if Gamedata.where(:game_id => @game.id).where(:user_id => @round8winnerid).first.r8votedfor != 0
+              Gamedata.where(:game_id => @game.id).where(:user_id => @round8winnerid).first
+                    .increment!(:r8points, by = 6)
+            end
+            # 1 point for winning answer voters
+            @r8winnervoters = Gamedata.where(:game_id => @game.id).where(:r8votedfor => @round8winnerid)
+                              .collect(&:user_id)
+            @r8winnervoters.each do |voterid|
+              Gamedata.where(:game_id => @game.id).where(:user_id => voterid).first
+                      .increment!(:r8points, by = 1)
+            end
           end
         end
       end
@@ -274,6 +370,7 @@ class GamesController < ApplicationController
 
     # points already tallied, gameover now true, just need score data
     elsif @game.voteendtime != nil && DateTime.now.utc >= @game.voteendtime && @game.gameover == true
+
       @round1winnerid = Gamedata.where(:game_id => @game.id).order('r1points DESC').first.user_id
       @round2winnerid = Gamedata.where(:game_id => @game.id).order('r2points DESC').first.user_id
       @round3winnerid = Gamedata.where(:game_id => @game.id).order('r3points DESC').first.user_id

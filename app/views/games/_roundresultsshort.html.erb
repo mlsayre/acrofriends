@@ -43,8 +43,13 @@
   <!-- Round 1 results -->
   <div class="resultsarea" id="round1results">
     <div id="gamewinnerinfo">
-      <%= image_tag User.where(:id => @round1winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
-      Round 1 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round1winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r1points DESC').first.r1points %></span> points!
+      <% @game1datapointranking = Gamedata.where(:game_id => @game.id).order('r1points DESC') %>
+      <% if @game1datapointranking.first.r1points == @game1datapointranking.second.r1points %>
+        Round 1 Winner: <span class="gamewinnerstats">Tie!</span>
+      <% else %>
+        <%= image_tag User.where(:id => @round1winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
+        Round 1 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round1winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r1points DESC').first.r1points %></span> points!
+      <% end %>
     </div>
     Category: <span style="color:red; font-style: italic;"><%= @game.r1cat %></span>
     <table class="roundresultstable">
@@ -73,17 +78,26 @@
                         .collect(&:r1votedfor).count %>
             </td>
             <td>
-              <% if @round1winner.id == User.where(:id => answer.user_id).first.id %>
+              <% if @game1datapointranking.first.r1points == @game1datapointranking.second.r1points %>
+                <% @r1winningpointtotal = @game1datapointranking.first.r1points %>
+                <% @r1tiewinners = Gamedata.where(:game_id => @game.id).where(:r1points => @r1winningpointtotal).where.not(:r1votedfor => 0).collect(&:user_id) %>
+                <% if @r1tiewinners.include? User.where(:id => answer.user_id).first.id %>
+                  +1
+                <% end %>
+              <% elsif @round1winner.id == User.where(:id => answer.user_id).first.id %>
                 +3
               <% end %>
             </td>
             <td>
-              <% if @r1winnervoters.include? User.where(:id => answer.user_id).first.id %>
-              +1
+              <% if @game1datapointranking.first.r1points == @game1datapointranking.second.r1points %>
+              <% else %>
+                <% if @r1winnervoters.include? User.where(:id => answer.user_id).first.id %>
+                +1
+                <% end %>
               <% end %>
             </td>
             <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"
-              <% if @round1winner.id == current_user.id && @round1winner.id == answer.user_id %>
+              <% if (@round1winner.id) && @round1winner.id == current_user.id && @round1winner.id == answer.user_id %>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://acrofriends.com" data-text='My winning acro! <%= @currentusergame.r1letters %>: "<%= @currentusergamedata.r1answer %>" (<%= @currentusergame.r1cat %>) Come play!' data-via="AcroParty" data-count="none">Tweet</a>
 
               <% end %>
@@ -99,8 +113,13 @@
   <!-- Round 2 results -->
   <div class="resultsarea" id="round2results">
     <div id="gamewinnerinfo">
-      <%= image_tag User.where(:id => @round2winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
-      Round 2 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round2winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r2points DESC').first.r2points %></span> points!
+      <% @game2datapointranking = Gamedata.where(:game_id => @game.id).order('r2points DESC') %>
+      <% if @game2datapointranking.first.r2points == @game2datapointranking.second.r2points %>
+        Round 2 Winner: <span class="gamewinnerstats">Tie!</span>
+      <% else %>
+        <%= image_tag User.where(:id => @round2winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
+        Round 2 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round2winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r2points DESC').first.r2points %></span> points!
+      <% end %>
     </div>
     Category: <span style="color:red; font-style: italic;"><%= @game.r2cat %></span>
     <table class="roundresultstable">
@@ -129,17 +148,26 @@
                         .collect(&:r2votedfor).count %>
             </td>
             <td>
-              <% if @round2winner.id == User.where(:id => answer.user_id).first.id %>
+              <% if @game2datapointranking.first.r2points == @game2datapointranking.second.r2points %>
+                <% @r2winningpointtotal = @game2datapointranking.first.r2points %>
+                <% @r2tiewinners = Gamedata.where(:game_id => @game.id).where(:r2points => @r2winningpointtotal).where.not(:r2votedfor => 0).collect(&:user_id) %>
+                <% if @r2tiewinners.include? User.where(:id => answer.user_id).first.id %>
+                  +1
+                <% end %>
+              <% elsif @round2winner.id == User.where(:id => answer.user_id).first.id %>
                 +4
               <% end %>
             </td>
             <td>
-              <% if @r2winnervoters.include? User.where(:id => answer.user_id).first.id %>
-              +1
+              <% if @game2datapointranking.first.r2points == @game2datapointranking.second.r2points %>
+              <% else %>
+                <% if @r2winnervoters.include? User.where(:id => answer.user_id).first.id %>
+                +1
+                <% end %>
               <% end %>
             </td>
             <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r2answer) %>"
-              <% if @round2winner.id == current_user.id && @round2winner.id == answer.user_id %>
+              <% if (@round2winner.id) && @round2winner.id == current_user.id && @round2winner.id == answer.user_id %>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://acrofriends.com" data-text='My winning acro! <%= @currentusergame.r2letters %>: "<%= @currentusergamedata.r2answer %>" (<%= @currentusergame.r2cat %>) Come play!' data-via="AcroParty" data-count="none">Tweet</a>
 
               <% end %>
@@ -155,8 +183,13 @@
   <!-- Round 3 results -->
   <div class="resultsarea" id="round3results">
     <div id="gamewinnerinfo">
-      <%= image_tag User.where(:id => @round3winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
-      Round 3 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round3winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r3points DESC').first.r3points %></span> points!
+      <% @game3datapointranking = Gamedata.where(:game_id => @game.id).order('r3points DESC') %>
+      <% if @game3datapointranking.first.r3points == @game3datapointranking.second.r3points %>
+        Round 3 Winner: <span class="gamewinnerstats">Tie!</span>
+      <% else %>
+        <%= image_tag User.where(:id => @round3winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
+        Round 3 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round3winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r3points DESC').first.r3points %></span> points!
+      <% end %>
     </div>
     Category: <span style="color:red; font-style: italic;"><%= @game.r3cat %></span>
     <table class="roundresultstable">
@@ -185,17 +218,26 @@
                         .collect(&:r3votedfor).count %>
             </td>
             <td>
-              <% if @round3winner.id == User.where(:id => answer.user_id).first.id %>
+              <% if @game3datapointranking.first.r3points == @game3datapointranking.second.r3points %>
+                <% @r3winningpointtotal = @game3datapointranking.first.r3points %>
+                <% @r3tiewinners = Gamedata.where(:game_id => @game.id).where(:r3points => @r3winningpointtotal).where.not(:r3votedfor => 0).collect(&:user_id) %>
+                <% if @r3tiewinners.include? User.where(:id => answer.user_id).first.id %>
+                  +2
+                <% end %>
+              <% elsif @round3winner.id == User.where(:id => answer.user_id).first.id %>
                 +5
               <% end %>
             </td>
             <td>
-              <% if @r3winnervoters.include? User.where(:id => answer.user_id).first.id %>
-              +1
+              <% if @game3datapointranking.first.r3points == @game3datapointranking.second.r3points %>
+              <% else %>
+                <% if @r3winnervoters.include? User.where(:id => answer.user_id).first.id %>
+                +1
+                <% end %>
               <% end %>
             </td>
             <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r3answer) %>"
-              <% if @round3winner.id == current_user.id && @round3winner.id == answer.user_id %>
+              <% if (@round3winner.id) && @round3winner.id == current_user.id && @round3winner.id == answer.user_id %>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://acrofriends.com" data-text='My winning acro! <%= @currentusergame.r3letters %>: "<%= @currentusergamedata.r3answer %>" (<%= @currentusergame.r3cat %>) Come play!' data-via="AcroParty" data-count="none">Tweet</a>
 
               <% end %>
@@ -211,8 +253,13 @@
   <!-- Round 4 results -->
   <div class="resultsarea" id="round4results">
     <div id="gamewinnerinfo">
-      <%= image_tag User.where(:id => @round4winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
-      Round 4 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round4winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r4points DESC').first.r4points %></span> points!
+      <% @game4datapointranking = Gamedata.where(:game_id => @game.id).order('r4points DESC') %>
+      <% if @game4datapointranking.first.r4points == @game4datapointranking.second.r4points %>
+        Round 4 Winner: <span class="gamewinnerstats">Tie!</span>
+      <% else %>
+        <%= image_tag User.where(:id => @round4winner.id).first.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
+        Round 4 Winner: <span class="gamewinnerstats"><%= User.where(:id => @round4winner.id).first.username %></span> with <span class="gamewinnerstats"><%= Gamedata.where(:game_id => @game.id).order('r4points DESC').first.r4points %></span> points!
+      <% end %>
     </div>
     Category: <span style="color:red; font-style: italic;"><%= @game.r4cat %></span>
     <table class="roundresultstable">
@@ -241,17 +288,26 @@
                         .collect(&:r4votedfor).count %>
             </td>
             <td>
-              <% if @round4winner.id == User.where(:id => answer.user_id).first.id %>
-                +5
+              <% if @game4datapointranking.first.r4points == @game4datapointranking.second.r4points %>
+                <% @r4winningpointtotal = @game4datapointranking.first.r4points %>
+                <% @r4tiewinners = Gamedata.where(:game_id => @game.id).where(:r4points => @r4winningpointtotal).where.not(:r4votedfor => 0).collect(&:user_id) %>
+                <% if @r4tiewinners.include? User.where(:id => answer.user_id).first.id %>
+                  +2
+                <% end %>
+              <% elsif @round4winner.id == User.where(:id => answer.user_id).first.id %>
+                +6
               <% end %>
             </td>
             <td>
-              <% if @r4winnervoters.include? User.where(:id => answer.user_id).first.id %>
-              +1
+              <% if @game4datapointranking.first.r4points == @game4datapointranking.second.r4points %>
+              <% else %>
+                <% if @r4winnervoters.include? User.where(:id => answer.user_id).first.id %>
+                +1
+                <% end %>
               <% end %>
             </td>
             <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r4answer) %>"
-              <% if @round4winner.id == current_user.id && @round4winner.id == answer.user_id %>
+              <% if (@round4winner.id) && @round4winner.id == current_user.id && @round4winner.id == answer.user_id %>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://acrofriends.com" data-text='My winning acro! <%= @currentusergame.r4letters %>: "<%= @currentusergamedata.r4answer %>" (<%= @currentusergame.r4cat %>) Come play!' data-via="AcroParty" data-count="none">Tweet</a>
 
               <% end %>
