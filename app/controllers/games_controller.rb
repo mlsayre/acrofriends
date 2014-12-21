@@ -110,7 +110,8 @@ class GamesController < ApplicationController
           @r1winningpointtotal = @game1datapointranking.first.r1points
           @r1tiewinners = Gamedata.where(:game_id => @game.id).where(:r1points => @r1winningpointtotal)
             .where.not(:r1votedfor => 0).collect(&:user_id)
-          @r1tiewinners.each do |tiewinner|
+          @r1tieplayers = Gamedata.where(:game_id => @game.id).where(:user_id => @r1tiewinners).all
+          @r1tieplayers.each do |tiewinner|
             tiewinner.increment!(:r1points, by = 1)
           end
         # in case of clear winner
@@ -136,7 +137,8 @@ class GamesController < ApplicationController
           @r2winningpointtotal = @game2datapointranking.first.r2points
           @r2tiewinners = Gamedata.where(:game_id => @game.id).where(:r2points => @r2winningpointtotal)
             .where.not(:r2votedfor => 0).collect(&:user_id)
-          @r2tiewinners.each do |tiewinner|
+          @r2tieplayers = Gamedata.where(:game_id => @game.id).where(:user_id => @r2tiewinners).all
+          @r2tieplayers.each do |tiewinner|
             tiewinner.increment!(:r2points, by = 1)
           end
         # in case of clear winner
@@ -162,7 +164,8 @@ class GamesController < ApplicationController
           @r3winningpointtotal = @game3datapointranking.first.r3points
           @r3tiewinners = Gamedata.where(:game_id => @game.id).where(:r3points => @r3winningpointtotal)
             .where.not(:r3votedfor => 0).collect(&:user_id)
-          @r3tiewinners.each do |tiewinner|
+          @r3tieplayers = Gamedata.where(:game_id => @game.id).where(:user_id => @r3tiewinners).all
+          @r3tieplayers.each do |tiewinner|
             tiewinner.increment!(:r3points, by = 2)
           end
         # in case of clear winner
@@ -188,7 +191,8 @@ class GamesController < ApplicationController
           @r4winningpointtotal = @game4datapointranking.first.r4points
           @r4tiewinners = Gamedata.where(:game_id => @game.id).where(:r4points => @r4winningpointtotal)
             .where.not(:r4votedfor => 0).collect(&:user_id)
-          @r4tiewinners.each do |tiewinner|
+          @r4tieplayers = Gamedata.where(:game_id => @game.id).where(:user_id => @r4tiewinners).all
+          @r4tieplayers.each do |tiewinner|
             tiewinner.increment!(:r4points, by = 2)
           end
         # in case of clear winner
@@ -215,7 +219,8 @@ class GamesController < ApplicationController
             @r5winningpointtotal = @game5datapointranking.first.r5points
             @r5tiewinners = Gamedata.where(:game_id => @game.id).where(:r5points => @r5winningpointtotal)
               .where.not(:r5votedfor => 0).collect(&:user_id)
-            @r5tiewinners.each do |tiewinner|
+            @r5tieplayers = Gamedata.where(:game_id => @game.id).where(:user_id => @r5tiewinners).all
+            @r5tieplayers.each do |tiewinner|
               tiewinner.increment!(:r5points, by = 1)
             end
           # in case of clear winner
@@ -241,7 +246,8 @@ class GamesController < ApplicationController
             @r6winningpointtotal = @game6datapointranking.first.r6points
             @r6tiewinners = Gamedata.where(:game_id => @game.id).where(:r6points => @r6winningpointtotal)
               .where.not(:r6votedfor => 0).collect(&:user_id)
-            @r6tiewinners.each do |tiewinner|
+            @r6tieplayers = Gamedata.where(:game_id => @game.id).where(:user_id => @r6tiewinners).all
+            @r6tieplayers.each do |tiewinner|
               tiewinner.increment!(:r6points, by = 1)
             end
           # in case of clear winner
@@ -267,7 +273,8 @@ class GamesController < ApplicationController
             @r7winningpointtotal = @game7datapointranking.first.r7points
             @r7tiewinners = Gamedata.where(:game_id => @game.id).where(:r7points => @r7winningpointtotal)
               .where.not(:r7votedfor => 0).collect(&:user_id)
-            @r7tiewinners.each do |tiewinner|
+            @r7tieplayers = Gamedata.where(:game_id => @game.id).where(:user_id => @r7tiewinners).all
+            @r7tieplayers.each do |tiewinner|
               tiewinner.increment!(:r7points, by = 2)
             end
           # in case of clear winner
@@ -293,7 +300,8 @@ class GamesController < ApplicationController
             @r8winningpointtotal = @game8datapointranking.first.r8points
             @r8tiewinners = Gamedata.where(:game_id => @game.id).where(:r8points => @r8winningpointtotal)
               .where.not(:r8votedfor => 0).collect(&:user_id)
-            @r8tiewinners.each do |tiewinner|
+            @r8tieplayers = Gamedata.where(:game_id => @game.id).where(:user_id => @r8tiewinners).all
+            @r8tieplayers.each do |tiewinner|
               tiewinner.increment!(:r8points, by = 2)
             end
           # in case of clear winner
