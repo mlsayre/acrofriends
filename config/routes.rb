@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     collection do
       get 'main' => 'pages#main'
       get 'rankings' => 'pages#rankings'
+      get 'howtoplay' => 'pages#howtoplay'
       post 'tipsoff'
       post 'tipson'
     end

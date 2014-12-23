@@ -527,4 +527,12 @@
     display: block;
     margin: 0 auto;
   }
+  #linktohowtoplay {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #D2FF7A;
+    border: 1px solid black;
+    border-radius: 3px 3px;
+    padding: 8px;
+  }
 }

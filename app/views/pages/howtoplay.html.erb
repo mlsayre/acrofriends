@@ -1,0 +1,30 @@
+<% @mainpagetitle="How to Play" %>
+<%= render "shared/topbar" %>
+
+<div id="edituserpage" style="font-size: 92%;">
+  <u>How to Play</u><br><br>
+  <span style="display:block; text-align: left;">
+    To play, create a phrase based on the letters given and the topic.<br><br>
+    For example, given the letters "EMTT" and the category "Food", you might write "Eat more tacos today." You can change your answer at any time up until the voting round.<br><br>
+    Be sure to give an answer for every round.<br><br>
+    Once there are at least 3 players in a room, a 6-hour countdown will begin leading to the voting round. You can opt to have an email sent to you when the voting round starts so you don't forget to come back and vote.<br><br>
+    Voting lasts for 24 hours, then you may see the results.<br><br>
+    You can change your votes at any time up until the results round.<br><br>
+
+    <u style="display: block; text-align: center;>">Scoring</u><br>
+    You will receive <b>1 point</b> for every vote your answer receives.<br><br>
+    If you vote for the winning answer, you will receive <b>1 point</b>. This point will not be given if there is no clear-cut winner (tie rounds).<br><br>
+    The winner of each round receives bonus points as follows:<br>
+    3-letter round: <b>3 points</b><br>
+    4-letter round: <b>4 points</b><br>
+    5-letter round: <b>5 points</b><br>
+    6-letter round: <b>6 points</b><br><br>
+    In case of a tie, each player who ties having the top score receives:<br>
+    3 and 4-letter round: <b>1 point</b><br>
+    5 and 6-letter round: <b>2 point</b><br><br>
+    Very important - <b>To receive any points for a round, you must vote in that round!</b> If you don't vote for an answer, you will receive 0 points for that round.
+  </span>
+  <br><%= link_to "Back", :back %>
+
+</div>
+<%= render "shared/bottombar" %>
