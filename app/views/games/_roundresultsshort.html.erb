@@ -85,7 +85,11 @@
                   +1
                 <% end %>
               <% elsif @round1winner.id == User.where(:id => answer.user_id).first.id %>
-                +3
+                <% if Gamedata.where(:game_id => @game.id).where.not(:r1votedfor => 0).count == 1 %>
+                  +1
+                <% else %>
+                  +3
+                <% end %>
               <% end %>
             </td>
             <td>
@@ -157,7 +161,11 @@
                   +1
                 <% end %>
               <% elsif @round2winner.id == User.where(:id => answer.user_id).first.id %>
-                +4
+                <% if Gamedata.where(:game_id => @game.id).where.not(:r2votedfor => 0).count == 1 %>
+                  +1
+                <% else %>
+                  +4
+                <% end %>
               <% end %>
             </td>
             <td>
@@ -229,7 +237,11 @@
                   +2
                 <% end %>
               <% elsif @round3winner.id == User.where(:id => answer.user_id).first.id %>
-                +5
+                <% if Gamedata.where(:game_id => @game.id).where.not(:r3votedfor => 0).count == 1 %>
+                  +2
+                <% else %>
+                  +5
+                <% end %>
               <% end %>
             </td>
             <td>
@@ -301,7 +313,11 @@
                   +2
                 <% end %>
               <% elsif @round4winner.id == User.where(:id => answer.user_id).first.id %>
-                +6
+                <% if Gamedata.where(:game_id => @game.id).where.not(:r4votedfor => 0).count == 1 %>
+                  +2
+                <% else %>
+                  +6
+                <% end %>
               <% end %>
             </td>
             <td>

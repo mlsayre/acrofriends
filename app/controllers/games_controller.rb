@@ -114,6 +114,10 @@ class GamesController < ApplicationController
           @r1tieplayers.each do |tiewinner|
             tiewinner.increment!(:r1points, by = 1)
           end
+          if Gamedata.where(:game_id => @game.id).where.not(:r1votedfor => 0).count == 1
+            @round1winnerid = Gamedata.where(:game_id => @game.id).where.not(:r1votedfor => 0).first.user_id
+            @round1winner = User.find(@round1winnerid)
+          end
         # in case of clear winner
         else
           @round1winnerid = Gamedata.where(:game_id => @game.id).order('r1points DESC').first.user_id
@@ -140,6 +144,10 @@ class GamesController < ApplicationController
           @r2tieplayers = Gamedata.where(:game_id => @game.id).where(:user_id => @r2tiewinners).all
           @r2tieplayers.each do |tiewinner|
             tiewinner.increment!(:r2points, by = 1)
+          end
+          if Gamedata.where(:game_id => @game.id).where.not(:r2votedfor => 0).count == 1
+            @round2winnerid = Gamedata.where(:game_id => @game.id).where.not(:r2votedfor => 0).first.user_id
+            @round2winner = User.find(@round2winnerid)
           end
         # in case of clear winner
         else
@@ -168,6 +176,10 @@ class GamesController < ApplicationController
           @r3tieplayers.each do |tiewinner|
             tiewinner.increment!(:r3points, by = 2)
           end
+          if Gamedata.where(:game_id => @game.id).where.not(:r3votedfor => 0).count == 1
+            @round3winnerid = Gamedata.where(:game_id => @game.id).where.not(:r3votedfor => 0).first.user_id
+            @round3winner = User.find(@round3winnerid)
+          end
         # in case of clear winner
         else
           @round3winnerid = Gamedata.where(:game_id => @game.id).order('r3points DESC').first.user_id
@@ -194,6 +206,10 @@ class GamesController < ApplicationController
           @r4tieplayers = Gamedata.where(:game_id => @game.id).where(:user_id => @r4tiewinners).all
           @r4tieplayers.each do |tiewinner|
             tiewinner.increment!(:r4points, by = 2)
+          end
+          if Gamedata.where(:game_id => @game.id).where.not(:r4votedfor => 0).count == 1
+            @round4winnerid = Gamedata.where(:game_id => @game.id).where.not(:r4votedfor => 0).first.user_id
+            @round4winner = User.find(@round4winnerid)
           end
         # in case of clear winner
         else
@@ -223,6 +239,10 @@ class GamesController < ApplicationController
             @r5tieplayers.each do |tiewinner|
               tiewinner.increment!(:r5points, by = 1)
             end
+            if Gamedata.where(:game_id => @game.id).where.not(:r5votedfor => 0).count == 1
+              @round5winnerid = Gamedata.where(:game_id => @game.id).where.not(:r5votedfor => 0).first.user_id
+              @round5winner = User.find(@round5winnerid)
+            end
           # in case of clear winner
           else
             @round5winnerid = Gamedata.where(:game_id => @game.id).order('r5points DESC').first.user_id
@@ -249,6 +269,10 @@ class GamesController < ApplicationController
             @r6tieplayers = Gamedata.where(:game_id => @game.id).where(:user_id => @r6tiewinners).all
             @r6tieplayers.each do |tiewinner|
               tiewinner.increment!(:r6points, by = 1)
+            end
+            if Gamedata.where(:game_id => @game.id).where.not(:r6votedfor => 0).count == 1
+              @round6winnerid = Gamedata.where(:game_id => @game.id).where.not(:r6votedfor => 0).first.user_id
+              @round6winner = User.find(@round6winnerid)
             end
           # in case of clear winner
           else
@@ -277,6 +301,10 @@ class GamesController < ApplicationController
             @r7tieplayers.each do |tiewinner|
               tiewinner.increment!(:r7points, by = 2)
             end
+            if Gamedata.where(:game_id => @game.id).where.not(:r7votedfor => 0).count == 1
+              @round7winnerid = Gamedata.where(:game_id => @game.id).where.not(:r7votedfor => 0).first.user_id
+              @round7winner = User.find(@round7winnerid)
+            end
           # in case of clear winner
           else
             @round7winnerid = Gamedata.where(:game_id => @game.id).order('r7points DESC').first.user_id
@@ -303,6 +331,10 @@ class GamesController < ApplicationController
             @r8tieplayers = Gamedata.where(:game_id => @game.id).where(:user_id => @r8tiewinners).all
             @r8tieplayers.each do |tiewinner|
               tiewinner.increment!(:r8points, by = 2)
+            end
+            if Gamedata.where(:game_id => @game.id).where.not(:r8votedfor => 0).count == 1
+              @round8winnerid = Gamedata.where(:game_id => @game.id).where.not(:r8votedfor => 0).first.user_id
+              @round8winner = User.find(@round8winnerid)
             end
           # in case of clear winner
           else
