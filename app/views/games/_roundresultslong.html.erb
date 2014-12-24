@@ -13,8 +13,13 @@
 
   <div class="resultsarea" id="gametotalresults">
     <div id="gamewinnerinfo">
-      <%= image_tag @gamewinner.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
-      Winner: <span class="gamewinnerstats"><%= @gamewinner.username %></span> with <span class="gamewinnerstats"><%= @gamewinnerpoints %></span> points!
+      <% @totalwinner = Gamedata.where(:game_id => @game.id).order('gamepoints DESC') %>
+      <% if @totalwinner.first.gamepoints == @totalwinner.second.gamepoints %>
+        Winner: <span class="gamewinnerstats">Tie!</span>
+      <% else %>
+        <%= image_tag @gamewinner.avatar.url(:small), :style => "border: 1px solid gray; margin-bottom:12px;" %><br>
+        Winner: <span class="gamewinnerstats"><%= @gamewinner.username %></span> with <span class="gamewinnerstats"><%= @gamewinnerpoints %></span> points!
+      <% end %>
     </div>
     <table class="resultstable">
       <thead>
