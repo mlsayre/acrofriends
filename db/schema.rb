@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141216192048) do
+ActiveRecord::Schema.define(version: 20150102183403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,25 @@ ActiveRecord::Schema.define(version: 20141216192048) do
     t.boolean  "private"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "lightning", force: true do |t|
+    t.integer  "user_id"
+    t.string   "letters"
+    t.string   "category"
+    t.integer  "votes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lightningdata", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "lightning_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "comment",      default: ""
+    t.datetime "commenttime"
+    t.boolean  "thumbsup"
   end
 
   create_table "memberships", force: true do |t|
