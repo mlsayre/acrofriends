@@ -1,6 +1,17 @@
-<% @mainpagetitle = "Lightning Mode (Quick Play)" %>
+<% @mainpagetitle = "Lightning Mode" %>
 <%= render "shared/topbar" %>
 
-hi
+<div id="newgamepage">
+  <% if current_user.nextlightning == "play" %>
+    <%= form_for(@lightning) do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <div class="actions">
+        <%= f.submit "Start Quick Play", :class => "button" %>
+      </div>
+    <% end %>
+  <% else %>
+
+  <% end %>
+</div>
 
 <%= render "shared/bottombar" %>

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :lightnings
+  resources :lightnings do
+    post :updateanswer, on: :collection, as: :updateanswer
+  end
+
   resources :gamechats
   resources :games
   resources :games do

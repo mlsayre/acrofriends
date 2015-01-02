@@ -1,0 +1,13 @@
+<% @mainpagetitle = "Lightning Mode" %>
+<%= render "shared/topbar" %>
+
+<% if @lightning.answer != "" %>
+
+<% else %>
+  <% if current_user.nextlightning == "play" %>
+    <%= render "roundplay" %>
+  <% else %>
+    <%= render "roundvote" %>
+  <% end %>
+<% end %>
+<%= render "shared/bottombar" %>

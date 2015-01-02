@@ -1,0 +1,24 @@
+<div id="playrounds">
+
+    <div class="playarea" id="r1play">
+      <div class="roundtitle">Lightning Play</div>
+      Category: <span class="gamecategories"><%= @lightning.category %></span>
+      <div class="gameletters" id="round1letters"><%= @lightning.letters %></div>
+      <div>
+        <%= form_for @lightning, :url => updateanswer_lightnings_path, :html => {:method => :post, :id => "r1answerform"}, remote: true do |f| %>
+          <div>
+            <span><%= f.text_field :answer, :class => "answerfield", :id => "r1answerfield", :placeholder => "Enter or change acro here...", :autofocus => true %></span>
+            <span id="r1answer"><%= f.submit "Play", :class => "button answersubmitbutton" %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+      <div id="r1answered">
+        <% if @lightning.answer == nil %>
+          Your acro: No acro yet...
+        <% else %>
+          Your acro: "<%= @lightning.answer %>"
+        <% end %>
+      </div>
+    </div>
+  </div>
