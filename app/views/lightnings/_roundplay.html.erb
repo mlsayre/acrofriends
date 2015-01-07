@@ -8,6 +8,7 @@
         <%= form_for @lightning, :url => updateanswer_lightnings_path, :html => {:method => :post, :id => "r1answerform"}, remote: true do |f| %>
           <div>
             <span><%= f.text_field :answer, :class => "answerfield", :id => "r1answerfield", :placeholder => "Enter or change acro here...", :autofocus => true %></span>
+            <%= f.hidden_field :id, :value => @lightning.id %>
             <span id="r1answer"><%= f.submit "Play", :class => "button answersubmitbutton" %>
             </span>
           </div>

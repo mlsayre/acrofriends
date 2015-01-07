@@ -1,6 +1,6 @@
 class LightningsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_lightning, except: [:index, :create]
+  before_action :set_lightning, except: [:index, :create, :updateanswer]
 
   def index
     @lightning = Lightning.new
@@ -11,32 +11,45 @@ class LightningsController < ApplicationController
   end
 
   def updateanswer
-
+    @lightning = Lightning.where(:user_id => current_user.id)
+                .where('id = ?', (params[:lightning][:id])).first
+    @lightning.update_attributes!(lightning_params)
+    @lightning.update_attributes!(:completed => true)
+    render :nothing => true
   end
 
   def create
-    @lightning = Lightning.new(lightning_params)
-    # category and letters
-    @lightning.category = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
-    def randomletters
-      @badplaywords = File.new("config/BadPlayWords").readlines.map! {|x| x.sub("\n", "")}
-      @acrosize = rand(3..6)
-      @potentialletters = File.new("config/LetterPool").readlines.sample(@acrosize).join.gsub("\n", "")
-      if @badplaywords.any?{|words| @potentialletters.include?(words)}
-        randomletters
-      else
-        @lightning.letters = @potentialletters
+    if Lightning.where(:user_id => current_user.id).last == nil ||
+      Lightning.where(:user_id => current_user.id).last.completed == true
+      @lightning = Lightning.new(lightning_params)
+      # category and letters
+      @lightning.category = File.new("config/CategoryPool").readlines.sample(1).join.sub("\n", "")
+      def randomletters
+        @badplaywords = File.new("config/BadPlayWords").readlines.map! {|x| x.sub("\n", "")}
+        @acrosize = rand(3..6)
+        @potentialletters = File.new("config/LetterPool").readlines.sample(@acrosize).join.gsub("\n", "")
+        if @badplaywords.any?{|words| @potentialletters.include?(words)}
+          randomletters
+        else
+          @lightning.letters = @potentialletters
+        end
       end
-    end
-    randomletters
+      randomletters
 
-    respond_to do |format|
-      if @lightning.save
-        format.html { redirect_to @lightning, notice: 'New lightning game created!' }
+      respond_to do |format|
+        if @lightning.save
+          format.html { redirect_to @lightning, notice: 'New lightning game created!' }
+          format.json { render :show, status: :created, location: @lightning }
+        else
+          format.html { render :new }
+          format.json { render json: @lightning.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      @lightning = Lightning.where(:user_id => current_user.id).where(:completed => false).last
+      respond_to do |format|
+        format.html { redirect_to @lightning }
         format.json { render :show, status: :created, location: @lightning }
-      else
-        format.html { render :new }
-        format.json { render json: @lightning.errors, status: :unprocessable_entity }
       end
     end
 
@@ -50,6 +63,6 @@ class LightningsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lightning_params
-      params.require(:lightning).permit(:user_id, :letters, :category, :thumbsup, :votes)
+      params.require(:lightning).permit(:user_id, :letters, :category, :thumbsup, :votes, :answer)
     end
 end
