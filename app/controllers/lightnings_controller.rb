@@ -1,6 +1,6 @@
 class LightningsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_lightning, except: [:index, :create, :updateanswer]
+  before_action :set_lightning, except: [:index, :create, :updateanswer, :vote]
 
   def index
     @lightning = Lightning.new
@@ -16,6 +16,12 @@ class LightningsController < ApplicationController
     @lightning.update_attributes!(lightning_params)
     @lightning.update_attributes!(:completed => true)
     render :nothing => true
+  end
+
+  def vote
+    @lightningvotedids = Lightningdata.where(:user_id => current_user.id).collect(&:lightning_id)
+    @lightning = Lightning.where.not(:user_id => current_user.id).where.not(:id => @lightningvotedids)
+      .where("votes < ?", 3).all
   end
 
   def create

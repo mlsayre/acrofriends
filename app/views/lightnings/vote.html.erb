@@ -1,0 +1,11 @@
+<% @mainpagetitle = "Lightning Mode" %>
+<%= render "shared/topbar" %>
+
+<div id="voterounds" class="votearea">
+  <div class="roundtitle">Lightning Vote</div>
+  <% @lightning.shuffle.first(3).each do |lightning| %>
+    <%= lightning.answer %><br>
+  <% end %>
+</div>
+
+<%= render "shared/bottombar" %>
