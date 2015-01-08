@@ -22,6 +22,7 @@ class LightningsController < ApplicationController
     @lightningvotedids = Lightningdata.where(:user_id => current_user.id).collect(&:lightning_id)
     @lightning = Lightning.where.not(:user_id => current_user.id).where.not(:id => @lightningvotedids)
       .where("votes < ?", 3).all
+    @idnumbers = [1, 2, 3]
   end
 
   def create

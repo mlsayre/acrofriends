@@ -3,13 +3,12 @@
 
 <div id="voterounds" class="votearea">
   <div class="roundtitle">Lightning Vote</div><br>
-  <% @lightning.shuffle.first(3).each do |lightning| %>
+  <% @lightning.shuffle.first(3).zip(@idnumbers).each do |lightning, n| %>
     <span class="lightninggameletters"><%= lightning.letters %></span><span class="lightninggamecategories"> - <%= lightning.category %></span><br>
     <span class="lightninganswer">"<%= lightning.answer %>"</span><br>
-    <%= image_tag("Thumbs-Up-128.png", size: "48", alt: "Heart", class: "main-icon") %>
-    <%= image_tag("Thumbs-Down-128.png", size: "48", alt: "Heart", class: "main-icon") %>
-    <%= image_tag("Heart-128.png", size: "48", alt: "Heart", class: "main-icon") %><br>
-    <hr></hr>
+    <span id="thumbsup<%= n %>"><%= link_to(image_tag("Thumbs-Up-128.png", size: "48", alt: "Heart", class: "lightvote-icon"), rankings_pages_path) %></span>
+    <span id="thumbsdown<%= n %>"><%= link_to(image_tag("Thumbs-Down-128.png", size: "48", alt: "Heart", class: "lightvote-icon"), rankings_pages_path) %></span>
+    <span id="heart<%= n %>"><%= link_to(image_tag("Heart-128.png", size: "48", alt: "Heart", class: "lightvote-icon"), rankings_pages_path) %></span><br>
     <br>
 
   <% end %>

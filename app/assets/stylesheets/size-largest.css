@@ -540,4 +540,7 @@
     font-weight: 500;
     color: black;
   }
+  .lightvote-icon {
+    margin: 0 10px;
+  }
 }
