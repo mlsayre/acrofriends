@@ -13,8 +13,8 @@ class LightningsController < ApplicationController
   def updateanswer
     @lightning = Lightning.where(:user_id => current_user.id)
                 .where('id = ?', (params[:lightning][:id])).first
-    @lightning.update_attributes!(lightning_params)
-    @lightning.update_attributes!(:completed => true)
+    @lightning.update_attributes(lightning_params)
+    @lightning.update_attributes(:completed => true)
     render :nothing => true
   end
 
@@ -26,17 +26,45 @@ class LightningsController < ApplicationController
   end
 
   def thumbsup
-
+    if Lightningdata.where(:lightning_id => params[:lightning_id]).where(:user_id => current_user.id).first
+      @lightningdata = Lightningdata.where(:lightning_id => params[:lightning_id])
+        .where(:user_id => current_user.id).first
+      @lightningdata.update_attributes(:thumbsup => true)
+    else
+      @lightningdata = Lightningdata.new
+      @lightningdata.update_attributes(:user_id => current_user.id, :lightning_id => params[:lightning_id],
+        :thumbsup => true)
+    end
     render :nothing => true
   end
 
   def thumbsdown
-
+    if Lightningdata.where(:lightning_id => params[:lightning_id]).where(:user_id => current_user.id).first
+      @lightningdata = Lightningdata.where(:lightning_id => params[:lightning_id])
+        .where(:user_id => current_user.id).first
+      @lightningdata.update_attributes(:thumbsup => false, :heart => false)
+    else
+      @lightningdata = Lightningdata.new
+      @lightningdata.update_attributes(:user_id => current_user.id, :lightning_id => params[:lightning_id],
+        :thumbsup => false)
+    end
     render :nothing => true
   end
 
   def heart
-
+    if Lightningdata.where(:lightning_id => params[:lightning_id]).where(:user_id => current_user.id).first
+      @lightningdata = Lightningdata.where(:lightning_id => params[:lightning_id])
+        .where(:user_id => current_user.id).first
+      if @lightningdata.heart == false
+        @lightningdata.update_attributes(:heart => true)
+      else
+        @lightningdata.update_attributes(:heart => false)
+      end
+    else
+      @lightningdata = Lightningdata.new
+      @lightningdata.update_attributes(:user_id => current_user.id, :lightning_id => params[:lightning_id],
+        :heart => true)
+    end
     render :nothing => true
   end
 

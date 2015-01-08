@@ -560,4 +560,7 @@
   .lightningvotedesc {
     font-size: 90%;
   }
+  .disabled {
+    pointer-events: none;
+  }
 }
