@@ -535,4 +535,20 @@
     border-radius: 3px 3px;
     padding: 8px;
   }
+  .lightninggameletters {
+    font-size: 115%;
+    font-weight: 700;
+    color: red;
+  }
+  .lightninggamecategories {
+    font-style: italic;
+    font-size: 115%;
+    font-weight: 500;
+    color: red;
+  }
+  .lightninganswer {
+    font-size: 125%;
+    font-weight: 500;
+    color: black;
+  }
 }
