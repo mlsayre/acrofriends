@@ -543,4 +543,14 @@
   .lightvote-icon {
     margin: 0 10px;
   }
+  .lightvote-icon:hover {
+    background-color: #c1f5fe;
+  }
+  .lightningvotedesc {
+    font-size: 90%;
+  }
+  .disabled {
+    pointer-events: none;
+  }
+
 }

@@ -2,7 +2,12 @@ Rails.application.routes.draw do
 
   resources :lightnings do
     post :updateanswer, on: :collection, as: :updateanswer
-    get '/vote' => 'lightnings#vote', on: :collection, as: :lightningvote
+    collection do
+      get '/vote' => 'lightnings#vote', as: :lightningvote
+      post 'thumbsup'
+      post 'thumbsdown'
+      post 'heart'
+    end
   end
 
   resources :gamechats
