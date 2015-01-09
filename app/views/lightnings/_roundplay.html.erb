@@ -27,6 +27,16 @@
           Continue to Vote Round
         </div>
       <% end %>
+      <script>
+        $("#lightningtovoteround").click(function() {
+          $.ajax({
+                  url: "/lightnings/switchplayvote",
+                  type: "POST",
+                  data: {playvote: 'vote'},
+                  dataType: 'script'
+                });
+        });
+      </script>
       <%= render "shared/gamead" %>
     </div>
   </div>

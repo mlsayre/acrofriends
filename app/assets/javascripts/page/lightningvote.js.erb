@@ -94,4 +94,13 @@ else {
   })
 }
 
+$("#lightningvotetoplay").click(function() {
+  $.ajax({
+          url: "/lightnings/switchplayvote",
+          type: "POST",
+          data: {playvote: 'play'},
+          dataType: 'script'
+        });
+});
+
 

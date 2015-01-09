@@ -1,6 +1,7 @@
 class LightningsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_lightning, except: [:index, :create, :updateanswer, :vote, :thumbsup, :thumbsdown, :heart]
+  before_action :set_lightning, except: [:index, :create, :updateanswer, :vote,
+    :thumbsup, :thumbsdown, :heart, :switchplayvote]
 
   def index
     @lightning = Lightning.new
@@ -74,6 +75,11 @@ class LightningsController < ApplicationController
       @lightningdata.update_attributes(:user_id => current_user.id, :lightning_id => params[:lightning_id],
         :heart => true)
     end
+    render :nothing => true
+  end
+
+  def switchplayvote
+    current_user.update_attributes(:nextlightning => params[:playvote])
     render :nothing => true
   end
 
