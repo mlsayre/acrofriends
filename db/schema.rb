@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109013853) do
+ActiveRecord::Schema.define(version: 20150109215120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,9 @@ ActiveRecord::Schema.define(version: 20150109013853) do
     t.datetime "updated_at"
     t.string   "answer",     default: ""
     t.boolean  "completed",  default: false
+    t.integer  "thumbsup",   default: 0
+    t.integer  "thumbsdown", default: 0
+    t.integer  "hearts",     default: 0
   end
 
   create_table "memberships", force: true do |t|
@@ -142,12 +145,12 @@ ActiveRecord::Schema.define(version: 20150109013853) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",     null: false
-    t.string   "encrypted_password",     default: "",     null: false
+    t.string   "email",                            default: "",     null: false
+    t.string   "encrypted_password",               default: "",     null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,      null: false
+    t.integer  "sign_in_count",                    default: 0,      null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -162,11 +165,18 @@ ActiveRecord::Schema.define(version: 20150109013853) do
     t.datetime "avatar_updated_at"
     t.string   "username"
     t.string   "about"
-    t.boolean  "showads",                default: true
-    t.integer  "lifetimepoints",         default: 0
-    t.boolean  "tooltips",               default: true
-    t.integer  "lifetimeroundsplayed",   default: 0
-    t.string   "nextlightning",          default: "play"
+    t.boolean  "showads",                          default: true
+    t.integer  "lifetimepoints",                   default: 0
+    t.boolean  "tooltips",                         default: true
+    t.integer  "lifetimeroundsplayed",             default: 0
+    t.string   "nextlightning",                    default: "play"
+    t.integer  "lifetimelightningthumbsup",        default: 0
+    t.integer  "lifetimelightningthumbsdown",      default: 0
+    t.integer  "lifetimelightninghearts",          default: 0
+    t.integer  "lifetimelightningsplayed",         default: 0
+    t.integer  "lifetimelightningthumbsupgiven",   default: 0
+    t.integer  "lifetimelightningthumbsdowngiven", default: 0
+    t.integer  "lifetimelightningheartsgiven",     default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
