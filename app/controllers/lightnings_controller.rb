@@ -5,6 +5,8 @@ class LightningsController < ApplicationController
 
   def index
     @lightning = Lightning.new
+    @finishedlightning = Lightning.where(:user_id => current_user.id).where(:completed => true)
+      .order('created_at DESC').all
   end
 
   def show

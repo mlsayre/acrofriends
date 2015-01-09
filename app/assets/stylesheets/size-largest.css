@@ -229,6 +229,9 @@
     margin-top: 80px;
     text-align:center;
   }
+  #newgamepage a {
+    text-decoration: none;
+  }
   #playrounds {
     width: 60%;
     margin: 0 auto;

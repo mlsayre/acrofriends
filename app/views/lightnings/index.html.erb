@@ -11,11 +11,28 @@
     <% end %>
   <% else %>
     <%= link_to(lightningvote_lightnings_path) do %>
-      <div class="button">
+      <div class="button" style="margin-bottom: 100px;">
         Play Lightning Mode
       </div>
     <% end %>
-  <% end %>
+  <% end %><br>
+
+  <u>Your completed lightning acros</u><br>
+    <% @finishedlightning.each do |game| %>
+
+      <span class="completedgamelink">
+        <%= link_to(game) do %>
+
+          <div class="button">
+
+            <span class="gamelistname"><%= game.category %><br>
+            </span>
+            "<%= game.answer %>"
+
+          </div>
+        <% end %></span>
+      <br>
+    <% end %>
 </div>
 
 <%= render "shared/bottombar" %>

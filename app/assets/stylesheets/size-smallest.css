@@ -235,6 +235,9 @@
     margin-top: 60px;
     text-align:center;
   }
+  #newgamepage a {
+    text-decoration: none;
+  }
   #playrounds {
     width: 90%;
     margin: 0 auto;
@@ -562,5 +565,10 @@
   }
   .disabled {
     pointer-events: none;
+  }
+  .disabledtoplay {
+    background-color: gray !important;
+    pointer-events: none;
+    opacity: .6;
   }
 }
