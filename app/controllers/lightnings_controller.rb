@@ -21,19 +21,24 @@ class LightningsController < ApplicationController
   def vote
     @lightningvotedids = Lightningdata.where(:user_id => current_user.id).collect(&:lightning_id)
     @lightning = Lightning.where.not(:user_id => current_user.id).where.not(:id => @lightningvotedids)
-      .where("votes < ?", 3).all
+      .where("votes < ?", 3).where("answer != ?", "").all
     @idnumbers = [1, 2, 3]
+    @lightningnew = Lightning.new
   end
 
   def thumbsup
     if Lightningdata.where(:lightning_id => params[:lightning_id]).where(:user_id => current_user.id).first
       @lightningdata = Lightningdata.where(:lightning_id => params[:lightning_id])
         .where(:user_id => current_user.id).first
-      @lightningdata.update_attributes(:thumbsup => true)
+      if @lightningdata.userhasvoted == false
+        Lightning.where(:id => params[:lightning_id]).first.increment!(:votes, by = 1)
+      end
+      @lightningdata.update_attributes(:thumbsup => true, :userhasvoted => true)
     else
       @lightningdata = Lightningdata.new
+      Lightning.where(:id => params[:lightning_id]).first.increment!(:votes, by = 1)
       @lightningdata.update_attributes(:user_id => current_user.id, :lightning_id => params[:lightning_id],
-        :thumbsup => true)
+        :thumbsup => true, :userhasvoted => true)
     end
     render :nothing => true
   end
@@ -42,11 +47,15 @@ class LightningsController < ApplicationController
     if Lightningdata.where(:lightning_id => params[:lightning_id]).where(:user_id => current_user.id).first
       @lightningdata = Lightningdata.where(:lightning_id => params[:lightning_id])
         .where(:user_id => current_user.id).first
-      @lightningdata.update_attributes(:thumbsup => false, :heart => false)
+      if @lightningdata.userhasvoted == false
+        Lightning.where(:id => params[:lightning_id]).first.increment!(:votes, by = 1)
+      end
+      @lightningdata.update_attributes(:thumbsup => false, :heart => false, :userhasvoted => true)
     else
       @lightningdata = Lightningdata.new
+      Lightning.where(:id => params[:lightning_id]).first.increment!(:votes, by = 1)
       @lightningdata.update_attributes(:user_id => current_user.id, :lightning_id => params[:lightning_id],
-        :thumbsup => false)
+        :thumbsup => false, :userhasvoted => true)
     end
     render :nothing => true
   end

@@ -68,7 +68,12 @@
     </script>
     <br>
     <br>
-
+  <% end %>
+  <%= form_for(@lightningnew) do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <div class="actions">
+      <%= f.submit "Vote to continue...", :class => "button disabledtoplay", :id => "lightningvotetoplay" %>
+    </div>
   <% end %>
 </div>
 

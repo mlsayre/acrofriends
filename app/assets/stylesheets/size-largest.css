@@ -552,5 +552,9 @@
   .disabled {
     pointer-events: none;
   }
-
+  .disabledtoplay {
+    background-color: gray !important;
+    pointer-events: none;
+    opacity: .6;
+  }
 }

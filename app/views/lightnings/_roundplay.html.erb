@@ -21,5 +21,12 @@
           Your acro: "<%= @lightning.answer %>"
         <% end %>
       </div>
+      <br>
+      <%= link_to(lightningvote_lightnings_path) do %>
+        <div class="button" id="lightningtovoteround">
+          Continue to Vote Round
+        </div>
+      <% end %>
+      <%= render "shared/gamead" %>
     </div>
   </div>

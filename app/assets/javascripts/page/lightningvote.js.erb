@@ -1,2 +1,97 @@
+if ($("#thumbsup1").length === 0) {
+  $("#lightningvotetoplay").removeClass("disabledtoplay");
+  $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+}
+else if (($("#thumbsup2").length === 0)) {
+  $("#thumbsup1").click(function() {
+    $("#lightningvotetoplay").removeClass("disabledtoplay");
+    $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+  })
+  $("#thumbsdown1").click(function() {
+    $("#lightningvotetoplay").removeClass("disabledtoplay");
+    $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+  })
+}
+
+else if (($("#thumbsup3").length === 0)) {
+  var answer1 = 0
+  var answer2 = 0
+  $("#thumbsup1").click(function() {
+    answer1 = 1
+    if(answer1 + answer2 == 2) {
+      $("#lightningvotetoplay").removeClass("disabledtoplay");
+      $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+    }
+  })
+  $("#thumbsdown1").click(function() {
+    answer1 = 1
+    if(answer1 + answer2 == 2) {
+      $("#lightningvotetoplay").removeClass("disabledtoplay");
+      $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+    }
+  })
+  $("#thumbsup2").click(function() {
+    answer2 = 1
+    if(answer1 + answer2 == 2) {
+      $("#lightningvotetoplay").removeClass("disabledtoplay");
+      $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+    }
+  })
+  $("#thumbsdown2").click(function() {
+    answer2 = 1
+    if(answer1 + answer2 == 2) {
+      $("#lightningvotetoplay").removeClass("disabledtoplay");
+      $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+    }
+  })
+}
+
+else {
+  var answer1 = 0
+  var answer2 = 0
+  var answer3 = 0
+  $("#thumbsup1").click(function() {
+    answer1 = 1
+    if(answer1 + answer2 + answer3 == 3) {
+      $("#lightningvotetoplay").removeClass("disabledtoplay");
+      $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+    }
+  })
+  $("#thumbsdown1").click(function() {
+    answer1 = 1
+    if(answer1 + answer2 + answer3 == 3) {
+      $("#lightningvotetoplay").removeClass("disabledtoplay");
+      $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+    }
+  })
+  $("#thumbsup2").click(function() {
+    answer2 = 1
+    if(answer1 + answer2 + answer3 == 3) {
+      $("#lightningvotetoplay").removeClass("disabledtoplay");
+      $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+    }
+  })
+  $("#thumbsdown2").click(function() {
+    answer2 = 1
+    if(answer1 + answer2 + answer3 == 3) {
+      $("#lightningvotetoplay").removeClass("disabledtoplay");
+      $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+    }
+  })
+  $("#thumbsup3").click(function() {
+    answer3 = 1
+    if(answer1 + answer2 + answer3 == 3) {
+      $("#lightningvotetoplay").removeClass("disabledtoplay");
+      $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+    }
+  })
+  $("#thumbsdown3").click(function() {
+    answer3 = 1
+    if(answer1 + answer2 + answer3 == 3) {
+      $("#lightningvotetoplay").removeClass("disabledtoplay");
+      $("#lightningvotetoplay").prop("value", "Continue to Play Round");
+    }
+  })
+}
 
 
