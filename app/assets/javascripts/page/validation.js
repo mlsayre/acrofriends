@@ -58,6 +58,9 @@ function submitAnswerFX(answerid, submission) {
       $(".allanswered").removeClass("hidden");
       $(".allanswered").addClass("animated bounce");
     }
+    $("#lightningtovoteround").text("Continue to Vote Round")
+                              .removeClass("disabledtoplay");
+
   }
   setTimeout(showAnswer, 1300);
 }

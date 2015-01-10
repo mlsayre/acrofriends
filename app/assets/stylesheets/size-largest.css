@@ -560,4 +560,24 @@
     pointer-events: none;
     opacity: .6;
   }
+  .graphicresults {
+    margin: 0 auto;
+    width: 70%;
+    border: 1px solid black;
+  }
+  .graphicresultstext {
+    font-size: 330%;
+    margin-left: -12px;
+    vertical-align: top;
+    }
+  }
+  .lightningresultletters {
+    font-size: 120%;
+    color: red;
+    margin-bottom:-4px;
+  }
+  .lightningresultanswer {
+    font-size: 180%;
+    font-style: italic;
+  }
 }

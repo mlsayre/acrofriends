@@ -1,0 +1,25 @@
+<div id="playrounds">
+
+    <div class="playarea" id="r1play">
+      <div class="roundtitle">Lightning Mode Result</div>
+      <div class="graphicresults">
+        <%= image_tag("Thumbs-Up-128-Blue.png", size: "64", alt: "Thumbs Up", class: "lightresult-icon") %>
+        <span class="graphicresultstext"><%= @lightning.thumbsup %></span>
+        <%= image_tag("Thumbs-Down-128-Blue.png", size: "64", alt: "Thumbs Down", class: "lightresult-icon") %>
+        <span class="graphicresultstext"><%= @lightning.thumbsdown %></span><br>
+        <%= image_tag("Heart-128-red.png", size: "64", alt: "Heart", class: "lightresult-icon") %>
+        <span class="graphicresultstext"><%= @lightning.hearts %></span>
+      </div>
+      <div class="lightningresultletters"><%= @lightning.letters %></div>
+      Category: <span class="gamecategories"><%= @lightning.category %></span>
+      <div class="lightningresultanswer">"<%= @lightning.answer %>"</div>
+      <br>
+      <%= link_to(lightnings_path) do %>
+        <div class="button">
+          Return to Lightning Menu
+        </div>
+      <% end %>
+
+
+    </div>
+  </div>
