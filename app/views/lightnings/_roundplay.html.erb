@@ -27,6 +27,7 @@
           Play to continue...
         </div>
       <% end %>
+
       <script>
         $("#lightningtovoteround").click(function() {
           $.ajax({
@@ -38,5 +39,13 @@
         });
       </script>
       <%= render "shared/gamead" %>
+
     </div>
+    <%= link_to(lightnings_path) do %>
+        <div class="button" style="margin-right: 2px;">
+
+          <span style="color:white;">Return to Lightning Menu</span>
+
+        </div>
+      <% end %>
   </div>

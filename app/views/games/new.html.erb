@@ -8,11 +8,21 @@
       <%= f.hidden_field :length, :value => "1hour" %>
       <%= f.hidden_field :group_id, :value => 0 %>
 
-      <div class="actions">
+      <div class="actions" style="font-size: 120%;">
         <%= f.submit "Play 4-Round Game", :class => "button" %>
       </div>
       <!-- (4 rounds) -->
     <% end %>
+    <br><br>
+    In a hurry or waiting for main games to finish?<br>
+      <%= link_to(lightnings_path) do %>
+        <div class="button" style="margin-right: 2px;">
+
+          <span style="color:white; font-size:120%">Play Lightning Mode</span>
+
+        </div>
+      <% end %>
+
 
     <br><br>
     <!-- <%= form_for(@game) do |g| %>

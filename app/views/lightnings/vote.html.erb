@@ -79,6 +79,14 @@
       <%= f.submit "Vote to continue...", :class => "button disabledtoplay", :id => "lightningvotetoplay" %>
     </div>
   <% end %>
+
+  <%= link_to(lightnings_path) do %>
+        <div class="button" style="margin-right: 2px;">
+
+          <span style="color:white;">See Your Lightning Acros</span>
+
+        </div>
+      <% end %>
 </div>
 
 <%= render "shared/bottombar" %>

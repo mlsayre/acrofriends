@@ -22,6 +22,7 @@ class LightningsController < ApplicationController
                 .where('id = ?', (params[:lightning][:id])).first
     @lightning.update_attributes(lightning_params)
     @lightning.update_attributes(:completed => true)
+    current_user.update_attributes(:nextlightning => "vote")
     render :nothing => true
   end
 
