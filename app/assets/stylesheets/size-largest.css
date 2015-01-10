@@ -561,7 +561,9 @@
     opacity: .6;
   }
   .graphicresults {
+    background-color: ghostwhite;
     margin: 0 auto;
+    margin-top: 10px;
     width: 70%;
     border: 1px solid black;
   }
@@ -579,5 +581,29 @@
   .lightningresultanswer {
     font-size: 180%;
     font-style: italic;
+  }
+  .lightninglistcategory {
+    font-size: 95%;
+  }
+  .lightninglistanswer {
+    font-size: 106%;
+    font-style: italic;
+  }
+  .lightningindexbutton {
+    width:360px;
+    background-color: white;
+    padding: 0 4px 0 4px;
+    margin: 3px auto;
+    border: 1px solid #03a9f4;
+    border-radius: 4px;
+  }
+  .lightningindexbutton:hover {
+    background-color: ghostwhite;
+  }
+  .lightningindexdata {
+    vertical-align: top;
+  }
+  .lightindexresult-icon:hover {
+    background-color: inherit;
   }
 }

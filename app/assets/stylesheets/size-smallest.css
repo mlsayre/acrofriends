@@ -572,6 +572,7 @@
     opacity: .6;
   }
   .graphicresults {
+    background-color: ghostwhite;
     margin: 0 auto;
     width: 90%;
     border: 1px solid black;
@@ -590,5 +591,22 @@
   .lightningresultanswer {
     font-size: 180%;
     font-style: italic;
+  }
+  .lightningindexbutton {
+    width:280px;
+    background-color: white;
+    padding: 0 4px 0 4px;
+    margin: 3px auto;
+    border: 1px solid #03a9f4;
+    border-radius: 4px;
+  }
+  .lightningindexbutton:hover {
+    background-color: ghostwhite;
+  }
+  .lightningindexdata {
+    vertical-align: top;
+  }
+  .lightindexresult-icon:hover {
+    background-color: inherit;
   }
 }
