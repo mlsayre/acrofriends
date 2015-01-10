@@ -2,16 +2,23 @@
 <%= render "shared/topbar" %>
 
 <div class="lifetimerankings">
-  <div style="margin-bottom: 6px; text-align: center;">Ratings - Top 30 Players<br><span style="font-size: 86%"><u>(Average Points/Round)</u></span></div>
+  <div style="margin-bottom: 6px; text-align: center;">Main Game Ratings - Top 30<br><span style="font-size: 86%"><u>(Average Points/Round)</u></span></div>
   <% User.all.sort {|a,b| a.averagepointsperround <=> b.averagepointsperround}.reverse!.first(30).each do |user| %>
     <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.averagepointsperround %></span></li>
   <% end %>
 </div>
 <br>
 <div class="lifetimerankings">
-  <div style="margin-bottom: 6px; text-align: center;"><u>Lifetime Point Leaders</u></div>
+  <div style="margin-bottom: 6px; text-align: center;"><u>Main Game Lifetime Leaders</u></div>
   <% User.order('lifetimepoints DESC').each do |user| %>
     <li style="list-style-type: decimal;"><%= user.username %> with <%= user.lifetimepoints %> points</li>
+  <% end %>
+</div>
+<br>
+<div class="lifetimerankings">
+  <div style="margin-bottom: 6px; text-align: center;"><u>Lightning Thumbs Up % Leaders</u></div>
+  <% User.all.sort {|a,b| a.percentthumbsup <=> b.percentthumbsup}.reverse!.first(30).each do |user| %>
+    <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.percentthumbsup %>%</span></li>
   <% end %>
 </div>
 

@@ -4,6 +4,10 @@
 <div id="voterounds" class="votearea">
   <div class="roundtitle">Lightning Vote</div>
   <span class="lightningvotedesc">Vote on these acros to continue to next Lightning Play round...</span><br><br>
+  <% if @lightning.count == 0 %>
+    No new acros to vote on... spread the word to get more players!
+    <br><br>
+  <% end %>
   <% @lightning.shuffle.first(3).zip(@idnumbers).each do |lightning, n| %>
     <span class="lightninggameletters"><%= lightning.letters %></span><span class="lightninggamecategories"> - <%= lightning.category %></span><br>
     <span class="lightninganswer">"<%= lightning.answer %>"</span><br>

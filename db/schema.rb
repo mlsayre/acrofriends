@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109215120) do
+ActiveRecord::Schema.define(version: 20150110084808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,14 +127,16 @@ ActiveRecord::Schema.define(version: 20150109215120) do
     t.integer  "user_id"
     t.string   "letters"
     t.string   "category"
-    t.integer  "votes",      default: 0
+    t.integer  "votes",        default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "answer",     default: ""
-    t.boolean  "completed",  default: false
-    t.integer  "thumbsup",   default: 0
-    t.integer  "thumbsdown", default: 0
-    t.integer  "hearts",     default: 0
+    t.string   "answer",       default: ""
+    t.boolean  "completed",    default: false
+    t.integer  "thumbsup",     default: 0
+    t.integer  "thumbsdown",   default: 0
+    t.integer  "hearts",       default: 0
+    t.string   "whovoted",     default: ""
+    t.string   "whocommented", default: ""
   end
 
   create_table "memberships", force: true do |t|

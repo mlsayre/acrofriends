@@ -5,12 +5,16 @@ class LightningsController < ApplicationController
 
   def index
     @lightning = Lightning.new
+    @finishedlightningnewvotes = Lightning.where(:user_id => current_user.id).where(:completed => true)
+      .where("whovoted != ?", "").order('created_at DESC').all
     @finishedlightning = Lightning.where(:user_id => current_user.id).where(:completed => true)
-      .order('created_at DESC').all
+      .where("whovoted = ?", "").order('created_at DESC').all
   end
 
   def show
-
+    if @lightning.completed == true
+      @lightning.update_attributes(:whovoted => "")
+    end
   end
 
   def updateanswer
@@ -33,9 +37,10 @@ class LightningsController < ApplicationController
     if Lightningdata.where(:lightning_id => params[:lightning_id]).where(:user_id => current_user.id).first
       @lightningdata = Lightningdata.where(:lightning_id => params[:lightning_id])
         .where(:user_id => current_user.id).first
-      if @lightningdata.thumbsup == nil 
+      if @lightningdata.thumbsup == nil
         @lightning = Lightning.where(:id => params[:lightning_id]).first
         @lightning.increment!(:thumbsup, by = 1)
+        @lightning.update_attributes(:whovoted => current_user.username)
         @user = User.where(:id => @lightning.user_id).first
         @user.increment!(:lifetimelightningthumbsup, by = 1)
         current_user.increment!(:lifetimelightningthumbsupgiven, by = 1)
@@ -60,6 +65,7 @@ class LightningsController < ApplicationController
       @lightning = Lightning.where(:id => params[:lightning_id]).first
       @lightning.increment!(:votes, by = 1)
       @lightning.increment!(:thumbsup, by = 1)
+      @lightning.update_attributes(:whovoted => current_user.username)
       @user = User.where(:id => @lightning.user_id).first
       @user.increment!(:lifetimelightningthumbsup, by = 1)
       current_user.increment!(:lifetimelightningthumbsupgiven, by = 1)
@@ -73,9 +79,10 @@ class LightningsController < ApplicationController
     if Lightningdata.where(:lightning_id => params[:lightning_id]).where(:user_id => current_user.id).first
       @lightningdata = Lightningdata.where(:lightning_id => params[:lightning_id])
         .where(:user_id => current_user.id).first
-      if @lightningdata.thumbsup == nil 
+      if @lightningdata.thumbsup == nil
         @lightning = Lightning.where(:id => params[:lightning_id]).first
         @lightning.increment!(:thumbsdown, by = 1)
+        @lightning.update_attributes(:whovoted => current_user.username)
         @user = User.where(:id => @lightning.user_id).first
         @user.increment!(:lifetimelightningthumbsdown, by = 1)
         current_user.increment!(:lifetimelightningthumbsdowngiven, by = 1)
@@ -104,6 +111,7 @@ class LightningsController < ApplicationController
       @lightning = Lightning.where(:id => params[:lightning_id]).first
       @lightning.increment!(:votes, by = 1)
       @lightning.increment!(:thumbsdown, by = 1)
+      @lightning.update_attributes(:whovoted => current_user.username)
       @user = User.where(:id => @lightning.user_id).first
       @user.increment!(:lifetimelightningthumbsdown, by = 1)
       current_user.increment!(:lifetimelightningthumbsdowngiven, by = 1)

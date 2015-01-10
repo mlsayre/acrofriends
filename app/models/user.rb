@@ -38,6 +38,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def percentthumbsup
+    if self.lifetimelightningthumbsup > 0
+      ((self.lifetimelightningthumbsup.round(2) / (self.lifetimelightningthumbsup.round(2) + self.lifetimelightningthumbsdown.round(2))) * 100).round(2)
+    else
+      0.00
+    end
+  end
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

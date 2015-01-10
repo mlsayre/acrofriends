@@ -17,24 +17,59 @@
     <% end %>
   <% end %><br>
 
+  Your percentage of Thumbs Up votes from other users: <%= current_user.percentthumbsup %>%<br><br>
   <u>Your completed lightning acros</u><br>
-    <% @finishedlightning.each do |game| %>
+    <% if @finishedlightningnewvotes.count > 0 %>
+      <span style="margin-top: 24px;">Acros with new votes:</span>
+    <% end %>
+    <% @finishedlightningnewvotes.each do |game| %>
 
       <span class="completedgamelink">
         <%= link_to(game) do %>
-
-          <div class="lightningindexbutton">
+          <% if game.whovoted == "" %>
+            <div class="lightningindexbutton">
+          <% else %>
+            <div class="lightningindexbutton lightningsomeonevoted">
+          <% end %>
 
             <span class="lightninglistcategory"><%= game.category %>:
             </span>
             <span class="lightninglistanswer">"<%= game.answer %>"</span>
             <div class="lightninglistdata">
               <%= image_tag("Thumbs-Up-128-Blue.png", size: "22", alt: "Thumbs Up", class: "lightindexresult-icon") %>
-              <span class="lightningindexdata"><%= @lightning.thumbsup %></span>
+              <span class="lightningindexdata"><%= game.thumbsup %></span>
               <%= image_tag("Thumbs-Down-128-Blue.png", size: "22", alt: "Thumbs Down", class: "lightindexresult-icon") %>
-              <span class="lightningindexdata"><%= @lightning.thumbsdown %></span>
+              <span class="lightningindexdata"><%= game.thumbsdown %></span>
               <%= image_tag("Heart-128-red.png", size: "22", alt: "Heart", class: "lightindexresult-icon") %>
-              <span class="lightningindexdata"><%= @lightning.hearts %></span>
+              <span class="lightningindexdata"><%= game.hearts %></span>
+            </div>
+            <span class="lightninglistcategory"><%= game.whovoted %> has voted!</span>
+          </div>
+        <% end %></span>
+      <br>
+    <% end %>
+
+    <span style="margin-top: 12px;">Acros with no new votes:</span>
+    <% @finishedlightning.each do |game| %>
+
+      <span class="completedgamelink">
+        <%= link_to(game) do %>
+          <% if game.whovoted == "" %>
+            <div class="lightningindexbutton">
+          <% else %>
+            <div class="lightningindexbutton lightningsomeonevoted">
+          <% end %>
+
+            <span class="lightninglistcategory"><%= game.category %>:
+            </span>
+            <span class="lightninglistanswer">"<%= game.answer %>"</span>
+            <div class="lightninglistdata">
+              <%= image_tag("Thumbs-Up-128-Blue.png", size: "22", alt: "Thumbs Up", class: "lightindexresult-icon") %>
+              <span class="lightningindexdata"><%= game.thumbsup %></span>
+              <%= image_tag("Thumbs-Down-128-Blue.png", size: "22", alt: "Thumbs Down", class: "lightindexresult-icon") %>
+              <span class="lightningindexdata"><%= game.thumbsdown %></span>
+              <%= image_tag("Heart-128-red.png", size: "22", alt: "Heart", class: "lightindexresult-icon") %>
+              <span class="lightningindexdata"><%= game.hearts %></span>
             </div>
           </div>
         <% end %></span>

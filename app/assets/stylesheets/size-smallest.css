@@ -510,7 +510,7 @@
   }
   .lifetimerankings {
     width: 300px;
-    height: 300px;
+    height: 160px;
     margin: 0 auto;
     background-color: white;
     border: 1px solid black;
@@ -599,6 +599,13 @@
     margin: 3px auto;
     border: 1px solid #03a9f4;
     border-radius: 4px;
+  }
+  .lightningsomeonevoted {
+    background-color: lightgreen !important;
+    /*background-image: url("Lock-128.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 22px;*/
   }
   .lightningindexbutton:hover {
     background-color: ghostwhite;
