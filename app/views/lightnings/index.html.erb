@@ -18,7 +18,9 @@
   <% end %><br>
 
   Your percentage of Thumbs Up votes from other users: <%= current_user.percentthumbsup %>%<br><br>
-  <u>Your completed lightning acros</u><br>
+  <% if @finishedlightning.count > 0 %>
+    <u>Your completed lightning acros</u><br>
+  <% end %>
     <% if @finishedlightningnewvotes.count > 0 %>
       <span style="margin-top: 24px;">Acros with new votes:</span>
     <% end %>
@@ -49,7 +51,9 @@
       <br>
     <% end %>
 
-    <span style="margin-top: 12px;">Acros with no new votes:</span>
+    <% if @finishedlightning.count > 0 %>
+      <span style="margin-top: 12px;">Acros with no new votes:</span>
+    <% end %>
     <% @finishedlightning.each do |game| %>
 
       <span class="completedgamelink">
