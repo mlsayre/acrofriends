@@ -112,6 +112,9 @@
     width: 30px;
     margin-bottom: -6px;
   }
+  .topbar-messagebutton {
+    margin-top: 2px;
+  }
   .tooltips {
     width: 300px;
     margin: 0 auto;
