@@ -6,79 +6,103 @@
     <%= form_for(@lightning) do |f| %>
       <%= f.hidden_field :user_id, :value => current_user.id %>
       <div class="actions">
-        <%= f.submit "Play Lightning Mode", :class => "button", :style => "font-size:120%" %>
+        <%= f.submit "Start", :class => "button", :style => "font-size:170%" %>
       </div>
     <% end %>
   <% else %>
     <%= link_to(lightningvote_lightnings_path) do %>
-      <div class="button" style="margin-bottom: 100px;">
-        <span style="color:white; font-size:120%">Play Lightning Mode</span>
+      <div class="button" style="margin-bottom: 24px;">
+        <span style="color:white; font-size:170%; font-weight: 400;">Start</span>
       </div>
     <% end %>
   <% end %><br>
+  Just want to do some voting?<br>
+  <%= link_to(lightningvoteonly_lightnings_path) do %>
+      <div class="button" style="margin-bottom: 80px;">
+        <span style="color:white; font-size:104%">Vote-only Mode</span>
+      </div>
+    <% end %><br>
 
-  Your percentage of Thumbs Up votes from other users: <%= current_user.percentthumbsup %>%<br><br>
-  <% if @finishedlightning.count > 0 %>
-    <u>Your completed lightning acros</u><br>
-  <% end %>
-    <% if @finishedlightningnewvotes.count > 0 %>
-      <span style="margin-top: 24px;">Acros with new votes:</span>
-    <% end %>
-    <% @finishedlightningnewvotes.each do |game| %>
-
-      <span class="completedgamelink">
-        <%= link_to(game) do %>
-          <% if game.whovoted == "" %>
-            <div class="lightningindexbutton">
-          <% else %>
-            <div class="lightningindexbutton lightningsomeonevoted">
-          <% end %>
-
-            <span class="lightninglistcategory"><%= game.category %>:
-            </span>
-            <span class="lightninglistanswer">"<%= game.answer %>"</span>
-            <div class="lightninglistdata">
-              <%= image_tag("Thumbs-Up-128-Blue.png", size: "22", alt: "Thumbs Up", class: "lightindexresult-icon") %>
-              <span class="lightningindexdata"><%= game.thumbsup %></span>
-              <%= image_tag("Thumbs-Down-128-Blue.png", size: "22", alt: "Thumbs Down", class: "lightindexresult-icon") %>
-              <span class="lightningindexdata"><%= game.thumbsdown %></span>
-              <%= image_tag("Heart-128-red.png", size: "22", alt: "Heart", class: "lightindexresult-icon") %>
-              <span class="lightningindexdata"><%= game.hearts %></span>
-            </div>
-            <span class="lightninglistcategory"><%= game.whovoted %> has voted!</span>
-          </div>
-        <% end %></span>
-      <br>
-    <% end %>
-
+  <span id="resultslists">
+    Your percentage of Thumbs Up votes from other users: <%= current_user.percentthumbsup %>%<br><br>
     <% if @finishedlightning.count > 0 %>
-      <span style="margin-top: 12px;">Acros with no new votes:</span>
+      <u>Your completed lightning acros</u><br>
     <% end %>
-    <% @finishedlightning.each do |game| %>
+      <% if @finishedlightningnewvotes.count > 0 %>
+        <span style="margin-top: 24px;">Acros with new votes:</span>
+      <% end %>
+      <% @finishedlightningnewvotes.each do |game| %>
 
-      <span class="completedgamelink">
-        <%= link_to(game) do %>
-          <% if game.whovoted == "" %>
-            <div class="lightningindexbutton">
-          <% else %>
-            <div class="lightningindexbutton lightningsomeonevoted">
-          <% end %>
+        <span class="completedgamelink">
+          <%= link_to(game) do %>
+            <% if game.whovoted == "" %>
+              <div class="lightningindexbutton">
+            <% else %>
+              <div class="lightningindexbutton lightningsomeonevoted">
+            <% end %>
 
-            <span class="lightninglistcategory"><%= game.category %>:
-            </span>
-            <span class="lightninglistanswer">"<%= game.answer %>"</span>
-            <div class="lightninglistdata">
-              <%= image_tag("Thumbs-Up-128-Blue.png", size: "22", alt: "Thumbs Up", class: "lightindexresult-icon") %>
-              <span class="lightningindexdata"><%= game.thumbsup %></span>
-              <%= image_tag("Thumbs-Down-128-Blue.png", size: "22", alt: "Thumbs Down", class: "lightindexresult-icon") %>
-              <span class="lightningindexdata"><%= game.thumbsdown %></span>
-              <%= image_tag("Heart-128-red.png", size: "22", alt: "Heart", class: "lightindexresult-icon") %>
-              <span class="lightningindexdata"><%= game.hearts %></span>
+              <span class="lightninglistcategory"><%= game.category %>:
+              </span>
+              <span class="lightninglistanswer">"<%= game.answer %>"</span>
+              <div class="lightninglistdata">
+                <%= image_tag("Thumbs-Up-128-Blue.png", size: "22", alt: "Thumbs Up", class: "lightindexresult-icon") %>
+                <span class="lightningindexdata"><%= game.thumbsup %></span>
+                <%= image_tag("Thumbs-Down-128-Blue.png", size: "22", alt: "Thumbs Down", class: "lightindexresult-icon") %>
+                <span class="lightningindexdata"><%= game.thumbsdown %></span>
+                <%= image_tag("Heart-128-red.png", size: "22", alt: "Heart", class: "lightindexresult-icon") %>
+                <span class="lightningindexdata"><%= game.hearts %></span>
+              </div>
+              <span class="lightninglistcategory"><%= game.whovoted %> has voted!</span>
             </div>
+          <% end %></span>
+        <br>
+      <% end %>
+      <% if @finishedlightningnewvotes.count > 0 %>
+        <span>
+          <div class="button" id="markasread" style="padding: 2px 5px 2px 5px; margin:4px 4px 30px 4px; font-size: 85%;">
+            <span style="color:white;">Ok, got it. Reset notifications.</span>
           </div>
-        <% end %></span>
+        </span>
+      <% end %>
+      <script>
+      $("#markasread").click(function() {
+        $.ajax({
+            url: "/lightnings/resetvoteddata",
+            type: "POST"
+          });
+      })
+      </script>
       <br>
-    <% end %>
+
+      <% if @finishedlightning.count > 0 %>
+        <span style="margin-top: 12px;">Acros with no new votes:</span>
+      <% end %>
+      <% @finishedlightning.each do |game| %>
+
+        <span class="completedgamelink">
+          <%= link_to(game) do %>
+            <% if game.whovoted == "" %>
+              <div class="lightningindexbutton">
+            <% else %>
+              <div class="lightningindexbutton lightningsomeonevoted">
+            <% end %>
+
+              <span class="lightninglistcategory"><%= game.category %>:
+              </span>
+              <span class="lightninglistanswer">"<%= game.answer %>"</span>
+              <div class="lightninglistdata">
+                <%= image_tag("Thumbs-Up-128-Blue.png", size: "22", alt: "Thumbs Up", class: "lightindexresult-icon") %>
+                <span class="lightningindexdata"><%= game.thumbsup %></span>
+                <%= image_tag("Thumbs-Down-128-Blue.png", size: "22", alt: "Thumbs Down", class: "lightindexresult-icon") %>
+                <span class="lightningindexdata"><%= game.thumbsdown %></span>
+                <%= image_tag("Heart-128-red.png", size: "22", alt: "Heart", class: "lightindexresult-icon") %>
+                <span class="lightningindexdata"><%= game.hearts %></span>
+              </div>
+            </div>
+          <% end %></span>
+        <br>
+      <% end %>
+    </span>
 </div>
 
 <%= render "shared/bottombar" %>

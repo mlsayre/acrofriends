@@ -1,0 +1,97 @@
+<% @mainpagetitle = "Lightning Mode" %>
+<%= render "shared/topbar" %>
+
+<div id="voterounds" class="votearea">
+  <div class="roundtitle">Lightning Vote</div>
+  <span class="lightningvotedesc">Vote, vote, and vote some more...</span><br><br>
+  <% if @lightning.count == 0 %>
+    No new acros to vote on... spread the word to get more players!
+    <br><br>
+  <% end %>
+  <% @lightning.shuffle.first(3).zip(@idnumbers).each do |lightning, n| %>
+    <span class="lightninggamecategories"><%= lightning.category %></span>
+    <span class="lightninggameletters"> (<%= lightning.letters %>)</span><br>
+    <span class="lightninganswer">"<%= lightning.answer %>"</span><br>
+
+    <span id="thumbsup<%= n %>"><%= image_tag("Thumbs-Up-128.png", size: "48", alt: "Heart", class: "lightvote-icon") %></span>
+    <script>
+      $("#thumbsup<%= n %>").click(function() {
+        $("#thumbsup<%= n %>").addClass("disabled");
+        $("#thumbsup<%= n %> img").attr("src", "<%= asset_path('Thumbs-Up-128-Blue.png') %>");
+        $("#thumbsdown<%= n %>").removeClass("disabled");
+        $("#thumbsdown<%= n %> img").attr("src", "<%= asset_path('Thumbs-Down-128.png') %>");
+        $("#heart<%= n %>").removeClass("hidden");
+        $.ajax({
+          url: "/lightnings/thumbsup",
+          type: "POST",
+          data: {lightning_id: '<%= lightning.id %>'},
+          dataType: 'script'
+        });
+      });
+    </script>
+
+    <span id="thumbsdown<%= n %>"><%= image_tag("Thumbs-Down-128.png", size: "48", alt: "Heart", class: "lightvote-icon") %></span>
+    <script>
+      $("#thumbsdown<%= n %>").click(function() {
+        $("#thumbsdown<%= n %>").addClass("disabled");
+        $("#thumbsdown<%= n %> img").attr("src", "<%= asset_path('Thumbs-Down-128-Blue.png') %>");
+        $("#thumbsup<%= n %>").removeClass("disabled");
+        $("#thumbsup<%= n %> img").attr("src", "<%= asset_path('Thumbs-Up-128.png') %>");
+        $("#heart<%= n %> img").attr("src", "<%= asset_path('Heart-128.png') %>");
+        $("#heart<%= n %>").addClass("hidden");
+        $.ajax({
+          url: "/lightnings/thumbsdown",
+          type: "POST",
+          data: {lightning_id: '<%= lightning.id %>'},
+          dataType: 'script'
+        });
+      });
+    </script>
+
+    <span id="heart<%= n %>" class="hidden"><%= image_tag("Heart-128.png", size: "48", alt: "Heart", class: "lightvote-icon") %></span>
+    <script>
+      $("#heart<%= n %>").click(function() {
+        if($("#heart<%= n %> img").attr("src") == "<%= asset_path('Heart-128.png') %>") {
+          $("#heart<%= n %> img").attr("src", "<%= asset_path('Heart-128-red.png') %>");
+          $.ajax({
+          url: "/lightnings/heart",
+          type: "POST",
+          data: {lightning_id: '<%= lightning.id %>'},
+          dataType: 'script'
+        });
+        }
+        else {
+          $("#heart<%= n %> img").attr("src", "<%= asset_path('Heart-128.png') %>");
+          $.ajax({
+          url: "/lightnings/heart",
+          type: "POST",
+          data: {lightning_id: '<%= lightning.id %>'},
+          dataType: 'script'
+        });
+        }
+      });
+    </script>
+    <br>
+    <br>
+  <% end %>
+  <div>
+    <%= link_to(lightningvoteonly_lightnings_path) do %>
+      <span class="button disabledtoplay" id="lightningvotetoplay">
+        Vote on a New Batch
+      </span>
+    <% end %>
+  </div>
+  <br>
+
+  <%= link_to(lightnings_path) do %>
+        <div class="button">
+
+          <span style="color:white;">Return to Lightning Menu</span>
+
+        </div>
+      <% end %>
+</div>
+
+<%= render "shared/bottombar" %>
+
+<%= javascript_include_tag "page/lightningvote" %>

@@ -33,7 +33,8 @@
           $.ajax({
                   url: "/lightnings/switchplayvote",
                   type: "POST",
-                  data: {playvote: 'vote'},
+                  data: {playvote: 'vote',
+                         lightning_id: '<%= @lightning.id %>'},
                   dataType: 'script'
                 });
         });

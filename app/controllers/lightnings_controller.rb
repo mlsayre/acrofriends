@@ -1,7 +1,7 @@
 class LightningsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_lightning, except: [:index, :create, :updateanswer, :vote,
-    :thumbsup, :thumbsdown, :heart, :switchplayvote]
+    :thumbsup, :thumbsdown, :heart, :switchplayvote, :voteonly, :resetvoteddata]
 
   def index
     @lightning = Lightning.new
@@ -21,17 +21,33 @@ class LightningsController < ApplicationController
     @lightning = Lightning.where(:user_id => current_user.id)
                 .where('id = ?', (params[:lightning][:id])).first
     @lightning.update_attributes(lightning_params)
-    @lightning.update_attributes(:completed => true)
-    current_user.update_attributes(:nextlightning => "vote")
     render :nothing => true
   end
 
   def vote
     @lightningvotedids = Lightningdata.where(:user_id => current_user.id).collect(&:lightning_id)
     @lightning = Lightning.where.not(:user_id => current_user.id).where.not(:id => @lightningvotedids)
-      .where("votes < ?", 3).where("answer != ?", "").all
+      .where("votes < ?", 3).where(:completed => true).all
     @idnumbers = [1, 2, 3]
     @lightningnew = Lightning.new
+  end
+
+  def voteonly
+    @lightningvotedids = Lightningdata.where(:user_id => current_user.id).collect(&:lightning_id)
+    @lightning = Lightning.where.not(:user_id => current_user.id).where.not(:id => @lightningvotedids)
+      .where("votes < ?", 10).where(:completed => true).all
+    @idnumbers = [1, 2, 3]
+  end
+
+  def resetvoteddata
+    @finishedlightninguserdata = Lightning.where(:user_id => current_user.id).where(:completed => true)
+      .where("whovoted != ?", "").all
+    @finishedlightninguserdata.each do |round|
+      round.update_attributes(:whovoted => "")
+    end
+    respond_to do |format|
+      format.js {render inline: "$('#resultslists').load(document.URL +  ' #resultslists');" }
+    end
   end
 
   def thumbsup
@@ -156,6 +172,9 @@ class LightningsController < ApplicationController
 
   def switchplayvote
     current_user.update_attributes(:nextlightning => params[:playvote])
+    @lightningswitch = Lightning.where(:user_id => current_user.id)
+                .where('id = ?', params[:lightning_id]).first
+    @lightningswitch.update_attributes(:completed => true)
     render :nothing => true
   end
 

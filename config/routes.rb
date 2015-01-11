@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     post :updateanswer, on: :collection, as: :updateanswer
     collection do
       get '/vote' => 'lightnings#vote', as: :lightningvote
+      get '/voteonly' => 'lightnings#voteonly', as: :lightningvoteonly
+      post 'resetvoteddata'
       post 'thumbsup'
       post 'thumbsdown'
       post 'heart'
