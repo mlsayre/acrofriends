@@ -11,7 +11,9 @@
   <% @lightning.shuffle.first(3).zip(@idnumbers).each do |lightning, n| %>
     <span class="lightninggamecategories"><%= lightning.category %></span>
     <span class="lightninggameletters"> (<%= lightning.letters %>)</span><br>
-    <span class="lightninganswer">"<%= lightning.answer %>"</span><br>
+    <span class="lightninganswer">"<%= lightning.answer %>"</span>
+    <span class="lightningvoteauthor hidden"> - written by <%= User.where(:id => lightning.user_id).first.username %></span>
+    <br>
 
     <span id="thumbsup<%= n %>"><%= image_tag("Thumbs-Up-128.png", size: "48", alt: "Heart", class: "lightvote-icon") %></span>
     <script>
@@ -74,6 +76,18 @@
     <br>
     <br>
   <% end %>
+
+  <div class="button disabledtoplay" id="seeauthors" style="padding: 2px 5px 2px 5px; margin:4px 4px 4px 4px; font-size: 85%;">
+    <span style="color:white;">See authors</span>
+  </div>
+  <script>
+  $("#seeauthors").click(function() {
+    $(".lightvote-icon").addClass("disabled");
+    $(".lightningvoteauthor").removeClass("hidden");
+    $(".lightningvoteauthor").addClass("animated flipInY");
+  })
+  </script>
+
   <div>
     <%= link_to(lightningvoteonly_lightnings_path) do %>
       <span class="button disabledtoplay" id="lightningvotetoplay">
