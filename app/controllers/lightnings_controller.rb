@@ -175,7 +175,12 @@ class LightningsController < ApplicationController
     @lightningswitch = Lightning.where(:user_id => current_user.id)
                 .where('id = ?', params[:lightning_id]).first
     @lightningswitch.update_attributes(:completed => true)
-    render :nothing => true
+    respond_to do |format|
+      if @lightningswitch.save && current_user.save
+        format.js { render :js => "window.location = '#{lightningvote_lightnings_path}'" }
+      end
+    end
+    return
   end
 
   def create
