@@ -76,17 +76,6 @@
     <br>
   <% end %>
 
-  <div class="button disabledtoplay" id="seeauthors" style="padding: 2px 5px 2px 5px; margin:4px 4px 4px 4px; font-size: 85%;">
-    <span style="color:white;">See authors</span>
-  </div>
-  <script>
-  $("#seeauthors").click(function() {
-    $(".lightvote-icon").addClass("disabled");
-    $(".lightningvoteauthor").removeClass("hidden");
-    $(".lightningvoteauthor").addClass("animated flipInY");
-  })
-  </script>
-
   <%= form_for(@lightningnew) do |f| %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="actions">
@@ -94,13 +83,27 @@
     </div>
   <% end %>
 
-  <%= link_to(lightnings_path) do %>
-        <div class="button" style="margin-right: 2px;">
+  <div>
+    <%= link_to(lightnings_path) do %>
+      <div class="button" style="margin-right: 2px; margin-bottom: 18px;">
+        <span style="color:white;">See Your Lightning Acros</span>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <% if @lightning.count > 0 %>
+    <div class="button disabledtoplay" id="seeauthors" style="float: right; padding: 2px 5px 2px 5px; margin:-24px 4px 4px 4px; font-size: 74%;">
+      <span style="color:white;">See authors</span>
+    </div>
+    <script>
+    $("#seeauthors").click(function() {
+      $(".lightvote-icon").addClass("disabled");
+      $(".lightningvoteauthor").removeClass("hidden");
+      $(".lightningvoteauthor").addClass("animated flipInY");
+    })
+    </script>
+  <% end %>
 
-          <span style="color:white;">See Your Lightning Acros</span>
-
-        </div>
-      <% end %>
 </div>
 
 <%= render "shared/bottombar" %>

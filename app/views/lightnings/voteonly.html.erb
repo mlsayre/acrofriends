@@ -77,33 +77,36 @@
     <br>
   <% end %>
 
-  <div class="button disabledtoplay" id="seeauthors" style="padding: 2px 5px 2px 5px; margin:4px 4px 4px 4px; font-size: 85%;">
-    <span style="color:white;">See authors</span>
-  </div>
-  <script>
-  $("#seeauthors").click(function() {
-    $(".lightvote-icon").addClass("disabled");
-    $(".lightningvoteauthor").removeClass("hidden");
-    $(".lightningvoteauthor").addClass("animated flipInY");
-  })
-  </script>
+  <% if @lightning.count > 0 %>
+    <div>
+      <%= link_to(lightningvoteonly_lightnings_path) do %>
+        <span class="button disabledtoplay" id="lightningvotetoplay">
+          Vote on a New Batch
+        </span>
+      <% end %>
+    </div>
+  <% end %>
 
   <div>
-    <%= link_to(lightningvoteonly_lightnings_path) do %>
-      <span class="button disabledtoplay" id="lightningvotetoplay">
-        Vote on a New Batch
-      </span>
+    <%= link_to(lightnings_path) do %>
+      <div class="button" style="margin-right: 2px; margin-bottom: 18px;">
+        <span style="color:white;">See Your Lightning Acros</span>
+      </div>
     <% end %>
   </div>
   <br>
-
-  <%= link_to(lightnings_path) do %>
-        <div class="button">
-
-          <span style="color:white;">Return to Lightning Menu</span>
-
-        </div>
-      <% end %>
+  <% if @lightning.count > 0 %>
+    <div class="button disabledtoplay" id="seeauthors" style="float: right; padding: 2px 5px 2px 5px; margin: -24px 4px 4px 4px; font-size: 74%;">
+      <span style="color:white;">See authors</span>
+    </div>
+    <script>
+    $("#seeauthors").click(function() {
+      $(".lightvote-icon").addClass("disabled");
+      $(".lightningvoteauthor").removeClass("hidden");
+      $(".lightningvoteauthor").addClass("animated flipInY");
+    })
+    </script>
+  <% end %>
 </div>
 
 <%= render "shared/bottombar" %>
