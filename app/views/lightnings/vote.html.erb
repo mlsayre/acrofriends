@@ -9,7 +9,8 @@
     <br><br>
   <% end %>
   <% @lightning.shuffle.first(3).zip(@idnumbers).each do |lightning, n| %>
-    <span class="lightninggameletters"><%= lightning.letters %></span><span class="lightninggamecategories"> - <%= lightning.category %></span><br>
+    <span class="lightninggamecategories"><%= lightning.category %></span>
+    <span class="lightninggameletters"> (<%= lightning.letters %>)</span><br>
     <span class="lightninganswer">"<%= lightning.answer %>"</span><br>
 
     <span id="thumbsup<%= n %>"><%= image_tag("Thumbs-Up-128.png", size: "48", alt: "Heart", class: "lightvote-icon") %></span>

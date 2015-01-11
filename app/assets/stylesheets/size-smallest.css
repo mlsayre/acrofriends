@@ -542,13 +542,13 @@
     padding: 8px;
   }
   .lightninggameletters {
-    font-size: 115%;
-    font-weight: 700;
+    font-size: 100%;
+    font-weight: 400;
     color: red;
   }
   .lightninggamecategories {
     font-style: italic;
-    font-size: 115%;
+    font-size: 117%;
     font-weight: 500;
     color: red;
   }
