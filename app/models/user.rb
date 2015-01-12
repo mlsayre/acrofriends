@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def lightningtotalvotesreceived
+    self.lifetimelightningthumbsup + self.lifetimelightningthumbsdown
+  end
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

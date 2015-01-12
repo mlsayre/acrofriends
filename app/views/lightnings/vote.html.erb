@@ -106,6 +106,21 @@
 
 </div>
 
+<% if current_user.tooltips == true %>
+    <fieldset class="tooltips">
+      <legend style="text-align: left; margin-left: 6px;">Tip</legend>
+      Simply vote Thumbs-up or Thumbs-down for each acro. If you vote Thumbs-up, you have the option to "Heart" it, meaning it was especially good in your opinion. There will be up to three acros to vote on. Once you've voted on all the acros, you will be able to progress to your next Lightning Play round.<br><br>
+
+      Or, before continuing, click "See authors" to see who wrote the acros. Keep in mind, if you click "See authors" you will no longer have the ability to change your votes.
+      <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
+    </fieldset>
+    <script>
+      $(".button.tipbutton").click(function() {
+        $(".tooltips").hide();
+      });
+    </script>
+  <% end %>
+
 <%= render "shared/bottombar" %>
 
 <%= javascript_include_tag "page/lightningvote" %>

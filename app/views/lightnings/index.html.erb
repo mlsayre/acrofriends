@@ -24,7 +24,9 @@
     <% end %><br>
 
   <span id="resultslists">
-    Your percentage of Thumbs Up votes from other users: <%= current_user.percentthumbsup %>%<br><br>
+    Total # of your acros: <span class="lightningindexstat"><%= @finishedlightning.count + @finishedlightningnewvotes.count %></span>
+    Total votes received: <span class="lightningindexstat"><%= current_user.lightningtotalvotesreceived %></span><br>  <%= image_tag("Thumbs-Up-128-Blue.png", size: "22", alt: "Heart", style: "vertical-align: text-bottom") %>: <span class="lightningindexstat"><%= current_user.lifetimelightningthumbsup %></span> <%= image_tag("Thumbs-Down-128-Blue.png", size: "22", alt: "Heart", style: "vertical-align: text-bottom") %>: <span class="lightningindexstat"><%= current_user.lifetimelightningthumbsdown%></span> <%= image_tag("Heart-128-red.png", size: "22", alt: "Heart", style: "vertical-align: text-bottom") %>: <span class="lightningindexstat"><%= current_user.lifetimelightninghearts %></span><br>
+    Your percentage of Thumbs Up votes from other users: <span class="lightningindexstat"><%= current_user.percentthumbsup %>%</span><br><br>
     <% if @finishedlightning.count > 0 %>
       <u>Your completed lightning acros</u><br>
     <% end %>
@@ -60,7 +62,7 @@
       <% if @finishedlightningnewvotes.count > 0 %>
         <span>
           <div class="button" id="markasread" style="padding: 2px 5px 2px 5px; margin:4px 4px 30px 4px; font-size: 85%;">
-            <span style="color:white;">Ok, got it. Reset notifications.</span>
+            <span style="color:white;">Mark all as viewed</span>
           </div>
         </span>
       <% end %>
@@ -103,6 +105,19 @@
         <br>
       <% end %>
     </span>
+    <% if current_user.tooltips == true %>
+    <fieldset class="tooltips">
+      <legend style="text-align: left; margin-left: 6px;">Tip</legend>
+      Press "Start" to start playing in "Lightning" mode. You will then play a single acro, vote on 3 acros from other players, then repeat as long as you want. Return to this page to see how other players are voting on your acros.<br><br>
+      To simply start voting on other players' clever acros, press "Vote-only Mode".
+      <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
+    </fieldset>
+    <script>
+      $(".button.tipbutton").click(function() {
+        $(".tooltips").hide();
+      });
+    </script>
+  <% end %>
 </div>
 
 <%= render "shared/bottombar" %>

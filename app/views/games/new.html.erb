@@ -42,7 +42,8 @@
   <% if current_user.tooltips == true %>
     <fieldset class="tooltips">
       <legend style="text-align: left; margin-left: 6px;">Tip</legend>
-      Press "Play 4-Round Game" to join or start a game. Either you will join a game in progress that does not yet have 12 players, or a new game will be created.
+      Press "Play 4-Round Game" to join or start a game. Either you will join a game in progress that does not yet have 12 players, or a new game will be created.<br><br>
+      To play in the quicker "Lightning" mode, click the lightning icon at the bottom or upper right corner of the page.
       <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
     </fieldset>
     <script>

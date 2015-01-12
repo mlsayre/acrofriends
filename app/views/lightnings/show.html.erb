@@ -7,7 +7,19 @@
   <%= render "roundresults" %>
 <% end %>
 
-
+<% if current_user.tooltips == true %>
+    <fieldset class="tooltips">
+      <legend style="text-align: left; margin-left: 6px;">Tip</legend>
+      To play, create a phrase based on the letters given and the topic. For example, given the letters "EMTT" and the category "Food", you might write "Eat more tacos today."<br><br>
+      Press the Continue button to lock in your answer and enter your acro into the voting pool. You will then be taken to your voting round.
+      <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
+    </fieldset>
+    <script>
+      $(".button.tipbutton").click(function() {
+        $(".tooltips").hide();
+      });
+    </script>
+  <% end %>
 
 <%= javascript_include_tag "page/playgame" %>
 <%= javascript_include_tag "page/validation" %>

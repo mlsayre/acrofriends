@@ -138,7 +138,8 @@
   <% if current_user.tooltips == true %>
     <fieldset class="tooltips">
       <legend style="text-align: left; margin-left: 6px;">Tip</legend>
-      Welcome to AcroFriends! To start playing, click the "Start New Game" button above or the "New" button at the bottom of the page.
+      Welcome to AcroFriends! To start playing a regular game, click the "Start New Game" button above or the "New" button at the bottom of the page.<br><br>
+      To play in the quicker "Lightning" mode, click the lightning icon at the bottom of the page.
       <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
     </fieldset>
     <script>
