@@ -23,10 +23,13 @@
       </div>
     <% end %><br>
 
-  <span id="resultslists">
-    Total # of your acros: <span class="lightningindexstat"><%= @finishedlightning.count + @finishedlightningnewvotes.count %></span>
-    Total votes received: <span class="lightningindexstat"><%= current_user.lightningtotalvotesreceived %></span><br>  <%= image_tag("Thumbs-Up-128-Blue.png", size: "22", alt: "Heart", style: "vertical-align: text-bottom") %>: <span class="lightningindexstat"><%= current_user.lifetimelightningthumbsup %></span> <%= image_tag("Thumbs-Down-128-Blue.png", size: "22", alt: "Heart", style: "vertical-align: text-bottom") %>: <span class="lightningindexstat"><%= current_user.lifetimelightningthumbsdown%></span> <%= image_tag("Heart-128-red.png", size: "22", alt: "Heart", style: "vertical-align: text-bottom") %>: <span class="lightningindexstat"><%= current_user.lifetimelightninghearts %></span><br>
-    Your percentage of Thumbs Up votes from other users: <span class="lightningindexstat"><%= current_user.percentthumbsup %>%</span><br><br>
+  <div id="lightningindexstatbox">
+    <span id="resultslists">
+      Total # of your acros: <span class="lightningindexstat"><%= @finishedlightning.count + @finishedlightningnewvotes.count %></span><br>
+      Total votes received: <span class="lightningindexstat"><%= current_user.lightningtotalvotesreceived %></span><br>  <%= image_tag("Thumbs-Up-128-Blue.png", size: "28", alt: "Heart", style: "vertical-align: text-bottom") %><span class="lightningindexstat" style="font-size: 130%; margin-right: 12px;"><%= current_user.lifetimelightningthumbsup %></span> <%= image_tag("Thumbs-Down-128-Blue.png", size: "28", alt: "Heart", style: "vertical-align: text-bottom") %><span class="lightningindexstat" style="font-size: 130%; margin-right: 16px;"><%= current_user.lifetimelightningthumbsdown%></span> <%= image_tag("Heart-128-red.png", size: "28", alt: "Heart", style: "vertical-align: text-bottom") %><span class="lightningindexstat" style="font-size: 130%;"><%= current_user.lifetimelightninghearts %></span><br>
+      Percentage Thumbs-up: <span class="lightningindexstat"><%= current_user.percentthumbsup %>%</span>
+  </div>
+    <br><br>
     <% if @finishedlightning.count > 0 %>
       <u>Your completed lightning acros</u><br>
     <% end %>

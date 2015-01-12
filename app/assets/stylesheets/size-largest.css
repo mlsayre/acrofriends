@@ -615,4 +615,10 @@
   .lightningindexstat {
     color: red;
   }
+  #lightningindexstatbox {
+    width: 60%;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid #03a9f4;
+  }
 }
