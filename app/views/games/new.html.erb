@@ -9,12 +9,12 @@
       <%= f.hidden_field :group_id, :value => 0 %>
 
       <div class="actions" style="font-size: 120%;">
-        <%= f.submit "Play 4-Round Game", :class => "button" %>
+        <%= f.submit "Play 4-Round Classic Game", :class => "button" %>
       </div>
       <!-- (4 rounds) -->
     <% end %>
     <br><br>
-    In a hurry or waiting for main games to finish?<br>
+    QUICK mode! Even more acro fun...<br>
       <%= link_to(lightnings_path) do %>
         <div class="button" style="margin-right: 2px;">
 
@@ -42,8 +42,8 @@
   <% if current_user.tooltips == true %>
     <fieldset class="tooltips">
       <legend style="text-align: left; margin-left: 6px;">Tip</legend>
-      Press "Play 4-Round Game" to join or start a game. Either you will join a game in progress that does not yet have 12 players, or a new game will be created.<br><br>
-      To play in the quicker "Lightning" mode, click the lightning icon at the bottom or upper right corner of the page.
+      Press "Play 4-Round Classic Game" to join or start a game. Either you will join a game in progress that does not yet have 12 players, or a new game will be created.<br><br>
+      To play in the quicker "Lightning" mode, click the lightning icon at the bottom or upper right corner of the page. Or press the "Play Lightning Mode" button.
       <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
     </fieldset>
     <script>

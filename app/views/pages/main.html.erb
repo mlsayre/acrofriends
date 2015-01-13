@@ -54,10 +54,19 @@
       <br>
     <% end %>
     <br>
-    <div class="button">
-      <%= link_to(image_tag("New-128.png", size: "48", alt: "Start New Game", class: "main-icon"), new_game_path) %><br>
-      <span style="font-size: 130%">Start New Game</span>
-    </div>
+
+      <%= link_to(new_game_path) do %>
+        <div class="button">
+          <%= image_tag("New-128.png", size: "48", alt: "Start New Game", class: "main-icon") %><br>
+          <span style="font-size: 130%">Start New Classic Game</span>
+        </div>
+      <% end %>
+    <%= link_to(lightnings_path) do %>
+        <div class="button" style="margin-right: 2px;">
+          <%= image_tag("Lightning-128.png", size: "48", alt: "Start New Game", class: "main-icon") %><br>
+          <span style="color:white; font-size:130%">Play Lightning Mode</span>
+        </div>
+      <% end %>
   </div>
 
   <div id="mainvotinggameslist" >
@@ -102,10 +111,18 @@
       <br>
     <% end %>
     <br>
-    <div class="button">
-      <%= link_to(image_tag("New-128.png", size: "48", alt: "Start New Game", class: "main-icon"), new_game_path) %><br>
-      <span style="font-size: 130%">Start New Game</span>
-    </div>
+    <%= link_to(new_game_path) do %>
+        <div class="button">
+          <%= image_tag("New-128.png", size: "48", alt: "Start New Game", class: "main-icon") %><br>
+          <span style="font-size: 130%">Start New Classic Game</span>
+        </div>
+      <% end %>
+    <%= link_to(lightnings_path) do %>
+        <div class="button" style="margin-right: 2px;">
+          <%= image_tag("Lightning-128.png", size: "48", alt: "Start New Game", class: "main-icon") %><br>
+          <span style="color:white; font-size:130%">Play Lightning Mode</span>
+        </div>
+      <% end %>
   </div>
 
   <div id="mainresultsgameslist" >
@@ -128,18 +145,26 @@
       <br>
     <% end %>
     <br>
-    <div class="button">
-      <%= link_to(image_tag("New-128.png", size: "48", alt: "Start New Game", class: "main-icon"), new_game_path) %><br>
-      <span style="font-size: 130%">Start New Game</span>
-    </div>
+    <%= link_to(new_game_path) do %>
+        <div class="button">
+          <%= image_tag("New-128.png", size: "48", alt: "Start New Game", class: "main-icon") %><br>
+          <span style="font-size: 130%">Start New Classic Game</span>
+        </div>
+      <% end %>
+    <%= link_to(lightnings_path) do %>
+        <div class="button" style="margin-right: 2px;">
+          <%= image_tag("Lightning-128.png", size: "48", alt: "Start New Game", class: "main-icon") %><br>
+          <span style="color:white; font-size:130%">Play Lightning Mode</span>
+        </div>
+      <% end %>
   </div>
   <br>
 
   <% if current_user.tooltips == true %>
     <fieldset class="tooltips">
       <legend style="text-align: left; margin-left: 6px;">Tip</legend>
-      Welcome to AcroFriends! To start playing a regular game, click the "Start New Game" button above or the "New" button at the bottom of the page.<br><br>
-      To play in the quicker "Lightning" mode, click the lightning icon at the bottom of the page.
+      Welcome to AcroFriends! To start playing a regular game, click the "Start New Classic Game" button above or the "New" button at the bottom of the page.<br><br>
+      To play in the quicker "Lightning" mode, click the "Play Lightning Mode" button or the lightning icon at the bottom of the page.
       <%= button_to "Turn tips off", {:controller => "pages", :action => "tipsoff", :method => "put"}, :class => "button tipbutton", remote: true %>
     </fieldset>
     <script>

@@ -101,7 +101,7 @@
     </div>
     <script>
     $("#seeauthors").click(function() {
-      $(".lightvote-icon").addClass("disabled");
+      $(".lightvote-icon").parent().addClass("disabled");
       $(".lightningvoteauthor").removeClass("hidden");
       $(".lightningvoteauthor").addClass("animated flipInY");
     })
