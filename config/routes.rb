@@ -59,6 +59,8 @@ Rails.application.routes.draw do
       get 'howtoplay' => 'pages#howtoplay'
       post 'tipsoff'
       post 'tipson'
+      post 'censoroff'
+      post 'censoron'
     end
   end
 

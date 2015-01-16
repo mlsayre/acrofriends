@@ -105,7 +105,12 @@
                 <% end %>
               <% end %>
             </td>
-            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"
+            <td>
+              <% if current_user.censoron == true %>
+                "<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"
+              <% else %>
+                "<%= answer.r1answer %>"
+              <% end %>
               <% if @round1winner %>
                 <% if @round1winner.id == current_user.id && @round1winner.id == answer.user_id %>
                   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://acrofriends.com" data-text='My winning acro! <%= @currentusergame.r1letters %>: "<%= @currentusergamedata.r1answer %>" (<%= @currentusergame.r1cat %>) Come play!' data-via="AcroParty" data-count="none">Tweet</a>
@@ -181,7 +186,12 @@
                 <% end %>
               <% end %>
             </td>
-            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r2answer) %>"
+            <td>
+              <% if current_user.censoron == true %>
+                "<%= Obscenity.replacement(:stars).sanitize(answer.r2answer) %>"
+              <% else %>
+                "<%= answer.r2answer %>"
+              <% end %>
               <% if @round2winner %>
                 <% if @round2winner.id == current_user.id && @round2winner.id == answer.user_id %>
                   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://acrofriends.com" data-text='My winning acro! <%= @currentusergame.r2letters %>: "<%= @currentusergamedata.r2answer %>" (<%= @currentusergame.r2cat %>) Come play!' data-via="AcroParty" data-count="none">Tweet</a>
@@ -257,7 +267,12 @@
                 <% end %>
               <% end %>
             </td>
-            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r3answer) %>"
+            <td>
+              <% if current_user.censoron == true %>
+                "<%= Obscenity.replacement(:stars).sanitize(answer.r3answer) %>"
+              <% else %>
+                "<%= answer.r3answer %>"
+              <% end %>
               <% if @round3winner %>
                 <% if @round3winner.id == current_user.id && @round3winner.id == answer.user_id %>
                   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://acrofriends.com" data-text='My winning acro! <%= @currentusergame.r3letters %>: "<%= @currentusergamedata.r3answer %>" (<%= @currentusergame.r3cat %>) Come play!' data-via="AcroParty" data-count="none">Tweet</a>
@@ -333,7 +348,12 @@
                 <% end %>
               <% end %>
             </td>
-            <td>"<%= Obscenity.replacement(:stars).sanitize(answer.r4answer) %>"
+            <td>
+              <% if current_user.censoron == true %>
+                "<%= Obscenity.replacement(:stars).sanitize(answer.r4answer) %>"
+              <% else %>
+                "<%= answer.r4answer %>"
+              <% end %>
               <% if @round4winner %>
                 <% if @round4winner.id == current_user.id && @round4winner.id == answer.user_id %>
                   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://acrofriends.com" data-text='My winning acro! <%= @currentusergame.r4letters %>: "<%= @currentusergamedata.r4answer %>" (<%= @currentusergame.r4cat %>) Come play!' data-via="AcroParty" data-count="none">Tweet</a>

@@ -11,7 +11,11 @@
   <% @lightning.shuffle.first(3).zip(@idnumbers).each do |lightning, n| %>
     <span class="lightninggamecategories"><%= lightning.category %></span>
     <span class="lightninggameletters"> (<%= lightning.letters %>)</span><br>
-    <span class="lightninganswer">"<%= lightning.answer %>"</span>
+    <% if current_user.censoron == true %>
+      <span class="lightninganswer">"<%= Obscenity.replacement(:stars).sanitize(lightning.answer) %>"</span>
+    <% else %>
+      <span class="lightninganswer">"<%= lightning.answer %>"</span>
+    <% end %>
     <span class="lightningvoteauthor hidden"> - written by <%= User.where(:id => lightning.user_id).first.username %></span><br>
 
     <span id="thumbsup<%= n %>"><%= image_tag("Thumbs-Up-128.png", size: "48", alt: "Heart", class: "lightvote-icon") %></span>

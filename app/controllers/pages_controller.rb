@@ -24,4 +24,14 @@ class PagesController < ApplicationController
     current_user.update_attributes(:tooltips => true)
     render :nothing => true
   end
+
+  def censoroff
+    current_user.update_attributes(:censoron => false)
+    render :nothing => true
+  end
+
+  def censoron
+    current_user.update_attributes(:censoron => true)
+    render :nothing => true
+  end
 end

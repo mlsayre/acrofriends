@@ -67,6 +67,30 @@
     });
   </script>
   <br>
+
+  <% if current_user.censoron == true %>
+    <%= button_to "Turn censor off", {:controller => "/pages", :action => "censoroff", :method => "put"}, :class => "button censoroff", :style => "float: none;", remote: true %>
+    <%= button_to "Turn censor on", {:controller => "/pages", :action => "censoron", :method => "put"}, :class => "button censoron", :style => "float: none; display:none", remote: true %>
+  <% else %>
+    <%= button_to "Turn censor off", {:controller => "/pages", :action => "censoroff", :method => "put"}, :class => "button censoroff", :style => "float: none; display: none;", remote: true %>
+    <%= button_to "Turn censor on", {:controller => "/pages", :action => "censoron", :method => "put"}, :class => "button censoron", :style => "float: none;", remote: true %>
+  <% end %>
+
+  <script>
+      $(".button.censoroff").click(function() {
+        alert("Censoring is now off.");
+        $(".button.censoroff").hide();
+        $(".button.censoron").show();
+      });
+      $(".button.censoron").click(function() {
+        alert("Censoring is now on.");
+        $(".button.censoron").hide();
+        $(".button.censoroff").show();
+      });
+    </script>
+
+
+  <br>
   <div id="main-signout">
     <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
   </div>

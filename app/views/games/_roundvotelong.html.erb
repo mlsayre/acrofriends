@@ -50,12 +50,16 @@
             <div class="votebutton1div">
               <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round1", :game_id => @game.id, :r1voted => true}, :class => "votebuttons", remote: true %>
             </div>
-            "<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"
+            <% if current_user.censoron == true %>
+                "<%= Obscenity.replacement(:stars).sanitize(answer.r1answer) %>"
+              <% else %>
+                "<%= answer.r1answer %>"
+              <% end %>
           <% end %>
           <br>
         <% end %><br>
         <% if @gamedata.r1answer %>
-          Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r1answer) %>"
+          Your acro: "<%= @gamedata.r1answer %>"
         <% else %>
           You didn't enter an acro this round.
         <% end %>
@@ -76,12 +80,16 @@
             <div class="votebutton2div">
             <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round2", :game_id => @game.id, :r2voted => true}, :class => "votebuttons", remote: true %>
             </div>
-            "<%= Obscenity.replacement(:stars).sanitize(answer.r2answer) %>"
+            <% if current_user.censoron == true %>
+                "<%= Obscenity.replacement(:stars).sanitize(answer.r2answer) %>"
+              <% else %>
+                "<%= answer.r2answer %>"
+              <% end %>
           <% end %>
           <br>
         <% end %><br>
         <% if @gamedata.r2answer %>
-          Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r2answer) %>"
+          Your acro: "<%= @gamedata.r2answer %>"
         <% else %>
           You didn't enter an acro this round.
         <% end %>
@@ -102,12 +110,16 @@
             <div class="votebutton3div">
             <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round3", :game_id => @game.id, :r3voted => true}, :class => "votebuttons", remote: true %>
             </div>
-            "<%= Obscenity.replacement(:stars).sanitize(answer.r3answer) %>"
+            <% if current_user.censoron == true %>
+                "<%= Obscenity.replacement(:stars).sanitize(answer.r3answer) %>"
+              <% else %>
+                "<%= answer.r3answer %>"
+              <% end %>
           <% end %>
           <br>
         <% end %><br>
         <% if @gamedata.r3answer %>
-          Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r3answer) %>"
+          Your acro: "<%= @gamedata.r3answer %>"
         <% else %>
           You didn't enter an acro this round.
         <% end %>
@@ -128,12 +140,16 @@
             <div class="votebutton4div">
             <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round4", :game_id => @game.id, :r4voted => true}, :class => "votebuttons", remote: true %>
             </div>
-            "<%= Obscenity.replacement(:stars).sanitize(answer.r4answer) %>"
+            <% if current_user.censoron == true %>
+                "<%= Obscenity.replacement(:stars).sanitize(answer.r4answer) %>"
+              <% else %>
+                "<%= answer.r4answer %>"
+              <% end %>
           <% end %>
           <br>
         <% end %><br>
         <% if @gamedata.r4answer %>
-          Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r4answer) %>"
+          Your acro: "<%= @gamedata.r4answer %>"
         <% else %>
           You didn't enter an acro this round.
         <% end %>
@@ -154,12 +170,16 @@
             <div class="votebutton5div">
               <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round5", :game_id => @game.id, :r5voted => true}, :class => "votebuttons", remote: true %>
             </div>
-            "<%= Obscenity.replacement(:stars).sanitize(answer.r5answer) %>"
+            <% if current_user.censoron == true %>
+                "<%= Obscenity.replacement(:stars).sanitize(answer.r5answer) %>"
+              <% else %>
+                "<%= answer.r5answer %>"
+              <% end %>
           <% end %>
           <br>
         <% end %><br>
         <% if @gamedata.r5answer %>
-          Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r5answer) %>"
+          Your acro: "<%= @gamedata.r5answer %>"
         <% else %>
           You didn't enter an acro this round.
         <% end %>
@@ -180,12 +200,16 @@
             <div class="votebutton6div">
             <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round6", :game_id => @game.id, :r6voted => true}, :class => "votebuttons", remote: true %>
             </div>
-            "<%= Obscenity.replacement(:stars).sanitize(answer.r6answer) %>"
+            <% if current_user.censoron == true %>
+                "<%= Obscenity.replacement(:stars).sanitize(answer.r6answer) %>"
+              <% else %>
+                "<%= answer.r6answer %>"
+              <% end %>
           <% end %>
           <br>
         <% end %><br>
         <% if @gamedata.r6answer %>
-          Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r6answer) %>"
+          Your acro: "<%= @gamedata.r6answer %>"
         <% else %>
           You didn't enter an acro this round.
         <% end %>
@@ -206,12 +230,16 @@
             <div class="votebutton7div">
             <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round7", :game_id => @game.id, :r7voted => true}, :class => "votebuttons", remote: true %>
             </div>
-            "<%= Obscenity.replacement(:stars).sanitize(answer.r7answer) %>"
+            <% if current_user.censoron == true %>
+                "<%= Obscenity.replacement(:stars).sanitize(answer.r7answer) %>"
+              <% else %>
+                "<%= answer.r7answer %>"
+              <% end %>
           <% end %>
           <br>
         <% end %><br>
         <% if @gamedata.r7answer %>
-          Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r7answer) %>"
+          Your acro: "<%= @gamedata.r7answer %>"
         <% else %>
           You didn't enter an acro this round.
         <% end %>
@@ -232,12 +260,16 @@
             <div class="votebutton8div">
             <%= button_to "Vote", {:controller => "gamedata", :action => "vote", :user_id => answer.user_id, :method => "post", :round => "round8", :game_id => @game.id, :r8voted => true}, :class => "votebuttons", remote: true %>
             </div>
-            "<%= Obscenity.replacement(:stars).sanitize(answer.r8answer) %>"
+            <% if current_user.censoron == true %>
+                "<%= Obscenity.replacement(:stars).sanitize(answer.r8answer) %>"
+              <% else %>
+                "<%= answer.r8answer %>"
+              <% end %>
           <% end %>
           <br>
         <% end %><br>
         <% if @gamedata.r8answer %>
-          Your acro: "<%= Obscenity.replacement(:stars).sanitize(@gamedata.r8answer) %>"
+          Your acro: "<%= @gamedata.r8answer %>"
         <% else %>
           You didn't enter an acro this round.
         <% end %>
