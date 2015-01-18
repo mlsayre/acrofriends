@@ -1,7 +1,7 @@
 class LightningsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_lightning, except: [:index, :create, :updateanswer, :vote,
-    :thumbsup, :thumbsdown, :heart, :switchplayvote, :voteonly, :resetvoteddata]
+    :thumbsup, :thumbsdown, :heart, :switchplayvote, :voteonly, :resetvoteddata, :switchvoteplay]
 
   def index
     @lightning = Lightning.new
@@ -185,6 +185,11 @@ class LightningsController < ApplicationController
       end
     end
     return
+  end
+
+  def switchvoteplay
+    current_user.update_attributes(:nextlightning => "play")
+    render :nothing => true
   end
 
   def create

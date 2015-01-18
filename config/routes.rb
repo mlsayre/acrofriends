@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       post 'thumbsdown'
       post 'heart'
       post 'switchplayvote'
+      post 'switchvoteplay'
     end
   end
 
