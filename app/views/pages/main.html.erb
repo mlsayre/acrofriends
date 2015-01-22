@@ -1,8 +1,35 @@
 <div class="mainpageviewbutton">
     Your Games:<br>
-    <%= button_tag "Play Rounds", :id => "mainplaygamesbutton" %>
-    <%= button_tag "Vote Rounds", :id => "mainvotegamesbutton" %>
-    <%= button_tag "Completed", :id => "maincompletedgamesbutton" %>
+    <span class="viewbutton">
+      <%= button_tag "Play Rounds", :id => "mainplaygamesbutton" %>
+    </span>
+    <span class="viewbutton">
+      <%= button_tag "Vote Rounds", :id => "mainvotegamesbutton" %>
+    </span>
+    <span class="viewbutton">
+      <%= button_tag "Completed", :id => "maincompletedgamesbutton" %>
+    </span>
+      <% if @gamestostillplay.count > 0 %>
+        <span class="mainroundcounts" id="gamesstilltoplay">
+          <%= @gamestostillplay.count %>
+        </span>
+      <% else %>
+        <span class="mainroundcounts" id="gamesstilltoplay" style="visibility: hidden;">x</span>
+      <% end %>
+      <% if @gamestostillvote.count > 0 %>
+        <span class="mainroundcounts" id="gamesstilltovote">
+          <%= @gamestostillvote.count %>
+        </span>
+      <% else %>
+        <span class="mainroundcounts" id="gamesstilltovote" style="visibility: hidden;">x</span>
+      <% end %>
+      <% if @resultstostillsee.count > 0 %>
+        <span class="mainroundcounts" id="resultsstilltosee">
+          <%= @resultstostillsee.count %>
+        </span>
+      <% else %>
+        <span class="mainroundcounts" id="resultsstilltosee" style="visibility: hidden;">x</span>
+      <% end %>
   </div>
 <div class="maingamespage">
   <div id="mainplayinggameslist" >

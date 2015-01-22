@@ -143,6 +143,37 @@
     text-align: center;
     margin-right: -18px;
   }
+  .mainroundcounts {
+    background-color: red;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    padding: 1px 1px 1px 4px;
+    border-radius: 4px;
+    z-index: 10;
+  }
+  #gamesstilltoplay {
+    position: relative;
+    top: -18px;
+    right: 265px;
+    text-align: center;
+    margin-right:-17px;
+  }
+  #gamesstilltovote {
+    position: relative;
+    top: -18px;
+    right: 143px;
+    text-align: center;
+    margin-right:-17px;
+  }
+  #resultsstilltosee {
+    position: relative;
+    top: -18px;
+    right: 32px;
+    text-align: center;
+    padding-right: 4px;
+    margin-right:-17px;
+  }
   .graphiclink a {
     text-decoration: none
   }

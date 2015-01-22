@@ -13,6 +13,12 @@ class PagesController < ApplicationController
       DateTime.now.utc).order('voteendtime ASC').all
     @gamesinresultsround = @gamescomplete.where('voteendtime < ? AND playercount > ?', DateTime.now.utc, 2)
       .order('voteendtime DESC').first(20)
+    @gamestostillplay = Gamedata.where(:user_id => current_user.id).where(:r4answer => nil).all
+    @gamesinvoteroundids = @gamesinvoteround.collect(&:id)
+    @gamestostillvote = Gamedata.where(:game_id => @gamesinvoteroundids).where(:r1votedfor => 0)
+      .where(:r2votedfor => 0).where(:r3votedfor => 0).where(:r4votedfor => 0).all
+    @gamesinresultsroundids = @gamesinresultsround.collect(&:id)
+    @resultstostillsee = Gamedata.where(:game_id => @gamesinresultsroundids).where(:seenresults => false).all
   end
 
   def tipsoff

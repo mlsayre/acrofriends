@@ -112,6 +112,37 @@
     text-align: center;
     margin-right: -18px;
   }
+  .mainroundcounts {
+    background-color: red;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    padding: 1px 1px 1px 4px;
+    border-radius: 4px;
+    z-index: 10;
+  }
+  #gamesstilltoplay {
+    position: relative;
+    top: -21px;
+    right: 318px;
+    text-align: center;
+    margin-right:-14px;
+  }
+  #gamesstilltovote {
+    position: relative;
+    top: -21px;
+    right: 172px;
+    text-align: center;
+    margin-right:-14px;
+  }
+  #resultsstilltosee {
+    position: relative;
+    top: -21px;
+    right: 42px;
+    text-align: center;
+    padding-right: 4px;
+    margin-right:-14px;
+  }
   .graphiclink a {
     text-decoration: none
   }
@@ -538,6 +569,7 @@
     width: 100%;
     margin: 0 auto;
     text-align: center;
+    padding-left: 2px;
   }
   #mainvotinggameslist, #mainresultsgameslist {
     display:none;
