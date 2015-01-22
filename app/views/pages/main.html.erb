@@ -1,15 +1,15 @@
 <div class="mainpageviewbutton">
     Your Games:<br>
     <span class="viewbutton">
-      <%= button_tag "Play Rounds", :id => "mainplaygamesbutton" %>
+      <%= button_tag "Play Rounds", :id => "mainplaygamesbutton", :class => "mainpagetopbuttons" %>
     </span>
     <span class="viewbutton">
-      <%= button_tag "Vote Rounds", :id => "mainvotegamesbutton" %>
+      <%= button_tag "Vote Rounds", :id => "mainvotegamesbutton", :class => "mainpagetopbuttons" %>
     </span>
     <span class="viewbutton">
-      <%= button_tag "Completed", :id => "maincompletedgamesbutton" %>
+      <%= button_tag "Completed", :id => "maincompletedgamesbutton", :class => "mainpagetopbuttons" %>
     </span>
-      <% if @gamestostillplay.count > 0 %>
+     <% if @gamestostillplay.count > 0 %>
         <span class="mainroundcounts" id="gamesstilltoplay">
           <%= @gamestostillplay.count %>
         </span>
@@ -29,7 +29,7 @@
         </span>
       <% else %>
         <span class="mainroundcounts" id="resultsstilltosee" style="visibility: hidden;">x</span>
-      <% end %>
+      <% end %> 
   </div>
 <div class="maingamespage">
   <div id="mainplayinggameslist" >
