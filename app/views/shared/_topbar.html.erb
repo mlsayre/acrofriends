@@ -10,15 +10,17 @@
         <%= image_tag @topbarimage, alt: "Private status", class: "topbar-privateimage" %>
       <% end %>
     </div>
-    <%= link_to(lightnings_path) do %>
-      <div id="main-messagebutton">
-        <%= image_tag("Lightning-128.png", size: "30", alt: "Lightning Mode", class: "topbar-messagebutton") %>
-        <% if @finishedlightningnewvotes.count > 0 %>
-          <div class="lightningnumber">
-            <%= @finishedlightningnewvotes.count %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+    <span class="graphiclink">
+      <%= link_to(lightnings_path) do %>
+        <div id="main-messagebutton">
+          <%= image_tag("Lightning-128.png", size: "30", alt: "Lightning Mode", class: "topbar-messagebutton") %>
+          <% if @finishedlightningnewvotes.count > 0 %>
+            <div class="lightningnumber">
+              <%= @finishedlightningnewvotes.count %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </span>
   </div>
 </div>
