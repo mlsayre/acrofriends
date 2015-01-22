@@ -81,8 +81,22 @@
   }
   #main-messagebutton {
     float: right;
-    margin-top: -30px;
+    margin-top: -28px;
     margin-right: 10px;
+  }
+  .lightningnumber {
+    background-color: red;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    padding: 1px;
+    border-radius: 4px;
+    z-index: 10;
+    position: relative;
+    top: -18px;
+    right: 15px;
+    text-align: center;
+    margin: 0 5px;
   }
   #main-bottombar {
     background: #03a9f4;

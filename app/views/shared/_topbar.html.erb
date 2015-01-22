@@ -1,3 +1,4 @@
+<% @finishedlightningnewvotes = Lightning.where(:user_id => current_user.id).where(:completed => true).where("whovoted != ?", "").order('created_at DESC').all %>
 <div id="main-topbar">
   <div id="main-pagetitle">
     <div id="main-homebutton">
@@ -9,8 +10,15 @@
         <%= image_tag @topbarimage, alt: "Private status", class: "topbar-privateimage" %>
       <% end %>
     </div>
-    <div id="main-messagebutton">
-    <%= link_to(image_tag("Lightning-128.png", size: "30", alt: "Lightning Mode", class: "topbar-messagebutton"), lightnings_path) %>
-    </div>
+    <%= link_to(lightnings_path) do %>
+      <div id="main-messagebutton">
+        <%= image_tag("Lightning-128.png", size: "30", alt: "Lightning Mode", class: "topbar-messagebutton") %>
+        <% if @finishedlightningnewvotes.count > 0 %>
+          <div class="lightningnumber">
+            <%= @finishedlightningnewvotes.count %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
