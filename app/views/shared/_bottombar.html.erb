@@ -2,12 +2,14 @@
 <div id="main-bottombar">
   <div id="main-icons">
     <%= link_to(image_tag("New-128.png", size: "48", alt: "Start New Game", class: "main-icon"), new_game_path) %>
-    <span class="graphiclink" style="margin-right: -18px;">
+    <span class="graphiclink">
 	    <%= link_to(lightnings_path) do %>
 	    	<%= image_tag("Lightning-128.png", size: "48", alt: "Lightning Mode", class: "main-icon") %>
-	    	<span class="lightningnumberbottom">
-	        <%= @finishedlightningnewvotes.count %>
-	      </span>
+	    	<% if @finishedlightningnewvotes.count > 0 %>
+		    	<span class="lightningnumberbottom">
+		        <%= @finishedlightningnewvotes.count %>
+		      </span>
+		    <% end %>
 	    <% end %>
 	   </span>
     <!-- <%= link_to(image_tag("User-Group-128.png", size: "48", alt: "Join or Start Group", class: "main-icon"), groups_path) %> -->
