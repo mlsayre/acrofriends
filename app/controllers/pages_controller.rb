@@ -16,7 +16,15 @@ class PagesController < ApplicationController
 
     @gamestoplayids1 = Game.where('playendtime >= ?', DateTime.now.utc).collect(&:id)
     @gamestoplayids2 = Game.where(:playendtime => nil).collect(&:id)
-    @gamestoplayids = @gamestoplayids1.push(@gamestoplayids2)
+    if @gamestoplayids2 != [] && @gamestoplayids1 != []
+      @gamestoplayids = @gamestoplayids1.push(@gamestoplayids2)
+    elsif @gamestoplayids2 != [] && @gamestoplayids1 == []
+      @gamestoplayids = @gamestoplayids2
+    elsif @gamestoplayids2 == [] && @gamestoplayids1 != []
+      @gamestoplayids = @gamestoplayids1
+    else
+      @gamestoplayids = []
+    end
     @gamestostillplay = Gamedata.where(:user_id => current_user.id).where(:game_id => @gamestoplayids)
       .where(:r4answer => nil).all
     @gamesinvoteroundids = Game.where('playendtime <= ? AND voteendtime >= ?', DateTime.now.utc,
