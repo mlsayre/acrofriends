@@ -8,7 +8,8 @@ class LightningsController < ApplicationController
     @finishedlightningnewvotes = Lightning.where(:user_id => current_user.id).where(:completed => true)
       .where("whovoted != ?", "").order('created_at DESC').all
     @finishedlightning = Lightning.where(:user_id => current_user.id).where(:completed => true)
-      .where("whovoted = ?", "").order('created_at DESC').page(params[:page]).per(6)
+      .where("whovoted = ?", "").order('created_at DESC').all
+    @finishedlightninglist = @finishedlightning.page(params[:page]).per(20)
   end
 
   def show

@@ -1,0 +1,2 @@
+$('span#completedgamelist').html('<%= escape_javascript render("lightning") %>');
+$('#paginator').html('<%= escape_javascript(paginate(@finishedlightninglist, :remote => true).to_s) %>');
