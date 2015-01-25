@@ -1,6 +1,40 @@
 <% @mainpagetitle="Player Ratings" %>
 <%= render "shared/topbar" %>
 
+<div class="userstats">
+  <div style="margin-bottom: 5px; text-align: center; font-weight: 600; line-height: 1.4;">Stats for <%= current_user.username %><br>
+    <span style="font-size: 86%; margin-left: -64px;"><u>Classic Mode Stats</u></span>
+    <span style="font-size: 86%; float: right; margin-top: 2px;"><u>World Rank</u></span><br>
+  </div>
+  <span class="userstatdesc">Average points per round: <span class="userstatnumber"><%= current_user.averagepointsperround %></span></span>
+  <span class="userstatrank"><%= @userlifeavgpointrank.ordinalize %></span><br>
+
+  <span class="userstatdesc">Total lifetime points: <span class="userstatnumber"><%= current_user.lifetimepoints %></span></span>
+  <span class="userstatrank"><%= @userlifetimepointsrank.ordinalize %></span><br>
+
+  <span class="userstatdesc">Total lifetime rounds played: <span class="userstatnumber"><%= current_user.lifetimeroundsplayed %></span></span>
+  <span class="userstatrank"><%= @userlifetimeroundsrank.ordinalize %></span><br>
+
+  <div style="margin-bottom: 5px; text-align: center; font-weight: 600; line-height: 1.4; margin-top: 6px;">
+    <span style="font-size: 86%; margin-left: -54px;"><u>Lightning Mode Stats</u></span>
+    <span style="font-size: 86%; float: right; margin-top: 2px;"><u>World Rank</u></span><br>
+  </div>
+
+  <span class="userstatdesc">Thumbs up received %: <span class="userstatnumber"><%= current_user.percentthumbsup %>%</span></span>
+  <span class="userstatrank"><%= @userthumbsuppercentrank.ordinalize %></span><br>
+
+  <span class="userstatdesc">Hearts received %: <span class="userstatnumber"><%= current_user.percentheart %>%</span></span>
+  <span class="userstatrank"><%= @userheartpercentrank.ordinalize %></span><br>
+
+  <span class="userstatdesc">Lifetime acros played: <span class="userstatnumber"><%= current_user.lifetimelightningsplayed %></span></span>
+  <span class="userstatrank"><%= @userlightningplayedrank.ordinalize %></span><br>
+
+</div>
+<br>
+
+
+
+
 <div class="lifetimerankings">
   <div style="margin-bottom: 6px; text-align: center;">Main Game Ratings - Top 30<br><span style="font-size: 86%"><u>(Average Points/Round)</u></span></div>
   <% User.all.sort {|a,b| a.averagepointsperround <=> b.averagepointsperround}.reverse!.first(30).each do |user| %>

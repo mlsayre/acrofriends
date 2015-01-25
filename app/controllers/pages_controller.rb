@@ -55,4 +55,18 @@ class PagesController < ApplicationController
     current_user.update_attributes(:censoron => true)
     render :nothing => true
   end
+
+  def rankings
+    @lifeavgpointrank = User.all.sort {|a,b| a.averagepointsperround <=> b.averagepointsperround}.reverse!
+    @userlifeavgpointrank = @lifeavgpointrank.collect(&:id).index(current_user.id) + 1
+    @userlifetimepointsrank = User.order('lifetimepoints DESC').collect(&:id).index(current_user.id) + 1
+    @userlifetimeroundsrank = User.order('lifetimeroundsplayed DESC').collect(&:id).index(current_user.id) + 1
+
+    # lightning stats
+    @thumbsuppercentrank = User.all.sort {|a,b| a.percentthumbsup <=> b.percentthumbsup}.reverse!
+    @userthumbsuppercentrank = @thumbsuppercentrank.collect(&:id).index(current_user.id) + 1
+    @heartpercentrank = User.all.sort {|a,b| a.percentheart <=> b.percentheart}.reverse!
+    @userheartpercentrank = @heartpercentrank.collect(&:id).index(current_user.id) + 1
+    @userlightningplayedrank = User.order('lifetimelightningsplayed DESC').collect(&:id).index(current_user.id) + 1
+  end
 end

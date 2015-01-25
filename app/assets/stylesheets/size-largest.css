@@ -583,6 +583,29 @@
     padding: 12px;
     overflow-y: auto;
   }
+  .userstats {
+    width: 260px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid red;
+    padding: 12px;
+  }
+  .userstatdesc {
+    width: 300px;
+    text-align: left;
+    font-size: 89%;
+  }
+  .userstatrank {
+    float: right;
+    font-size: 96%;
+    margin-top: 0px;
+    color: brown;
+    font-weight: 600;
+  }
+  .userstatnumber {
+    color: red;
+    font-weight: 600;
+  }
   .voteemailsend {
     background: green !important;
     width: 180px !important;
