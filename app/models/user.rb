@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def lightningvotesmade
+    self.lifetimelightningthumbsupgiven + self.lifetimelightningthumbsdowngiven
+  end
+
   def percentheart
     if self.lifetimelightninghearts > 0
       ((self.lifetimelightninghearts.round(2) / (self.lifetimelightningthumbsup.round(2) + self.lifetimelightningthumbsdown.round(2))) * 100).round(2)

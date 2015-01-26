@@ -72,5 +72,7 @@ class PagesController < ApplicationController
     @userthumbsupgivenpercentrank = @thumbsupgivenpercentrank.collect(&:id).index(current_user.id) + 1
     @heartgivenpercentrank = User.all.sort {|a,b| a.percentheartgiven <=> b.percentheartgiven}.reverse!
     @userheartgivenpercentrank = @heartgivenpercentrank.collect(&:id).index(current_user.id) + 1
+    @lightningvotescastrank = User.all.sort {|a,b| a.lightningvotesmade <=> b.lightningvotesmade}.reverse!
+    @userlightningvotescastrank = @lightningvotescastrank.collect(&:id).index(current_user.id) + 1
   end
 end

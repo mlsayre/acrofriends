@@ -35,6 +35,9 @@
   <span class="userstatdesc">Lifetime acros played: <span class="userstatnumber"><%= current_user.lifetimelightningsplayed %></span></span>
   <span class="userstatrank"><%= @userlightningplayedrank.ordinalize %></span><br>
 
+  <span class="userstatdesc">Lifetime votes cast: <span class="userstatnumber"><%= current_user.lightningvotesmade %></span></span>
+  <span class="userstatrank"><%= @userlightningvotescastrank.ordinalize %></span><br>
+
 </div>
 <br>
 
@@ -57,8 +60,15 @@
 <br>
 <div class="lifetimerankings">
   <div style="margin-bottom: 6px; text-align: center;"><u>Lightning Thumbs Up % Leaders</u></div>
-  <% User.all.sort {|a,b| a.percentthumbsup <=> b.percentthumbsup}.reverse!.first(30).each do |user| %>
+  <% User.all.sort {|a,b| a.percentthumbsup <=> b.percentthumbsup}.reverse!.first(10).each do |user| %>
     <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.percentthumbsup %>%</span></li>
+  <% end %>
+</div>
+<br>
+<div class="lifetimerankings">
+  <div style="margin-bottom: 6px; text-align: center;"><u>Lightning Heart % Leaders</u></div>
+  <% User.all.sort {|a,b| a.percentheart <=> b.percentheart}.reverse!.first(10).each do |user| %>
+    <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.percentheart %>%</span></li>
   <% end %>
 </div>
 
@@ -75,6 +85,13 @@
   <div style="margin-bottom: 6px; text-align: center;">Most Loving Lightning Players<br><span style="font-size: 86%"><u>(Top 10 Hearts Given % Leaders</u></span></div>
   <% User.all.sort {|a,b| a.percentheartgiven <=> b.percentheartgiven}.reverse!.first(10).each do |user| %>
     <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.percentheartgiven %>%</span></li>
+  <% end %>
+</div>
+<br>
+<div class="lifetimerankings">
+  <div style="margin-bottom: 6px; text-align: center;">Top Lightning Voters<br><span style="font-size: 86%"><u>(Top 10 Lightning Votes Cast</u></span></div>
+  <% User.all.sort {|a,b| a.lightningvotesmade <=> b.lightningvotesmade}.reverse!.first(10).each do |user| %>
+    <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.lightningvotesmade %></span></li>
   <% end %>
 </div>
 
