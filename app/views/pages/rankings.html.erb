@@ -26,6 +26,12 @@
   <span class="userstatdesc">Hearts received %: <span class="userstatnumber"><%= current_user.percentheart %>%</span></span>
   <span class="userstatrank"><%= @userheartpercentrank.ordinalize %></span><br>
 
+  <span class="userstatdesc">Thumbs up given %: <span class="userstatnumber"><%= current_user.percentthumbsupgiven %>%</span></span>
+  <span class="userstatrank"><%= @userthumbsupgivenpercentrank.ordinalize %></span><br>
+
+  <span class="userstatdesc">Hearts given %: <span class="userstatnumber"><%= current_user.percentheartgiven %>%</span></span>
+  <span class="userstatrank"><%= @userheartgivenpercentrank.ordinalize %></span><br>
+
   <span class="userstatdesc">Lifetime acros played: <span class="userstatnumber"><%= current_user.lifetimelightningsplayed %></span></span>
   <span class="userstatrank"><%= @userlightningplayedrank.ordinalize %></span><br>
 
@@ -53,6 +59,22 @@
   <div style="margin-bottom: 6px; text-align: center;"><u>Lightning Thumbs Up % Leaders</u></div>
   <% User.all.sort {|a,b| a.percentthumbsup <=> b.percentthumbsup}.reverse!.first(30).each do |user| %>
     <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.percentthumbsup %>%</span></li>
+  <% end %>
+</div>
+
+<br>
+<div class="lifetimerankings">
+  <div style="margin-bottom: 6px; text-align: center;">Most Generous Lightning Players<br><span style="font-size: 86%"><u>(Top 10 Thumbs Up Given % Leaders</u></span></div>
+  <% User.all.sort {|a,b| a.percentthumbsupgiven <=> b.percentthumbsupgiven}.reverse!.first(10).each do |user| %>
+    <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.percentthumbsupgiven %>%</span></li>
+  <% end %>
+</div>
+
+<br>
+<div class="lifetimerankings">
+  <div style="margin-bottom: 6px; text-align: center;">Most Loving Lightning Players<br><span style="font-size: 86%"><u>(Top 10 Hearts Given % Leaders</u></span></div>
+  <% User.all.sort {|a,b| a.percentheartgiven <=> b.percentheartgiven}.reverse!.first(10).each do |user| %>
+    <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.percentheartgiven %>%</span></li>
   <% end %>
 </div>
 

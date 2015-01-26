@@ -68,5 +68,9 @@ class PagesController < ApplicationController
     @heartpercentrank = User.all.sort {|a,b| a.percentheart <=> b.percentheart}.reverse!
     @userheartpercentrank = @heartpercentrank.collect(&:id).index(current_user.id) + 1
     @userlightningplayedrank = User.order('lifetimelightningsplayed DESC').collect(&:id).index(current_user.id) + 1
+    @thumbsupgivenpercentrank = User.all.sort {|a,b| a.percentthumbsupgiven <=> b.percentthumbsupgiven}.reverse!
+    @userthumbsupgivenpercentrank = @thumbsupgivenpercentrank.collect(&:id).index(current_user.id) + 1
+    @heartgivenpercentrank = User.all.sort {|a,b| a.percentheartgiven <=> b.percentheartgiven}.reverse!
+    @userheartgivenpercentrank = @heartgivenpercentrank.collect(&:id).index(current_user.id) + 1
   end
 end
