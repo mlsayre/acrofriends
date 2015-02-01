@@ -21,11 +21,11 @@ class LightningsController < ApplicationController
   def updateanswer
     @lightning = Lightning.where(:user_id => current_user.id)
                 .where('id = ?', (params[:lightning][:id])).first
-    if @lightning.completed == false
-      @lightning.update_attributes(lightning_params)
-    else
-      flash[:notice] = "This acro has already been entered into voting!"
-    end
+    # if @lightning.completed == false
+    @lightning.update_attributes(lightning_params)
+    # else
+    #  flash[:notice] = "This acro has already been entered into voting!"
+    # end
     render :nothing => true
   end
 
