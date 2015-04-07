@@ -48,6 +48,17 @@
     margin-top: 40px;
     text-align: center;
   }
+  .login-logos {
+    display: inline-block;
+  }
+  .login-logos :hover {
+    background-color: transparent;
+    filter: brightness(120%);
+    -webkit-filter: brightness(120%);
+    border-radius: 0;
+    transform: rotate(-20deg);
+    transition-duration: 500ms;
+  }
   #signin-twitter {
     margin: 25px 10px 0 0;
   }

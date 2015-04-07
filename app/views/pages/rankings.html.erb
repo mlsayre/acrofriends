@@ -74,7 +74,7 @@
 
 <br>
 <div class="lifetimerankings">
-  <div style="margin-bottom: 6px; text-align: center;">Most Generous Lightning Players<br><span style="font-size: 86%"><u>(Top 10 Thumbs Up Given % Leaders</u></span></div>
+  <div style="margin-bottom: 6px; text-align: center;">Most Generous Lightning Players<br><span style="font-size: 86%"><u>(Top 10 Thumbs Up Given % Leaders)</u></span></div>
   <% User.all.sort {|a,b| a.percentthumbsupgiven <=> b.percentthumbsupgiven}.reverse!.first(10).each do |user| %>
     <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.percentthumbsupgiven %>%</span></li>
   <% end %>
@@ -82,14 +82,14 @@
 
 <br>
 <div class="lifetimerankings">
-  <div style="margin-bottom: 6px; text-align: center;">Most Loving Lightning Players<br><span style="font-size: 86%"><u>(Top 10 Hearts Given % Leaders</u></span></div>
+  <div style="margin-bottom: 6px; text-align: center;">Most Loving Lightning Players<br><span style="font-size: 86%"><u>(Top 10 Hearts Given % Leaders)</u></span></div>
   <% User.all.sort {|a,b| a.percentheartgiven <=> b.percentheartgiven}.reverse!.first(10).each do |user| %>
     <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.percentheartgiven %>%</span></li>
   <% end %>
 </div>
 <br>
 <div class="lifetimerankings">
-  <div style="margin-bottom: 6px; text-align: center;">Top Lightning Voters<br><span style="font-size: 86%"><u>(Top 10 Lightning Votes Cast</u></span></div>
+  <div style="margin-bottom: 6px; text-align: center;">Top Lightning Voters<br><span style="font-size: 86%"><u>(Top 10 Lightning Votes Cast)</u></span></div>
   <% User.all.sort {|a,b| a.lightningvotesmade <=> b.lightningvotesmade}.reverse!.first(10).each do |user| %>
     <li style="list-style-type: decimal;"><%= user.username %> <span style="float:right"><%= user.lightningvotesmade %></span></li>
   <% end %>

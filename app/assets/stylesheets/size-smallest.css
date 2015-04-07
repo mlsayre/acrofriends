@@ -26,6 +26,15 @@
     font-size:100%;
     font-weight:normal;
   }
+  .login-logos {
+    display: inline-block;
+  }
+  .login-logos :hover {
+    background-color: transparent;
+    filter: brightness(120%);
+    -webkit-filter: brightness(120%);
+    border-radius: 0;
+  }
 
   #landing-topbar {
     background: #03a9f4;
