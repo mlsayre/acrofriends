@@ -58,6 +58,8 @@
     border-radius: 0;
     transform: rotate(-20deg);
     transition-duration: 500ms;
+    -webkit-transform: rotate(-20deg);
+    -webkit-transition-duration: 500ms;
   }
   #signin-twitter {
     margin: 25px 10px 0 0;

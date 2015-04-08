@@ -34,6 +34,10 @@
     filter: brightness(120%);
     -webkit-filter: brightness(120%);
     border-radius: 0;
+    transform: rotate(-20deg);
+    transition-duration: 500ms;
+    -webkit-transform: rotate(-20deg);
+    -webkit-transition-duration: 500ms;
   }
 
   #landing-topbar {
