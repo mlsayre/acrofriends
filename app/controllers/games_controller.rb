@@ -521,7 +521,7 @@ class GamesController < ApplicationController
     if (params[:game][:length]) == "1hour" &&
       (Game.where('length = ? AND playercount < ? AND playendtime > ?
          AND group_id = ? AND not id IN (?)',
-         "1hour", 13,   ime.now + 0.01389,
+         "1hour", 13, DateTime.now + 0.01389,
          (params[:game][:group_id]), usergames).first ||
       Game.where(:length => "1hour").where(:group_id => (params[:game][:group_id])).where(:playendtime => nil)
         .where.not(:id => usergames).first)
